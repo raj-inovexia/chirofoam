@@ -6,6 +6,7 @@ import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPan
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 
+/*
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
@@ -196,7 +197,7 @@ const Example = (props) => {
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
   }
-  */
+  * /
 //export default (props) => {
   return (
 	<>
@@ -308,7 +309,7 @@ const Example = (props) => {
 						</TabContent>
 					</div>
 				</Container>
-	</section>
+	  </section>
     <section>
 			<Container>
 				<Row className="py-3 py-sm-5 mb-0 mb-sm-5 mx-0">
@@ -353,3 +354,4 @@ const Example = (props) => {
   );
 };
 export default Example;
+*/
