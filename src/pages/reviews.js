@@ -6,6 +6,22 @@ import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPan
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 
+export const query = graphql`
+  query HomePageQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
+const IndexPage = ({ data }) => (
+  <Layout>
+    <h1>{data.site.siteMetadata.title}</h1>
+  </Layout>
+)
+export default IndexPage
+
 /*
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
