@@ -6,7 +6,12 @@ import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPan
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 
-export const query = graphql`
+export const query = {
+  'title': 'Reviews'
+}
+
+/*
+export const query = graphql `
   query HomePageQuery {
     site {
       siteMetadata {
@@ -15,9 +20,11 @@ export const query = graphql`
     }
   }
 `
+*/
+
 const IndexPage = ({ data }) => (
   <Container>
-    <h1>{data.site.siteMetadata.title}</h1>
+    <h1>{data.title}</h1>
   </Container>
 )
 export default IndexPage
