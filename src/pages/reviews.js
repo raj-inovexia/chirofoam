@@ -16,9 +16,9 @@ export const query = graphql`
   }
 `
 const IndexPage = ({ data }) => (
-  <Layout>
+  <Container>
     <h1>{data.site.siteMetadata.title}</h1>
-  </Layout>
+  </Container>
 )
 export default IndexPage
 
