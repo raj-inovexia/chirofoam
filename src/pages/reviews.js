@@ -6,7 +6,7 @@ import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPan
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 
-export const query = {
+const data = {
   title: 'Reviews'
 }
 
