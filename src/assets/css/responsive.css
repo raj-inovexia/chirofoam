@@ -20,7 +20,7 @@
 	.all-mattress .mattress-desc {
     font-size: 18px;
 }
-	
+
 .threeColDescColumn {
     text-align: center;
     font-size: 0.6rem;
@@ -82,8 +82,8 @@
 	/*.card-bg{
 		height:285px;
 	}*/
-	
-	
+
+
 	.mattresses p.cta.erbaum.position-absolute {
 	    bottom:0px;
 	}
@@ -134,13 +134,13 @@
 	}
 	.blue-bg.charity{
 		height:auto;
-	} 
+	}
 	.blue-bg::before, .blue-bg::after{
 		display:none;
-	} 
+	}
 	.btn-cta{
 		font-size:12px;
-	} 
+	}
 	.products{
 		padding-right:0px;
 		text-align:center;
@@ -148,7 +148,7 @@
 	.our-customer {
     		padding: 15px 10px 15px 10px;
 	}
-	
+
 	.collapse .nav-link{
 		padding:0;
 	}
@@ -181,7 +181,7 @@ body .container-large{
     top: 50%;
     left:5px;
 }
-	
+
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
 	body .container-large{
@@ -194,7 +194,7 @@ body .container-large{
 }
 
 /* Portrait */
-@media (min-width: 576px) and (max-width: 1024px){ 
+@media (min-width: 576px) and (max-width: 1024px){
 	.home-banner {
     height:65vh;
   }
@@ -268,13 +268,13 @@ body .container-large{
 
 
 
-/* 
+/*
   ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-	
+
 	.navbar-nav li.nav-item {
     padding: 10px 0px;
 }
@@ -330,7 +330,7 @@ body .container-large{
   .card-bg .card-layer p{
   	font-size:10px !important;
   }
- 
+
   .card-bg .card-layer .display-3{
   	font-size:3.5rem !important;
   }
@@ -344,13 +344,13 @@ body .container-large{
 		font-size:70px;
 		line-height:80px;
 	}
-	
+
 .check-text p {
     font-size: 16px;
 }
 }
 
-/* 
+/*
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px to 1024px
 */
@@ -365,8 +365,8 @@ body .container-large{
 	.contact-us-title{
 		font-size:15px;
 	}
-	
-  
+
+
  .facilities span{
   	font-size:0.6rem !important;
   }
@@ -384,10 +384,10 @@ body .container-large{
 	.single-product-desc .cta span{
 	font-size:1.5rem;
 }
-  
+
 }
 
-/* 
+/*
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */

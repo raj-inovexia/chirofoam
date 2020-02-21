@@ -1,8 +1,6 @@
-body {
+body > div#___gatsby{
 	overflow-x: hidden !important;
 	box-sizing:border-box !important;
-	/*background-image:url('../img/home.png');*/
-	/*opacity:0.2;*/
 }
 .text-1{
 	font-size:.8rem !important;
@@ -258,7 +256,7 @@ p.cta.erbaum.position-absolute {
 .key-features-inner .slick-active .card-bg{
 	/*transform: scale(1.3);*/
 	z-index: 9;
-	
+
 }
 .animation-box .five-key {
 	width: 20%;
@@ -978,7 +976,7 @@ body .navbar {
 }
 .key-features-inner .slick-slide.slick-active.slick-center.slick-current h3{
 	font-size:3rem;
-	
+
 }
 .key-features-inner .slick-slide.slick-active.slick-center.slick-current .card-layer p {
     font-size: 0.7rem !important;
