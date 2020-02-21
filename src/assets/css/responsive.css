@@ -165,9 +165,6 @@
 	body .mattresses .cta.left-btn.position-absolute{
 	right:140px;
 }
-body .container-large{
-	padding:0px 30px;
-}
 .single-product-desc .cta span{
 	font-size:1.5rem;
 }
@@ -423,6 +420,9 @@ body .container-large{
 	    max-height: 285px;
 	    padding: 25px 5px;
 	}
+	.container, .container-large{
+		padding:0px 30px;
+	}
 }
 /* Extra small devices (phones, 600px and down) */
 @media (max-width: 767px) {
@@ -449,10 +449,6 @@ body .products-outer .products {
     padding-left:0px;
     border:none;
     text-align:left;
-}
-body.container{
-	padding-left:30px !important;
-	padding-right:30px !important;
 }
 #tabs li.nav-item a {
     padding: 0.5rem .5rem;
