@@ -13,7 +13,7 @@ const SlickSlider =()=> {
       centerMode: true,
       focusOnSelect: true,
      centerPadding: '0px',
-     autoplay:true,
+     autoplay:false,
      slidesToShow: 3,
       slidesToScroll: 1,
       responsive: [
@@ -99,6 +99,6 @@ const SlickSlider =()=> {
         </Slider>
       </div>
     );
-  
+
 }
 export default SlickSlider;
