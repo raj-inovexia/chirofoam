@@ -12,7 +12,7 @@ const SlickSlider =()=> {
       autoplaySpeed:10000,
       centerMode: true,
       focusOnSelect: true,
-     centerPadding: '0px',
+     centerPadding: '0',
      autoplay:false,
      slidesToShow: 3,
       slidesToScroll: 1,
