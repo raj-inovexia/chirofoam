@@ -420,7 +420,7 @@ body .container-large{
 	    max-height: 285px;
 	    padding: 25px 5px;
 	}
-	.container, .container-large{
+	body .container, body .container-large{
 		padding:0px 30px;
 	}
 }
