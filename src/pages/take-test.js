@@ -7,6 +7,13 @@ import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import xf1 from "~/assets/img/xf1.jpg"
 import ol1 from "~/assets/img/ol1.jpg"
+import step1_img from "../assets/img/Chirofoam-Step1-SleepPosition.png"
+import step2_img from "../assets/img/Chirofoam-Step2-Surface.png"
+import step3_img from "../assets/img/Chirofoam-Step3-BodyType.png"
+import step4_img from "../assets/img/Chirofoam-Step4-Temperature.png"
+import step5_img from "../assets/img/Chirofoam-Step5-Exercise.png"
+import step6_img from "../assets/img/Chirofoam-Step6-BackPain.png"
+
 
 const TAKETEST = (props) => {
 	//const [showTest, setShowTest] = useState(false);
@@ -172,6 +179,7 @@ const TAKETEST = (props) => {
 										</Col>
 										<Col className="col-12 col-lg-5 col-xl-5">
 											<div>
+												<img className="img-fluid" src={step1_img} alt="Chirofoam-Step1-SleepPosition" />
 											</div>
 										</Col>
 										<Col className="col-12">
@@ -183,7 +191,7 @@ const TAKETEST = (props) => {
 						</TabPane>
 						<TabPane tabId="2">
 							<div className="tab-content">
-								<div className="m-auto py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
+								<div className="py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
 									<Row className="m-0">
 										<Col className="col-12 col-lg-7 col-xl-7">
 											<div className="left-content">
@@ -208,6 +216,7 @@ const TAKETEST = (props) => {
 										</Col>
 										<Col className="col-12 col-lg-5 col-xl-5">
 											<div>
+												<img className="img-fluid" src={step2_img} alt="Chirofoam-Step2-Surface" />
 											</div>
 										</Col>
 										<Col className="col-12">
@@ -220,7 +229,7 @@ const TAKETEST = (props) => {
 						</TabPane>
 						<TabPane tabId="3">
 							<div className="tab-content">
-								<div className="m-auto py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
+								<div className="py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
 									<Row className="m-0">
 										<Col className="col-12 col-lg-7 col-xl-7">
 											<div className="left-content">
@@ -245,6 +254,7 @@ const TAKETEST = (props) => {
 										</Col>
 										<Col className="col-12 col-lg-5 col-xl-5">
 											<div>
+												<img className="img-fluid" src={step3_img} alt="Chirofoam-Step3-BodyType" />
 											</div>
 										</Col>
 										<Col className="col-12">
@@ -257,7 +267,7 @@ const TAKETEST = (props) => {
 						</TabPane>
 						<TabPane tabId="4">
 							<div className="tab-content">
-								<div className="m-auto py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
+								<div className="py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
 									<Row className="m-0">
 										<Col className="col-12 col-lg-7 col-xl-7">
 											<div className="left-content">
@@ -282,6 +292,7 @@ const TAKETEST = (props) => {
 										</Col>
 										<Col className="col-12 col-lg-5 col-xl-5">
 											<div>
+												<img className="img-fluid" src={step4_img} alt="Chirofoam-Step4-Temperature" />
 											</div>
 										</Col>
 										<Col className="col-12">
@@ -294,7 +305,7 @@ const TAKETEST = (props) => {
 						</TabPane>
 						<TabPane tabId="5">
 							<div className="tab-content">
-								<div className="m-auto py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
+								<div className="py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
 									<Row className="m-0">
 										<Col className="col-12 col-lg-7 col-xl-7">
 											<div className="left-content">
@@ -319,6 +330,7 @@ const TAKETEST = (props) => {
 										</Col>
 										<Col className="col-12 col-lg-5 col-xl-5">
 											<div>
+												<img className="img-fluid" src={step5_img} alt="Chirofoam-Step5-Exercise" />
 											</div>
 										</Col>
 										<Col className="col-12">
@@ -331,7 +343,7 @@ const TAKETEST = (props) => {
 						</TabPane>
 						<TabPane tabId="6">
 							<div className="tab-content">
-								<div className="m-auto py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
+								<div className="py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
 									<Row className="m-0">
 										<Col className="col-12 col-lg-7 col-xl-7">
 											<div className="left-content">
@@ -356,6 +368,7 @@ const TAKETEST = (props) => {
 										</Col>
 										<Col className="col-12 col-lg-5 col-xl-5">
 											<div>
+												<img className="img-fluid" src={step6_img} alt="Chirofoam-Step6-BackPain" />
 											</div>
 										</Col>
 										<Col className="col-12">
