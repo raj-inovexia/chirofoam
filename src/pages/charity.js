@@ -85,7 +85,7 @@ export default (props) => {
 			<Container className="pb-0 pb-sm-5">
 				<Row className="pb-0 pb-sm-5 mx-0">
 					<h4 className="text-center color-primary erbaum-bold text-uppercase w-100 pt-2 pt-sm-5 mt-0 mt-sm-5">Thank you for helping to provide a child in need with better sleep. </h4>
-					<p className="pt-0 text-uppercase text-center w-100 pt-2 pt-md-5" style={{color:'#ba2154'}}>For more information on Sleeping Children Around The World visit their website at <a href="www.scaw.org" style={{color:'#000'}}>www.scaw.org</a>.</p>
+					<p className="pt-0 text-uppercase text-center w-100 pt-2 pt-md-5" style={{color:'#ba2154'}}>For more information on Sleeping Children Around The World visit their website at <a href="https://www.scaw.org/#scawhome" style={{color:'#000'}}>www.scaw.org</a>.</p>
 				</Row>
 			</Container>
 		</section>
