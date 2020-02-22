@@ -151,7 +151,7 @@ const TAKETEST = (props) => {
 					<TabContent className="take-test-tab" activeTab={activeTab}>
 						<TabPane tabId="1">
 							<div className="tab-content">
-								<div className="m-auto py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
+								<div className="py-3 py-lg-5 col-12 col-lg-10 col-xl-10 p-0 px-sm-2">
 									<Row className="m-0">
 										<Col className="col-12 col-lg-7 col-xl-7">
 												<div className="left-content">
