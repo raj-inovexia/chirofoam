@@ -5,10 +5,11 @@ import Footer from "../components/footer"
 import {Container, Row, Col} from 'reactstrap';
 import SEO from '../components/seo'
 import "../assets/css/bootstrap.min.css"
-import coolgel from "../assets/img/Cool-Gel-Memory-Foam-1.jpg"
-import latex from "../assets/img/latex-5keyfeatures.jpg"
-import support from "../assets/img/support.jpg"
-import foam from "../assets/img/foam.jpg"
+import Pur from "../assets/img/certipur-logo-nobkgrd-250px-1.png"
+import Ecoinstitute from "../assets/img/ecoinstitute.png"
+import conni1 from "../assets/img/conni1.jpg"
+
+
 
 export default (props) => {
   return (
@@ -25,49 +26,65 @@ export default (props) => {
 		</section>
 		<section className="py-4 pt-sm-5 pb-sm-4 our-customer">
 			<Row className="pt-3 pb-3 pb-sm-0 no-gutters">
-				<Col sm="6">
-					<img src={coolgel} alt="coolgel" width="100%" height="350px" />
+				<Col sm="6" className="coolgel-img design-imgs">
+					
 				</Col>
-				<Col sm="6" className="px-3">
-					<div className="pl-0 pl-sm-4 pt-0 pt-sm-5" style={{maxWidth:'500px'}}>
+				<Col sm="6" className="pt-5 pb-5 px-3">
+					<div className="pl-5 pl-sm-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
 						<h3 className="color-primary erbaum-bold lead-text">COOL GEL INFUSED MEMORY FOAM</h3>
 						<p className="text-left proxima-eb space-1 pt-5 mb-0 text-1" style={{color:'#808080'}}><span className="color-primary">Helps keep your body cool and relaxed during sleep</span> while the temperature sensitive foam adjusts to your body’s natural shape and curves. Designed for back pain relief, this foam will help to relax your joints and muscles while relieving pressure and creating the ultimate comfort while your body rests.</p>
 					</div>
 				</Col>
 			</Row>
 			<Row className="pb-3 pb-sm-0 no-gutters">
-				<Col sm="6" className="px-3">
-					<div className="pl-0 pl-sm-4 pt-0 pt-sm-5" style={{maxWidth:'500px', float:'right'}}>
-						<h3 className="color-primary erbaum-bold lead-text">FIRM SUPPORT CHIROFOAM™</h3>
-						<p className="text-left proxima-eb space-1 pt-5 mb-0 text-1" style={{color:'#808080'}}><span className="color-primary">An extremely durable and sag resistant layer of support foam</span> provides an additional “pressure relief buffer” between your body and the core support foam. This layer helps cradle and protect your muscles, joints, and bones from excess pressure during sleep.  The foam creates ultra comfortable “push back” support to keep your spine in an optimal natural sleeping position, while relieving back pain.</p>
+				<Col sm="6" className="pt-5 pb-5 px-3">
+					<div className="pl-5 pl-sm-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
+						<h3 className="color-primary erbaum-bold lead-text pl-5">FIRM SUPPORT CHIROFOAM™</h3>
+						<p className="text-left proxima-eb space-1 pl-5 pt-5 mb-0 text-1" style={{color:'#808080'}}><span className="color-primary">An extremely durable and sag resistant layer of support foam</span> provides an additional “pressure relief buffer” between your body and the core support foam. This layer helps cradle and protect your muscles, joints, and bones from excess pressure during sleep.  The foam creates ultra comfortable “push back” support to keep your spine in an optimal natural sleeping position, while relieving back pain.</p>
 					</div>
 				</Col>
-				<Col sm="6">
-					<img src={latex} alt="latex" width="100%" height="350px" />
+				<Col sm="6" className="latex-img design-imgs">
+					
 				</Col>
 			</Row>
 			<Row className="pb-3 pb-sm-0 no-gutters">
-				<Col sm="6">
-					<img src={support} alt="support" width="100%" height="350px" />
+				<Col sm="6" className="design-imgs support-img">
+					
 				</Col>
-				<Col sm="6" className="px-3">
-					<div className="pl-0 pl-sm-4 pt-0 pt-sm-5" style={{maxWidth:'500px'}}>
+				<Col sm="6" className="pt-5 pb-5 px-3">
+					<div className="pl-5 pl-sm-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
 						<h3 className="color-primary erbaum-bold lead-text">CHIROFOAM™ LUMBAR SUPPORT</h3>
 						<p className="text-left proxima-eb space-1 pt-5 mb-0 text-1" style={{color:'#808080'}}><span className="color-primary">Our specialized layer of Chirofoam™ lumbar support</span> provides an additional 20% of conforming support in the centre third of the mattress for improved lumbar support and increased life span of the mattress. The majority of your body’s weight rests in the centre third of the mattress where you need the most support to keep your spine in optimal alignment while relieving back pain. The Pro Lumbar Support layer is also designed to resist sagging and keeps your mattress comfortable and more supportive even far beyond our 15 year warranty period.</p>
 					</div>
 				</Col>
 			</Row>
 			<Row className="pb-3 pb-sm-0 no-gutters">
-				<Col sm="6" className="px-3">
-					<div className="pl-0 pl-sm-4 pt-0 pt-sm-5" style={{maxWidth:'500px', float:'right'}}>
-						<h3 className="color-primary erbaum-bold lead-text">BODY SUPPORT BIO FOAM CORE</h3>
-						<p className="text-left proxima-eb space-1 pt-5 mb-0 text-1" style={{color:'#808080'}}><span className="color-primary">The core is made with a high density and ultra-resilient bio foam</span> designed to cradle the weight of your body and distribute pressure evenly for many years of back pain relief and peaceful sleep. The bio foam is made from soy content in a more environmentally friendly and sustainable production method which lessens your carbon footprint on our planet.</p>
+				<Col sm="6" className="pt-5 pb-5 px-3">
+					<div className="pl-5 pl-sm-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
+						<h3 className="pl-4 color-primary erbaum-bold lead-text">BODY SUPPORT BIO FOAM CORE</h3>
+						<p className="text-left proxima-eb space-1 pt-5 mb-0 text-1 pl-4" style={{color:'#808080'}}><span className="color-primary">The core is made with a high density and ultra-resilient bio foam</span> designed to cradle the weight of your body and distribute pressure evenly for many years of back pain relief and peaceful sleep. The bio foam is made from soy content in a more environmentally friendly and sustainable production method which lessens your carbon footprint on our planet.</p>
 					</div>
 				</Col>
-				<Col sm="6">
-					<img src={foam} alt="foam" width="674px" height="350px" />
+				<Col sm="6" className="design-imgs foam-img">
+					
 				</Col>
 			</Row>
+		</section>
+		<section className="m-auto text-center">
+			<Container>
+				<Row className="pt-3 pb-3 pb-sm-0 text-center">
+					<Col sm="12">
+						<div className="d-sm-flex text-center">
+							<img className="img-fluid" src={Pur} alt="Pur" width="150px" height="150px" />
+							<img className="img-fluid" src={Ecoinstitute} alt="Ecoinstitute" width="150px" height="150px" />
+							<img className="img-fluid" src={conni1} alt="conni1" width="150px" height="90px" />
+						</div>
+						<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">CertiPUR-US®</span> approved foams are made without ozone depleters, made without PBDE flame retardants, made without mercury, lead and other heavy metals, made without formaldehyde.</p>
+						<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">Eco Institut</span> tested for emission analysis in the test chamber according to ISO 16000, compound analyses for heavy metals, AOX/EOX, biocides, phthalates, flame retardants etc., odour testing according to VDA, toxicological and ecological expertise.</p>
+						<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">Confidence In Textiles Oeko-Tex®</span> standard 100 certified provide extensive testing on the fabrics to ensure that no substances are present that could be harmful to humans. Oeko-Tex® Standard 100 is an international certification that sets limits for over 100 harmful chemicals, substances, and emissions in textiles.</p>
+					</Col>
+				</Row>
+			</Container>
 		</section>
 		<section>
 			<Container>
@@ -86,6 +103,18 @@ export default (props) => {
 							Start your journey to a better sleep!
 						</Col>
 					</div>
+				</Row>
+			</Container>
+		</section>
+		<section className="pt-3">
+			<Container>
+				<Row>
+					<Col sm="6">
+						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase text-center">SPECIALTY FEATURES OVERVIEW</h5>
+					</Col>
+					<Col sm="6">
+						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase text-center">TECHNICAL SPECIFICATIONS</h5>
+					</Col>
 				</Row>
 			</Container>
 		</section>
