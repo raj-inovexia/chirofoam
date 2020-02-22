@@ -1,4 +1,10 @@
 @media only screen and (max-width: 767px) {
+	.v-size {
+    font-size: 14px;
+}
+.row-list ul li strong {
+    font-size: 24px;
+}
 
 	.single-article-content h3 {
     font-size: 20px;
@@ -20,7 +26,7 @@
 	.all-mattress .mattress-desc {
     font-size: 18px;
 }
-
+	
 .threeColDescColumn {
     text-align: center;
     font-size: 0.6rem;
@@ -82,8 +88,8 @@
 	/*.card-bg{
 		height:285px;
 	}*/
-
-
+	
+	
 	.mattresses p.cta.erbaum.position-absolute {
 	    bottom:0px;
 	}
@@ -134,13 +140,13 @@
 	}
 	.blue-bg.charity{
 		height:auto;
-	}
+	} 
 	.blue-bg::before, .blue-bg::after{
 		display:none;
-	}
+	} 
 	.btn-cta{
 		font-size:12px;
-	}
+	} 
 	.products{
 		padding-right:0px;
 		text-align:center;
@@ -148,7 +154,7 @@
 	.our-customer {
     		padding: 15px 10px 15px 10px;
 	}
-
+	
 	.collapse .nav-link{
 		padding:0;
 	}
@@ -165,6 +171,9 @@
 	body .mattresses .cta.left-btn.position-absolute{
 	right:140px;
 }
+body .container-large{
+	padding:0px 30px;
+}
 .single-product-desc .cta span{
 	font-size:1.5rem;
 }
@@ -178,7 +187,7 @@
     top: 50%;
     left:5px;
 }
-
+	
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
 	body .container-large{
@@ -191,7 +200,7 @@
 }
 
 /* Portrait */
-@media (min-width: 576px) and (max-width: 1024px){
+@media (min-width: 576px) and (max-width: 1024px){ 
 	.home-banner {
     height:65vh;
   }
@@ -265,13 +274,13 @@ body .container-large{
 
 
 
-/*
+/* 
   ##Device = Tablets, Ipads (portrait)
   ##Screen = B/w 768px to 1024px
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-
+	
 	.navbar-nav li.nav-item {
     padding: 10px 0px;
 }
@@ -327,7 +336,7 @@ body .container-large{
   .card-bg .card-layer p{
   	font-size:10px !important;
   }
-
+ 
   .card-bg .card-layer .display-3{
   	font-size:3.5rem !important;
   }
@@ -341,13 +350,13 @@ body .container-large{
 		font-size:70px;
 		line-height:80px;
 	}
-
+	
 .check-text p {
     font-size: 16px;
 }
 }
 
-/*
+/* 
   ##Device = Tablets, Ipads (landscape)
   ##Screen = B/w 768px to 1024px
 */
@@ -362,8 +371,8 @@ body .container-large{
 	.contact-us-title{
 		font-size:15px;
 	}
-
-
+	
+  
  .facilities span{
   	font-size:0.6rem !important;
   }
@@ -381,10 +390,10 @@ body .container-large{
 	.single-product-desc .cta span{
 	font-size:1.5rem;
 }
-
+  
 }
 
-/*
+/* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
@@ -420,9 +429,6 @@ body .container-large{
 	    max-height: 285px;
 	    padding: 25px 5px;
 	}
-	body .container, body .container-large{
-		padding:0px 30px;
-	}
 }
 /* Extra small devices (phones, 600px and down) */
 @media (max-width: 767px) {
@@ -450,8 +456,15 @@ body .products-outer .products {
     border:none;
     text-align:left;
 }
+body.container{
+	padding-left:30px !important;
+	padding-right:30px !important;
+}
 #tabs li.nav-item a {
     padding: 0.5rem .5rem;
+}
+.table-rows {
+    overflow-x:scroll;
 }
 
 }
@@ -578,11 +591,17 @@ body .products-outer .products {
 .fs-md-10{
 	font-size:5rem !important;
 }
+.table-rows {
+    overflow-x:scroll;
+}
 
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media (min-width: 992px) {
+	.table-rows {
+    overflow-x:unset;
+}
 .navbar-nav .media .media-body span {
     white-space: pre;
 }
