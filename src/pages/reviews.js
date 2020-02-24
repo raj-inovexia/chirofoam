@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useStaticQuery, Link } from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -206,9 +206,6 @@ const Example = (props) => {
       }
     }`
   )
-  useEffect(() => {
-    console.log(allProduct);
-  })
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
