@@ -8,12 +8,12 @@ Shopify.theme.style = {"id":null,"handle":null};
   function asyncLoad() {
     var script_tag = document.createElement('script');
     script_tag.type = 'text/javascript';
-    script_tag.text = 'var Shopify = Shopify || {};\n
-    Shopify.shop = "chirofoam.myshopify.com";\n
-    Shopify.currency = {"active":"CAD","rate":"1.0"};\n
-    Shopify.theme = {"name":"Venture","id":80657383479,"theme_store_id":775,"role":"main"};\n
-    Shopify.theme.handle = "null";\n
-    Shopify.theme.style = {"id":null,"handle":null};';
+    script_tag.text = "var Shopify = Shopify || {};";
+    script_tag.text += 'Shopify.shop = "chirofoam.myshopify.com";';
+    script_tag.text += 'Shopify.currency = {"active":"CAD","rate":"1.0"};';
+    script_tag.text += 'Shopify.theme = {"name":"Venture","id":80657383479,"theme_store_id":775,"role":"main"};';
+    script_tag.text += 'Shopify.theme.handle = "null";';
+    script_tag.text += 'Shopify.theme.style = {"id":null,"handle":null};';
     var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(script_tag, x);
     var urls = ["https:\/\/reviews.hulkapps.com\/js\/reviews-by-hulkapps.js?shop=chirofoam.myshopify.com"];
