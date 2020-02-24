@@ -250,6 +250,65 @@ const Example = (props) => {
 									</Row>
 									<Row className="mx-0">
                     <div id="HulkAppsReviews" className="hulkapps-reviews" data-type="allReviews">
+                      <div id="HulkAppsReviewsLoader" className="HulkAppsReviewsLoader"></div>
+                      <div id="HulkAppsReviewsContainer" style={{display:'none'}}>
+
+                        <div id="reviewsList">
+                          <div className="row reviews-header">
+                            <div className="col-sm-12 text-center">
+                              <h3 className="title-rating"><span v-text="totalReviews"></span> Reviews</h3>
+                              <div v-if="totalReviews > 0" className="avg-rating" v-html="getAvgRating()"></div>
+                            </div>
+                          </div>
+                          <div style={{height:'20px'}}></div>
+                          <div v-for="review in reviews.data" className="row">
+                            <div className="col-sm-12">
+                              <div className="review-item">
+                                <div className="row">
+                                  <div className="col-xs-12 col-sm-3 col-md-3 col-lg-2 equalize">
+                                    <div className="row">
+                                      <div className="col-sm-12">
+                                        <div className="review-author" v-text="review.author"></div>
+                                        <div className="review-date text-uppercase" v-text="dateFormat(review.created_at)"></div>
+                                      </div>
+                                      <div className="col-sm-12">
+                                        <div style={{height:'30px'}}></div>
+                                        <div v-for="field in review.custom_fields" v-if="field.pivot.value" className="row review-custom-fields">
+                                          <div className="col-sm-12">
+                                            <strong v-text="field.name+':'" className="text-uppercase"></strong>
+                                          </div>
+                                          <div className="col-sm-12">
+                                            <span v-text="field.pivot.value"></span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div :className="{ 'col-xs-12 col-sm-7 col-md-7 col-lg-8': settings.image_upload_enabled, 'col-xs-12 col-sm-9 col-md-9 col-lg-10': !settings.image_upload_enabled }">
+                                    <div className="review-details equalize">
+                                      <div className="review-rating">
+                                        <span v-html="getRating(review)"></span>
+                                      </div>
+                                      <div className="review-title text-uppercase" v-text="review.title"></div>
+                                      <div className="review-body" v-html="review.body"></div>
+                                      <div className="review-product-link">
+                                        <a :href="'/products/'+review.product_handle" target="_blank"><strong v-text="'On '+review.product_title"></strong></a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div v-if="settings.image_upload_enabled" className="col-xs-12 col-sm-2 equalize">
+                                    <img :src="review.image" className="review-image img-responsive" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="text-center">
+                          <pagination :data="reviews.pagination" :limit="2" @pagination-change-page="getPagedResults"/>
+                        </div>
+                      </div>
                     </div>
                    	<div className="w-100 m-auto">
                    		<ul className="list-unstyled p-0 ratings">
