@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Iframe from 'react-iframe'
 import { Link } from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -249,7 +248,7 @@ const Example = (props) => {
 										</Col>
 									</Row>
                   <Row className="mx-0">
-                    <Iframe
+                    <iframe
                       src="https://chirofoam.myshopify.com/pages/reviews"
                       frameborder="0"
                       className="w-100 mb-3"
