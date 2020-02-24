@@ -30,9 +30,9 @@ export default (props) => {
 						</p>
 						
 						<p className="proxima-eb color-primary space-1 pb-0 pb-sm-0 pb-lg-0 pb-xl-0 mb-sm-2 mb-lg-2 mb-xl-2 text-1">
-							Try the world-class rated mattress with free continetal USA and Caanada-wide delivery, and a 100-night sleep trial."
+							Try the world-class rated mattress with free continetal USA and Canada-wide delivery, and a 100-night sleep trial."
 						</p>
-						<p className="cta mt-0 pt-sm-2 pt-lg-2 pt-xl-2">
+						<p className="cta mt-0 pt-sm-2 pt-lg-2 pt-xl-2 d-none">
 							<Link to="#" className="btn-cta color-primary erbaum-bold space-1">CALL TO ACTION </Link>
 						</p>
 					</Col>
