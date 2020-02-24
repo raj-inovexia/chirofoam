@@ -194,6 +194,17 @@ const Example = (props) => {
   		setShowReviews(showReviews+5)
   	}
   }
+  const { allShopifyProduct } = useStaticQuery(
+    graphql`query {
+      allShopifyProduct(sort: {fields: [title], order: DESC}) {
+        nodes {
+          shopifyId
+          title
+        }
+      }
+    }`
+  )
+  console.log(allShopifyProduct);
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
