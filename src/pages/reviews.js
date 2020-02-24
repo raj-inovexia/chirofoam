@@ -306,7 +306,7 @@ const Example = (props) => {
                         </div>
 
                         <div className="text-center">
-                          <pagination :data="reviews.pagination" :limit="2" @pagination-change-page="getPagedResults"/>
+                          <pagination data="reviews.pagination" limit="2" @pagination-change-page="getPagedResults"/>
                         </div>
                       </div>
                     </div>
