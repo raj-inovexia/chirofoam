@@ -222,7 +222,8 @@ const Example = (props) => {
   // })
   useEffect(() => {
     allShopifyProduct.nodes.forEach((item, i) => {
-      console.log(item);
+      addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
+      console.log(item)
     })
   })
   /*
