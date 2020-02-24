@@ -1,5 +1,16 @@
+var Shopify = Shopify || {};
+Shopify.shop = "chirofoam.myshopify.com";
+Shopify.currency = {"active":"CAD","rate":"1.0"};
+Shopify.theme = {"name":"Venture","id":80657383479,"theme_store_id":775,"role":"main"};
+Shopify.theme.handle = "null";
+Shopify.theme.style = {"id":null,"handle":null};
 (function() {
   function asyncLoad() {
+    var script_tag = document.createElement('script');
+    script_tag.type = 'text/javascript';
+    script_tag.text = 'alert("hello world")';
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(script_tag, x);
     var urls = ["https:\/\/reviews.hulkapps.com\/js\/reviews-by-hulkapps.js?shop=chirofoam.myshopify.com"];
     for (var i = 0; i < urls.length; i++) {
       var s = document.createElement('script');
