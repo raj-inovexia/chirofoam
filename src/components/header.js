@@ -42,7 +42,7 @@ const Header = props => {
   }, [checkout])
   return (
     <div className="bg-white pt-sm-2 header-part">
-      <span className="manufacture-brand position-absolute pt-2 pr-4" style={{ fontSize: "12px", color: "#b2b2b2", right: "0", top: "0", zIndex: 1 }}>
+      <span className="manufacture-brand cad position-absolute pt-2 pr-4" style={{ fontSize: "12px", color: "#b2b2b2", right: "0", top: "0", zIndex: 1 }}>
         <img src={madeIn} className="img-fluid pr-1" alt="Canada" />
         Developed & Manufactured In Canada
       </span>
