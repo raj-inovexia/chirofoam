@@ -5,7 +5,6 @@ import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
-import "../assets/js/shopify.js"
 import "../assets/js/custom.js"
 
 const Example = (props) => {
