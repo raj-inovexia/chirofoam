@@ -400,7 +400,7 @@ const Example = (props) => {
                 <Row className="mx-0">
                   <div className="col-12 col-sm-12 col-lg-6 col-xl-6 m-auto d-flex no-gutters select-mattress">
                     {
-                      allShopifyProduct.nodes.map((item, i) => (<Col className="col-6">
+                      allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
                         <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
                           <button
                             className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4"
@@ -419,7 +419,7 @@ const Example = (props) => {
                     <div id="HulkAppsReviews" class="hulkapps-reviews" data-type="productReviews" data-product-id="4381174923319" data-product-title="THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM">
                       <div id="HulkAppsReviewsLoader" class="HulkAppsReviewsLoader"></div>
                       <div id="HulkAppsReviewsContainer" style="display:none;">
-                        <modal ref="newReviewModal" ':blocking'="false" ':overlay-theme'="settings.overlay_theme" ':modal-theme'="settings.modal_theme">
+                        <modal ref="newReviewModal" ":blocking"="false" ':overlay-theme'="settings.overlay_theme" ':modal-theme'="settings.modal_theme">
                           <div slot="title">
                             <span class="title text-uppercase">Write a review for {{ product.title }}</span>
                           </div>
