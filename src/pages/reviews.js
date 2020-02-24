@@ -204,14 +204,21 @@ const Example = (props) => {
       }
     }`
   )
+  const addProduct = (id, title) => {
+    setAllProduct([
+      ...allProduct,
+      {
+        id: id,
+        title: title
+      }
+    ]);
+  };
   allShopifyProduct.nodes.forEach((item, i) => {
-    setAllProduct([...allProduct, {
-      id: window.atob(item.shopifyId).split("/").pop(),
-      title: item.title
-    }])
+    addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
+    console.log(i);
   })
-  console.log(allProduct);
   useEffect(() => {
+    console.log(allProduct);
   })
   /*
   const toggle = tab => {
