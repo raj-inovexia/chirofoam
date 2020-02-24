@@ -205,12 +205,13 @@ const Example = (props) => {
     }`
   )
   useEffect(() => {
-    allShopifyProduct.map((item, i) => {
-      console.log(item)
+    allShopifyProduct.nodes.forEach((item, i) => {
+      var id = window.atob(item.shopifyId);
+      id.split("/").pop()
+      console.log(item, id.split("/").pop());
     })
-  }, [allShopifyProduct])
-  //window.atob("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQzNjQxODAwOTUwMzE=");
-  console.log(allShopifyProduct);
+    console.log(allShopifyProduct);
+  })
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
