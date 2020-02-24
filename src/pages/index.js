@@ -138,15 +138,15 @@ export default (props) => {
 		<div className="homepage-slider-2">
 			<HomePageSlider2 />
 		</div>
-		<section className="py-4 pt-sm-5 pb-sm-4 px-0 our-customer">
-			<div className="container-large">
+		<section className="py-5 pt-sm-5 px-0 our-customer">
+			<div className="container-large py-0 py-sm-0 py-md-0 py-lg-5 py-xl-5">
 				<Row className="pt-3 pb-3 pb-sm-0 no-gutters">
 					<Col sm="6" className="px-0">
 						<div className="pl-0 pl-sm-4 pt-0 pt-sm-3" style={{width:'100%', maxWidth:'605px', float:'right'}}>
 							<h3 className="color-primary erbaum-bold lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">WHAT OUR CUSTOMERS ARE SAYING ABOUT CHIROFOAM</h3>
 							<h5 className="filson-pro-reg color-primary pt-2 text-2">CUSTOMER REVIEW</h5>
 							<p className="text-left proxima-eb space-1 pt-1 mb-0 text-1" style={{color:'#808080'}}><span className="color-primary">Chirofoam mattresses are designed by Chiropractors</span> to improve posture, and provide incredible pressure relief. Your back will thank you.</p>
-							<p className="cta mt-3 pt-sm-5 pt-lg-5 pt-xl-5">
+							<p className="cta mt-3 pt-sm-4 pt-lg-4 pt-xl-4">
 								<Link to="/customer-service/" className="btn-cta color-primary erbaum-bold space-1">CALL TO ACTION </Link>
 							</p>
 						</div>
