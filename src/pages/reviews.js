@@ -204,14 +204,14 @@ const Example = (props) => {
       }
     }`
   )
+  allShopifyProduct.nodes.forEach((item, i) => {
+    setAllProduct([...allProduct, {
+      id: window.atob(item.shopifyId).split("/").pop(),
+      title: item.title
+    }])
+  })
+  console.log(allProduct);
   useEffect(() => {
-    allShopifyProduct.nodes.forEach((item, i) => {
-      setAllProduct([...allProduct, {
-        id: window.atob(item.shopifyId).split("/").pop(),
-        title: item.title
-      }])
-    })
-    console.log(allProduct);
   })
   /*
   const toggle = tab => {
