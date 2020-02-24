@@ -5,7 +5,7 @@ import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
-import "https://reviews.hulkapps.com/js/reviews-by-hulkapps.js?shop=chirofoam.myshopify.com"
+import "../assets/js/custom.js"
 
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
