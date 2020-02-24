@@ -402,10 +402,7 @@ const Example = (props) => {
                     {
                       allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
                         <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                          <button
-                            className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4"
-                            onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)}
-                            >{
+                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)}>{
                               item.title.includes('XF')
                                 ? 'Chirofoam X-Firm mattress'
                                 : 'Chirofoam Premium Mattress'
@@ -415,93 +412,42 @@ const Example = (props) => {
                       </Col>))
                     }
                   </div>
-                  <div className="col-12">
-                    <div id="HulkAppsReviews" class="hulkapps-reviews" data-type="productReviews" data-product-id="4381174923319" data-product-title="THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM">
-                      <div id="HulkAppsReviewsLoader" class="HulkAppsReviewsLoader"></div>
-                      <div id="HulkAppsReviewsContainer" style="display:none;">
-                        <modal ref="newReviewModal" ":blocking"="false" ':overlay-theme'="settings.overlay_theme" ':modal-theme'="settings.modal_theme">
-                          <div slot="title">
-                            <span class="title text-uppercase">Write a review for {{ product.title }}</span>
-                          </div>
-                          <form id="newReviewForm" enctype="multipart/form-data" '@submit.prevent'="createReview">
-                            <div class="row form-group">
-                              <div class="col-xs-12">
-                                <div id="response"></div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <input type="text" name="author" class="form-control" placeholder="Name" required="required"/>
-                              </div>
-                              <div class="col-sm-6">
-                                <input type="email" name="email" class="form-control" placeholder="E-mail" required="required"/>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12 rating">
-                                <label>Rating:</label>
-                                <star-rating name="rating" ':inline'="true" ':star-size'="16" active-color="#000" v-model="rating"></star-rating>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12 ">
-                                <input type="text" name="title" class="form-control" placeholder="Review Title" required="required"/>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12 ">
-                                <textarea name="body" class="form-control" placeholder="Review Body" rows="4" required="required"></textarea>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12">
-                                <input type="hidden" name="product_handle" value="{{ product.handle }}"/>
-                                <input type="hidden" name="product_title" value="{{ product.title | escape }}"/>
-                                <input type="hidden" name="product_image" value="{{ featured_image | img_url: 'large' }}"/>
-                                <input type="submit" class="btn btn-primary" value="SUBMIT"></div>
-                              </div>
-                            </form>
-                          </modal>
-
-                        </div>
-                      </div>
-                    </div>
-                  </Row>
-                </div>
+                </Row>
               </div>
-            </TabPane>
-          </TabContent>
-        </div>
-      </Container>
-    </section>
+            </div>
+          </TabPane>
+        </TabContent>
+      </div>
+    </Container>
+  </section>
 
-    <section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
-      <Container className="pb-0 pb-sm-5">
-        <Row className="mx-0">
-          <p className="text-center w-100 star">
-            <i className="fa fa-star star-small"></i>
-            <i className="fa fa-star star-medium ml-2"></i>
-            <i className="fa fa-star star-large mx-2"></i>
-            <i className="fa fa-star star-medium mr-2"></i>
-            <i className="fa fa-star star-small"></i>
-          </p>
-          <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{
-              fontSize: '20px'
-            }}>“A great quality mattress I enjoy waking up on every day…”
-            <br/>
-            -Mark F. from Toronto, Ontario</p>
-          <p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
-            <Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</Link>
-          </p>
-          <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{
-              fontSize: '20px'
-            }}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p>
-        </Row>
-      </Container>
-    </section>
+  <section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
+    <Container className="pb-0 pb-sm-5">
+      <Row className="mx-0">
+        <p className="text-center w-100 star">
+          <i className="fa fa-star star-small"></i>
+          <i className="fa fa-star star-medium ml-2"></i>
+          <i className="fa fa-star star-large mx-2"></i>
+          <i className="fa fa-star star-medium mr-2"></i>
+          <i className="fa fa-star star-small"></i>
+        </p>
+        <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{
+            fontSize: '20px'
+          }}>“A great quality mattress I enjoy waking up on every day…”
+          <br/>
+          -Mark F. from Toronto, Ontario</p>
+        <p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
+          <Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</Link>
+        </p>
+        <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{
+            fontSize: '20px'
+          }}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p>
+      </Row>
+    </Container>
+  </section>
 
-    <Footer/>
-  </>
-  );
+  <Footer/>
+</>
+);
 };
 export default Example;
