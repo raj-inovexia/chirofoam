@@ -292,12 +292,12 @@ const Example = (props) => {
                                       <div className="review-title text-uppercase" v-text="review.title"></div>
                                       <div className="review-body" v-html="review.body"></div>
                                       <div className="review-product-link">
-                                        <a :href="'/products/'+review.product_handle" target="_blank"><strong v-text="'On '+review.product_title"></strong></a>
+                                        <h4 className="color-primary erbaum-bold text-uppercase" style={{fontSize:'16px'}} v-text="'On '+review.product_title"></h4>
                                       </div>
                                     </div>
                                   </div>
                                   <div v-if="settings.image_upload_enabled" className="col-xs-12 col-sm-2 equalize">
-                                    <img :src="review.image" className="review-image img-responsive" />
+                                    <img src="review.image" className="review-image img-fluid" />
                                   </div>
                                 </div>
                               </div>
