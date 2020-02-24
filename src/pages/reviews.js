@@ -20,11 +20,6 @@ import "../assets/js/custom.js"
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
-  const handleLoadMore = () => {
-    if (reviewsData.length !== showReviews) {
-      setShowReviews(showReviews + 5)
-    }
-  }
   const openModal = (e, id, item) => {
     console.log(id, item)
   }
