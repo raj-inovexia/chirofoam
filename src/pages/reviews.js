@@ -10,7 +10,6 @@ import "../assets/js/custom.js"
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
-  const [allProduct, setAllProduct] = useState([]);
   const reviewsData = [
   	{
   		title : "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
@@ -207,24 +206,6 @@ const Example = (props) => {
       }
     }`
   )
-  const addProduct = (id, title) => {
-    setAllProduct([
-      ...allProduct,{
-        id: id,
-        title: title
-    }]);
-  };
-  // allShopifyProduct.nodes.forEach((item, i) => {
-  //   addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
-  //   console.log(i);
-  // })
-  // useEffect(() => {
-  //   console.log(allProduct);
-  // })
-  allShopifyProduct.nodes.forEach((item, i) => {
-    //addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
-    console.log(i, window.atob(item.shopifyId).split("/").pop(), item.title)
-  })
   useEffect(() => {
     console.log(allProduct);
   })
@@ -381,18 +362,19 @@ const Example = (props) => {
 									<div id="leave-review" className="m-auto py-5 col-12 col-sm-10 col-lg-10 col-xl-10 p-0 px-sm-2">
 										<Row className="mx-0">
 											<div className="col-12 col-sm-12 col-lg-6 col-xl-6 m-auto d-flex no-gutters select-mattress">
-												<Col className="col-6">
-													<div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-														<button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">Chirofoam Premium Mattress</button>
-														<p className="filson-pro-reg pt-4 color-secondary">Click here to add your reviews for our Premium Mattresses</p>
-													</div>
-												</Col>
-												<Col className="col-6">
-													<div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-														<button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">Chirofoam X-Firm mattress</button>
-														<p className="filson-pro-reg pt-4 color-secondary">Click here to add your reviews for our X Firm Mattresses</p>
-													</div>
-												</Col>
+                        {
+                          allShopifyProduct.nodes.map((item, i) => (
+                            <Col className="col-6">
+                              <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
+                                <button
+                                  className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4"
+                                  product-id={window.atob(item.shopifyId).split("/").pop()}
+                                >{item.title.includes('XF')?'Chirofoam X-Firm mattress':'Chirofoam Premium Mattress'}</button>
+                                <p className="filson-pro-reg pt-4 color-secondary">Click here to add your reviews for our {item.title}</p>
+                              </div>
+                            </Col>
+                          ))
+                        }
 											</div>
                         				</Row>
                     				</div>
