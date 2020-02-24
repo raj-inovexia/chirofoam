@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStaticQuery, Link } from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -204,7 +204,12 @@ const Example = (props) => {
       }
     }`
   )
-  console.log(allShopifyProduct);
+  useEffect(() => {
+    allShopifyProduct.forEach((item, i) => {
+      console.log(item);
+    })
+  }, [allShopifyProduct])
+  //window.atob("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQzNjQxODAwOTUwMzE=");
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
