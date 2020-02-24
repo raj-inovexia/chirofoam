@@ -205,11 +205,12 @@ const Example = (props) => {
     }`
   )
   useEffect(() => {
-    allShopifyProduct.forEach((item, i) => {
-      console.log(item);
+    allShopifyProduct.map((item, i) => {
+      console.log(item)
     })
   }, [allShopifyProduct])
   //window.atob("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQzNjQxODAwOTUwMzE=");
+  console.log(allShopifyProduct);
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
