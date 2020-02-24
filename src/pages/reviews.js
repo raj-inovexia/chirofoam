@@ -206,8 +206,7 @@ const Example = (props) => {
   useEffect(() => {
     allShopifyProduct.nodes.forEach((item, i) => {
       var id = window.atob(item.shopifyId);
-      id.split("/").pop()
-      console.log(item, id.split("/").pop());
+      allShopifyProduct.node[i].shopifyId = id.split("/").pop();
     })
     console.log(allShopifyProduct);
   })
