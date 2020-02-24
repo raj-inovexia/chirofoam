@@ -82,7 +82,7 @@ export default (props) => {
 		<section className="py-4 pt-sm-4 pt-lg-4 pt-xl-4 pb-sm-4 pb-lg-4 pb-xl-4 mb-0 mb-sm-3 mb-lg-3 mb-xl-3 mattresses">
 			<div className="pt-0 pt-sm-5 container-large">
 				<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold display-5 w-100">THE COMFORT AND SUPPORT YOU NEED FOR A BETTER SLEEP</h3>
-				<p className="col-12 col-sm-7 text-center pb-4 pb-sm-5 px-0 px-sm-2 pt-1 mb-5 color-primary proxima-b space-1 m-auto sub-text sub-sm-text sub-md-text sub-xl-text">Aenean suscipit, lacus at handerit porta, massa sem efficitur est, quis mattis eros quam In saplen.</p>
+				<p className="col-12 col-sm-7 text-center pb-4 pb-sm-5 px-0 px-sm-2 pt-1 mb-5 color-primary proxima-b space-1 m-auto sub-text sub-sm-text sub-md-text sub-xl-text">We have two models to choose from. Whatever your needs are, Chirofoam has your back!</p>
 				<Row className="no-gutters row-eq-height pb-5 m-0">
 					<Col sm="12" className="col-lg-6 col-xl-6 product-border-right pr-0 pr-sm-2 position-relative">
 						<div className="pr-0 pr-lg-5 pr-xl-5 mr-0 mr-sm-4">
@@ -114,7 +114,7 @@ export default (props) => {
 							<img src={product2} alt="Product2" width="100%" />
 							<Link to="/product/the-chirofoam™-xf-mattress-extra-firm/"><h3 className="color-primary erbaum-bold pr-0">THE CHIROFOAM™ XF MATTRESS - EXTRA FIRM</h3></Link>
 							<p className="text-left color-primary proxima-eb space-1 pt-1 mb-0 text-1">
-								The Chirofoam XF Memory Foam Mattress is an extra firm designed maximum back support. Developed for indiduals and atheletes who suffer from back pain and require the greatest amount of stiffness for efficient recovery.
+								The Chirofoam XF Memory Foam Mattress is an extra firm mattress designed maximum back support. Developed for individuals and atheletes who suffer from back pain and require the greatest amount of stiffness for efficient recovery.
 							</p><br/>
 							<p className="text-left color-primary proxima-eb space-1 mb-0 text-1">
 								Upgrade your sleep today!
