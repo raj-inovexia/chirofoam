@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "gatsby"
+import { useStaticQuery, Link } from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
