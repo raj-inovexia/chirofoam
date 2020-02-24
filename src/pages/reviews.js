@@ -212,7 +212,7 @@ const Example = (props) => {
 				</Row>
 			</Container>
 		</section>
-		
+
 		<section className="mb-0 py-5 position-relative">
 			<Container>
 				<div className="col-md-12">
@@ -247,6 +247,9 @@ const Example = (props) => {
 											</div>
 										</Col>
 									</Row>
+                  <Row className="mx-0">
+                    <iframe src="https://chirofoam.myshopify.com/pages/reviews" frameborder="0" className="w-100 mb-3"></iframe>
+                  </Row>
 									<Row className="mx-0">
                    	<div className="w-100 m-auto">
                    		<ul className="list-unstyled p-0 ratings">
@@ -309,7 +312,7 @@ const Example = (props) => {
 					</div>
 				</Container>
 	</section>
-    
+
 		<section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
 			<Container className="pb-0 pb-sm-5">
 				<Row className="mx-0">
@@ -324,11 +327,11 @@ const Example = (props) => {
 					<p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
 						<Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</Link>
 					</p>
-					<p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p> 
+					<p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p>
 				</Row>
 			</Container>
 		</section>
-    
+
 		<Footer />
 	</>
   );
