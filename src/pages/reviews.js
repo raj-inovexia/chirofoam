@@ -11,7 +11,6 @@ import "../assets/js/custom.js"
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
-  const [allProduct, setAllProduct] = useState([]);
   const reviewsData = [
   	{
   		title : "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
@@ -205,27 +204,12 @@ const Example = (props) => {
       }
     }`
   )
-  const addProduct = (id, title) => {
-    setAllProduct([
-      ...allProduct,
-      {
-        id: id,
-        title: title
-      }
-    ]);
-  };
-  // allShopifyProduct.nodes.forEach((item, i) => {
-  //   addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
-  //   console.log(i);
-  // })
-  // useEffect(() => {
-  //   console.log(allProduct);
-  // })
   useEffect(() => {
-    allShopifyProduct.nodes.forEach((item, i) => {
-      console.log(item);
+    allShopifyProduct.forEach((item, i) => {
     })
   }, [allShopifyProduct])
+  window.atob("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQzNjQxODAwOTUwMzE=");
+  console.log(allShopifyProduct);
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
