@@ -213,7 +213,18 @@ const Example = (props) => {
       }
     ]);
   };
-  
+  // allShopifyProduct.nodes.forEach((item, i) => {
+  //   addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
+  //   console.log(i);
+  // })
+  // useEffect(() => {
+  //   console.log(allProduct);
+  // })
+  useEffect(() => {
+    allShopifyProduct.nodes.forEach((item, i) => {
+      console.log(item);
+    })
+  })
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
