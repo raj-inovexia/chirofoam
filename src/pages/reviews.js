@@ -5,6 +5,7 @@ import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
+import "https://reviews.hulkapps.com/js/reviews-by-hulkapps.js?shop=chirofoam.myshopify.com"
 
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
@@ -248,7 +249,7 @@ const Example = (props) => {
 										</Col>
 									</Row>
 									<Row className="mx-0">
-                    <div id="HulkAppsReviews" class="hulkapps-reviews" data-type="allReviews">
+                    <div id="HulkAppsReviews" className="hulkapps-reviews" data-type="allReviews">
                     </div>
                    	<div className="w-100 m-auto">
                    		<ul className="list-unstyled p-0 ratings">
