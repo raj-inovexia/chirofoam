@@ -295,7 +295,6 @@ const Example = (props) => {
                     <div id="HulkAppsReviewsContainer" style={{
                         display: 'none'
                       }}>
-
                       <div id="reviewsList">
                         <div className="row reviews-header">
                           <div className="col-sm-12 text-center">
@@ -305,55 +304,24 @@ const Example = (props) => {
                             <div v-if="totalReviews > 0" className="avg-rating" v-html="getAvgRating()"></div>
                           </div>
                         </div>
-                        <div style={{
-                            height: '20px'
-                          }}></div>
-                        <div v-for="review in reviews.data" className="row">
-                          <div className="col-sm-12">
-                            <div className="review-item">
-                              <div className="row">
-                                <div className="col-xs-12 col-sm-3 col-md-3 col-lg-2 equalize">
-                                  <div className="row">
-                                    <div className="col-sm-12">
-                                      <div className="review-author" v-text="review.author"></div>
-                                      <div className="review-date text-uppercase" v-text="dateFormat(review.created_at)"></div>
-                                    </div>
-                                    <div className="col-sm-12">
-                                      <div style={{
-                                          height: '30px'
-                                        }}></div>
-                                      <div v-for="field in review.custom_fields" v-if="field.pivot.value" className="row review-custom-fields">
-                                        <div className="col-sm-12">
-                                          <strong v-text="field.name+':'" className="text-uppercase"></strong>
-                                        </div>
-                                        <div className="col-sm-12">
-                                          <span v-text="field.pivot.value"></span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="col-xs-12 col-sm-9 col-md-9 col-lg-10">
-                                  <div className="review-details equalize">
-                                    <div className="review-rating">
-                                      <span v-html="getRating(review)"></span>
-                                    </div>
-                                    <div className="review-title text-uppercase" v-text="review.title"></div>
-                                    <div className="review-body" v-html="review.body"></div>
-                                    <div className="review-product-link">
-                                      <h4 className="color-primary erbaum-bold text-uppercase" style={{
-                                          fontSize: '16px'
-                                        }} v-text="'On '+review.product_title"></h4>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div v-if="settings.image_upload_enabled" className="col-xs-12 col-sm-2 equalize">
-                                  <img src="review.image" className="review-image img-fluid"/>
-                                </div>
+                        <ul className="list-unstyled p-0 ratings">
+                          <li v-for="review in reviews.data" className="border mb-4">
+                            <h4 className="color-primary erbaum-bold text-uppercase" v-text="review.product_title" style={{
+                                fontSize: '16px'
+                              }}></h4>
+                            <div className="d-inline-block br-widget br-readonly pt-2">
+                              <div className="review-rating">
+                                <span v-html="getRating(review)"></span>
                               </div>
                             </div>
-                          </div>
-                        </div>
+                            <p className="filson-pro-reg pt-2" style={{
+                                fontSize: '14px'
+                              }}>
+                              <b className="review-author color-primary" v-text="review.author+'–'"></b>
+                              <span className="review-date" v-text="dateFormat(review.created_at)"></span></p>
+                            <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0 review-body" v-html="review.body"></p>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
