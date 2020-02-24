@@ -62,7 +62,7 @@ const slides = items.map((item, index) => {
           onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         >
-           <section className="py-5 pt-sm-5 pb-sm-4 approved bg-image">
+           <section className="py-4 pt-sm-4 pb-sm-4 approved bg-image">
                 <div className="container">
                   <Row className="pt-3 no-gutters m-0">
                     <Col sm="12" className="align-middle col-lg-5 col-xl-5">
@@ -71,37 +71,37 @@ const slides = items.map((item, index) => {
                     <Col sm="12" className="col-lg-7 col-xl-7">
                       <div className="text-white mb-4">
                         <h3 className="approved-title text-white erbaum-bold lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">CHIROPRACTOR APPROVED</h3>
-                        <p className="proxima-b space-1 p-0 pt-sm-1 sub-text sub-sm-text sub-md-text sub-lg-text sub-xl-text">Chirofoam<sup style={{fontSize:'8px'}}>TM</sup> mattresses are designed by Chiropractors to improve posture, and provide incredible pressure relief. Your back will thank you.</p>
+                        <p className="proxima-b space-1 p-0 pt-sm-1 text-1">Chirofoam<sup style={{fontSize:'8px'}}>TM</sup> mattresses are designed by Chiropractors to improve posture, and provide incredible pressure relief. Your back will thank you.</p>
                         <p className="cta mt-3 mt-sm-0 mt-lg-0 mt-xl-0 pt-sm-0 pt-lg-0 pt-xl-0 mb-sm-2">
                           <Link to="#" className="btn-cta text-white erbaum-bold space-1">CALL TO ACTION </Link>
                         </p>
                       </div>
                       
                       <div className="text-white mb-4 pt-1 pr-0 pr-sm-5">
-                        <h3 className="approved-title text-white erbaum-bold pt-0 pt-sm-4 lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">CUSTOMER APPROVED</h3>
-                        <p className="proxima-b space-1 p-0 pt-sm-2 sub-text sub-sm-text sub-md-text sub-lg-text sub-xl-text">Our customers have reported the following benefits after sleeping on there chirofoam mattress</p>
-                        <div className="ml-0 ml-sm-4 pt-0 pt-sm-3 pl-0 pr-sm-5">
+                        <h3 className="approved-title text-white erbaum-bold pt-0 pt-sm-3 lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">CUSTOMER APPROVED</h3>
+                        <p className="proxima-b space-1 p-0 pt-sm-2 text-1">Our customers have reported the following benefits after sleeping on there chirofoam mattress</p>
+                        <div className="ml-0 ml-sm-4 pt-0 pt-sm-0 pl-0 pr-sm-5">
                           <Media className="mt-3">
                             <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
                             97%
                             </Media>
-                            <Media body middle className="proxima-r pl-sm-3" style={{fontSize:'1.1rem'}}>
+                            <Media body middle className="proxima-r pl-sm-3 text-1">
                               Improvement in sleep comfort and quality
                             </Media>
                           </Media>
-                          <Media className="pt-4">
+                          <Media className="pt-3">
                             <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
                             94%
                             </Media>
-                            <Media body middle className="proxima-r pl-sm-3" style={{fontSize:'1.1rem'}}>
+                            <Media body middle className="proxima-r pl-sm-3 text-1">
                               Increased energy in the morning and throughout the day
                             </Media>
                           </Media>
-                          <Media className="pt-4">
+                          <Media className="pt-3">
                             <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
                             86%
                             </Media>
-                            <Media body middle className="proxima-r pl-sm-3 pt-sm-1" style={{fontSize:'1.1rem'}}>
+                            <Media body middle className="proxima-r pl-sm-3 pt-sm-1 text-1">
                               Improved muscle recovery and/or relief in daliy experienced back pain
                             </Media>
                           </Media>
@@ -109,7 +109,7 @@ const slides = items.map((item, index) => {
                             <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
                             82%
                             </Media>
-                            <Media body middle className="proxima-r pl-sm-3 pt-sm-2" style={{fontSize:'1.1rem'}}>
+                            <Media body middle className="proxima-r pl-sm-3 pt-sm-2 text-1">
                               Improvement in sleep comfort and quality
                             </Media>
                           </Media>
@@ -130,9 +130,10 @@ const slides = items.map((item, index) => {
           <CarouselItem 
           onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
+        style={{maxHeight:'500px'}}
         >
            <section>
-                <div className="py-sm-5 feature bg-image">
+                <div className="py-sm-4 feature bg-image">
                   <div className="card-layer"></div>
                   <Container className="py-0 py-sm-0 py-md-0 py-lg-5 py-xl-5">
                     <Row className="pt-sm-5 pt-3">
@@ -195,9 +196,10 @@ const slides = items.map((item, index) => {
           <CarouselItem 
           onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
+        style={{maxHeight:'500px'}}
         >
            <section>
-                <div className="py-4 py-sm-5 feature bg-image">
+                <div className="py-2 py-sm-2 feature bg-image">
                   <div className="card-layer"></div>
                   <Container className="position-relative" style={{zIndex:'9'}}>
                       <Row className="py-5 my-sm-5 my-0 mx-0">
@@ -240,7 +242,7 @@ const slides = items.map((item, index) => {
  
 
   return (
-    <Carousel activeIndex={activeIndex} next={next} previous={previous} ride="carousel">
+    <Carousel activeIndex={activeIndex} next={next} previous={previous}>
         
         {slides}
      
