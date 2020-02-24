@@ -247,13 +247,6 @@ const Example = (props) => {
 											</div>
 										</Col>
 									</Row>
-                  <Row className="mx-0">
-                    <iframe
-                      src="https://chirofoam.myshopify.com/pages/reviews"
-                      frameborder="0"
-                      className="w-100 mb-3"
-                    />
-                  </Row>
 									<Row className="mx-0">
                    	<div className="w-100 m-auto">
                    		<ul className="list-unstyled p-0 ratings">
