@@ -209,12 +209,10 @@ const Example = (props) => {
   )
   const addProduct = (id, title) => {
     setAllProduct([
-      ...allProduct,
-      {
+      ...allProduct,{
         id: id,
         title: title
-      }
-    ]);
+    }]);
   };
   // allShopifyProduct.nodes.forEach((item, i) => {
   //   addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
@@ -228,6 +226,7 @@ const Example = (props) => {
     console.log(i, window.atob(item.shopifyId).split("/").pop(), item.title)
   })
   useEffect(() => {
+    console.log(allProduct);
   })
   /*
   const toggle = tab => {
