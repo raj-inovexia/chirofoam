@@ -248,6 +248,8 @@ const Example = (props) => {
 										</Col>
 									</Row>
 									<Row className="mx-0">
+                    <div id="HulkAppsReviews" class="hulkapps-reviews" data-type="allReviews">
+                    </div>
                    	<div className="w-100 m-auto">
                    		<ul className="list-unstyled p-0 ratings">
                    			{
