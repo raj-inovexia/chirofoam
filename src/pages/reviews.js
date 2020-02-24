@@ -20,165 +20,6 @@ import "../assets/js/custom.js"
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
-  const reviewsData = [
-    {
-      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
-      rating: 5,
-      ratedBy: "Mina Ho",
-      ratedOn: "September 4, 2019",
-      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 5,
-      ratedBy: "Emma",
-      ratedOn: "June 1, 2016",
-      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 5,
-      ratedBy: "Judy",
-      ratedOn: "June 1, 2016",
-      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 5,
-      ratedBy: "Hardeep",
-      ratedOn: "June 1, 2016",
-      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 5,
-      ratedBy: "Steven Wright",
-      ratedOn: "June 2, 2016",
-      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
-    }, {
-      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
-      rating: 4,
-      ratedBy: "Mina Ho",
-      ratedOn: "September 4, 2019",
-      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 4,
-      ratedBy: "Emma",
-      ratedOn: "June 1, 2016",
-      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 4,
-      ratedBy: "Judy",
-      ratedOn: "June 1, 2016",
-      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 4,
-      ratedBy: "Hardeep",
-      ratedOn: "June 1, 2016",
-      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 4,
-      ratedBy: "Steven Wright",
-      ratedOn: "June 2, 2016",
-      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
-    }, {
-      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
-      rating: 3,
-      ratedBy: "Mina Ho",
-      ratedOn: "September 4, 2019",
-      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 3,
-      ratedBy: "Emma",
-      ratedOn: "June 1, 2016",
-      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 3,
-      ratedBy: "Judy",
-      ratedOn: "June 1, 2016",
-      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 3,
-      ratedBy: "Hardeep",
-      ratedOn: "June 1, 2016",
-      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 3,
-      ratedBy: "Steven Wright",
-      ratedOn: "June 2, 2016",
-      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
-    }, {
-      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
-      rating: 2,
-      ratedBy: "Mina Ho",
-      ratedOn: "September 4, 2019",
-      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 2,
-      ratedBy: "Emma",
-      ratedOn: "June 1, 2016",
-      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 2,
-      ratedBy: "Judy",
-      ratedOn: "June 1, 2016",
-      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 2,
-      ratedBy: "Hardeep",
-      ratedOn: "June 1, 2016",
-      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 2,
-      ratedBy: "Steven Wright",
-      ratedOn: "June 2, 2016",
-      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
-    }, {
-      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
-      rating: 1,
-      ratedBy: "Mina Ho",
-      ratedOn: "September 4, 2019",
-      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 1,
-      ratedBy: "Emma",
-      ratedOn: "June 1, 2016",
-      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 1,
-      ratedBy: "Judy",
-      ratedOn: "June 1, 2016",
-      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 1,
-      ratedBy: "Hardeep",
-      ratedOn: "June 1, 2016",
-      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
-    }, {
-      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
-      rating: 1,
-      ratedBy: "Steven Wright",
-      ratedOn: "June 2, 2016",
-      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
-    }
-  ];
-
-  const handleLoadMore = () => {
-    if (reviewsData.length !== showReviews) {
-      setShowReviews(showReviews + 5)
-    }
-  }
   const openModal = (e, id, item) => {
     console.log(id, item)
   }
@@ -219,7 +60,7 @@ const Example = (props) => {
   <section className="mb-0 py-5 position-relative">
     <Container>
       <div className="col-md-12">
-        <Nav tabs="tabs" id="tabs" className="d-block">
+        <Nav tabs id="tabs" className="d-block">
           <NavItem>
             <NavLink className={activeTab === '1'
                 ? 'active'
@@ -295,7 +136,6 @@ const Example = (props) => {
                     <div id="HulkAppsReviewsContainer" style={{
                         display: 'none'
                       }}>
-
                       <div id="reviewsList">
                         <div className="row reviews-header">
                           <div className="col-sm-12 text-center">
@@ -305,90 +145,26 @@ const Example = (props) => {
                             <div v-if="totalReviews > 0" className="avg-rating" v-html="getAvgRating()"></div>
                           </div>
                         </div>
-                        <div style={{
-                            height: '20px'
-                          }}></div>
-                        <div v-for="review in reviews.data" className="row">
-                          <div className="col-sm-12">
-                            <div className="review-item">
-                              <div className="row">
-                                <div className="col-xs-12 col-sm-3 col-md-3 col-lg-2 equalize">
-                                  <div className="row">
-                                    <div className="col-sm-12">
-                                      <div className="review-author" v-text="review.author"></div>
-                                      <div className="review-date text-uppercase" v-text="dateFormat(review.created_at)"></div>
-                                    </div>
-                                    <div className="col-sm-12">
-                                      <div style={{
-                                          height: '30px'
-                                        }}></div>
-                                      <div v-for="field in review.custom_fields" v-if="field.pivot.value" className="row review-custom-fields">
-                                        <div className="col-sm-12">
-                                          <strong v-text="field.name+':'" className="text-uppercase"></strong>
-                                        </div>
-                                        <div className="col-sm-12">
-                                          <span v-text="field.pivot.value"></span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="col-xs-12 col-sm-9 col-md-9 col-lg-10">
-                                  <div className="review-details equalize">
-                                    <div className="review-rating">
-                                      <span v-html="getRating(review)"></span>
-                                    </div>
-                                    <div className="review-title text-uppercase" v-text="review.title"></div>
-                                    <div className="review-body" v-html="review.body"></div>
-                                    <div className="review-product-link">
-                                      <h4 className="color-primary erbaum-bold text-uppercase" style={{
-                                          fontSize: '16px'
-                                        }} v-text="'On '+review.product_title"></h4>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div v-if="settings.image_upload_enabled" className="col-xs-12 col-sm-2 equalize">
-                                  <img src="review.image" className="review-image img-fluid"/>
-                                </div>
+                        <ul className="list-unstyled p-0 ratings">
+                          <li v-for="review in reviews.data" className="border mb-4">
+                            <h4 className="color-primary erbaum-bold text-uppercase" v-text="review.product_title" style={{
+                                fontSize: '16px'
+                              }}></h4>
+                            <div className="d-inline-block br-widget br-readonly pt-2">
+                              <div className="review-rating">
+                                <span v-html="getRating(review)"></span>
                               </div>
                             </div>
-                          </div>
-                        </div>
+                            <p className="filson-pro-reg pt-2" style={{
+                                fontSize: '14px'
+                              }}>
+                              <b className="review-author color-primary" v-text="review.author+'–'"></b>
+                              <span className="review-date" v-text="dateFormat(review.created_at)"></span></p>
+                            <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0 review-body" v-html="review.body"></p>
+                          </li>
+                        </ul>
                       </div>
                     </div>
-                  </div>
-                  <div className="w-100 m-auto">
-                    <ul className="list-unstyled p-0 ratings">
-                      {
-                        reviewsData.slice(0, showReviews).map((review, index) => (<li className="border mb-4" key={index}>
-                          <h4 className="color-primary erbaum-bold text-uppercase" style={{
-                              fontSize: '16px'
-                            }}>{review.title}</h4>
-                          <div className="d-inline-block br-widget br-readonly pt-2" title={"Rating: " + review.rating}>
-                            {
-                              [...Array(review.rating)].map((elem, i) => (<button data-rating-value={i} data-rating-text={i} className={(
-                                  (review.rating - 1) === i)
-                                  ? "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent br-current"
-                                  : "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent"} key={i}>
-                                <span className="color-primary fa fa-star"></span>
-                              </button>))
-                            }
-                            <div className="br-current-rating d-none">{review.rating}</div>
-                          </div>
-                          <p className="filson-pro-reg pt-2" style={{
-                              fontSize: '14px'
-                            }}>
-                            <b className="color-primary">{review.ratedBy}–</b>
-                            {review.ratedOn}</p>
-                          <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0">{review.comment}</p>
-                        </li>))
-                      }
-                    </ul>
-                    <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
-                      <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={handleLoadMore} style={{
-                          outline: 'none'
-                        }}>LOAD MORE</button>
-                    </p>
                   </div>
                 </Row>
               </div>
@@ -402,10 +178,7 @@ const Example = (props) => {
                     {
                       allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
                         <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                          <button
-                            className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4"
-                            onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)}
-                            >{
+                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)}>{
                               item.title.includes('XF')
                                 ? 'Chirofoam X-Firm mattress'
                                 : 'Chirofoam Premium Mattress'
@@ -415,93 +188,42 @@ const Example = (props) => {
                       </Col>))
                     }
                   </div>
-                  <div className="col-12">
-                    <div id="HulkAppsReviews" class="hulkapps-reviews" data-type="productReviews" data-product-id="4381174923319" data-product-title="THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM">
-                      <div id="HulkAppsReviewsLoader" class="HulkAppsReviewsLoader"></div>
-                      <div id="HulkAppsReviewsContainer" style="display:none;">
-                        <modal ref="newReviewModal" ":blocking"="false" ':overlay-theme'="settings.overlay_theme" ':modal-theme'="settings.modal_theme">
-                          <div slot="title">
-                            <span class="title text-uppercase">Write a review for {{ product.title }}</span>
-                          </div>
-                          <form id="newReviewForm" enctype="multipart/form-data" '@submit.prevent'="createReview">
-                            <div class="row form-group">
-                              <div class="col-xs-12">
-                                <div id="response"></div>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <input type="text" name="author" class="form-control" placeholder="Name" required="required"/>
-                              </div>
-                              <div class="col-sm-6">
-                                <input type="email" name="email" class="form-control" placeholder="E-mail" required="required"/>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12 rating">
-                                <label>Rating:</label>
-                                <star-rating name="rating" ':inline'="true" ':star-size'="16" active-color="#000" v-model="rating"></star-rating>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12 ">
-                                <input type="text" name="title" class="form-control" placeholder="Review Title" required="required"/>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12 ">
-                                <textarea name="body" class="form-control" placeholder="Review Body" rows="4" required="required"></textarea>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xs-12">
-                                <input type="hidden" name="product_handle" value="{{ product.handle }}"/>
-                                <input type="hidden" name="product_title" value="{{ product.title | escape }}"/>
-                                <input type="hidden" name="product_image" value="{{ featured_image | img_url: 'large' }}"/>
-                                <input type="submit" class="btn btn-primary" value="SUBMIT"></div>
-                              </div>
-                            </form>
-                          </modal>
-
-                        </div>
-                      </div>
-                    </div>
-                  </Row>
-                </div>
+                </Row>
               </div>
-            </TabPane>
-          </TabContent>
-        </div>
-      </Container>
-    </section>
+            </div>
+          </TabPane>
+        </TabContent>
+      </div>
+    </Container>
+  </section>
 
-    <section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
-      <Container className="pb-0 pb-sm-5">
-        <Row className="mx-0">
-          <p className="text-center w-100 star">
-            <i className="fa fa-star star-small"></i>
-            <i className="fa fa-star star-medium ml-2"></i>
-            <i className="fa fa-star star-large mx-2"></i>
-            <i className="fa fa-star star-medium mr-2"></i>
-            <i className="fa fa-star star-small"></i>
-          </p>
-          <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{
-              fontSize: '20px'
-            }}>“A great quality mattress I enjoy waking up on every day…”
-            <br/>
-            -Mark F. from Toronto, Ontario</p>
-          <p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
-            <Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</Link>
-          </p>
-          <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{
-              fontSize: '20px'
-            }}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p>
-        </Row>
-      </Container>
-    </section>
+  <section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
+    <Container className="pb-0 pb-sm-5">
+      <Row className="mx-0">
+        <p className="text-center w-100 star">
+          <i className="fa fa-star star-small"></i>
+          <i className="fa fa-star star-medium ml-2"></i>
+          <i className="fa fa-star star-large mx-2"></i>
+          <i className="fa fa-star star-medium mr-2"></i>
+          <i className="fa fa-star star-small"></i>
+        </p>
+        <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{
+            fontSize: '20px'
+          }}>“A great quality mattress I enjoy waking up on every day…”
+          <br/>
+          -Mark F. from Toronto, Ontario</p>
+        <p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
+          <Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</Link>
+        </p>
+        <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{
+            fontSize: '20px'
+          }}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p>
+      </Row>
+    </Container>
+  </section>
 
-    <Footer/>
-  </>
-  );
+  <Footer/>
+</>
+);
 };
 export default Example;

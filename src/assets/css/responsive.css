@@ -1,4 +1,12 @@
 @media only screen and (max-width: 767px) {
+	.manufacture-brand{
+    text-align: center;
+    width: 100%;
+    top:-3px !important;
+}
+	.dropdown-menu-center a {
+    margin-bottom: 10px;
+}
 	.v-size {
     font-size: 14px;
 }
@@ -75,7 +83,7 @@
 		padding-left:0;
 	}
 	.home-banner {
-	    background-position-x: 10%;
+	    background-position:100% 0% !important;
 		height:450px;
 	}
 	.banner-home {
@@ -177,7 +185,13 @@ body .container-large{
 .single-product-desc .cta span{
 	font-size:1.5rem;
 }
-.banner-slider .carousel-control-next {
+.banner-slider .slick-arrow.slick-next{
+	right:20px;
+}
+.banner-slider .slick-arrow.slick-prev{
+	left:20px;
+}
+/*.banner-slider .carousel-control-next {
     height: 50px;
     top: 50%;
     right:5px;
@@ -186,7 +200,7 @@ body .container-large{
     height: 50px;
     top: 50%;
     left:5px;
-}
+}*/
 	
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
@@ -201,6 +215,14 @@ body .container-large{
 
 /* Portrait */
 @media (min-width: 576px) and (max-width: 1024px){ 
+	.manufacture-brand{
+    text-align: center;
+    width: 100%;
+   top:-3px !important;
+}
+	.dropdown-menu-center a {
+    margin-bottom: 10px;
+}
 	.home-banner {
     height:65vh;
   }
@@ -296,7 +318,13 @@ body .container-large{
 	.single-product-desc .cta span{
 	font-size:1.5rem;
 }
-.banner-slider .carousel-control-next {
+.banner-slider .slick-arrow.slick-next{
+	right:30px;
+}
+.banner-slider .slick-arrow.slick-prev{
+	left:30px;
+}
+/*.banner-slider .carousel-control-next {
     height: 50px;
     top: 50%;
     right: 10px;
@@ -305,10 +333,9 @@ body .container-large{
     height: 50px;
     top: 50%;
     left:10px;
-}
+}*/
   .home-banner {
     height:500px;
-    background-position:unset;
 }
 .animation-box .five-key {
     width: 33%;

@@ -64,13 +64,15 @@ export default (props) => {
 					<Col sm="4">
 						<h2 className="erbaum-bold text-white ml-3">MAX SUPPORT MAX RESULTS</h2>
 						<p className="text-white proxima-r feat pt-0 pt-sm-1 ml-3 text-1">
-							COOL GEL INFUSED MEMORY FOAM<br />
-							EXTRA FIRM SUPPORT CHIROFOAM<br />
-							CHIROFOAM LUMBAR SUPPORT<br />
-							BODY SUPPORT BIO FOAM CORE
+							<ul className="pl-3">
+								<li>COOL GEL INFUSED MEMORY FOAM</li>
+								<li>EXTRA FIRM SUPPORT CHIROFOAM</li>
+								<li>CHIROFOAM LUMBAR SUPPORT</li>
+								<li>BODY SUPPORT BIO FOAM CORE</li>
+							</ul>
 						</p>
 						<p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 mb-sm-2 ml-3">
-							<Link to="#" className="btn-cta text-white erbaum-bold space-1">CALL TO ACTION </Link>
+							<Link to="/product/the-chirofoam™-xf-mattress-extra-firm/" className="btn-cta text-white erbaum-bold space-1">READ MORE</Link>
 						</p>
 					</Col>
 				</Row>
@@ -143,16 +145,22 @@ export default (props) => {
 				<Row className="pt-3 pb-3 pb-sm-0 no-gutters">
 					<Col sm="6" className="px-0">
 						<div className="pl-0 pl-sm-4 pt-0 pt-sm-3" style={{width:'100%', maxWidth:'605px', float:'right'}}>
-							<h3 className="color-primary erbaum-bold lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">WHAT OUR CUSTOMERS ARE SAYING ABOUT CHIROFOAM</h3>
-							<h5 className="filson-pro-reg color-primary pt-2 text-2">CUSTOMER REVIEW</h5>
+							<h3 className="color-primary erbaum-bold lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text text-uppercase">See what our customer are saying about the Chirofoam mattress</h3>
+							<h5 className="filson-pro-reg color-primary pt-2 text-2">CUSTOMER REVIEWS</h5>
 							<p className="text-left proxima-eb space-1 pt-1 mb-0 text-1" style={{color:'#808080'}}><span className="color-primary">Chirofoam mattresses are designed by Chiropractors</span> to improve posture, and provide incredible pressure relief. Your back will thank you.</p>
 							<p className="cta mt-3 pt-sm-4 pt-lg-4 pt-xl-4">
-								<Link to="/customer-service/" className="btn-cta color-primary erbaum-bold space-1">CALL TO ACTION </Link>
+								<Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1 text-uppercase">Read Reviews</Link>
 							</p>
 						</div>
 					</Col>
-					<Col sm="6" className="align-middle">
-						<img src={blog1} alt="blog1" width="100%"/>
+					<Col sm="6" className="align-middle rating-and-review">
+						 <p className="text-center w-100 pt-0 pt-sm-2 pt-md-3 pt-lg-5 pt-xl-5 pb-0 mb-0">
+				            <i className="fa fa-star star-small"></i>
+				            <i className="fa fa-star star-medium ml-2"></i>
+				            <i className="fa fa-star star-large mx-2"></i>
+				            <i className="fa fa-star star-medium mr-2"></i>
+				            <i className="fa fa-star star-small"></i>
+				          </p>
 					</Col>
 				</Row>
 				</div>

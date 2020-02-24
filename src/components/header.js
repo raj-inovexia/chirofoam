@@ -42,9 +42,9 @@ const Header = props => {
   }, [checkout])
   return (
     <div className="bg-white pt-sm-2 header-part">
-      <span className="position-absolute pt-2 pr-4" style={{ fontSize: "12px", color: "#b2b2b2", right: "0", top: "0", zIndex: 1 }}>
-        <img src={madeIn} className="img-fluid" alt="Canada" />
-        Developed & manufactured in Canada
+      <span className="manufacture-brand position-absolute pt-2 pr-4" style={{ fontSize: "12px", color: "#b2b2b2", right: "0", top: "0", zIndex: 1 }}>
+        <img src={madeIn} className="img-fluid pr-1" alt="Canada" />
+        Developed & Manufactured In Canada
       </span>
       <Navbar color="light" light={true} expand="lg" className="bg-white pt-4 pt-sm-4 p-3 p-sm-0">
         <div className="container d-sm-flex d-lg-flex d-xl-flex">
@@ -58,7 +58,7 @@ const Header = props => {
                 <DropdownToggle caret nav className="space-1 p-sm-0 p-lg-0 p-xl-0" style={{ color: "#b2b2b2" }}>
                   ORIGINAL LUXURY FIRM
                 </DropdownToggle>
-                <DropdownMenu className="dropdown-menu-center border-0 text-center">
+                <DropdownMenu className="dropdown-menu-center border-0 text-center text-uppercase">
                   <Link to="/5-key-features/" className="nav-link space-1">
                     5 Key Features
                   </Link>
@@ -77,7 +77,7 @@ const Header = props => {
                 <DropdownToggle caret nav className="space-1 p-sm-0 p-lg-0 p-xl-0" style={{ color: "#b2b2b2" }}>
                   XF EXTRA FIRM
                 </DropdownToggle>
-                <DropdownMenu className="dropdown-menu-center border-0 text-center">
+                <DropdownMenu className="dropdown-menu-center border-0 text-center text-uppercase">
                   <Link to="/5-key-features-chirofoam-xf-extra-firm/" className="nav-link space-1">
                     5 Key Features
                   </Link>
