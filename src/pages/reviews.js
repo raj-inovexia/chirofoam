@@ -5,6 +5,7 @@ import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
+import "../assets/js/shopify.js"
 import "../assets/js/custom.js"
 
 const Example = (props) => {
@@ -213,13 +214,18 @@ const Example = (props) => {
       }
     ]);
   };
-  allShopifyProduct.nodes.forEach((item, i) => {
-    addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
-    console.log(i);
-  })
+  // allShopifyProduct.nodes.forEach((item, i) => {
+  //   addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
+  //   console.log(i);
+  // })
+  // useEffect(() => {
+  //   console.log(allProduct);
+  // })
   useEffect(() => {
-    console.log(allProduct);
-  })
+    allShopifyProduct.nodes.forEach((item, i) => {
+      console.log(item);
+    })
+  }, [allShopifyProduct])
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
