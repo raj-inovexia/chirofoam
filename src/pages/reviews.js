@@ -223,11 +223,11 @@ const Example = (props) => {
   // useEffect(() => {
   //   console.log(allProduct);
   // })
+  allShopifyProduct.nodes.forEach((item, i) => {
+    //addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
+    console.log(i)
+  })
   useEffect(() => {
-    allShopifyProduct.nodes.forEach((item, i) => {
-      addProduct(window.atob(item.shopifyId).split("/").pop(), item.title)
-      console.log(item)
-    })
   })
   /*
   const toggle = tab => {
