@@ -198,8 +198,11 @@ const Example = (props) => {
     graphql`query {
       allShopifyProduct(sort: {fields: [title], order: DESC}) {
         nodes {
-          shopifyId
           title
+          shopifyId
+          images {
+            originalSrc
+          }
         }
       }
     }`
