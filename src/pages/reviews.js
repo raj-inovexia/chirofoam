@@ -284,7 +284,7 @@ const Example = (props) => {
                                       </div>
                                     </div>
                                   </div>
-                                  <div :className="{ 'col-xs-12 col-sm-7 col-md-7 col-lg-8': settings.image_upload_enabled, 'col-xs-12 col-sm-9 col-md-9 col-lg-10': !settings.image_upload_enabled }">
+                                  <div className="col-xs-12 col-sm-9 col-md-9 col-lg-10">
                                     <div className="review-details equalize">
                                       <div className="review-rating">
                                         <span v-html="getRating(review)"></span>
