@@ -94,7 +94,7 @@ const Header = props => {
               </UncontrolledDropdown>
               <NavItem>
                 <Link to="/our-guarentees/" className="space-1 p-sm-0 p-lg-0 p-xl-0 nav-link" style={{ color: "#b2b2b2" }}>
-                  OUR GUARENTEES
+                  OUR GUARANTEES
                 </Link>
               </NavItem>
               <NavItem>
