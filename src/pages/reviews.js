@@ -54,7 +54,7 @@ const Example = (props) => {
 
   const handleLoadMore = () => {
     if (currentPage !== lastPage) {
-      console.log(nextPageURL);
+      fetchData(nextPageURL);
     }
   }
   const getDate = (date) => {
@@ -76,12 +76,17 @@ const Example = (props) => {
       res
       .json()
       .then((responseJson) => {
-        setAvgRating(parseFloat(parseFloat(responseJson.avg_rating).toFixed(2)));
-        setCurrentPage(responseJson.current_page);
-        setNextPageURL(responseJson.next_page_url);
-        setLastPage(responseJson.last_page);
-        setReviewsData(responseJson);
-        setData(responseJson.data);
+        if(currentPage !== 0){
+          setAvgRating(parseFloat(parseFloat(responseJson.avg_rating).toFixed(2)));
+          setCurrentPage(responseJson.current_page);
+          setNextPageURL(responseJson.next_page_url);
+          setLastPage(responseJson.last_page);
+          setReviewsData(responseJson);
+          setData(responseJson.data);
+        }else{
+          setCurrentPage(responseJson.current_page);
+          setData([...data,responseJson.data]);
+        }
       }).catch((error)=>{
           console.log(error);
       });
