@@ -48,6 +48,9 @@ const Example = (props) => {
       }
     }`)
   const [reviewData, setReviewData] = useState({});
+  const [avgRating, setAvgRating] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [nextPageURL, setNextPageURL] = useState(null);
   const reviewsData = [
     {
       title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
@@ -224,8 +227,11 @@ const Example = (props) => {
       });
   };
   useEffect(() => {
-    fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews');
+    fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
   }, [])
+  setAvgRating(parseFloat(parseFloat(reviewData.avg_rating).toFixed(2)));
+  setCurrentPage(reviewData.current_page);
+  setNextPageURL(reviewData.next_page_url);
   console.log(reviewData);
   /*
   const toggle = tab => {
@@ -276,9 +282,9 @@ const Example = (props) => {
                 }}>
                 <Row className="mx-0">
                   <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
-                    <p className="erbaum-bold color-secondary pt-5 mt-3">4.95 out of 5 stars</p>
+                    <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating} out of 5 stars</p>
                     <p>
-                      <span>175</span>
+                      <span>{reviewData.total}</span>
                       reviews
                     </p>
                   </Col>
