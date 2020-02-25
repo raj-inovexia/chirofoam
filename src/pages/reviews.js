@@ -101,10 +101,10 @@ const Example = (props) => {
     const msec = Date.parse(date);
     const d = new Date(msec);
     const month = Months[d.getMonth()];
-    const date = d.getDate();
+    const day = d.getDate();
     const year = d.getFullYear()
     console.log(`${month} ${date}, ${year}`);
-    return `${month} ${date}, ${year}`;
+    return `${month} ${day}, ${year}`;
   }
   const fetchData = async (URL) => {
       const res = await fetch(URL,{
