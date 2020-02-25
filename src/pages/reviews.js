@@ -98,10 +98,13 @@ const Example = (props) => {
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
-    var msec = Date.parse(date);
-    var d = new Date(msec);
-    console.log(Months[d.getMonth()], d.getDate(), d.getFullYear(), );
-    return date;
+    const msec = Date.parse(date);
+    const d = new Date(msec);
+    const month = Months[d.getMonth()];
+    const date = d.getDate();
+    const year = d.getFullYear()
+    console.log(`${month} ${date}, ${year}`);
+    return `${month} ${date}, ${year}`;
   }
   const fetchData = async (URL) => {
       const res = await fetch(URL,{
