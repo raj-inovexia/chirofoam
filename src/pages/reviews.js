@@ -78,7 +78,7 @@ const Example = (props) => {
       .json()
       .then((responseJson) => {
         const allRating = responseJson.data;
-        let starRatings = {1:0, 2:0, 3:0, 4:0, 5:0};
+        let starRatings = {5:0, 4:0, 3:0, 2:0, 1:0};
         allRating.forEach(function(v) {
           starRatings[v.rating] = (starRatings[v.rating] || 0) + 1;
         })
@@ -172,41 +172,17 @@ const Example = (props) => {
                   </Col>
                   <Col sm="6" className="py-5">
                     <div className="p-0 list-unstyled review-details w-75 float-left float-sm-right float-lg-right float-xl-right">
-                      <div className="w-100 d-flex color-primary mb-4">5<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '100%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>166</div>
-                      <div className="w-100 d-flex color-primary mb-4">4<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '75%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>5</div>
-                      <div className="w-100 d-flex color-primary mb-4">3<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '50%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>1</div>
-                      <div className="w-100 d-flex color-primary mb-4">2<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '25%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>1</div>
-                      <div className="w-100 d-flex color-primary mb-4">1<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '5%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>2</div>
+                      {
+                        Object.keys(overAllRating).map((index) => (
+                          <div className="w-100 d-flex color-primary mb-4">{index}<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
+                          <div className="progress rounded-0 bg-transparent w-75 mt-1">
+                            <div className="progress-bar rounded-0 mr-4" style={{
+                                width: {((overAllRating[index]/totalRating)*100).toFixed(2)+'%'},
+                                backgroundColor: 'rgb(186, 33, 84)'
+                              }}></div>
+                            </div>{overAllRating[index]}</div>
+                        ))
+                      }
                     </div>
                   </Col>
                 </Row>
