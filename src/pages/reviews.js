@@ -68,7 +68,8 @@ const Example = (props) => {
     return `${month} ${day}, ${year}`;
   }
   const [overAllRating, setOverAllRating] = useState({});
-  const fetchAllRating = async (URL) => {
+  useEffect(() => {
+    const fetchAllRating = async (URL) => {
       const res = await fetch(URL,{
         method: 'GET',
         headers:{
@@ -90,10 +91,9 @@ const Example = (props) => {
         setOverAllRating(starRatings)
         setData(allRating)
       })
-  }
-  useEffect(() => {
+    }
     fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`)
-  },[fetchAllRating])
+  },[])
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
