@@ -1176,3 +1176,6 @@ body .table-rows .row-list:first-child ul li{
 .write-review {
     min-height: 500px;
 }
+.outline-none {
+    outline: none !important;
+}
