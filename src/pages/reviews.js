@@ -76,7 +76,9 @@ const Example = (props) => {
       res
       .json()
       .then((responseJson) => {
-        console.log(currentPage);
+        if(currentPage===0){
+          console.log(currentPage);
+        }
         setAvgRating(parseFloat(parseFloat(responseJson.avg_rating).toFixed(2)));
         setTotalRating(responseJson.total);
         setCurrentPage(responseJson.current_page);
