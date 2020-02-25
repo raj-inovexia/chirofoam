@@ -110,19 +110,22 @@ const Reviews = (props) => {
       product_title: elements.product_title.value,
       product_image: elements.product_image.value
     };
-    const res = fetch(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-requested-with': 'XMLHttpRequest'
-      },
-      body: {
-        data
-      }
-    })
-    res.json().then((responseJson) => {
-      console.log(responseJson);
-    })
+    const sendReview = async (URL, data) => {
+      const res = await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-requested-with': 'XMLHttpRequest'
+        },
+        body: {
+          data
+        }
+      })
+      res.json().then((responseJson) => {
+        console.log(responseJson)
+      })
+    }
+    sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews` ,data)
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
