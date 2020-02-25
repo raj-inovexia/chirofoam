@@ -110,7 +110,7 @@ const Reviews = (props) => {
       product_title: elements.product_title.value,
       product_image: elements.product_image.value
     };
-    const res = await fetch(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`, {
+    const res = fetch(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
