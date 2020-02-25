@@ -138,9 +138,21 @@ const Example = (props) => {
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <div id="tabsContent" className="tab-content border border-top-0">
-              <div id="customer-revieew" className="tab-pane active show m-auto pb-5" style={{
+              <div id="customer-revieew" className="tab-pane active show m-auto pb-5 position-relative" style={{
                   width: '85%'
                 }}>
+                {
+                  (avgRating===0) &&
+                  <div class="h-100 w-100 d-flex justify-content-center align-items-center position-absolute">
+                    <div class="spinner-border color-primary" role="status" style={{
+                        width: '5rem',
+                        height: '5rem',
+                        borderWidth: '.5rem'
+                      }}>
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                }
                 <Row className="mx-0">
                   <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
                     <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating} out of 5 stars</p>
