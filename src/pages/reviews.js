@@ -54,7 +54,7 @@ const Example = (props) => {
   const [data, setData] = useState([]);
 
   const handleLoadMore = () => {
-    if(data.length !== showReviews){
+    if(data.length >= showReviews){
   		setShowReviews(showReviews+5)
   	}
   }
