@@ -50,6 +50,7 @@ const Example = (props) => {
   const [avgRating, setAvgRating] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [nextPageURL, setNextPageURL] = useState(null);
+  const [data, setData] = useState([]);
   const reviewData = [
     {
       title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
@@ -105,10 +106,11 @@ const Example = (props) => {
       res
       .json()
       .then((responseJson) => {
-        setReviewsData(responseJson);
         setAvgRating(parseFloat(parseFloat(responseJson.avg_rating).toFixed(2)));
         setCurrentPage(responseJson.current_page);
         setNextPageURL(responseJson.next_page_url);
+        setReviewsData(responseJson);
+        setData(responseJson.data);
       }).catch((error)=>{
           console.log(error);
       });
@@ -116,7 +118,7 @@ const Example = (props) => {
   useEffect(() => {
     fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
   },[])
-  console.log(reviewsData);
+  console.log(data);
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
@@ -216,10 +218,10 @@ const Example = (props) => {
                   <div className="w-100 m-auto">
                     <ul className="list-unstyled p-0 ratings">
                       {
-                        reviewData.slice(0, showReviews).map((review, index) => (<li className="border mb-4" key={index}>
+                        data.map((review, index) => (<li className="border mb-4" key={index}>
                           <h4 className="color-primary erbaum-bold text-uppercase" style={{
                               fontSize: '16px'
-                            }}>{review.title}</h4>
+                            }}>{review.product_title}</h4>
                           <div className="d-inline-block br-widget br-readonly pt-2" title={"Rating: " + review.rating}>
                             {
                               [...Array(review.rating)].map((elem, i) => (<button data-rating-value={i} data-rating-text={i} className={(
@@ -234,9 +236,9 @@ const Example = (props) => {
                           <p className="filson-pro-reg pt-2" style={{
                               fontSize: '14px'
                             }}>
-                            <b className="color-primary">{review.ratedBy}–</b>
-                            {review.ratedOn}</p>
-                          <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0">{review.comment}</p>
+                            <b className="color-primary">{review.author}–</b>
+                            {review.created_at}</p>
+                          <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0">{review.body}</p>
                         </li>))
                       }
                     </ul>
