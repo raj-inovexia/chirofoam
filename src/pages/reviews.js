@@ -227,7 +227,7 @@ const Example = (props) => {
     fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews').then(()=>{
       console.log(reviewData);
     });
-  }, [])
+  }, [reviewData])
   console.log(reviewData);
   /*
   const toggle = tab => {
