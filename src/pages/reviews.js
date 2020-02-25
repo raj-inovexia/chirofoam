@@ -16,7 +16,6 @@ import {
 } from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
-import "../assets/js/custom.js"
 
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
@@ -329,42 +328,6 @@ const Example = (props) => {
                   </Col>
                 </Row>
                 <Row className="mx-0">
-                  <div id="HulkAppsReviews" className="hulkapps-reviews" data-type="allReviews">
-                    <div id="HulkAppsReviewsLoader" className="HulkAppsReviewsLoader"></div>
-                    <div id="HulkAppsReviewsContainer" style={{
-                        display: 'none'
-                      }}>
-                      <div id="reviewsList">
-                        <div className="row reviews-header">
-                          <div className="col-sm-12 text-center">
-                            <h3 className="title-rating">
-                              <span v-text="totalReviews"></span>
-                              Reviews</h3>
-                            <div v-if="totalReviews > 0" className="avg-rating" v-html="getAvgRating()"></div>
-                          </div>
-                        </div>
-                        <ul className="list-unstyled p-0 ratings">
-                          <li v-for="review in reviews.data" className="border mb-4">
-                            <h4 className="color-primary erbaum-bold text-uppercase" v-text="review.product_title" style={{
-                                fontSize: '16px'
-                              }}></h4>
-                            <div className="d-inline-block br-widget br-readonly pt-2">
-                              <div className="review-rating">
-                                <span v-html="getRating(review)"></span>
-                              </div>
-                            </div>
-                            <p className="filson-pro-reg pt-2" style={{
-                                fontSize: '14px'
-                              }}>
-                              <b className="review-author color-primary" v-text="review.author+'–'"></b>
-                              <span className="review-date" v-text="dateFormat(review.created_at)"></span>
-                            </p>
-                            <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0 review-body" v-html="review.body"></p>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
                   <div className="w-100 m-auto">
                     <ul className="list-unstyled p-0 ratings">
                       {
