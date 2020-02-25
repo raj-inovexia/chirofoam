@@ -29,7 +29,13 @@ const Example = (props) => {
     setIframeSrc(`/review/${id}/`)
     setModal(true)
   }
-  const externalCloseBtn = <button className="close" style={{position:'absolute',top:'0',right:'15px',fontSize:'3em',color:'#fff'}} onClick={closeModal}>&times;</button>;
+  const externalCloseBtn = <button className="close" style={{
+      position: 'absolute',
+      top: '0',
+      right: '15px',
+      fontSize: '3em',
+      color: '#fff'
+    }} onClick={closeModal}>&times;</button>;
   const {allShopifyProduct} = useStaticQuery(graphql `query {
       allShopifyProduct(sort: {fields: [title], order: DESC}) {
         nodes {
@@ -42,6 +48,165 @@ const Example = (props) => {
         }
       }
     }`)
+  const reviewsData = [
+    {
+      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
+      rating: 5,
+      ratedBy: "Mina Ho",
+      ratedOn: "September 4, 2019",
+      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 5,
+      ratedBy: "Emma",
+      ratedOn: "June 1, 2016",
+      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 5,
+      ratedBy: "Judy",
+      ratedOn: "June 1, 2016",
+      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 5,
+      ratedBy: "Hardeep",
+      ratedOn: "June 1, 2016",
+      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 5,
+      ratedBy: "Steven Wright",
+      ratedOn: "June 2, 2016",
+      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
+    }, {
+      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
+      rating: 4,
+      ratedBy: "Mina Ho",
+      ratedOn: "September 4, 2019",
+      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 4,
+      ratedBy: "Emma",
+      ratedOn: "June 1, 2016",
+      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 4,
+      ratedBy: "Judy",
+      ratedOn: "June 1, 2016",
+      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 4,
+      ratedBy: "Hardeep",
+      ratedOn: "June 1, 2016",
+      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 4,
+      ratedBy: "Steven Wright",
+      ratedOn: "June 2, 2016",
+      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
+    }, {
+      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
+      rating: 3,
+      ratedBy: "Mina Ho",
+      ratedOn: "September 4, 2019",
+      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 3,
+      ratedBy: "Emma",
+      ratedOn: "June 1, 2016",
+      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 3,
+      ratedBy: "Judy",
+      ratedOn: "June 1, 2016",
+      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 3,
+      ratedBy: "Hardeep",
+      ratedOn: "June 1, 2016",
+      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 3,
+      ratedBy: "Steven Wright",
+      ratedOn: "June 2, 2016",
+      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
+    }, {
+      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
+      rating: 2,
+      ratedBy: "Mina Ho",
+      ratedOn: "September 4, 2019",
+      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 2,
+      ratedBy: "Emma",
+      ratedOn: "June 1, 2016",
+      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 2,
+      ratedBy: "Judy",
+      ratedOn: "June 1, 2016",
+      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 2,
+      ratedBy: "Hardeep",
+      ratedOn: "June 1, 2016",
+      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 2,
+      ratedBy: "Steven Wright",
+      ratedOn: "June 2, 2016",
+      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
+    }, {
+      title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
+      rating: 1,
+      ratedBy: "Mina Ho",
+      ratedOn: "September 4, 2019",
+      comment: "Supports your whole body comfortably and yet u won’t feel the hardness. The mattress is just amazing. I would recommend to all my friends."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 1,
+      ratedBy: "Emma",
+      ratedOn: "June 1, 2016",
+      comment: "I am obsessed with this mattress! I've suffered from back pain for years and I couldn't tell you the last time I slept through the night without tossing and turning. Ever since I started sleeping on my new mattress I've been sleeping throughout the entire night without waking up and my back hasn't been bothering me nearly as much as it used to. Very pleased! Thank you Chirofoam!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 1,
+      ratedBy: "Judy",
+      ratedOn: "June 1, 2016",
+      comment: "I'm a busy mom and work full-time and although I've been in dire need of a new mattress I haven't had the time to shop around. I was so happy when my Chirofoam mattress showed up at my door. It was compact and so easy to carry into my bedroom. I honestly didn't even know what a difference this mattress would make in my life. I ordered it because I thought it would be quick and easy and cut out one of many chores on my to-do list. Since sleeping on it I feel more energized and so much happier in the mornings. Even my kids have noticed a difference in my energy levels I feel like I'm 10 years younger!"
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 1,
+      ratedBy: "Hardeep",
+      ratedOn: "June 1, 2016",
+      comment: "I will recommend this mattress to everyone I know. I have had bad lower back pain for years now and Chirofoam was well worth the investment. My back pain is almost entirely gone. Best part is I haven't had to take a pain killer since my first week sleeping on this mattress."
+    }, {
+      title: "THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM",
+      rating: 1,
+      ratedBy: "Steven Wright",
+      ratedOn: "June 2, 2016",
+      comment: "Surprised my wife on our anniversary and we absolutely love it. So do our kids which isn't necessarily a good thing :P"
+    }
+  ];
+
+  const handleLoadMore = () => {
+    if (reviewsData.length !== showReviews) {
+      setShowReviews(showReviews + 5)
+    }
+  }
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
@@ -67,7 +232,7 @@ const Example = (props) => {
   <section className="mb-0 py-5 position-relative">
     <Container>
       <div className="col-md-12">
-        <Nav tabs id="tabs" className="d-block">
+        <Nav tabs="tabs" id="tabs" className="d-block">
           <NavItem>
             <NavLink className={activeTab === '1'
                 ? 'active'
@@ -166,12 +331,46 @@ const Example = (props) => {
                                 fontSize: '14px'
                               }}>
                               <b className="review-author color-primary" v-text="review.author+'–'"></b>
-                              <span className="review-date" v-text="dateFormat(review.created_at)"></span></p>
+                              <span className="review-date" v-text="dateFormat(review.created_at)"></span>
+                            </p>
                             <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0 review-body" v-html="review.body"></p>
                           </li>
                         </ul>
                       </div>
                     </div>
+                  </div>
+                  <div className="w-100 m-auto">
+                    <ul className="list-unstyled p-0 ratings">
+                      {
+                        reviewsData.slice(0, showReviews).map((review, index) => (<li className="border mb-4" key={index}>
+                          <h4 className="color-primary erbaum-bold text-uppercase" style={{
+                              fontSize: '16px'
+                            }}>{review.title}</h4>
+                          <div className="d-inline-block br-widget br-readonly pt-2" title={"Rating: " + review.rating}>
+                            {
+                              [...Array(review.rating)].map((elem, i) => (<button data-rating-value={i} data-rating-text={i} className={(
+                                  (review.rating - 1) === i)
+                                  ? "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent br-current"
+                                  : "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent"} key={i}>
+                                <span className="color-primary fa fa-star"></span>
+                              </button>))
+                            }
+                            <div className="br-current-rating d-none">{review.rating}</div>
+                          </div>
+                          <p className="filson-pro-reg pt-2" style={{
+                              fontSize: '14px'
+                            }}>
+                            <b className="color-primary">{review.ratedBy}–</b>
+                            {review.ratedOn}</p>
+                          <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0">{review.comment}</p>
+                        </li>))
+                      }
+                    </ul>
+                    <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
+                      <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={handleLoadMore} style={{
+                          outline: 'none'
+                        }}>LOAD MORE</button>
+                    </p>
                   </div>
                 </Row>
               </div>
@@ -228,18 +427,11 @@ const Example = (props) => {
       </Row>
     </Container>
   </section>
-  <Modal
-   size="lg"
-   isOpen={modal}
-   toggle={closeModal}
-   centered={true}
-   contentClassName="rounded-0 border-0"
-   external={externalCloseBtn}
-   >
-     <div className="modal-body p-0">
-       <iframe src={iframeSrc} frameborder="0" class="w-100"></iframe>
-     </div>
-   </Modal>
+  <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
+    <div className="modal-body p-0">
+      <iframe src={iframeSrc} frameborder="0" class="w-100 write-review"></iframe>
+    </div>
+  </Modal>
   <Footer/>
 </>
 );
