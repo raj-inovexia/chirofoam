@@ -65,7 +65,6 @@ exports.createPages = ({ graphql, actions }) => {
 
 exports.onCreateDevServer = ({ app }) => {
   app.get('/hello', function (req, res) {
-    console.log(`req was made: ${req.url}`, path.resolve(`./src/pages/4364180095031.html`))
-    res.send('hello world')
+    fs.createReadStream(path.resolve(`./src/pages/4364180095031.html`)).pipe(res)
   })
 }
