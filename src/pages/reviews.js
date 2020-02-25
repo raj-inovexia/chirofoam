@@ -208,28 +208,31 @@ const Example = (props) => {
       setShowReviews(showReviews + 5)
     }
   }
-  fetch('https://reviews.hulkapps.com/api/shop/25477316663/reviews',{
-      method: 'GET',
-      headers:{
+  const fetchData = (URL) => {
+      fetch(URL,{
+        method: 'GET',
+        headers:{
           'Content-Type':'application/json',
-      }
-  })
-  .then((response) => {
-      if(response.status === 200){
+        }
+      })
+      .then((response) => {
+        if(response.status === 200){
           response.json().then((responseJson) => {
-              console.log(responseJson);
-              setCurrentPage(responseJson.current_page);
-              setData(responseJson.data);
+            console.log(responseJson);
+            setCurrentPage(responseJson.current_page);
+            setData(responseJson.data);
           }).catch((error)=>{
-              console.log(error);
+            console.log(error);
           });
-      }
-  })
-  .catch((error)=>{
-      console.log(error);
-  });
-  useEffect(() => {
-    console.log(data);
+        }
+      })
+      .catch((error)=>{
+        console.log(error);
+      });
+  };
+  useEffect(async () => {
+    fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews');
+    console.log(currentPage, data);
   }, [data])
   /*
   const toggle = tab => {
