@@ -54,9 +54,6 @@ const Example = (props) => {
   const [data, setData] = useState([]);
 
   const handleLoadMore = () => {
-    if (currentPage !== lastPage) {
-      console.log(nextPageURL);
-    }
     if(data.length !== showReviews){
   		setShowReviews(showReviews+5)
   	}
@@ -82,47 +79,21 @@ const Example = (props) => {
       .json()
       .then((responseJson) => {
         const allRating = responseJson.data;
-        let starRatings = {5:0, 4:0, 3:0, 2:0, 1:0};
-        let sum = 0;
+        let starRatings = {5:0, 4:0, 3:0, 2:0, 1:0}
+        let sum = 0
         allRating.forEach(function(v) {
-          starRatings[v.rating] = (starRatings[v.rating] || 0) + 1;
-          sum += v.rating;
-          console.log(sum);
+          starRatings[v.rating] = (starRatings[v.rating] || 0) + 1
+          sum += v.rating
         })
-        setTotalRating(allRating.length);
-        console.log((sum/allRating.length).toFixed(2));
-        setAvgRating((sum/allRating.length).toFixed(2));
-        setOverAllRating(starRatings);
-        setData(allRating);
-      }).catch((error)=>{
-          console.log(error);
-      });
-  };
-  const fetchData = async (URL) => {
-      const res = await fetch(URL,{
-        method: 'GET',
-        headers:{
-          'Content-Type':'application/json',
-        }
-      });
-      res
-      .json()
-      .then((responseJson) => {
-        if(currentPage===0){
-          console.log(currentPage);
-        }
-        setAvgRating(parseFloat(parseFloat(responseJson.avg_rating).toFixed(2)));
-        setTotalRating(responseJson.total);
-        setCurrentPage(responseJson.current_page);
-        setNextPageURL(responseJson.next_page_url);
-        setLastPage(responseJson.last_page);
-      }).catch((error)=>{
-          console.log(error);
-      });
-  };
+        setTotalRating(allRating.length)
+        console.log((sum/allRating.length).toFixed(2))
+        setAvgRating((sum/allRating.length).toFixed(2))
+        setOverAllRating(starRatings)
+        setData(allRating)
+      })
+  }
   useEffect(() => {
-    fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`);
-    //fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
+    fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`)
   },[fetchAllRating])
   /*
   const toggle = tab => {
