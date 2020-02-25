@@ -47,7 +47,7 @@ const Example = (props) => {
         }
       }
     }`)
-  const [reviewData, setReviewData] = useState([]);
+  const [reviewData, setReviewData] = useState({});
   const reviewsData = [
     {
       title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
@@ -224,9 +224,11 @@ const Example = (props) => {
       });
   };
   useEffect(() => {
-    fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews');
-    console.log(reviewData);
+    fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews').then(()=>{
+      console.log(reviewData);
+    });
   }, [])
+  console.log(reviewData);
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
