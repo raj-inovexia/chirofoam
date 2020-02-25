@@ -7,6 +7,7 @@ import SEO from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
 import {ProductDescription} from './styles'
 import icon1 from "~/assets/img/ic1.png"
+import product1 from "~/assets/img/product1.jpg"
 import icon2 from "~/assets/img/ic2.png"
 import icon3 from "~/assets/img/ic3.png"
 import icon4 from "~/assets/img/ic4.png"
@@ -207,7 +208,7 @@ const ProductPage = ({ data }) => {
         </Row>
       </Container>
     </section>
-    <section className="mt-4 py-5 max-support bg-image">
+    <section className="mt-4 py-5 max-support-single bg-image">
       <Container>
         <Row className="">
           <Col sm="4">

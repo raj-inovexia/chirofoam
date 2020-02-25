@@ -1,4 +1,20 @@
 @media only screen and (max-width: 767px) {
+	.max-support{
+		background-size:cover;
+	}
+	.key-tools{
+		display:none;
+	}
+	.twentytwenty-container {
+    height: 125px;
+}
+	.right-list p {
+    padding-left: 15px;
+}
+	body.container{
+	padding-left:30px !important;
+	padding-right:30px !important;
+}
 	.manufacture-brand{
     text-align: center;
     width: 100%;
@@ -302,7 +318,16 @@ body .container-large{
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
-	
+	.max-support{
+		background-size:cover;
+	}
+	.max-support h2 {
+    font-size: 55px;
+    line-height: 60px;
+}
+	.key-tools{
+		display:none;
+	}
 	.navbar-nav li.nav-item {
     padding: 10px 0px;
 }
@@ -389,6 +414,12 @@ body .container-large{
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	.max-support{
+		background-size:cover;
+	}
+	.key-tools{
+		display:block;
+	}
 	.shop-banner-title {
     font-size:50px;
 }
@@ -426,6 +457,9 @@ body .container-large{
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
+		.max-support{
+		background-size:cover;
+	}
   body .container-large{
 	padding:0px 20px;
 }
