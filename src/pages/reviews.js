@@ -111,6 +111,8 @@ const Reviews = (props) => {
       product_image: elements.product_image.value
     };
     const sendReview = async (URL) => {
+      const payload = JSON.stringify(data)
+      console.log(data, payload);
       const res = await fetch(URL, {
         method: 'POST',
         headers: {
@@ -118,7 +120,7 @@ const Reviews = (props) => {
           'x-requested-with': 'XMLHttpRequest'
         },
         body: {
-          JSON.stringify(data)
+          payload
         }
       })
       res.json().then((responseJson) => {
