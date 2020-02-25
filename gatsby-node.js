@@ -37,10 +37,6 @@ exports.createPages = ({ graphql, actions }) => {
           handle: node.handle,
         },
       })
-      createPage({
-        path: `/review/${window.atob(node.shopifyId).split("/").pop()}/`,
-        component: path.resolve(`./src/pages/${window.atob(node.shopifyId).split("/").pop()}.html`),
-      })
     })
     result.data.allShopifyArticle.edges.forEach(({ node }) => {
       createPage({
