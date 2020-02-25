@@ -64,7 +64,10 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 exports.onCreateDevServer = ({ app }) => {
-  app.get('/hello', function (req, res) {
+  app.get('/4364180095031', function (req, res) {
     fs.createReadStream(path.resolve(`./src/pages/4364180095031.html`)).pipe(res)
+  })
+  app.get('/4381174923319', function (req, res) {
+    fs.createReadStream(path.resolve(`./src/pages/4381174923319.html`)).pipe(res)
   })
 }

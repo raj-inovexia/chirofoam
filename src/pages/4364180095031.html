@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>REVIEW</title>
-  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
   <script>
     var Shopify = Shopify || {};
     Shopify.shop = "chirofoam.myshopify.com";
@@ -34,17 +34,17 @@
 <body>
   <div id="HulkAppsReviews" class="hulkapps-reviews" data-type="productReviews" data-product-id="4364180095031" data-product-title="THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM">
     <div id="HulkAppsReviewsLoader" class="HulkAppsReviewsLoader"></div>
-    <div id="HulkAppsReviewsContainer" style="display:none;">
+    <div id="HulkAppsReviewsContainer" class="container-fluid" style="display:none;">
       <div slot="title">
         <span class="title text-uppercase">Write a review for THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM</span>
       </div>
       <form id="newReviewForm" enctype="multipart/form-data" @submit.prevent="createReview">
         <div class="row form-group">
-          <div class="col-xs-12">
+          <div class="col-sm-12">
             <div id="response"></div>
           </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
           <div class="col-sm-6">
             <input type="text" name="author" class="form-control" placeholder="Name" required>
           </div>
@@ -52,24 +52,24 @@
             <input type="email" name="email" class="form-control" placeholder="E-mail" required>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12 rating">
+        <div class="row form-group">
+          <div class="col-sm-12 rating">
             <label>Rating:</label>
             <star-rating name="rating" inline="true" star-size="16" active-color="#000" v-model="rating"></star-rating>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12 ">
+        <div class="row form-group">
+          <div class="col-sm-12 ">
             <input type="text" name="title" class="form-control" placeholder="Review Title" required>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12 ">
+        <div class="row form-group">
+          <div class="col-sm-12 ">
             <textarea name="body" class="form-control" placeholder="Review Body" rows="4" required></textarea>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12">
+        <div class="row form-group">
+          <div class="col-sm-12">
             <input type="hidden" name="product_handle" value="the-original-chirofoam™-mattress-luxury-firm" />
             <input type="hidden" name="product_title" value="THE ORIGINAL CHIROFOAM™ MATTRESS – LUXURY FIRM" />
             <input type="hidden" name="product_image" value="//cdn.shopify.com/s/files/1/0254/7731/6663/products/Chirofoam-Memory-Foam-Mattress-Angle-4-600x307_large.jpg?v=1578923172" />
