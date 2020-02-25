@@ -66,6 +66,27 @@ const Example = (props) => {
     const year = d.getFullYear()
     return `${month} ${day}, ${year}`;
   }
+  const [overAllRating, setOverAllRating] = useState({});
+  const fetchAllRating = async (URL) => {
+      const res = await fetch(URL,{
+        method: 'GET',
+        headers:{
+          'Content-Type':'application/json',
+        }
+      });
+      res
+      .json()
+      .then((responseJson) => {
+        const allRating = responseJson.data;
+        let starRatings = {1:0, 2:0, 3:0, 4:0, 5:0};
+        allRating.forEach(function(v) {
+          starRatings[v.rating] = (starRatings[v.rating] || 0) + 1;
+        })
+        setOverAllRating(starRatings);
+      }).catch((error)=>{
+          console.log(error);
+      });
+  };
   const fetchData = async (URL) => {
       const res = await fetch(URL,{
         method: 'GET',
@@ -91,8 +112,9 @@ const Example = (props) => {
   };
   useEffect(() => {
     fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
+    fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`);
   },[])
-  console.log(data);
+  console.log(overAllRating);
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
@@ -144,7 +166,7 @@ const Example = (props) => {
                   <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
                     <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating} out of 5 stars</p>
                     <p>
-                      <span>{totalRating}</span>
+                      <span>{totalRating} </span>
                       reviews
                     </p>
                   </Col>
