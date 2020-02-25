@@ -42,7 +42,7 @@ const Reviews = (props) => {
     setProductImg(image)
     setModal(true)
   }
-  const externalCloseBtn = <button className="close" style={{
+  const externalCloseBtn = <button className="close d-none d-md-inline-block" style={{
       position: 'absolute',
       top: '0',
       right: '15px',
@@ -287,9 +287,12 @@ const Reviews = (props) => {
     </Container>
   </section>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
-    <form enctype="multipart/form-data" onSubmit={e => submitReview(e)}>
+    <form encType="multipart/form-data" onSubmit={e => submitReview(e)}>
       <div className="modal-header border-bottom-0">
         <h5 className="modal-title mx-auto">Write Review</h5>
+        <button type="button" class="close ml-0 d-md-none" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
       </div>
       <div className="modal-body py-0">
         <div className="card rounded-0">
