@@ -313,12 +313,12 @@ const Reviews = (props) => {
               <label>Rating:&nbsp;</label>
               <div className="rating-starts">
                 {
-                  [...Array(5)].map((elem, i) => (<button key={i} rating-value={i} rating-text={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent">
+                  [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent">
                     <span className="color-primary fa fa-star-o"></span>
                   </button>))
                 }
               </div>
-            <input type="hidden" name="rating" value={productRating} />
+              <input type="hidden" name="rating" value={productRating}/>
             </div>
             <div className="form-row">
               <div className="col-12 form-group">
