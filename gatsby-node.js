@@ -8,6 +8,7 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             handle
+            shopifyId
           }
         }
       }
@@ -35,6 +36,10 @@ exports.createPages = ({ graphql, actions }) => {
           // in page queries as GraphQL variables.
           handle: node.handle,
         },
+      })
+      createPage({
+        path: `/review/${window.atob(node.shopifyId).split("/").pop()}/`,
+        component: path.resolve(`./src/pages/${window.atob(node.shopifyId).split("/").pop()}.html`),
       })
     })
     result.data.allShopifyArticle.edges.forEach(({ node }) => {
