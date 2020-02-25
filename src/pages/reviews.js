@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useStaticQuery, Link} from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -25,7 +25,6 @@ const Example = (props) => {
   const [iframeSrc, setIframeSrc] = useState('');
   const closeModal = () => setModal(false)
   const openModal = (e, id) => {
-    console.log(id)
     setIframeSrc(`/review/${id}/`)
     setModal(true)
   }
@@ -48,6 +47,8 @@ const Example = (props) => {
         }
       }
     }`)
+  const [currentPage, setCurrentPage] = useState(0);
+  const [data, setData] = useState([]);
   const reviewsData = [
     {
       title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
@@ -207,6 +208,28 @@ const Example = (props) => {
       setShowReviews(showReviews + 5)
     }
   }
+  useEffect(() => {
+    fetch('https://reviews.hulkapps.com/api/shop/25477316663/reviews',{
+        method: 'GET',
+        headers:{
+            'Content-Type':'application/json',
+        }
+    })
+    .then((response) => {
+        if(response.status === 200){
+            response.json().then((responseJson) => {
+                console.log(responseJson);
+                setCurrentPage(responseJson.current_page);
+                setData(responseJson.data);
+            }).catch((error)=>{
+                console.log(error);
+            });
+        }
+    })
+    .catch((error)=>{
+        console.log(error);
+    });
+  }, [data])
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
@@ -429,7 +452,7 @@ const Example = (props) => {
   </section>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
     <div className="modal-body p-0">
-      <iframe src={iframeSrc} frameborder="0" class="w-100 write-review"></iframe>
+      <iframe src={iframeSrc} frameborder="0" className="w-100 write-review"></iframe>
     </div>
   </Modal>
   <Footer/>
