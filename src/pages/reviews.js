@@ -44,6 +44,7 @@ const Reviews = (props) => {
     setModal(true)
   }
   const mouseOverRating = (event, selectedButton) => {
+    event.preventDefault()
     const buttons = document.querySelectorAll(".rating-starts button");
     for(let i=0; i<=selectedButton; i++){
         buttons[i].firstChild.classList.remove('fa-star-o')
@@ -51,6 +52,7 @@ const Reviews = (props) => {
     }
   }
   const mouseLeaveRating = (event, selectedButton) => {
+    event.preventDefault()
     const buttons = document.querySelectorAll(".rating-starts button");
     for(let i=0; i<=selectedButton; i++){
         buttons[i].firstChild.classList.remove('fa-star')
@@ -58,7 +60,7 @@ const Reviews = (props) => {
     }
   }
   const changeRating = (event, selectedButton) => {
-
+    event.preventDefault()
     setProductRating(selectedButton+1)
   }
   const externalCloseBtn = <button className="close d-none d-md-inline-block" style={{
@@ -329,7 +331,7 @@ const Reviews = (props) => {
             </div>
             <div className="form-row">
               <div className="col-12 form-group">
-                <label for="rating">Rating:&nbsp;</label>
+                <label htmlFor="rating">Rating:&nbsp;</label>
                 <div className="rating-starts d-inline">
                   {
                     [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={e => mouseOverRating(e, i)} onFocus={e => mouseOverRating(e, i)} onMouseLeave={e => mouseLeaveRating(e, i)} onBlur={e => mouseLeaveRating(e, i)} onClick={e => changeRating(e, i)}>
