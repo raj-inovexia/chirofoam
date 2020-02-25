@@ -1,3 +1,31 @@
+const http = require('http')
+const fs = require('fs');
+const server = http.createServer(function(req, res) {
+  console.log(`req was made: ${req.url}`)
+  if (req.url === '/css/bootstrap.min.css') {
+    res.writeHead(200, {
+      'Content-Type': 'text/css'
+    })
+    fs.createReadStream(__dirname + `/assets/css/bootstrap.min.css`).pipe(res)
+  } else if (req.url === '/4364180095031') {
+    res.writeHead(200, {
+      'Content-Type': 'text/html'
+    })
+    fs.createReadStream(__dirname + `/4364180095031.html`).pipe(res)
+  } else if (req.url === '/4381174923319') {
+    res.writeHead(200, {
+      'Content-Type': 'text/html'
+    })
+    fs.createReadStream(__dirname + `/4381174923319.html`).pipe(res)
+  } else {
+    res.writeHead(404, {
+      'Content-Type': 'text/plain'
+    })
+    res.end('Not Found')
+  }
+})
+server.listen(3000)
+
 const path = require(`path`)
 
 exports.createPages = ({ graphql, actions }) => {
@@ -8,7 +36,6 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             handle
-            shopifyId
           }
         }
       }
