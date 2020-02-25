@@ -221,6 +221,9 @@ const Example = (props) => {
       .then((responseJson) => {
         console.log(responseJson);
         setReviewData(responseJson);
+        setAvgRating(parseFloat(parseFloat(responseJson.avg_rating).toFixed(2)));
+        setCurrentPage(responseJson.current_page);
+        setNextPageURL(responseJson.next_page_url);
       }).catch((error)=>{
           console.log(error);
       });
@@ -228,9 +231,6 @@ const Example = (props) => {
   useEffect(() => {
     fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
   }, [])
-  setAvgRating(parseFloat(parseFloat(reviewData.avg_rating).toFixed(2)));
-  setCurrentPage(reviewData.current_page);
-  setNextPageURL(reviewData.next_page_url);
   console.log(reviewData);
   /*
   const toggle = tab => {
