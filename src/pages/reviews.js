@@ -23,6 +23,7 @@ const Reviews = (props) => {
   const [productID, setProductID] = useState('')
   const [productHandle, setProductHandle] = useState('')
   const [productTitle, setProductTitle] = useState('')
+  const [productRating, setProductRating] = useState(0)
   const [productImg, setProductImg] = useState('')
   const [showReviews, setShowReviews] = useState(5)
   const [avgRating, setAvgRating] = useState(0)
@@ -207,7 +208,7 @@ const Reviews = (props) => {
                             {
                               [...Array(review.rating)].map((elem, i) => (<button data-rating-value={i} data-rating-text={i} className={(
                                   (review.rating - 1) === i)
-                                  ? "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent br-current"
+                                  ? "p-0 border-0 bg-transparent p-0 border-0 bg-transparent"
                                   : "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent"} key={i}>
                                 <span className="color-primary fa fa-star"></span>
                               </button>))
@@ -304,9 +305,20 @@ const Reviews = (props) => {
               <div className="col-6 form-group">
                 <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true}/>
               </div>
-              <div class="col-6 form-group">
+              <div className="col-6 form-group">
                 <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true}/>
               </div>
+            </div>
+            <div className="col-12 form-group">
+              <label>Rating:&nbsp;</label>
+              <div className="rating-starts">
+                {
+                  [...Array(5)].map((elem, i) => (<button key={i} rating-value={i} rating-text={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent">
+                    <span className="color-primary fa fa-star-o"></span>
+                  </button>))
+                }
+              </div>
+            <input type="hidden" name="rating" value={productRating}>
             </div>
             <div className="form-row">
               <div className="col-12 form-group">
