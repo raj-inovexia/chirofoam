@@ -113,16 +113,18 @@ const Reviews = (props) => {
     const sendReview = async (URL) => {
       const payload = JSON.stringify(data)
       console.log(data, payload);
-      const res = await fetch(URL, {
+      return await fetch(URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'x-requested-with': 'XMLHttpRequest'
         },
         body: payload
-      })
-      res.json().then((responseJson) => {
-        console.log(responseJson)
+      }).then((response) => {
+        console.log(response, (response.status === 200));
+        response.json().then((responseJson) => {
+          console.log(responseJson)
+        })
       })
     }
     sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
