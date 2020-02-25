@@ -67,10 +67,10 @@ exports.onCreateDevServer = ({ app }) => {
   app.get('/assets/css/bootstrap.min.css', function (req, res) {
     fs.createReadStream(path.resolve(`./src/assets/css/bootstrap.min.css`)).pipe(res)
   })
-  app.get('/4364180095031', function (req, res) {
+  app.get('/review/4364180095031/', function (req, res) {
     fs.createReadStream(path.resolve(`./src/pages/4364180095031.html`)).pipe(res)
   })
-  app.get('/4381174923319', function (req, res) {
+  app.get('/review/4381174923319/', function (req, res) {
     fs.createReadStream(path.resolve(`./src/pages/4381174923319.html`)).pipe(res)
   })
 }

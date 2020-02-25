@@ -187,6 +187,7 @@ const Example = (props) => {
                         </div>
                       </Col>))
                     }
+                    <iframe src="/review/4364180095031/" frameborder="0" class="w-100"></iframe>
                   </div>
                 </Row>
               </div>
