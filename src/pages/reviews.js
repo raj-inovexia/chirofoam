@@ -217,6 +217,7 @@ const Example = (props) => {
       res
       .json()
       .then((responseJson) => {
+        console.log(responseJson);
         setReviewData(responseJson);
       }).catch((error)=>{
           console.log(error);
@@ -225,7 +226,7 @@ const Example = (props) => {
   useEffect(() => {
     fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews');
     console.log(reviewData);
-  }, [reviewData])
+  }, [])
   console.log(reviewData);
   /*
   const toggle = tab => {
