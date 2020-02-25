@@ -27,7 +27,6 @@ const Reviews = (props) => {
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
   const [modal, setModal] = useState(false);
-  const [writeReview, setWriteReview] = useState('');
   const closeModal = () => setModal(false)
   const openModal = (e, id, item) => {
     const image = item.title.includes('XF')? '//cdn.shopify.com/s/files/1/0254/7731/6663/products/chrofoam-xf-queen-10NNew-600x307_1_large.jpg':'//cdn.shopify.com/s/files/1/0254/7731/6663/products/Chirofoam-Memory-Foam-Mattress-Angle-4-600x307_large.jpg';
@@ -135,7 +134,7 @@ const Reviews = (props) => {
   <section className="mb-0 py-5 position-relative">
     <Container>
       <div className="col-md-12">
-        <Nav tabs="tabs" id="tabs" className="d-block">
+        <Nav tabs={true} id="tabs" className="d-block">
           <NavItem>
             <NavLink className={activeTab === '1'
                 ? 'active'
@@ -286,44 +285,46 @@ const Reviews = (props) => {
     </Container>
   </section>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
-    <div className="modal-header border-bottom-0">
-      <h5 className="modal-title">Write Review</h5>
-    </div>
-    <div className="modal-body py-0">
-      <form className="card rounded-0" enctype="multipart/form-data" onSubmit={e => submitReview(e)}>
-        <div className="card-header bg-transparent">
-          <h6 className="card-title mb-0 text-center">{writeReview}</h6>
-        </div>
-        <div className="card-body">
-          <div className="form-row">
-            <div className="col-6 form-group">
-              <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true} />
-            </div>
-            <div class="col-6 form-group">
-              <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true} />
-            </div>
+    <form enctype="multipart/form-data" onSubmit={e => submitReview(e)}>
+      <div className="modal-header border-bottom-0">
+        <h5 className="modal-title mx-auto">Write Review</h5>
+      </div>
+      <div className="modal-body py-0">
+        <div className="card rounded-0">
+          <div className="card-header bg-transparent">
+            <h6 className="card-title mb-0 text-center">{productTitle}</h6>
           </div>
-          <div className="form-row">
-            <div className="col-12 form-group">
-              <input type="text" className="form-control rounded-0" name="title" placeholder="Review Title" required={true} />
-            </div>
-          </div>
-          <div className="form-row">
-              <div className="col-sm-12 form-group">
-                  <textarea className="form-control rounded-0" name="body" placeholder="Review Body" rows="4" required={true} style={{resize:'none'}}></textarea>
+          <div className="card-body">
+            <div className="form-row">
+              <div className="col-6 form-group">
+                <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true} />
               </div>
+              <div class="col-6 form-group">
+                <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true} />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="col-12 form-group">
+                <input type="text" className="form-control rounded-0" name="title" placeholder="Review Title" required={true} />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="col-sm-12 form-group">
+                <textarea className="form-control rounded-0" name="body" placeholder="Review Body" rows="4" required={true} style={{resize:'none'}}></textarea>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="card-footer bg-transparent">
-          <input type="hidden" name="shopify_id" value={shopID} />
-          <input type="hidden" name="product_id" value={productID} />
-          <input type="hidden" name="product_handle" value={productHandle} />
-          <input type="hidden" name="product_title" value={productTitle} />
-          <input type="hidden" name="product_image" value={productImg} />
-          <button type="submit" className="btn btn-custom-primary">Submit</button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div className="modal-footer border-top-0 justify-content-start">
+        <input type="hidden" name="shopify_id" value={shopID} />
+        <input type="hidden" name="product_id" value={productID} />
+        <input type="hidden" name="product_handle" value={productHandle} />
+        <input type="hidden" name="product_title" value={productTitle} />
+        <input type="hidden" name="product_image" value={productImg} />
+        <button type="submit" className="btn btn-custom-primary text-white">Submit</button>
+      </div>
+    </form>
   </Modal>
   <Footer/> < />
 );
