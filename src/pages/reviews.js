@@ -233,7 +233,7 @@ const Example = (props) => {
    isOpen={modal}
    toggle={closeModal}
    centered={true}
-   contentClassName="rounded-0 bg-transparent border-0"
+   contentClassName="rounded-0 border-0"
    external={externalCloseBtn}
    >
      <div className="modal-body p-0">
