@@ -18,18 +18,24 @@ import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 
 const Reviews = (props) => {
-  const shopName = "chirofoam.myshopify.com";
-  const [shopID, setShopID] = useState('');
-  const [productID, setProductID] = useState('');
-  const [productHandle, setProductHandle] = useState('');
-  const [productTitle, setProductTitle] = useState('');
-  const [productImg, setProductImg] = useState('');
-  const [activeTab, setActiveTab] = useState('1');
-  const [showReviews, setShowReviews] = useState(5);
-  const [modal, setModal] = useState(false);
+  const shopName = "chirofoam.myshopify.com"
+  const [shopID, setShopID] = useState('')
+  const [productID, setProductID] = useState('')
+  const [productHandle, setProductHandle] = useState('')
+  const [productTitle, setProductTitle] = useState('')
+  const [productImg, setProductImg] = useState('')
+  const [showReviews, setShowReviews] = useState(5)
+  const [avgRating, setAvgRating] = useState(0)
+  const [totalRating, setTotalRating] = useState(0)
+  const [data, setData] = useState([])
+  const [overAllRating, setOverAllRating] = useState({})
+  const [activeTab, setActiveTab] = useState('1')
+  const [modal, setModal] = useState(false)
   const closeModal = () => setModal(false)
   const openModal = (e, id, item) => {
-    const image = item.title.includes('XF')? '//cdn.shopify.com/s/files/1/0254/7731/6663/products/chrofoam-xf-queen-10NNew-600x307_1_large.jpg':'//cdn.shopify.com/s/files/1/0254/7731/6663/products/Chirofoam-Memory-Foam-Mattress-Angle-4-600x307_large.jpg';
+    const image = item.title.includes('XF')
+      ? '//cdn.shopify.com/s/files/1/0254/7731/6663/products/chrofoam-xf-queen-10NNew-600x307_1_large.jpg'
+      : '//cdn.shopify.com/s/files/1/0254/7731/6663/products/Chirofoam-Memory-Foam-Mattress-Angle-4-600x307_large.jpg'
     setProductID(id)
     setProductHandle(item.handle)
     setProductTitle(item.title)
@@ -42,7 +48,7 @@ const Reviews = (props) => {
       right: '15px',
       fontSize: '3em',
       color: '#fff'
-    }} onClick={closeModal}>&times;</button>;
+    }} onClick={closeModal}>&times;</button>
   const {allShopifyProduct} = useStaticQuery(graphql `query {
       allShopifyProduct(sort: {fields: [title], order: DESC}) {
         nodes {
@@ -55,9 +61,6 @@ const Reviews = (props) => {
         }
       }
     }`)
-  const [avgRating, setAvgRating] = useState(0);
-  const [totalRating, setTotalRating] = useState(0);
-  const [data, setData] = useState([]);
 
   const handleLoadMore = () => {
     if (data.length >= showReviews) {
@@ -69,31 +72,24 @@ const Reviews = (props) => {
     console.log(event);
   }
   const getDate = (date) => {
-    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
-    const msec = Date.parse(date);
-    const d = new Date(msec);
-    const month = Months[d.getMonth()];
-    const day = d.getDate();
+    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
+    const msec = Date.parse(date)
+    const d = new Date(msec)
+    const month = Months[d.getMonth()]
+    const day = d.getDate()
     const year = d.getFullYear()
-    return `${month} ${day}, ${year}`;
+    return `${month} ${day}, ${year}`
   }
-  const [overAllRating, setOverAllRating] = useState({});
   useEffect(() => {
-    const fetchShopID = async (URL) => {
-      const res = await fetch(URL);
-      res.json().then((responseJson) => {
-        setShopID(responseJson.data.shopify_id)
-      })
-    }
     const fetchAllRating = async (URL) => {
       const res = await fetch(URL, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
-      });
+      })
       res.json().then((responseJson) => {
-        const allRating = responseJson.data;
+        const allRating = responseJson.data
         let starRatings = {
           5: 0,
           4: 0,
@@ -112,8 +108,14 @@ const Reviews = (props) => {
         setData(allRating)
       })
     }
+    const fetchShopID = async (URL) => {
+      const res = await fetch(URL);
+      res.json().then((responseJson) => {
+        setShopID(responseJson.data.shopify_id)
+        fetchAllRating(`https://reviews.hulkapps.com/api/shop/${responseJson.data.shopify_id}/reviews/all`)
+      })
+    }
     fetchShopID(`https://reviews.hulkapps.com/api/shop?shopify_domain=${shopName}`)
-    fetchAllRating(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews/all`)
   }, [])
   return (<> < SEO title = "CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
   <section>
@@ -297,32 +299,36 @@ const Reviews = (props) => {
           <div className="card-body">
             <div className="form-row">
               <div className="col-6 form-group">
-                <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true} />
+                <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true}/>
               </div>
               <div class="col-6 form-group">
-                <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true} />
+                <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true}/>
               </div>
             </div>
             <div className="form-row">
               <div className="col-12 form-group">
-                <input type="text" className="form-control rounded-0" name="title" placeholder="Review Title" required={true} />
+                <input type="text" className="form-control rounded-0" name="title" placeholder="Review Title" required={true}/>
               </div>
             </div>
             <div className="form-row">
               <div className="col-sm-12 form-group">
-                <textarea className="form-control rounded-0" name="body" placeholder="Review Body" rows="4" required={true} style={{resize:'none'}}></textarea>
+                <textarea className="form-control rounded-0" name="body" placeholder="Review Body" rows="4" required={true} style={{
+                    resize: 'none'
+                  }}></textarea>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="modal-footer border-top-0 justify-content-start">
-        <input type="hidden" name="shopify_id" value={shopID} />
-        <input type="hidden" name="product_id" value={productID} />
-        <input type="hidden" name="product_handle" value={productHandle} />
-        <input type="hidden" name="product_title" value={productTitle} />
-        <input type="hidden" name="product_image" value={productImg} />
-        <button type="submit" className="btn btn-custom-primary text-white">Submit</button>
+      <div className="modal-footer border-top-0 justify-content-center">
+        <input type="hidden" name="shopify_id" value={shopID}/>
+        <input type="hidden" name="product_id" value={productID}/>
+        <input type="hidden" name="product_handle" value={productHandle}/>
+        <input type="hidden" name="product_title" value={productTitle}/>
+        <input type="hidden" name="product_image" value={productImg}/>
+        <button type="submit" className="btn btn-custom-primary text-white" style={{
+            opacity: 1
+          }}>Submit</button>
       </div>
     </form>
   </Modal>
