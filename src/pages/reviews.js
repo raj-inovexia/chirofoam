@@ -86,7 +86,6 @@ const Example = (props) => {
           sum += v.rating
         })
         setTotalRating(allRating.length)
-        console.log((sum/allRating.length).toFixed(2))
         setAvgRating((sum/allRating.length).toFixed(2))
         setOverAllRating(starRatings)
         setData(allRating)
