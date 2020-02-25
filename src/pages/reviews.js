@@ -46,8 +46,9 @@ const Reviews = (props) => {
   const mouseOverRating = (event, selectedRating) => {
     console.log(event, selectedRating)
   }
-  const mouseLeaveRating = (event, selectedRating) => {
+  const changeRating = (event, selectedRating) => {
     console.log(event, selectedRating)
+    setProductRating(selectedRating)
   }
   const externalCloseBtn = <button className="close d-none d-md-inline-block" style={{
       position: 'absolute',
@@ -320,7 +321,7 @@ const Reviews = (props) => {
                 <label>Rating:&nbsp;</label>
                 <div className="rating-starts">
                   {
-                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={e => mouseOverRating(e, i+1)} onMouseLeave={e => mouseLeaveRating(e, i+1)} onClick={setProductRating(i+1)}>
+                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={e => mouseOverRating(e, i+1)} onClick={e => changeRating(e, i+1)}>
                       <span className="color-primary fa fa-star-o"></span>
                     </button>))
                   }
