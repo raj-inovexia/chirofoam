@@ -1,4 +1,5 @@
 const path = require(`path`)
+const fs = require('fs')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -64,6 +65,7 @@ exports.createPages = ({ graphql, actions }) => {
 
 exports.onCreateDevServer = ({ app }) => {
   app.get('/hello', function (req, res) {
+    console.log(`req was made: ${req.url}`, path.resolve(`./src/pages/4364180095031.html`))
     res.send('hello world')
   })
 }
