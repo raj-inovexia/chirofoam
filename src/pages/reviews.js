@@ -43,11 +43,11 @@ const Reviews = (props) => {
     setProductImg(image)
     setModal(true)
   }
-  const mouseOverRating = (selectedRating) => {
-    console.log(selectedRating)
+  const mouseOverRating = (event, selectedRating) => {
+    console.log(event, selectedRating)
   }
-  const mouseLeaveRating = (selectedRating) => {
-    console.log(selectedRating)
+  const mouseLeaveRating = (event, selectedRating) => {
+    console.log(event, selectedRating)
   }
   const externalCloseBtn = <button className="close d-none d-md-inline-block" style={{
       position: 'absolute',
@@ -320,7 +320,7 @@ const Reviews = (props) => {
                 <label>Rating:&nbsp;</label>
                 <div className="rating-starts">
                   {
-                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={mouseOverRating(i+1)} onMouseLeave={mouseLeaveRating(i+1)} onClick={setProductRating(i+1)}>
+                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={e => mouseOverRating(e, i+1)} onMouseLeave={e => mouseLeaveRating(e, i+1)} onClick={setProductRating(i+1)}>
                       <span className="color-primary fa fa-star-o"></span>
                     </button>))
                   }
