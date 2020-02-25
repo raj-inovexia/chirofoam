@@ -14,7 +14,6 @@ import {
   TabPane,
   Modal
 } from 'reactstrap';
-import { useFetch } from "~/components/utils/hooks";
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import "../assets/js/custom.js"
@@ -48,8 +47,7 @@ const Example = (props) => {
         }
       }
     }`)
-  const [currentPage, setCurrentPage] = useState(0);
-  const [data, setData] = useState([]);
+  const [reviewData, setReviewData] = useState([]);
   const reviewsData = [
     {
       title: "THE CHIROFOAM™ XF MATTRESS – EXTRA FIRM",
@@ -210,29 +208,24 @@ const Example = (props) => {
     }
   }
   const fetchData = async (URL) => {
-      fetch(URL,{
+      const res = await fetch(URL,{
         method: 'GET',
         headers:{
           'Content-Type':'application/json',
         }
-      })
-      .then((response) => {
-        if(response.status === 200){
-          response.json().then((responseJson) => {
-            console.log(responseJson);
-            setCurrentPage(responseJson.current_page);
-            setData(responseJson.data);
-          }).catch((error)=>{
-            console.log(error);
-          });
-        }
-      })
-      .catch((error)=>{
-        console.log(error);
+      });
+      res
+      .json()
+      .then((responseJson) => {
+          setReviewData(responseJson);
+      }).catch((error)=>{
+          console.log(error);
       });
   };
-  // const [data, loading] = useFetch("https://reviews.hulkapps.com/api/shop/25477316663/reviews");
-  // console.log(data, loading);
+  useEffect(() => {
+    fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews');
+    console.log(reviewData);
+  }, [])
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
