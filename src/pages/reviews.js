@@ -121,10 +121,17 @@ const Reviews = (props) => {
         },
         body: payload
       }).then((response) => {
-        console.log(response, (response.status === 200));
-        response.json().then((responseJson) => {
-          console.log(responseJson)
-        })
+        console.log(response, );
+        if(response.status === 200){
+          response.json().then((responseJson) => {
+            console.log(responseJson)
+            event.target.reset()
+          })
+        }else if(response.status === 422){
+          response.json().then((responseJson) => {
+            console.log(responseJson)
+          })
+        }
       })
     }
     sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
