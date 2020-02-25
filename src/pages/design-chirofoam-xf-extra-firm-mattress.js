@@ -38,7 +38,7 @@ export default (props) => {
 			</Row>
 			<Row className="pb-3 pb-sm-0 no-gutters">
 				<Col sm="6" className="pt-5 pb-5 px-3">
-					<div className="pl-5 pl-sm-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
+					<div className="pl-5 pl-sm-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'600px'}}>
 						<h3 className="color-primary erbaum-bold lead-text pl-5">EXTRA FIRM SUPPORT CHIROFOAM™</h3>
 						<p className="text-left proxima-eb space-1 pl-5 pt-5 mb-0 text-1" style={{color:'#808080'}}><span className="color-primary">An extremely firm, durable and sag resistant layer of support foam</span> provides maximum firmness for your body and spine to stretch and decompress while you sleep.  The extra firm layer creates the firmness similar to sleeping on the floor, while gently eliminating the pressure points and discomfort associated with other extra firm mattresses.</p>
 					</div>
