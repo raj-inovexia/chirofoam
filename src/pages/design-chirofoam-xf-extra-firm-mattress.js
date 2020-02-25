@@ -27,7 +27,7 @@ export default (props) => {
 		<section className="py-4 pt-sm-5 pb-sm-4 our-customer">
 			<Row className="pt-3 pb-3 pb-sm-0 no-gutters">
 				<Col sm="6" className="coolgel-img design-imgs">
-					
+
 				</Col>
 				<Col sm="6" className="pt-5 pb-5 px-3">
 					<div className="pl-5 pl-sm-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
@@ -44,12 +44,12 @@ export default (props) => {
 					</div>
 				</Col>
 				<Col sm="6" className="latex-img design-imgs">
-					
+
 				</Col>
 			</Row>
 			<Row className="pb-3 pb-sm-0 no-gutters">
 				<Col sm="6" className="design-imgs support-img">
-					
+
 				</Col>
 				<Col sm="6" className="pt-5 pb-5 px-3">
 					<div className="pl-5 pl-sm-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
@@ -66,32 +66,29 @@ export default (props) => {
 					</div>
 				</Col>
 				<Col sm="6" className="design-imgs foam-img">
-					
+
 				</Col>
 			</Row>
 		</section>
-		<section className="m-auto text-center py-5 py-sm-0 py-md-2 py-lg-5 py-xl-5">
+		<section>
 			<Container>
-				<Row className="pt-3 pb-3 pb-sm-0 text-center">
-					<Col className="col-8 col-sm-8 col-md-12 col-lg-8 col-xl-8 mx-auto">
-						<div className="text-left text-sm-center text-md-left text-lg-left text-xl-left pt-5 pt-sm-2 pt-md-2 pt-lg-5 pt-xl-5 pb-5 mb-5 mb-sm-0 mb-md-0 mb-xl-5 mb-lg-5">
-							<div className="image-box d-table-cell px-3 px-sm-2 px-md-3 px-lg-3 px-xl-3">
+				<Row className="py-3 py-sm-5 mb-0 mb-sm-5">
+					<div className="m-auto text-center d-sm-flex">
+						<Col sm="8" className="text-center">
+							<div className="d-sm-flex">
 								<img className="img-fluid" src={Pur} alt="Pur" width="150px" height="150px" />
-							</div>
-							<div className="image-box d-table-cell px-3 px-sm-2 px-md-3 px-lg-3 px-xl-3">
 								<img className="img-fluid" src={Ecoinstitute} alt="Ecoinstitute" width="150px" height="150px" />
+								<img className="img-fluid" src={conni1} alt="conni1" width="150px" />
 							</div>
-							<div className="image-box d-table-cell px-3 px-sm-2 px-md-3 px-lg-3 px-xl-3">
-								<img className="img-fluid" src={conni1} alt="conni1" width="150px" height="90px" />
-							</div>
-						</div>
-						<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">CertiPUR-US®</span> approved foams are made without ozone depleters, made without PBDE flame retardants, made without mercury, lead and other heavy metals, made without formaldehyde.</p>
-						<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">Eco Institut</span> tested for emission analysis in the test chamber according to ISO 16000, compound analyses for heavy metals, AOX/EOX, biocides, phthalates, flame retardants etc., odour testing according to VDA, toxicological and ecological expertise.</p>
-						<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">Confidence In Textiles Oeko-Tex®</span> standard 100 certified provide extensive testing on the fabrics to ensure that no substances are present that could be harmful to humans. Oeko-Tex® Standard 100 is an international certification that sets limits for over 100 harmful chemicals, substances, and emissions in textiles.</p>
-					</Col>
+							<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">CertiPUR-US®</span> approved foams are made without ozone depleters, made without PBDE flame retardants, made without mercury, lead and other heavy metals, made without formaldehyde.</p>
+							<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">Eco Institut</span> tested for emission analysis in the test chamber according to ISO 16000, compound analyses for heavy metals, AOX/EOX, biocides, phthalates, flame retardants etc., odour testing according to VDA, toxicological and ecological expertise.</p>
+							<p className="filson-pro-reg color-secondary pt-2 text-1 text-left"><span className="color-primary">Confidence In Textiles Oeko-Tex®</span> standard 100 certified provide extensive testing on the fabrics to ensure that no substances are present that could be harmful to humans. Oeko-Tex® Standard 100 is an international certification that sets limits for over 100 harmful chemicals, substances, and emissions in textiles.</p>
+						</Col>
+					</div>
 				</Row>
 			</Container>
 		</section>
+		<section>
 			<Container>
 				<Row className="py-3 py-sm-5 mb-0 mb-sm-5">
 					<div className="m-auto text-center d-sm-flex">
@@ -170,7 +167,7 @@ export default (props) => {
 					<p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
 						<Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</Link>
 					</p>
-					<p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p> 
+					<p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p>
 				</Row>
 			</Container>
 		</section>
