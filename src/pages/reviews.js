@@ -329,10 +329,10 @@ const Reviews = (props) => {
             </div>
             <div className="form-row">
               <div className="col-12 form-group">
-                <label>Rating:&nbsp;</label>
-                <div className="rating-starts">
+                <label for="rating">Rating:&nbsp;</label>
+                <div className="rating-starts d-inline">
                   {
-                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={e => mouseOverRating(e, i)} onMouseLeave={e => mouseLeaveRating(e, i)} onClick={e => changeRating(e, i)}>
+                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={e => mouseOverRating(e, i)} onFocus={e => mouseOverRating(e, i)} onMouseLeave={e => mouseLeaveRating(e, i)} onBlur={e => mouseLeaveRating(e, i)} onClick={e => changeRating(e, i)}>
                       <span className="color-primary fa fa-star-o"></span>
                     </button>))
                   }
