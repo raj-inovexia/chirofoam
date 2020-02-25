@@ -217,7 +217,8 @@ const Example = (props) => {
       res
       .json()
       .then((responseJson) => {
-          setReviewData(responseJson);
+        console.log(responseJson);
+        setReviewData(responseJson);
       }).catch((error)=>{
           console.log(error);
       });
@@ -251,7 +252,7 @@ const Example = (props) => {
   <section className="mb-0 py-5 position-relative">
     <Container>
       <div className="col-md-12">
-        <Nav tabs="tabs" id="tabs" className="d-block">
+        <Nav tabs id="tabs" className="d-block">
           <NavItem>
             <NavLink className={activeTab === '1'
                 ? 'active'
