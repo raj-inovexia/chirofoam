@@ -88,7 +88,7 @@ const Example = (props) => {
           starRatings[v.rating] = (starRatings[v.rating] || 0) + 1;
           sum += starRatings[v.rating];
         })
-        setTotalRating(count(allRating));
+        setTotalRating(allRating.length);
         setAvgRating((sum/totalRating).toFixed(2));
         setOverAllRating(starRatings);
         setData(allRating);
