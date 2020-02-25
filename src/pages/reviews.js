@@ -97,7 +97,19 @@ const Reviews = (props) => {
   }
   const submitReview = (event) => {
     event.preventDefault();
-    console.log(event.target.elements);
+    const data ={
+      author: event.target.elements.author.value,
+      email: event.target.elements.email.value,
+      rating: event.target.elements.rating.value,
+      title: event.target.elements.title.value,
+      body: event.target.elements.body.value,
+      shopify_id: event.target.elements.shopify_id.value,
+      product_id: event.target.elements.product_id.value,
+      product_handle: event.target.elements.product_handle.value,
+      product_title: event.target.elements.product_title.value,
+      product_image: event.target.elements.product_image.value
+    };
+    console.log(data);
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
