@@ -87,12 +87,13 @@ const Example = (props) => {
         allRating.forEach(function(v) {
           starRatings[v.rating] = (starRatings[v.rating] || 0) + 1;
           sum += v.rating;
+          console.log(sum);
         })
         setTotalRating(allRating.length);
-        setAvgRating(sum, totalRating, (sum/totalRating).toFixed(2));
+        console.log(sum, allRating.length, totalRating,(sum/totalRating).toFixed(2));
+        setAvgRating((sum/totalRating).toFixed(2));
         setOverAllRating(starRatings);
         setData(allRating);
-        console.log((sum/totalRating).toFixed(2));
       }).catch((error)=>{
           console.log(error);
       });
@@ -123,6 +124,7 @@ const Example = (props) => {
     fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`);
     //fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
   },[])
+  console.log(overAllRating);
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
