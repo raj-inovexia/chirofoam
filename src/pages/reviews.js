@@ -17,14 +17,24 @@ import {
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 
-const Example = (props) => {
+const Reviews = (props) => {
+  const shopName = "chirofoam.myshopify.com";
+  const [shopID, setShopID] = useState('');
+  const [productID, setProductID] = useState('');
+  const [productHandle, setProductHandle] = useState('');
+  const [productTitle, setProductTitle] = useState('');
+  const [productImg, setProductImg] = useState('');
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
   const [modal, setModal] = useState(false);
-  const [iframeSrc, setIframeSrc] = useState('');
+  const [writeReview, setWriteReview] = useState('');
   const closeModal = () => setModal(false)
-  const openModal = (e, id) => {
-    setIframeSrc(`/review/${id}/`)
+  const openModal = (e, id, item) => {
+    const image = item.title.includes('XF')? '//cdn.shopify.com/s/files/1/0254/7731/6663/products/chrofoam-xf-queen-10NNew-600x307_1_large.jpg':'//cdn.shopify.com/s/files/1/0254/7731/6663/products/Chirofoam-Memory-Foam-Mattress-Angle-4-600x307_large.jpg';
+    setProductID(id)
+    setProductHandle(item.handle)
+    setProductTitle(item.title)
+    setProductImg(image)
     setModal(true)
   }
   const externalCloseBtn = <button className="close" style={{
@@ -55,6 +65,10 @@ const Example = (props) => {
       setShowReviews(showReviews + 5)
     }
   }
+  const submitReview = (event) => {
+    event.preventDefault();
+    console.log(event);
+  }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
     const msec = Date.parse(date);
@@ -66,6 +80,12 @@ const Example = (props) => {
   }
   const [overAllRating, setOverAllRating] = useState({});
   useEffect(() => {
+    const fetchShopID = async (URL) => {
+      const res = await fetch(URL);
+      res.json().then((responseJson) => {
+        setShopID(responseJson.data.shopify_id)
+      })
+    }
     const fetchAllRating = async (URL) => {
       const res = await fetch(URL, {
         method: 'GET',
@@ -93,7 +113,8 @@ const Example = (props) => {
         setData(allRating)
       })
     }
-    fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`)
+    fetchShopID(`https://reviews.hulkapps.com/api/shop?shopify_domain=${shopName}`)
+    fetchAllRating(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews/all`)
   }, [])
   return (<> < SEO title = "CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
   <section>
@@ -221,7 +242,7 @@ const Example = (props) => {
                     {
                       allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
                         <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop())}>{
+                          <button onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop()), item} className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">{
                               item.title.includes('XF')
                                 ? 'Chirofoam X-Firm mattress'
                                 : 'Chirofoam Premium Mattress'
@@ -265,11 +286,46 @@ const Example = (props) => {
     </Container>
   </section>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
-    <div className="modal-body p-0">
-      <iframe src={iframeSrc} title="Write Review" frameBorder="0" className="w-100 write-review"></iframe>
+    <div className="modal-header border-bottom-0">
+      <h5 className="modal-title">Write Review</h5>
+    </div>
+    <div className="modal-body py-0">
+      <form className="card rounded-0" enctype="multipart/form-data" onSubmit={e => submitReview(e)}>
+        <div className="card-header bg-transparent">
+          <h6 className="card-title mb-0 text-center">{writeReview}</h6>
+        </div>
+        <div className="card-body">
+          <div className="form-row">
+            <div className="col-6 form-group">
+              <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true} />
+            </div>
+            <div class="col-6 form-group">
+              <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true} />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="col-12 form-group">
+              <input type="text" className="form-control rounded-0" name="title" placeholder="Review Title" required={true} />
+            </div>
+          </div>
+          <div className="form-row">
+              <div className="col-sm-12 form-group">
+                  <textarea className="form-control rounded-0" name="body" placeholder="Review Body" rows="4" required={true} style={{resize:'none'}}></textarea>
+              </div>
+          </div>
+        </div>
+        <div className="card-footer bg-transparent">
+          <input type="hidden" name="shopify_id" value={shopID} />
+          <input type="hidden" name="product_id" value={productID} />
+          <input type="hidden" name="product_handle" value={productHandle} />
+          <input type="hidden" name="product_title" value={productTitle} />
+          <input type="hidden" name="product_image" value={productImg} />
+          <button type="submit" className="btn btn-custom-primary">Submit</button>
+        </div>
+      </form>
     </div>
   </Modal>
   <Footer/> < />
 );
 };
-export default Example;
+export default Reviews;
