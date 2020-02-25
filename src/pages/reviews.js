@@ -86,8 +86,10 @@ const Example = (props) => {
         let sum = 0;
         allRating.forEach(function(v) {
           starRatings[v.rating] = (starRatings[v.rating] || 0) + 1;
-          sum += starRatings[v.rating];
+          sum += v.rating;
+          console.log(sum);
         })
+        console.log(sum);
         setTotalRating(allRating.length);
         setAvgRating((sum/totalRating).toFixed(2));
         setOverAllRating(starRatings);
