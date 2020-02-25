@@ -97,19 +97,32 @@ const Reviews = (props) => {
   }
   const submitReview = (event) => {
     event.preventDefault();
+    const elements = event.target.elements;
     const data ={
-      author: event.target.elements.author.value,
-      email: event.target.elements.email.value,
-      rating: event.target.elements.rating.value,
-      title: event.target.elements.title.value,
-      body: event.target.elements.body.value,
-      shopify_id: event.target.elements.shopify_id.value,
-      product_id: event.target.elements.product_id.value,
-      product_handle: event.target.elements.product_handle.value,
-      product_title: event.target.elements.product_title.value,
-      product_image: event.target.elements.product_image.value
+      author: elements.author.value,
+      email: elements.email.value,
+      rating: parseInt(elements.rating.value),
+      title: elements.title.value,
+      body: elements.body.value,
+      shopify_id: elements.shopify_id.value,
+      product_id: parseInt(elements.product_id.value),
+      product_handle: elements.product_handle.value,
+      product_title: elements.product_title.value,
+      product_image: elements.product_image.value
     };
-    console.log(data);
+    const res = await fetch(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-requested-with': 'XMLHttpRequest'
+      },
+      body: {
+        data
+      }
+    })
+    res.json().then((responseJson) => {
+      console.log(responseJson);
+    })
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
