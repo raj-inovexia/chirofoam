@@ -53,10 +53,12 @@ const Reviews = (props) => {
   }
   const mouseLeaveRating = (event, selectedButton) => {
     event.preventDefault()
-    const buttons = document.querySelectorAll(".rating-starts button");
-    for(let i=0; i<=selectedButton; i++){
+    if(productRating===0){
+      const buttons = document.querySelectorAll(".rating-starts button");
+      for(let i=0; i<=selectedButton; i++){
         buttons[i].firstChild.classList.remove('fa-star')
         buttons[i].firstChild.classList.add('fa-star-o')
+      }
     }
   }
   const changeRating = (event, selectedButton) => {
