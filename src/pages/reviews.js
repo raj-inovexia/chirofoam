@@ -96,6 +96,13 @@ const Example = (props) => {
       setShowReviews(showReviews + 5)
     }
   }
+  const getDate = (date) => {
+    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
+    var msec = Date.parse(date);
+    var d = new Date(msec);
+    console.log(Months[d.getMonth()], d.getDate(), d.getFullYear(), );
+    return date;
+  }
   const fetchData = async (URL) => {
       const res = await fetch(URL,{
         method: 'GET',
@@ -237,7 +244,7 @@ const Example = (props) => {
                               fontSize: '14px'
                             }}>
                             <b className="color-primary">{review.author}–</b>
-                            {review.created_at}</p>
+                            {getDate(review.created_at)}</p>
                           <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0">{review.body}</p>
                         </li>))
                       }
