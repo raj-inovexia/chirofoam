@@ -217,16 +217,14 @@ const Example = (props) => {
       res
       .json()
       .then((responseJson) => {
-        console.log(responseJson);
         setReviewData(responseJson);
       }).catch((error)=>{
           console.log(error);
       });
   };
   useEffect(() => {
-    fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews').then(()=>{
-      console.log(reviewData);
-    });
+    fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews');
+    console.log(reviewData);
   }, [reviewData])
   console.log(reviewData);
   /*
