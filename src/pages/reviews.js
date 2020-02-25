@@ -225,8 +225,7 @@ const Example = (props) => {
   };
   useEffect(() => {
     fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews');
-    console.log(reviewData);
-  }, [reviewData])
+  }, [])
   console.log(reviewData);
   /*
   const toggle = tab => {
