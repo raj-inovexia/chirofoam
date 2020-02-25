@@ -51,9 +51,9 @@ const Example = (props) => {
   const [data, setData] = useState([]);
 
   const handleLoadMore = () => {
-    if(data.length >= showReviews){
-  		setShowReviews(showReviews+5)
-  	}
+    if (data.length >= showReviews) {
+      setShowReviews(showReviews + 5)
+    }
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
@@ -67,36 +67,34 @@ const Example = (props) => {
   const [overAllRating, setOverAllRating] = useState({});
   useEffect(() => {
     const fetchAllRating = async (URL) => {
-      const res = await fetch(URL,{
+      const res = await fetch(URL, {
         method: 'GET',
-        headers:{
-          'Content-Type':'application/json',
+        headers: {
+          'Content-Type': 'application/json'
         }
       });
-      res
-      .json()
-      .then((responseJson) => {
+      res.json().then((responseJson) => {
         const allRating = responseJson.data;
-        let starRatings = {5:0, 4:0, 3:0, 2:0, 1:0}
+        let starRatings = {
+          5: 0,
+          4: 0,
+          3: 0,
+          2: 0,
+          1: 0
+        }
         let sum = 0
         allRating.forEach(function(v) {
           starRatings[v.rating] = (starRatings[v.rating] || 0) + 1
           sum += v.rating
         })
         setTotalRating(allRating.length)
-        setAvgRating((sum/allRating.length).toFixed(2))
+        setAvgRating((sum / allRating.length).toFixed(2))
         setOverAllRating(starRatings)
         setData(allRating)
       })
     }
     fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`)
-  },[])
-  /*
-  const toggle = tab => {
-    if(activeTab !== tab) setActiveTab(tab);
-  }
-  */
-  //export default (props) => {
+  }, [])
   return (<> < SEO title = "CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
   <section>
     <Container>
@@ -116,7 +114,7 @@ const Example = (props) => {
   <section className="mb-0 py-5 position-relative">
     <Container>
       <div className="col-md-12">
-        <Nav tabs id="tabs" className="d-block">
+        <Nav tabs="tabs" id="tabs" className="d-block">
           <NavItem>
             <NavLink className={activeTab === '1'
                 ? 'active'
@@ -139,37 +137,38 @@ const Example = (props) => {
                   width: '85%'
                 }}>
                 {
-                  (avgRating===0) &&
-                  <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute">
-                    <div className="spinner-border color-primary" role="status" style={{
-                        width: '5rem',
-                        height: '5rem',
-                        borderWidth: '.5rem'
+                  (avgRating === 0) && <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute" style={{
+                        zIndex: 1
                       }}>
-                      <span className="sr-only">Loading...</span>
+                      <div className="spinner-border color-primary" role="status" style={{
+                          width: '5rem',
+                          height: '5rem',
+                          borderWidth: '.5rem'
+                        }}>
+                        <span className="sr-only">Loading...</span>
+                      </div>
                     </div>
-                  </div>
                 }
                 <Row className="mx-0">
                   <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
-                    <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating} out of 5 stars</p>
+                    <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}
+                      out of 5 stars</p>
                     <p>
-                      <span>{totalRating} </span>
+                      <span>{totalRating}
+                      </span>
                       reviews
                     </p>
                   </Col>
                   <Col sm="6" className="py-5">
                     <div className="p-0 list-unstyled review-details w-75 float-left float-sm-right float-lg-right float-xl-right">
                       {
-                        Object.keys(overAllRating).reverse().map((index) => (
-                          <div key={index} className="w-100 d-flex color-primary mb-4">{index}<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
+                        Object.keys(overAllRating).reverse().map((index) => (<div key={index} className="w-100 d-flex color-primary mb-4">{index}<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
                           <div className="progress rounded-0 bg-transparent w-75 mt-1">
                             <div className="progress-bar rounded-0 mr-4" style={{
-                                width: ((overAllRating[index]/totalRating)*100)+'%',
+                                width: ((overAllRating[index] / totalRating) * 100) + '%',
                                 backgroundColor: 'rgb(186, 33, 84)'
                               }}></div>
-                            </div>{overAllRating[index]}</div>
-                        ))
+                          </div>{overAllRating[index]}</div>))
                       }
                     </div>
                   </Col>
@@ -203,12 +202,11 @@ const Example = (props) => {
                       }
                     </ul>
                     {
-                      (data.length >= showReviews) &&
-                      <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
-                        <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={handleLoadMore} style={{
-                            outline: 'none'
-                          }}>LOAD MORE</button>
-                      </p>
+                      (data.length >= showReviews) && <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
+                          <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={handleLoadMore} style={{
+                              outline: 'none'
+                            }}>LOAD MORE</button>
+                        </p>
                     }
                   </div>
                 </Row>
@@ -271,8 +269,7 @@ const Example = (props) => {
       <iframe src={iframeSrc} title="Write Review" frameBorder="0" className="w-100 write-review"></iframe>
     </div>
   </Modal>
-  <Footer/>
-</>
+  <Footer/> < />
 );
 };
 export default Example;
