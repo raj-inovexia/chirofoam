@@ -177,7 +177,7 @@ const Example = (props) => {
                           <div className="w-100 d-flex color-primary mb-4">{index}<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
                           <div className="progress rounded-0 bg-transparent w-75 mt-1">
                             <div className="progress-bar rounded-0 mr-4" style={{
-                                width: {((overAllRating[index]/totalRating)*100)+'%'},
+                                width: ((overAllRating[index]/totalRating)*100)+'%',
                                 backgroundColor: 'rgb(186, 33, 84)'
                               }}></div>
                             </div>{overAllRating[index]}</div>
