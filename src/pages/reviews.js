@@ -19,6 +19,7 @@ import "../assets/css/bootstrap.min.css"
 
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
+  const [showReviews, setShowReviews] = useState(5);
   const [modal, setModal] = useState(false);
   const [iframeSrc, setIframeSrc] = useState('');
   const closeModal = () => setModal(false)
@@ -56,6 +57,9 @@ const Example = (props) => {
     if (currentPage !== lastPage) {
       console.log(nextPageURL);
     }
+    if(data.length !== showReviews){
+  		setShowReviews(showReviews+5)
+  	}
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
@@ -79,10 +83,15 @@ const Example = (props) => {
       .then((responseJson) => {
         const allRating = responseJson.data;
         let starRatings = {5:0, 4:0, 3:0, 2:0, 1:0};
+        let sum = 0;
         allRating.forEach(function(v) {
           starRatings[v.rating] = (starRatings[v.rating] || 0) + 1;
+          sum += starRatings[v.rating];
         })
+        setTotalRating(count(allRating));
+        setAvgRating((sum/totalRating).toFixed(2));
         setOverAllRating(starRatings);
+        setData(allRating);
       }).catch((error)=>{
           console.log(error);
       });
@@ -105,14 +114,13 @@ const Example = (props) => {
         setCurrentPage(responseJson.current_page);
         setNextPageURL(responseJson.next_page_url);
         setLastPage(responseJson.last_page);
-        setData(responseJson.data);
       }).catch((error)=>{
           console.log(error);
       });
   };
   useEffect(() => {
-    fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
     fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`);
+    //fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
   },[])
   console.log(overAllRating);
   /*
@@ -190,7 +198,7 @@ const Example = (props) => {
                   <div className="w-100 m-auto">
                     <ul className="list-unstyled p-0 ratings">
                       {
-                        data.map((review, index) => (<li className="border mb-4" key={index}>
+                        data.slice(0, showReviews).map((review, index) => (<li className="border mb-4" key={index}>
                           <h4 className="color-primary erbaum-bold text-uppercase" style={{
                               fontSize: '16px'
                             }}>{review.product_title}</h4>
