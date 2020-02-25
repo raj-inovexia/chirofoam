@@ -119,9 +119,7 @@ const Reviews = (props) => {
           'Content-Type': 'application/json',
           'x-requested-with': 'XMLHttpRequest'
         },
-        body: {
-          payload
-        }
+        body: payload
       })
       res.json().then((responseJson) => {
         console.log(responseJson)
