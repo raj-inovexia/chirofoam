@@ -43,12 +43,23 @@ const Reviews = (props) => {
     setProductImg(image)
     setModal(true)
   }
-  const mouseOverRating = (event, selectedRating) => {
-    console.log(event, selectedRating)
+  const mouseOverRating = (event, selectedButton) => {
+    const buttons = document.querySelectorAll(".rating-starts button");
+    for(let i=0; i<=selectedButton; i++){
+        buttons[i].firstChild.classList.remove('fa-star-o')
+        buttons[i].firstChild.classList.add('fa-star')
+    }
   }
-  const changeRating = (event, selectedRating) => {
+  const mouseLeaveRating = (event, selectedButton) => {
+    const buttons = document.querySelectorAll(".rating-starts button");
+    for(let i=0; i<=selectedButton; i++){
+        buttons[i].firstChild.classList.remove('fa-star')
+        buttons[i].firstChild.classList.add('fa-star-o')
+    }
+  }
+  const changeRating = (event, selectedButton) => {
 
-    setProductRating(selectedRating)
+    setProductRating(selectedButton+1)
   }
   const externalCloseBtn = <button className="close d-none d-md-inline-block" style={{
       position: 'absolute',
@@ -321,7 +332,7 @@ const Reviews = (props) => {
                 <label>Rating:&nbsp;</label>
                 <div className="rating-starts">
                   {
-                    [...Array(5)].reverse().map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={e => mouseOverRating(e, i+1)} onClick={e => changeRating(e, i+1)}>
+                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={e => mouseOverRating(e, i)} onMouseLeave={e => mouseLeaveRating(e, i)} onClick={e => changeRating(e, i)}>
                       <span className="color-primary fa fa-star-o"></span>
                     </button>))
                   }
