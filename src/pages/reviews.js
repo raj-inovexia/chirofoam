@@ -53,7 +53,7 @@ const Reviews = (props) => {
   }
   const mouseLeaveRating = (event, selectedButton) => {
     event.preventDefault()
-    if(productRating===0){
+    if(productRating===0 || productRating < 5){
       const buttons = document.querySelectorAll(".rating-starts button");
       for(let i=0; i<=selectedButton; i++){
         buttons[i].firstChild.classList.remove('fa-star')
@@ -97,6 +97,7 @@ const Reviews = (props) => {
   }
   const submitReview = (event) => {
     event.preventDefault();
+    const reviewForm = event.target;
     const elements = event.target.elements;
     const data ={
       author: elements.author.value,
@@ -121,11 +122,10 @@ const Reviews = (props) => {
         },
         body: payload
       }).then((response) => {
-        console.log(response, );
         if(response.status === 200){
           response.json().then((responseJson) => {
             console.log(responseJson)
-            event.target.reset()
+            reviewForm.reset()
           })
         }else if(response.status === 422){
           response.json().then((responseJson) => {
@@ -174,7 +174,7 @@ const Reviews = (props) => {
       })
     }
     const fetchShopID = async (URL) => {
-      const res = await fetch(URL);
+      const res = await fetch(URL)
       res.json().then((responseJson) => {
         setShopID(responseJson.data.shopify_id)
         fetchAllRating(`https://reviews.hulkapps.com/api/shop/${responseJson.data.shopify_id}/reviews/all`)
