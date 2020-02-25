@@ -103,7 +103,6 @@ const Example = (props) => {
     const month = Months[d.getMonth()];
     const day = d.getDate();
     const year = d.getFullYear()
-    console.log(`${month} ${date}, ${year}`);
     return `${month} ${day}, ${year}`;
   }
   const fetchData = async (URL) => {
