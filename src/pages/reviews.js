@@ -318,7 +318,7 @@ const Reviews = (props) => {
                   </button>))
                 }
               </div>
-            <input type="hidden" name="rating" value={productRating}>
+            <input type="hidden" name="rating" value={productRating} />
             </div>
             <div className="form-row">
               <div className="col-12 form-group">
