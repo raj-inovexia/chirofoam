@@ -173,8 +173,8 @@ const Example = (props) => {
                   <Col sm="6" className="py-5">
                     <div className="p-0 list-unstyled review-details w-75 float-left float-sm-right float-lg-right float-xl-right">
                       {
-                        Object.keys(overAllRating).map((index) => (
-                          <div className="w-100 d-flex color-primary mb-4">{index}<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
+                        Object.keys(overAllRating).reverse().map((index) => (
+                          <div key={index} className="w-100 d-flex color-primary mb-4">{index}<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
                           <div className="progress rounded-0 bg-transparent w-75 mt-1">
                             <div className="progress-bar rounded-0 mr-4" style={{
                                 width: ((overAllRating[index]/totalRating)*100)+'%',
