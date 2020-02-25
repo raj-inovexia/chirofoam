@@ -48,9 +48,6 @@ const Example = (props) => {
     }`)
   const [avgRating, setAvgRating] = useState(0);
   const [totalRating, setTotalRating] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [lastPage, setLastPage] = useState(0);
-  const [nextPageURL, setNextPageURL] = useState(null);
   const [data, setData] = useState([]);
 
   const handleLoadMore = () => {
@@ -143,13 +140,13 @@ const Example = (props) => {
                 }}>
                 {
                   (avgRating===0) &&
-                  <div class="h-100 w-100 d-flex justify-content-center align-items-center position-absolute">
-                    <div class="spinner-border color-primary" role="status" style={{
+                  <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute">
+                    <div className="spinner-border color-primary" role="status" style={{
                         width: '5rem',
                         height: '5rem',
                         borderWidth: '.5rem'
                       }}>
-                      <span class="sr-only">Loading...</span>
+                      <span className="sr-only">Loading...</span>
                     </div>
                   </div>
                 }
