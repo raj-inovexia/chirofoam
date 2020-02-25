@@ -17,71 +17,23 @@ import {
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 
-const Reviews = (props) => {
-  const shopName = "chirofoam.myshopify.com"
-  const [shopID, setShopID] = useState('')
-  const [productID, setProductID] = useState('')
-  const [productHandle, setProductHandle] = useState('')
-  const [productTitle, setProductTitle] = useState('')
-  const [productRating, setProductRating] = useState(0)
-  const [productImg, setProductImg] = useState('')
-  const [showReviews, setShowReviews] = useState(5)
-  const [avgRating, setAvgRating] = useState(0)
-  const [totalRating, setTotalRating] = useState(0)
-  const [data, setData] = useState([])
-  const [overAllRating, setOverAllRating] = useState({})
-  const [activeTab, setActiveTab] = useState('1')
-  const [modal, setModal] = useState(false)
+const Example = (props) => {
+  const [activeTab, setActiveTab] = useState('1');
+  const [showReviews, setShowReviews] = useState(5);
+  const [modal, setModal] = useState(false);
+  const [iframeSrc, setIframeSrc] = useState('');
   const closeModal = () => setModal(false)
-  const openModal = (e, id, item) => {
-    const image = item.title.includes('XF')
-      ? '//cdn.shopify.com/s/files/1/0254/7731/6663/products/chrofoam-xf-queen-10NNew-600x307_1_large.jpg'
-      : '//cdn.shopify.com/s/files/1/0254/7731/6663/products/Chirofoam-Memory-Foam-Mattress-Angle-4-600x307_large.jpg'
-    setProductID(id)
-    setProductHandle(item.handle)
-    setProductTitle(item.title)
-    setProductImg(image)
+  const openModal = (e, id) => {
+    setIframeSrc(`/review/${id}/`)
     setModal(true)
   }
-  const mouseOverRating = (event, selectedButton) => {
-    event.preventDefault()
-    const buttons = document.querySelectorAll(".rating-starts button");
-    for(let i=0; i<=selectedButton; i++){
-        buttons[i].firstChild.classList.remove('fa-star-o')
-        buttons[i].firstChild.classList.add('fa-star')
-    }
-  }
-  const mouseLeaveRating = (event, selectedButton) => {
-    event.preventDefault()
-    if(productRating===0){
-      const buttons = document.querySelectorAll(".rating-starts button");
-      for(let i=0; i<=selectedButton; i++){
-        buttons[i].firstChild.classList.remove('fa-star')
-        buttons[i].firstChild.classList.add('fa-star-o')
-      }
-    }
-  }
-  const changeRating = (event, selectedButton) => {
-    event.preventDefault()
-    const spans = document.querySelectorAll(".rating-starts button span");
-    spans.forEach((span)=>{
-      span.classList.remove('fa-star')
-      span.classList.add('fa-star-o')
-    })
-    const buttons = document.querySelectorAll(".rating-starts button");
-    for(let i=0; i<=selectedButton; i++){
-        buttons[i].firstChild.classList.remove('fa-star-o')
-        buttons[i].firstChild.classList.add('fa-star')
-    }
-    setProductRating(selectedButton+1)
-  }
-  const externalCloseBtn = <button className="close d-none d-md-inline-block" style={{
+  const externalCloseBtn = <button className="close" style={{
       position: 'absolute',
       top: '0',
       right: '15px',
       fontSize: '3em',
       color: '#fff'
-    }} onClick={closeModal}>&times;</button>
+    }} onClick={closeModal}>&times;</button>;
   const {allShopifyProduct} = useStaticQuery(graphql `query {
       allShopifyProduct(sort: {fields: [title], order: DESC}) {
         nodes {
@@ -94,62 +46,25 @@ const Reviews = (props) => {
         }
       }
     }`)
+  const [avgRating, setAvgRating] = useState(0);
+  const [totalRating, setTotalRating] = useState(0);
+  const [data, setData] = useState([]);
 
   const handleLoadMore = () => {
     if (data.length >= showReviews) {
       setShowReviews(showReviews + 5)
     }
   }
-  const submitReview = (event) => {
-    event.preventDefault();
-    const reviewForm = event.target;
-    const elements = event.target.elements;
-    const data ={
-      author: elements.author.value,
-      email: elements.email.value,
-      rating: parseInt(elements.rating.value),
-      title: elements.title.value,
-      body: elements.body.value,
-      shopify_id: elements.shopify_id.value,
-      product_id: parseInt(elements.product_id.value),
-      product_handle: elements.product_handle.value,
-      product_title: elements.product_title.value,
-      product_image: elements.product_image.value
-    };
-    const sendReview = async (URL) => {
-      return await fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-requested-with': 'XMLHttpRequest'
-        },
-        body: JSON.stringify(data)
-      }).then((response) => {
-        if(response.status === 200){
-          response.json().then((responseJson) => {
-            console.log(responseJson)
-            reviewForm.reset()
-          })
-        }else if(response.status === 422){
-          response.json().then((responseJson) => {
-            console.log(responseJson)
-          })
-        }
-      }).catch((error)=>{
-        console.log(error);
-      })
-    }
-    sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
-  }
   const getDate = (date) => {
-    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
-    const msec = Date.parse(date)
-    const d = new Date(msec)
-    const month = Months[d.getMonth()]
-    const day = d.getDate()
+    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
+    const msec = Date.parse(date);
+    const d = new Date(msec);
+    const month = Months[d.getMonth()];
+    const day = d.getDate();
     const year = d.getFullYear()
-    return `${month} ${day}, ${year}`
+    return `${month} ${day}, ${year}`;
   }
+  const [overAllRating, setOverAllRating] = useState({});
   useEffect(() => {
     const fetchAllRating = async (URL) => {
       const res = await fetch(URL, {
@@ -157,9 +72,9 @@ const Reviews = (props) => {
         headers: {
           'Content-Type': 'application/json'
         }
-      })
+      });
       res.json().then((responseJson) => {
-        const allRating = responseJson.data
+        const allRating = responseJson.data;
         let starRatings = {
           5: 0,
           4: 0,
@@ -178,14 +93,7 @@ const Reviews = (props) => {
         setData(allRating)
       })
     }
-    const fetchShopID = async (URL) => {
-      const res = await fetch(URL)
-      res.json().then((responseJson) => {
-        setShopID(responseJson.data.shopify_id)
-        fetchAllRating(`https://reviews.hulkapps.com/api/shop/${responseJson.data.shopify_id}/reviews/all`)
-      })
-    }
-    fetchShopID(`https://reviews.hulkapps.com/api/shop?shopify_domain=${shopName}`)
+    fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`)
   }, [])
   return (<> < SEO title = "CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
   <section>
@@ -206,7 +114,7 @@ const Reviews = (props) => {
   <section className="mb-0 py-5 position-relative">
     <Container>
       <div className="col-md-12">
-        <Nav tabs={true} id="tabs" className="d-block">
+        <Nav tabs="tabs" id="tabs" className="d-block">
           <NavItem>
             <NavLink className={activeTab === '1'
                 ? 'active'
@@ -277,7 +185,7 @@ const Reviews = (props) => {
                             {
                               [...Array(review.rating)].map((elem, i) => (<button data-rating-value={i} data-rating-text={i} className={(
                                   (review.rating - 1) === i)
-                                  ? "p-0 border-0 bg-transparent p-0 border-0 bg-transparent"
+                                  ? "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent br-current"
                                   : "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent"} key={i}>
                                 <span className="color-primary fa fa-star"></span>
                               </button>))
@@ -313,7 +221,7 @@ const Reviews = (props) => {
                     {
                       allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
                         <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                          <button onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)} className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">{
+                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop())}>{
                               item.title.includes('XF')
                                 ? 'Chirofoam X-Firm mattress'
                                 : 'Chirofoam Premium Mattress'
@@ -357,68 +265,11 @@ const Reviews = (props) => {
     </Container>
   </section>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
-    <form encType="multipart/form-data" onSubmit={e => submitReview(e)}>
-      <div className="modal-header border-bottom-0">
-        <h5 className="modal-title mx-auto">Write Review</h5>
-        <button type="button" className="close ml-0 d-md-none" onClick={closeModal} aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div className="modal-body py-0">
-        <div className="card rounded-0">
-          <div className="card-header bg-transparent">
-            <h6 className="card-title mb-0 text-center">{productTitle}</h6>
-          </div>
-          <div className="card-body">
-            <div className="form-row">
-              <div className="col-6 form-group">
-                <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true}/>
-              </div>
-              <div className="col-6 form-group">
-                <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true}/>
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="col-12 form-group">
-                <label htmlFor="rating">Rating:&nbsp;{productRating}&nbsp;</label>
-                <div className="rating-starts d-inline">
-                  {
-                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent outline-none" onMouseOver={e => mouseOverRating(e, i)} onFocus={e => mouseOverRating(e, i)} onMouseLeave={e => mouseLeaveRating(e, i)} onBlur={e => mouseLeaveRating(e, i)} onClick={e => changeRating(e, i)}>
-                      <span className="color-primary fa fa-star-o"></span>
-                    </button>))
-                  }
-                </div>
-                <input type="hidden" name="rating" value={productRating}/>
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="col-12 form-group">
-                <input type="text" className="form-control rounded-0" name="title" placeholder="Review Title" required={true}/>
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="col-sm-12 form-group">
-                <textarea className="form-control rounded-0" name="body" placeholder="Review Body" rows="4" required={true} style={{
-                    resize: 'none'
-                  }}></textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="modal-footer border-top-0 justify-content-center">
-        <input type="hidden" name="shopify_id" value={shopID}/>
-        <input type="hidden" name="product_id" value={productID}/>
-        <input type="hidden" name="product_handle" value={productHandle}/>
-        <input type="hidden" name="product_title" value={productTitle}/>
-        <input type="hidden" name="product_image" value={productImg}/>
-        <button type="submit" className="btn btn-custom-primary text-white" style={{
-            opacity: 1
-          }}>Submit</button>
-      </div>
-    </form>
+    <div className="modal-body p-0">
+      <iframe src={iframeSrc} title="Write Review" frameBorder="0" className="w-100 write-review"></iframe>
+    </div>
   </Modal>
   <Footer/> < />
 );
 };
-export default Reviews;
+export default Example;
