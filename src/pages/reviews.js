@@ -231,8 +231,8 @@ const Example = (props) => {
         console.log(error);
       });
   };
-  const [data, loading] = useFetch("https://reviews.hulkapps.com/api/shop/25477316663/reviews");
-  console.log(data, loading);
+  // const [data, loading] = useFetch("https://reviews.hulkapps.com/api/shop/25477316663/reviews");
+  // console.log(data, loading);
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
