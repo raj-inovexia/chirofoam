@@ -43,6 +43,12 @@ const Reviews = (props) => {
     setProductImg(image)
     setModal(true)
   }
+  const mouseOverRating = (selectedRating) => {
+    console.log(selectedRating)
+  }
+  const mouseLeaveRating = (selectedRating) => {
+    console.log(selectedRating)
+  }
   const externalCloseBtn = <button className="close d-none d-md-inline-block" style={{
       position: 'absolute',
       top: '0',
@@ -309,16 +315,18 @@ const Reviews = (props) => {
                 <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true}/>
               </div>
             </div>
-            <div className="col-12 form-group">
-              <label>Rating:&nbsp;</label>
-              <div className="rating-starts">
-                {
-                  [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent">
-                    <span className="color-primary fa fa-star-o"></span>
-                  </button>))
-                }
+            <div className="form-row">
+              <div className="col-12 form-group">
+                <label>Rating:&nbsp;</label>
+                <div className="rating-starts">
+                  {
+                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent" onMouseOver={mouseOverRating(i+1)} onMouseLeave={mouseLeaveRating(i+1)} onClick={setProductRating(i+1)}>
+                      <span className="color-primary fa fa-star-o"></span>
+                    </button>))
+                  }
+                </div>
+                <input type="hidden" name="rating" value={productRating}/>
               </div>
-              <input type="hidden" name="rating" value={productRating}/>
             </div>
             <div className="form-row">
               <div className="col-12 form-group">
