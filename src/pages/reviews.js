@@ -64,8 +64,10 @@ const Reviews = (props) => {
   const changeRating = (event, selectedButton) => {
     event.preventDefault()
     const spans = document.querySelectorAll(".rating-starts button span");
-    spans.classList.remove('fa-star')
-    spans.classList.add('fa-star-o')
+    spans.forEach((span)=>{
+      span.classList.remove('fa-star')
+      span.classList.add('fa-star-o')
+    })
     const buttons = document.querySelectorAll(".rating-starts button");
     for(let i=0; i<=selectedButton; i++){
         buttons[i].firstChild.classList.remove('fa-star-o')
