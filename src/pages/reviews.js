@@ -45,8 +45,8 @@ const Example = (props) => {
         }
       }
     }`)
-  const [reviewsData, setReviewsData] = useState({});
   const [avgRating, setAvgRating] = useState(0);
+  const [totalRating, setTotalRating] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [lastPage, setLastPage] = useState(0);
   const [nextPageURL, setNextPageURL] = useState(null);
@@ -54,7 +54,7 @@ const Example = (props) => {
 
   const handleLoadMore = () => {
     if (currentPage !== lastPage) {
-      fetchData(nextPageURL);
+      console.log(nextPageURL);
     }
   }
   const getDate = (date) => {
@@ -76,17 +76,13 @@ const Example = (props) => {
       res
       .json()
       .then((responseJson) => {
-        if(currentPage !== 0){
-          setAvgRating(parseFloat(parseFloat(responseJson.avg_rating).toFixed(2)));
-          setCurrentPage(responseJson.current_page);
-          setNextPageURL(responseJson.next_page_url);
-          setLastPage(responseJson.last_page);
-          setReviewsData(responseJson);
-          setData(responseJson.data);
-        }else{
-          setCurrentPage(responseJson.current_page);
-          setData([...data,responseJson.data]);
-        }
+        console.log(currentPage);
+        setAvgRating(parseFloat(parseFloat(responseJson.avg_rating).toFixed(2)));
+        setTotalRating(responseJson.total);
+        setCurrentPage(responseJson.current_page);
+        setNextPageURL(responseJson.next_page_url);
+        setLastPage(responseJson.last_page);
+        setData(responseJson.data);
       }).catch((error)=>{
           console.log(error);
       });
@@ -146,7 +142,7 @@ const Example = (props) => {
                   <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
                     <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating} out of 5 stars</p>
                     <p>
-                      <span>{reviewsData.total}</span>
+                      <span>{totalRating}</span>
                       reviews
                     </p>
                   </Col>
