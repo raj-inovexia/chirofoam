@@ -90,8 +90,8 @@ const Example = (props) => {
           console.log(sum);
         })
         setTotalRating(allRating.length);
-        console.log(sum, allRating.length, totalRating,(sum/totalRating).toFixed(2));
-        setAvgRating((sum/totalRating).toFixed(2));
+        console.log((sum/allRating.length).toFixed(2));
+        setAvgRating((sum/allRating.length).toFixed(2));
         setOverAllRating(starRatings);
         setData(allRating);
       }).catch((error)=>{
@@ -123,8 +123,7 @@ const Example = (props) => {
   useEffect(() => {
     fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`);
     //fetchData(`https://reviews.hulkapps.com/api/shop/25477316663/reviews`);
-  },[])
-  console.log(overAllRating);
+  },[fetchAllRating])
   /*
   const toggle = tab => {
     if(activeTab !== tab) setActiveTab(tab);
