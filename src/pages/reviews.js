@@ -89,11 +89,11 @@ const Example = (props) => {
           sum += v.rating;
           console.log(sum);
         })
-        console.log(sum);
         setTotalRating(allRating.length);
         setAvgRating((sum/totalRating).toFixed(2));
         setOverAllRating(starRatings);
         setData(allRating);
+        console.log((sum/totalRating).toFixed(2));
       }).catch((error)=>{
           console.log(error);
       });
@@ -287,7 +287,7 @@ const Example = (props) => {
   </section>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
     <div className="modal-body p-0">
-      <iframe src={iframeSrc} frameborder="0" className="w-100 write-review"></iframe>
+      <iframe src={iframeSrc} title="Write Review" frameBorder="0" className="w-100 write-review"></iframe>
     </div>
   </Modal>
   <Footer/>
