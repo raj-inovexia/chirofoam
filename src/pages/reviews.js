@@ -11,7 +11,8 @@ import {
   NavItem,
   NavLink,
   TabContent,
-  TabPane
+  TabPane,
+  Modal
 } from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
@@ -20,9 +21,15 @@ import "../assets/js/custom.js"
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
-  const openModal = (e, id, item) => {
-    console.log(id, item)
+  const [modal, setModal] = useState(false);
+  const [iframeSrc, setIframeSrc] = useState('');
+  const closeModal = () => setModal(false)
+  const openModal = (e, id) => {
+    console.log(id)
+    setIframeSrc(`/review/${id}/`)
+    setModal(true)
   }
+  const externalCloseBtn = <button className="close" style={{position:'absolute',top:'0',right:'15px',fontSize:'3em',color:'#fff'}} onClick={closeModal}>&times;</button>;
   const {allShopifyProduct} = useStaticQuery(graphql `query {
       allShopifyProduct(sort: {fields: [title], order: DESC}) {
         nodes {
@@ -178,7 +185,7 @@ const Example = (props) => {
                     {
                       allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
                         <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)}>{
+                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop())}>{
                               item.title.includes('XF')
                                 ? 'Chirofoam X-Firm mattress'
                                 : 'Chirofoam Premium Mattress'
@@ -187,7 +194,6 @@ const Example = (props) => {
                         </div>
                       </Col>))
                     }
-                    <iframe src="/review/4364180095031/" frameborder="0" class="w-100"></iframe>
                   </div>
                 </Row>
               </div>
@@ -222,7 +228,18 @@ const Example = (props) => {
       </Row>
     </Container>
   </section>
-
+  <Modal
+   size="lg"
+   isOpen={modal}
+   toggle={closeModal}
+   centered={true}
+   contentClassName="rounded-0 bg-transparent border-0"
+   external={externalCloseBtn}
+   >
+     <div className="modal-body p-0">
+       <iframe src={iframeSrc} frameborder="0" class="w-100"></iframe>
+     </div>
+   </Modal>
   <Footer/>
 </>
 );
