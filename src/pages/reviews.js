@@ -69,7 +69,7 @@ const Reviews = (props) => {
   }
   const submitReview = (event) => {
     event.preventDefault();
-    console.log(event);
+    console.log(event.target.elements);
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
@@ -290,7 +290,7 @@ const Reviews = (props) => {
     <form encType="multipart/form-data" onSubmit={e => submitReview(e)}>
       <div className="modal-header border-bottom-0">
         <h5 className="modal-title mx-auto">Write Review</h5>
-        <button type="button" class="close ml-0 d-md-none" aria-label="Close">
+        <button type="button" className="close ml-0 d-md-none" onClick={closeModal} aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
