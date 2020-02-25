@@ -91,6 +91,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+		<section className="pt-3">
 			<Container>
 				<Row className="py-3 py-sm-5 mb-0 mb-sm-5">
 					<div className="m-auto text-center d-sm-flex">
