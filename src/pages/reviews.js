@@ -208,7 +208,7 @@ const Example = (props) => {
       setShowReviews(showReviews + 5)
     }
   }
-  const fetchData = (URL) => {
+  const fetchData = async (URL) => {
       fetch(URL,{
         method: 'GET',
         headers:{
@@ -230,7 +230,7 @@ const Example = (props) => {
         console.log(error);
       });
   };
-  useEffect(async () => {
+  useEffect(() => {
     fetchData('https://reviews.hulkapps.com/api/shop/25477316663/reviews');
     console.log(currentPage, data);
   }, [data])
