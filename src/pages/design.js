@@ -76,7 +76,7 @@ export default (props) => {
 		<section className="m-auto text-center py-0 py-sm-0 py-md-2 py-lg-5 py-xl-5">
 			<Container>
 				<Row className="pt-3 pb-3 pb-sm-0 text-center mx-0">
-					<Col className="col-12 col-lg-8 col-xl-8 mx-auto">
+					<Col className="col-12 col-lg-8 col-xl-8 mx-auto px-0">
 						<div className="text-left text-sm-center text-md-left text-lg-left text-xl-left pt-0 pt-sm-0 pt-md-2 pt-lg-5 pb-0 pb-md-3 pb-lg-5 mb-0 mb-md-0 mb-xl-5 mb-lg-5">
 							<div className="image-box d-table-cell px-3 px-sm-2 px-md-3 px-lg-3 px-xl-3">
 								<img className="img-fluid" src={Pur} alt="Pur" width="150px" height="150px" />
@@ -126,8 +126,8 @@ export default (props) => {
 		</section>
 		<section className="pt-3">
 			<Container>
-				<Row className="mx-0">
-					<Col className="left-list col-12 col-md-6 col-lg-6">
+				<Row className="mx-0 no-gutters">
+					<Col className="left-list col-12 col-md-6 col-lg-6 px-0 px-sm-0 px-md-2 px-lg-3 px-xl-3">
 						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase text-center">SPECIALTY FEATURES OVERVIEW</h5>
 						<ul className="pl-0 list-unstyled left-list filson-pro-reg color-secondary">
 							<li>
@@ -147,7 +147,7 @@ export default (props) => {
 							</li>
 						</ul>
 					</Col>
-					<Col className="right-list col-12 col-md-6 col-lg-6 pl-0 pl-md-4 pl-lg-4 pl-xl-4">
+					<Col className="right-list col-12 col-md-6 col-lg-6 px-0 px-sm-0 px-md-2 px-lg-3 px-xl-3">
 						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase text-center">TECHNICAL SPECIFICATIONS</h5>
 						<p className="filson-pro-reg color-primary">Top Upholstery</p>
 						<ul className="color-secondary filson-pro-reg">

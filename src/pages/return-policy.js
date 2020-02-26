@@ -29,7 +29,7 @@ export default (props) => {
 						<p className="filson-pro-reg color-secondary pt-5 text-1">In order to return your mattress, you must contact us by email to request a return authorization.  We will provide you with an RA#</p>
 						<p className="filson-pro-reg color-secondary text-1">We will work with you to make this process as quick and simple as possible.</p>
 						<p className="filson-pro-reg color-secondary text-1">
-							<ul>
+							<ul className="pl-0 pl-sm-2 pl-md-2 pl-lg-3 pl-xl-3">
 								<li>For returns in the Greater Toronto Area, we can schedule a pick-up with our partner courier company.
 								</li>
 								<li>For returns outside the Greater Toronto Area, customers are responsible for selecting a courier and sending the mattress back to our headquarters in Toronto.

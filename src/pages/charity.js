@@ -25,7 +25,7 @@ export default (props) => {
 		<section className="mb-0 py-3 position-relative">
 			<Container>
 				<Row className="charity-inner text-center mx-0">
-					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-4">
+					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-0 px-sm-2 px-md-2 px-lg-4 px-xl-4">
 						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase">The Charity’s Purpose </h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">Since it’s founding in 1970, Sleeping Children Around The World (SCAW) has raised over $40 million to provide bedkits for children in 34 countries.  They have helped over one million children by 2009.</p>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">Their purpose is crystal clear: give every child the opportunity to have a good night’s sleep.  With sleep, the promise of a better tomorrow is realized.</p>
@@ -34,7 +34,7 @@ export default (props) => {
 							<img className="img-fluid" src={sleep_child} alt="Sleeping Child" />
 						</div>
 					</Col>
-					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-4">
+					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-0 px-sm-2 px-md-2 px-lg-4 px-xl-4">
 						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase">Core Values</h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">Sleeping Children Around The World and their core values:</p>
 						<ul className="filson-pro-reg color-secondary text-1" style={{listStyle:'decimal',lineHeight:'24px'}}>
@@ -48,7 +48,7 @@ export default (props) => {
 							<img className="img-fluid" src={children} alt="Children" width="100%"/>
 						</div>
 					</Col>
-					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-4">
+					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-0 px-sm-2 px-md-2 px-lg-4 px-xl-4">
 						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase">What is a Bedkit?</h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">Bedkits have benefited more than a million children in 34 developing countries around the world and are largely comprised of the following items:</p>
 						<ul className="filson-pro-reg color-secondary text-1" style={{lineHeight:'24px'}}>
@@ -62,7 +62,7 @@ export default (props) => {
 							<img className="img-fluid" src={bedkit} alt="Bedkit" width="100%"/>
 						</div>
 					</Col>
-					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-4">
+					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-0 px-sm-2 px-md-2 px-lg-4 px-xl-4">
 						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase">Volunteers</h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">Volunteerism takes on a new definition at Sleeping Children, because it means more than just giving back. They believe their volunteers get a lot more than they give; they actually nourish their own humanity.</p>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">At Sleeping Children there are three distinct kinds of volunteers required to mount a global initiative such as ours.  More than 2000 volunteers are from all over the world.</p>
@@ -70,7 +70,7 @@ export default (props) => {
 							<img className="img-fluid" src={donate} alt="Donation" width="100%" />
 						</div>
 					</Col>
-					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-4">
+					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 px-0 px-sm-2 px-md-2 px-lg-4 px-xl-4">
 						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase">1 Bedkit for Every Chirofoam Mattress</h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">With every purchase of a Chirofoam mattress, we will donate a Bedkit to a child in need. A bedkit provides a child with the means to go on thriving and the promise that the world holds a brighter future.</p>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">These Bedkits provide a child with the basic necessities for sleep. This transforms the life of that child and these tools have a lasting effect on the entire family.</p>
@@ -81,10 +81,10 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
-		<section className="pb-2 pb-sm-5">
+		<section className="pb-0 pb-sm-0 pb-md-2 pb-lg-4 pb-xl-4">
 			<Container className="pb-0 pb-sm-5">
 				<Row className="pb-0 pb-sm-5 mx-0">
-					<h4 className="text-center color-primary erbaum-bold text-uppercase w-100 pt-2 pt-sm-5 mt-0 mt-sm-5">Thank you for helping to provide a child in need with better sleep. </h4>
+					<h4 className="text-center color-primary erbaum-bold text-uppercase w-100 pt-2 pt-sm-5 mt-0 mt-sm-0 mt-md-0 mt-lg-5 mt-xl-5">Thank you for helping to provide a child in need with better sleep. </h4>
 					<p className="pt-0 text-uppercase text-center w-100 pt-2 pt-md-5" style={{color:'#ba2154'}}>For more information on Sleeping Children Around The World visit their website at <a href="https://www.scaw.org/#scawhome" style={{color:'#000'}}>www.scaw.org</a>.</p>
 				</Row>
 			</Container>

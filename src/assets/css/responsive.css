@@ -1,4 +1,11 @@
 @media only screen and (max-width: 767px) {
+	.five-key-features-outer img {
+	    width: 175px;
+	    height: 175px;
+	}
+	.five-key-features-outer .row h3 {
+		font-size: 60px;
+	}
 	.design-for-customer .row:nth-child(2n+1) .col:first-child {
    order:unset;
 }
@@ -20,10 +27,6 @@
 }
 	.right-list p {
     padding-left: 15px;
-}
-	body.container{
-	padding-left:30px !important;
-	padding-right:30px !important;
 }
 	.manufacture-brand{
     text-align: center;
@@ -328,6 +331,13 @@ body .container-large{
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
+	.five-key-features-outer img {
+	width: 200px;
+	height: 200px;
+}
+	body .container{
+		max-width:95%;
+	}
 	.max-support{
 		background-size:cover;
 	}
@@ -424,6 +434,10 @@ body .container-large{
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+	
+.five-key-features-outer .row h3 {
+	font-size: 100px;
+}
 	.max-support{
 		background-size:cover;
 	}
@@ -467,6 +481,14 @@ body .container-large{
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
+	.five-key-features-outer .row h3 {
+	font-size: 110px;
+	
+}
+	.five-key-features-outer img {
+	width: 225px;
+	height: 225px;
+}
 		.max-support{
 		background-size:cover;
 	}
@@ -540,6 +562,10 @@ body.container{
 
 }
 @media (max-width: 575.98px) {
+	body .container{
+		padding-left:30px;
+		padding-right:30px;
+	}
 	.homepage-slider-2 .btn-cta.carousel-control-prev {
 	    left:-50px;
 	}
@@ -569,6 +595,7 @@ body.container{
 
 /* Small devices (portrait tablets and large phones, 576px and up) */
 @media (min-width: 576px) {
+	
 .homepage-slider-2 .btn-cta.carousel-control-prev {
     left:-15px;
 }

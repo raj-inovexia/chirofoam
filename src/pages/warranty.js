@@ -35,7 +35,7 @@ export default (props) => {
 						<h5 className="erbaum-bold color-primary py-2 py-sm-3 my-0" style={{fontSize:'16px'}}>MATTRESS:</h5>
 						<p className="filson-pro-reg text-1 color-secondary">Sagging or Body Impressions that measure 11/2” or greater, only if the mattress has been continuously supported by foundation and used with an appropriate frame with center support, or a minimum of 12 cross slats with center support that extends to the floor.</p>
 						<p className="filson-pro-reg text-1 color-secondary">The Chirofoam™ Limited Warranty does NOT cover items not expressly listed below, such as, but not limited to:
-							<ul className="pl-3text-1">
+							<ul className="pl-3 text-1">
 								<li>Transportation and inspection costs</li>
 								<li>Bedding used in hotels, motels or institutional facilities</li>
 								<li>Bedding sold “as is”, or floor samples, or bedding purchased from second hand parties,non-retail establishments or received as promotional item</li>

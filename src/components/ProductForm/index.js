@@ -106,7 +106,7 @@ const ProductForm = ({ product }) => {
     
       
      
-      <p className="cta mt-0 mt-sm-5 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-right pr-5">
+      <p className="cta mt-0 mt-sm-5 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-right pr-2 pr-sm-3 pr-md-4 pr-lg-5 pr-xl-5">
         <span className="proxima-b color-primary float-left display-4 v-price" style={{lineHeight:'30px'}}>{price}</span>
         <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 add-to-cart"
         disabled={!available || adding}

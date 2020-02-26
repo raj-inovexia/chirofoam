@@ -575,7 +575,8 @@ body .charity {
 	width: 65%;
 }
 .all-mattress img {
-	width: 300px;
+	width:100%;
+	max-width: 300px;
 }
 .globe {
 	background-image: url('../img/globe.jpg');
@@ -1468,4 +1469,8 @@ body .key-tooltip-5{
 }
 .design-for-customer .row:nth-child(2n+1) .col:first-child {
    order: 2;
+}
+.five-key-features-outer img {
+    width: 250px;
+    height: 250px;
 }

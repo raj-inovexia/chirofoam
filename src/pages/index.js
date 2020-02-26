@@ -65,9 +65,9 @@ export default (props) => {
 			</Container>
 		</section>
 		<section className="my-4 py-5 max-support position-relative">
-			<div className="container-large p-0 pb-sm-5">
+			<div className="container-large p-0">
 				<Row className="mx-0">
-					<Col className="col-12 col-md-5 col-lg-5 col-xl-5 pt-0 pt-lg-5 pt-xl-5">
+					<Col className="col-12 col-md-5 col-lg-5 col-xl-5 pt-0 pt-lg-5 pt-xl-5 pb-3 pb-sm-0 pb-md-3 pb-lg-5 pb-xl-5">
 						<h2 className="erbaum-bold text-white ml-3">MAX SUPPORT MAX RESULTS</h2>
 						<div className="text-white proxima-r feat pt-0 pt-sm-1 ml-3 text-1 mb-2">
 							<ul className="pl-3">

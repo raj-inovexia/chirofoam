@@ -18,7 +18,7 @@ const FaqPage = (props) => {
 		</section>
 		<section className="mb-0 py-5 mt-lg-3 mt-xl-3 position-relative">
 			<Container>
-				<Row>
+				<Row className="mx-0">
 					<h4 className="text-center lead-text-font color-primary erbaum-bold text-uppercase w-100 pb-3 pb-sm-3 pb-lg-5 pb-xl-5">Frequently Asked Questions </h4>
 					<div className="q-list w-100 pt-0 pt-sm-0 pt-lg-2 pt-xl-2">
 						<ul className="list-unstyled pl-0 qs-ans">

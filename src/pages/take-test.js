@@ -115,7 +115,7 @@ const TAKETEST = (props) => {
 			</Container>
 		</section>
 		<section className="mb-0 py-5 bg-white position-relative d-none" id="take-test">
-			<div className="container-large">
+			<div className="container-large no-gutters">
 				<div className="col-md-12">
 					<Nav tabs id="tabs" className="d-flex">
 						<NavItem>
