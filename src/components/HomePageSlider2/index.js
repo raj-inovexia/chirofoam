@@ -58,9 +58,10 @@ const slides = items.map((item, index) => {
       switch(index){
         case 0:
         return(
-          <CarouselItem 
+          <CarouselItem
           onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
+        key={index}
         >
            <section className="py-4 pt-sm-4 pb-sm-4 approved bg-image">
                 <div className="container">
@@ -76,7 +77,7 @@ const slides = items.map((item, index) => {
                           <Link to="#" className="btn-cta text-white erbaum-bold space-1">CALL TO ACTION </Link>
                         </p>
                       </div>
-                      
+
                       <div className="text-white mb-4 pt-1 pr-0 pr-sm-5">
                         <h3 className="approved-title text-white erbaum-bold pt-0 pt-sm-3 lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">CUSTOMER APPROVED</h3>
                         <p className="proxima-b space-1 p-0 pt-sm-2 text-1">Our customers have reported the following benefits after sleeping on there chirofoam mattress</p>
@@ -123,14 +124,15 @@ const slides = items.map((item, index) => {
                 </div>
             </section>
         </CarouselItem>
-          ) 
+          )
         break;
         case 1:
         return(
-          <CarouselItem 
+          <CarouselItem
           onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         style={{maxHeight:'500px'}}
+        key={index}
         >
            <section>
                 <div className="py-sm-4 feature bg-image">
@@ -189,14 +191,15 @@ const slides = items.map((item, index) => {
                 </div>
               </section>
         </CarouselItem>
-          ) 
+          )
         break;
         case 2:
         return(
-          <CarouselItem 
+          <CarouselItem
           onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         style={{maxHeight:'500px'}}
+        key={index}
         >
            <section>
                 <div className="py-2 py-sm-2 feature bg-image">
@@ -208,7 +211,7 @@ const slides = items.map((item, index) => {
                           <h3 className="lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text text-uppercase text-white erbaum-bold pr-0 pr-lg-5 pr-xl-5 mr-0 mr-lg-5 mr-xl-5 pb-3 pb-lg-3 pb-xl-3">
                             Manufactured with your health and the environment in mind.
                         </h3>
-                          <p className="text-white filson-pro-reg text-1 space-1" style={{lineHeight:'30px'}}>CertiPUR-US® approved foams are made without ozone depleters, made without PBDE flame retardants made without mercury, lead and other heavy metals, made without formaldehyde. </p> 
+                          <p className="text-white filson-pro-reg text-1 space-1" style={{lineHeight:'30px'}}>CertiPUR-US® approved foams are made without ozone depleters, made without PBDE flame retardants made without mercury, lead and other heavy metals, made without formaldehyde. </p>
                           </Media>
                           <Media body middle className="pl-sm-4 pl-0 pb-0">
                             <img src={us} alt="us" width="150px"/>
@@ -216,7 +219,7 @@ const slides = items.map((item, index) => {
                       </Media>
                       <Media className="px-3 px-sm-5 mb-0 d-block d-sm-flex">
                           <Media left middle>
-                          <p className="text-white filson-pro-reg text-1 space-1 mb-0 pt-2 pt-lg-4 pt-xl-4" style={{lineHeight:'30px'}}>Eco institut tested for emission analysis in the test chamber according to ISO 16000. compound analyses for heavy metals. AOX/EOX, biocides, phthalates, flame retatdants etc... odour testing according to VDA, toxicological and ecological expertise.</p>  
+                          <p className="text-white filson-pro-reg text-1 space-1 mb-0 pt-2 pt-lg-4 pt-xl-4" style={{lineHeight:'30px'}}>Eco institut tested for emission analysis in the test chamber according to ISO 16000. compound analyses for heavy metals. AOX/EOX, biocides, phthalates, flame retatdants etc... odour testing according to VDA, toxicological and ecological expertise.</p>
                           </Media>
                           <Media body middle className="pl-sm-4 pl-0 pb-3">
                             <img src={eco} alt="eco" width="150px"/>
@@ -224,7 +227,7 @@ const slides = items.map((item, index) => {
                       </Media>
                       <Media className="px-3 px-sm-5 mb-1 d-block d-sm-flex">
                           <Media left middle>
-                          <p className="text-white filson-pro-reg text-1 space-1" style={{lineHeight:'30px'}}>Confidence In Textile Oeko-Tex® standard 100 certified provide extensive testing on the fabrics to ensure that no substances are present that could be harmful to human. Oeko-Tex® standard 100 is an international certification that set limits for over 100 harmful chemicals, substances, and emissions in textiles.</p>  
+                          <p className="text-white filson-pro-reg text-1 space-1" style={{lineHeight:'30px'}}>Confidence In Textile Oeko-Tex® standard 100 certified provide extensive testing on the fabrics to ensure that no substances are present that could be harmful to human. Oeko-Tex® standard 100 is an international certification that set limits for over 100 harmful chemicals, substances, and emissions in textiles.</p>
                           </Media>
                           <Media body middle className="pl-sm-4 pl-0 pb-3">
                             <img src={confidence} alt="confidence" width="150px"/>
@@ -235,17 +238,17 @@ const slides = items.map((item, index) => {
                 </div>
               </section>
         </CarouselItem>
-          ) 
+          )
         break;
       }
 });
- 
+
 
   return (
     <Carousel activeIndex={activeIndex} next={next} previous={previous}>
-        
+
         {slides}
-     
+
       <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} className="btn-cta" />
       <CarouselControl direction="next" directionText="Next" onClickHandler={next} className="btn-cta" />
     </Carousel>
