@@ -125,31 +125,31 @@ const TAKETEST = (props) => {
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink  className={(activeTab === '2' ? 'active' : '') + 'px-xs-0'}>
+							<NavLink  className={(activeTab === '2' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>2</span>
 								<span className="fs-2 d-none d-md-block">Surface</span>
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink  className={(activeTab === '3' ? 'active' : '') + 'px-xs-0'}>
+							<NavLink  className={(activeTab === '3' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>3</span>
 								<span className="fs-2 d-none d-md-block">Body Type</span>
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink  className={(activeTab === '4' ? 'active' : '') + 'px-xs-0'}>
+							<NavLink  className={(activeTab === '4' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>4</span>
 								<span className="fs-2 d-none d-md-block">Temperature</span>
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink  className={(activeTab === '5' ? 'active' : '') + 'px-xs-0'}>
+							<NavLink  className={(activeTab === '5' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>5</span>
 								<span className="fs-2 d-none d-md-block">Exercise</span>
 							</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink  className={(activeTab === '6' ? 'active' : '') + 'px-xs-0'}>
+							<NavLink  className={(activeTab === '6' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>6</span>
 								<span className="fs-2 d-none d-md-block">Back Pain</span>
 							</NavLink>
@@ -401,7 +401,7 @@ const TAKETEST = (props) => {
 						</div>
 						<h3>Results</h3>
 						<ul className="list-unstyled">
-						{selectedChoices.map((step, i) => 
+						{selectedChoices.map((step, i) =>
 							<li key={i}><strong>{step.id}</strong> <span>{step.choiceLabel}</span></li>
             )}
             </ul>
@@ -484,11 +484,11 @@ const TAKETEST = (props) => {
 					<p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
 						<Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</Link>
 					</p>
-					<p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p> 
+					<p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p>
 				</Row>
 			</Container>
 		</section>
-    
+
 		<Footer />
 	</>
   );
