@@ -8,7 +8,6 @@ import "../assets/css/bootstrap.min.css"
 import Pur from "../assets/img/certipur-logo-nobkgrd-250px-1.png"
 import Ecoinstitute from "../assets/img/ecoinstitute.png"
 import conni1 from "../assets/img/conni1.jpg"
-import video from "../assets/img/chirofoam.mp4"
 import poster from "../assets/img/poster.jpg"
 import clip1 from "../assets/img/bed1.jpg"
 import clip2 from "../assets/img/clip.jpg"
@@ -28,48 +27,48 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
-		<section className="py-4 pt-sm-5 pb-sm-4 our-customer">
+		<section className="py-4 pt-sm-5 pb-sm-4 our-customer design-for-customer">
 			<Row className="pt-3 pb-3 pb-sm-0 no-gutters">
-				<Col sm="6" className="coolgel-img design-imgs">
-					
-				</Col>
-				<Col sm="6" className="pt-0 pt-sm-2 pt-md-3 pt-lg-5 pt-xl-5 pb-0 pb-md-3 pb-lg-5 px-3">
+				<Col  className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pt-0 pt-sm-2 pt-md-3 pt-lg-5 pt-xl-5 pb-0 pb-md-3 pb-lg-5 px-3">
 					<div className="pl-0 pl-sm-1 pl-md-3 pl-lg-5 pl-xl-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
 						<h3 className="color-primary erbaum-bold lead-text">COOL GEL INFUSED MEMORY FOAM</h3>
 						<p className="text-left filson-pro-reg space-1 pt-0 pt-sm-1 pt-md-3 pt-lg-5 pt-xl-5 mb-0 text-1 color-secondary"><span className="color-primary">Helps keep your body cool and relaxed during sleep</span> while the temperature sensitive foam adjusts to your body’s natural shape and curves. Designed for back pain relief, this foam will help to relax your joints and muscles while relieving pressure and creating the ultimate comfort while your body rests.</p>
 					</div>
 				</Col>
+				<Col  className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 coolgel-img design-imgs">
+					
+				</Col>
 			</Row>
 			<Row className="pb-3 pb-sm-0 no-gutters">
-				<Col sm="6" className="pt-0 pt-sm-0 pt-md-3 pt-lg-5 pb-0 pb-md-3 pb-lg-5 px-3">
+				<Col  className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pt-0 pt-sm-0 pt-md-3 pt-lg-5 pb-0 pb-md-3 pb-lg-5 px-3">
 					<div className="pl-0 pl-sm-1 pl-md-3 pl-lg-5 pl-xl-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
 						<h3 className="color-primary erbaum-bold lead-text pl-0 pl-sm-1 pl-md-3 pl-lg-5 pl-xl-5">FIRM SUPPORT CHIROFOAM™</h3>
 						<p className="text-left filson-pro-reg space-1 pl-0 pl-sm-1 pl-md-3 pl-lg-5 pl-xl-5 pt-0 pt-sm-2 pt-md-3 pt-lg-5 pt-xl-5 mb-0 text-1 color-secondary"><span className="color-primary">An extremely durable and sag resistant layer of support foam</span> provides an additional “pressure relief buffer” between your body and the core support foam. This layer helps cradle and protect your muscles, joints, and bones from excess pressure during sleep.  The foam creates ultra comfortable “push back” support to keep your spine in an optimal natural sleeping position, while relieving back pain.</p>
 					</div>
 				</Col>
-				<Col sm="6" className="latex-img design-imgs">
+				<Col  className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 latex-img design-imgs">
 					
 				</Col>
 			</Row>
 			<Row className="pb-3 pb-sm-0 no-gutters">
-				<Col sm="6" className="design-imgs support-img">
-					
-				</Col>
-				<Col sm="6" className="pt-0 pt-md-3 pt-lg-5 pb-0 pb-md-3 pb-lg-5 px-3">
+				<Col className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pt-0 pt-md-3 pt-lg-5 pb-0 pb-md-3 pb-lg-5 px-3">
 					<div className="pl-0 pl-sm-1 pl-md-3 pl-lg-5 pl-xl-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
 						<h3 className="color-primary erbaum-bold lead-text">CHIROFOAM™ LUMBAR SUPPORT</h3>
 						<p className="text-left filson-pro-reg space-1 pt-0 pt-md-3 pt-lg-5 mb-0 text-1 color-secondary"><span className="color-primary">Our specialized layer of Chirofoam™ lumbar support</span> provides an additional 20% of conforming support in the centre third of the mattress for improved lumbar support and increased life span of the mattress. The majority of your body’s weight rests in the centre third of the mattress where you need the most support to keep your spine in optimal alignment while relieving back pain. The Pro Lumbar Support layer is also designed to resist sagging and keeps your mattress comfortable and more supportive even far beyond our 15 year warranty period.</p>
 					</div>
 				</Col>
+				<Col className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 design-imgs support-img">
+					
+				</Col>
 			</Row>
 			<Row className="pb-3 pb-sm-0 no-gutters">
-				<Col sm="6" className="pt-0 pt-md-3 pt-lg-5 pb-0 pb-md-3 pb-lg-5 px-3">
+				<Col  className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pt-0 pt-md-3 pt-lg-5 pb-0 pb-md-3 pb-lg-5 px-3">
 					<div className="pl-0 pl-sm-1 pl-md-3 pl-lg-5 pl-xl-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{maxWidth:'500px'}}>
 						<h3 className="pl-0 pl-sm-1 pl-md-3 pl-xl-5 pl-lg-5 color-primary erbaum-bold lead-text">BODY SUPPORT BIO FOAM CORE</h3>
 						<p className="text-left filson-pro-reg space-1 pt-0 pt-sm-2 pt-md-3 pt-lg-5 pt-xl-5 mb-0 text-1 pl-0 pl-md-3 pl-lg-5 color-secondary"><span className="color-primary">The core is made with a high density and ultra-resilient bio foam</span> designed to cradle the weight of your body and distribute pressure evenly for many years of back pain relief and peaceful sleep. The bio foam is made from soy content in a more environmentally friendly and sustainable production method which lessens your carbon footprint on our planet.</p>
 					</div>
 				</Col>
-				<Col sm="6" className="design-imgs foam-img">
+				<Col  className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 design-imgs foam-img">
 					
 				</Col>
 			</Row>
@@ -100,7 +99,7 @@ export default (props) => {
 			<Container>
 				<Row className="mx-0">
 					<div className="chirofoam-video mx-auto">
-						<video className="" src={video} poster={poster} width="100%" controls="controls" autoplay="true" preload="auto" autoplay loop muted="muted" type="video/mp4"/>
+						<video className="" src="https://chirofoam.com/wp-content/uploads/2016/08/Chiro%20Video%202%20HD%20recut%20final_2.mp4" poster={poster} width="100%" controls="controls" autoplay="true" preload="auto" autoplay loop muted="muted" type="video/mp4"/>
 					</div>
 				</Row>
 			</Container>
