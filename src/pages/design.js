@@ -8,7 +8,6 @@ import "../assets/css/bootstrap.min.css"
 import Pur from "../assets/img/certipur-logo-nobkgrd-250px-1.png"
 import Ecoinstitute from "../assets/img/ecoinstitute.png"
 import conni1 from "../assets/img/conni1.jpg"
-import video from "../assets/img/chirofoam.mp4"
 import poster from "../assets/img/poster.jpg"
 import clip1 from "../assets/img/bed1.jpg"
 import clip2 from "../assets/img/clip.jpg"
@@ -100,7 +99,7 @@ export default (props) => {
 			<Container>
 				<Row className="mx-0">
 					<div className="chirofoam-video mx-auto">
-						<video className="" src={video} poster={poster} width="100%" controls="controls" autoplay="true" preload="auto" autoplay loop muted="muted" type="video/mp4"/>
+						<video className="" src="https://chirofoam.com/wp-content/uploads/2016/08/Chiro%20Video%202%20HD%20recut%20final_2.mp4" poster={poster} width="100%" controls="controls" autoplay="true" preload="auto" autoplay loop muted="muted" type="video/mp4"/>
 					</div>
 				</Row>
 			</Container>
