@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useStaticQuery, Link} from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -11,18 +11,29 @@ import {
   NavItem,
   NavLink,
   TabContent,
-  TabPane
+  TabPane,
+  Modal
 } from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
-import "../assets/js/custom.js"
 
 const Example = (props) => {
   const [activeTab, setActiveTab] = useState('1');
   const [showReviews, setShowReviews] = useState(5);
-  const openModal = (e, id, item) => {
-    console.log(id, item)
+  const [modal, setModal] = useState(false);
+  const [iframeSrc, setIframeSrc] = useState('');
+  const closeModal = () => setModal(false)
+  const openModal = (e, id) => {
+    setIframeSrc(`/review/${id}/`)
+    setModal(true)
   }
+  const externalCloseBtn = <button className="close" style={{
+      position: 'absolute',
+      top: '0',
+      right: '15px',
+      fontSize: '3em',
+      color: '#fff'
+    }} onClick={closeModal}>&times;</button>;
   const {allShopifyProduct} = useStaticQuery(graphql `query {
       allShopifyProduct(sort: {fields: [title], order: DESC}) {
         nodes {
@@ -35,12 +46,55 @@ const Example = (props) => {
         }
       }
     }`)
-  /*
-  const toggle = tab => {
-    if(activeTab !== tab) setActiveTab(tab);
+  const [avgRating, setAvgRating] = useState(0);
+  const [totalRating, setTotalRating] = useState(0);
+  const [data, setData] = useState([]);
+
+  const handleLoadMore = () => {
+    if (data.length >= showReviews) {
+      setShowReviews(showReviews + 5)
+    }
   }
-  */
-  //export default (props) => {
+  const getDate = (date) => {
+    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
+    const msec = Date.parse(date);
+    const d = new Date(msec);
+    const month = Months[d.getMonth()];
+    const day = d.getDate();
+    const year = d.getFullYear()
+    return `${month} ${day}, ${year}`;
+  }
+  const [overAllRating, setOverAllRating] = useState({});
+  useEffect(() => {
+    const fetchAllRating = async (URL) => {
+      const res = await fetch(URL, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      res.json().then((responseJson) => {
+        const allRating = responseJson.data;
+        let starRatings = {
+          5: 0,
+          4: 0,
+          3: 0,
+          2: 0,
+          1: 0
+        }
+        let sum = 0
+        allRating.forEach(function(v) {
+          starRatings[v.rating] = (starRatings[v.rating] || 0) + 1
+          sum += v.rating
+        })
+        setTotalRating(allRating.length)
+        setAvgRating((sum / allRating.length).toFixed(2))
+        setOverAllRating(starRatings)
+        setData(allRating)
+      })
+    }
+    fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`)
+  }, [])
   return (<> < SEO title = "CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
   <section>
     <Container>
@@ -60,7 +114,7 @@ const Example = (props) => {
   <section className="mb-0 py-5 position-relative">
     <Container>
       <div className="col-md-12">
-        <Nav tabs id="tabs" className="d-block">
+        <Nav tabs="tabs" id="tabs" className="d-block">
           <NavItem>
             <NavLink className={activeTab === '1'
                 ? 'active'
@@ -79,92 +133,81 @@ const Example = (props) => {
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <div id="tabsContent" className="tab-content border border-top-0">
-              <div id="customer-revieew" className="tab-pane active show m-auto pb-5" style={{
+              <div id="customer-revieew" className="tab-pane active show m-auto pb-5 position-relative" style={{
                   width: '85%'
                 }}>
+                {
+                  (avgRating === 0) && <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute" style={{
+                        zIndex: 1
+                      }}>
+                      <div className="spinner-border color-primary" role="status" style={{
+                          width: '5rem',
+                          height: '5rem',
+                          borderWidth: '.5rem'
+                        }}>
+                        <span className="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                }
                 <Row className="mx-0">
                   <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
-                    <p className="erbaum-bold color-secondary pt-5 mt-3">4.95 out of 5 stars</p>
+                    <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}
+                      out of 5 stars</p>
                     <p>
-                      <span>175</span>
+                      <span>{totalRating}
+                      </span>
                       reviews
                     </p>
                   </Col>
                   <Col sm="6" className="py-5">
                     <div className="p-0 list-unstyled review-details w-75 float-left float-sm-right float-lg-right float-xl-right">
-                      <div className="w-100 d-flex color-primary mb-4">5<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '100%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>166</div>
-                      <div className="w-100 d-flex color-primary mb-4">4<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '75%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>5</div>
-                      <div className="w-100 d-flex color-primary mb-4">3<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '50%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>1</div>
-                      <div className="w-100 d-flex color-primary mb-4">2<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '25%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>1</div>
-                      <div className="w-100 d-flex color-primary mb-4">1<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent w-75 mt-1">
-                          <div className="progress-bar rounded-0 mr-4" style={{
-                              width: '5%',
-                              backgroundColor: 'rgb(186, 33, 84)'
-                            }}></div>
-                        </div>2</div>
+                      {
+                        Object.keys(overAllRating).reverse().map((index) => (<div key={index} className="w-100 d-flex color-primary mb-4">{index}<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
+                          <div className="progress rounded-0 bg-transparent w-75 mt-1">
+                            <div className="progress-bar rounded-0 mr-4" style={{
+                                width: ((overAllRating[index] / totalRating) * 100) + '%',
+                                backgroundColor: 'rgb(186, 33, 84)'
+                              }}></div>
+                          </div>{overAllRating[index]}</div>))
+                      }
                     </div>
                   </Col>
                 </Row>
                 <Row className="mx-0">
-                  <div id="HulkAppsReviews" className="hulkapps-reviews" data-type="allReviews">
-                    <div id="HulkAppsReviewsLoader" className="HulkAppsReviewsLoader"></div>
-                    <div id="HulkAppsReviewsContainer" style={{
-                        display: 'none'
-                      }}>
-                      <div id="reviewsList">
-                        <div className="row reviews-header">
-                          <div className="col-sm-12 text-center">
-                            <h3 className="title-rating">
-                              <span v-text="totalReviews"></span>
-                              Reviews</h3>
-                            <div v-if="totalReviews > 0" className="avg-rating" v-html="getAvgRating()"></div>
+                  <div className="w-100 m-auto">
+                    <ul className="list-unstyled p-0 ratings">
+                      {
+                        data.slice(0, showReviews).map((review, index) => (<li className="border mb-4" key={index}>
+                          <h4 className="color-primary erbaum-bold text-uppercase" style={{
+                              fontSize: '16px'
+                            }}>{review.product_title}</h4>
+                          <div className="d-inline-block br-widget br-readonly pt-2" title={"Rating: " + review.rating}>
+                            {
+                              [...Array(review.rating)].map((elem, i) => (<button data-rating-value={i} data-rating-text={i} className={(
+                                  (review.rating - 1) === i)
+                                  ? "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent br-current"
+                                  : "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent"} key={i}>
+                                <span className="color-primary fa fa-star"></span>
+                              </button>))
+                            }
+                            <div className="br-current-rating d-none">{review.rating}</div>
                           </div>
-                        </div>
-                        <ul className="list-unstyled p-0 ratings">
-                          <li v-for="review in reviews.data" className="border mb-4">
-                            <h4 className="color-primary erbaum-bold text-uppercase" v-text="review.product_title" style={{
-                                fontSize: '16px'
-                              }}></h4>
-                            <div className="d-inline-block br-widget br-readonly pt-2">
-                              <div className="review-rating">
-                                <span v-html="getRating(review)"></span>
-                              </div>
-                            </div>
-                            <p className="filson-pro-reg pt-2" style={{
-                                fontSize: '14px'
-                              }}>
-                              <b className="review-author color-primary" v-text="review.author+'–'"></b>
-                              <span className="review-date" v-text="dateFormat(review.created_at)"></span></p>
-                            <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0 review-body" v-html="review.body"></p>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                          <p className="filson-pro-reg pt-2" style={{
+                              fontSize: '14px'
+                            }}>
+                            <b className="color-primary">{review.author}–</b>
+                            {getDate(review.created_at)}</p>
+                          <p className="filson-pro-reg text-1 color-secondary mb-0 pb-0">{review.body}</p>
+                        </li>))
+                      }
+                    </ul>
+                    {
+                      (data.length >= showReviews) && <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
+                          <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={handleLoadMore} style={{
+                              outline: 'none'
+                            }}>LOAD MORE</button>
+                        </p>
+                    }
                   </div>
                 </Row>
               </div>
@@ -178,7 +221,7 @@ const Example = (props) => {
                     {
                       allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
                         <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)}>{
+                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop())}>{
                               item.title.includes('XF')
                                 ? 'Chirofoam X-Firm mattress'
                                 : 'Chirofoam Premium Mattress'
@@ -221,9 +264,12 @@ const Example = (props) => {
       </Row>
     </Container>
   </section>
-
-  <Footer/>
-</>
+  <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
+    <div className="modal-body p-0">
+      <iframe src={iframeSrc} title="Write Review" frameBorder="0" className="w-100 write-review"></iframe>
+    </div>
+  </Modal>
+  <Footer/> < />
 );
 };
 export default Example;
