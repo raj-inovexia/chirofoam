@@ -96,9 +96,9 @@ const Reviews = (props) => {
       }
     }`)
 
-  const handleLoadMore = (e) => {
+  const handleLoadMore = (event) => {
     if (data.length >= showReviews) {
-      console.log(e.target, e.target.classList)
+      console.log(event.target, event.target.classList)
       loadingReviews(true)
       setTimeout(()=>{
         setShowReviews(showReviews + 5)
@@ -299,23 +299,27 @@ const Reviews = (props) => {
                         </li>))
                       }
                     </ul>
-                    {
-                      (loadingReviews) && <div className="w-100 bg-white d-flex justify-content-center align-items-center">
-                          <div className="spinner-border color-primary" role="status" style={{
-                              width: '3rem',
-                              height: '3rem'
+                    <div className="position-relative">
+                      {
+                        (loadingReviews) && <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute" {{
+                              zIndex: 1
                             }}>
-                            <span className="sr-only">Loading...</span>
+                            <div className="spinner-border color-primary" role="status" style={{
+                                width: '3rem',
+                                height: '3rem'
+                              }}>
+                              <span className="sr-only">Loading...</span>
+                            </div>
                           </div>
-                        </div>
-                    }
-                    {
-                      (data.length >= showReviews) && <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
-                          <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={e = handleLoadMore(e)} style={{
-                              outline: 'none'
-                            }}>LOAD MORE</button>
-                        </p>
-                    }
+                      }
+                      {
+                        (data.length >= showReviews) && <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
+                            <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={e = handleLoadMore(e)} style={{
+                                outline: 'none'
+                              }}>LOAD MORE</button>
+                          </p>
+                      }
+                    </div>
                   </div>
                 </Row>
               </div>
