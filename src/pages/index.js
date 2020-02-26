@@ -8,7 +8,13 @@ import mattress1 from "../assets/img/mattress1.jpg"
 import product1 from "../assets/img/product1.jpg"
 import product2 from "../assets/img/product2.jpg"
 import blog1 from "../assets/img/blog1.jpg"
+import result from "../assets/img/results.jpg"
 import run from "../assets/img/run.png"
+import circle1 from "../assets/img/circle1.png"
+import circle2 from "../assets/img/circle2.png"
+import circle3 from "../assets/img/circle3.png"
+import circle4 from "../assets/img/circle4.png"
+import circle5 from "../assets/img/circle5.png"
 import { Link } from "gatsby"
 import HomePageSlider2 from "../components/HomePageSlider2"
 import SlickSlider from "../components/FiveKeys"
@@ -58,10 +64,10 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
-		<section className="my-4 py-4 py-sm-5 max-support bg-image">
+		<section className="my-4 py-5 max-support position-relative">
 			<div className="container-large p-0 pb-sm-5">
 				<Row className="mx-0">
-					<Col sm="4">
+					<Col className="col-12 col-md-5 col-lg-5 col-xl-5 pt-0 pt-lg-5 pt-xl-5">
 						<h2 className="erbaum-bold text-white ml-3">MAX SUPPORT MAX RESULTS</h2>
 						<p className="text-white proxima-r feat pt-0 pt-sm-1 ml-3 text-1">
 							<ul className="pl-3">
@@ -74,6 +80,48 @@ export default (props) => {
 						<p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 mb-sm-2 ml-3">
 							<Link to="/product/the-chirofoam™-xf-mattress-extra-firm/" className="btn-cta text-white erbaum-bold space-1">READ MORE</Link>
 						</p>
+					</Col>
+					<Col className="col-12 col-md-7 col-lg-7 col-xl-7 key-tools">
+						<div className="key-tooltip key-tooltip-1">
+			 				 <div className="tooltiptext">
+			 				 	<div className="tooltip-image">
+			 				 		<img src={circle1} alt="Bio Foam Support Core" width="150px" height="150px" />
+			 				 	</div>
+			 				 	<p className="filson-pro-reg text-1 pt-3">Bio Foam Support Core</p>
+			 				 </div>
+						</div>
+						<div className="key-tooltip key-tooltip-2">
+			 				 <div className="tooltiptext">
+			 				 	<div className="tooltip-image">
+			 				 		<img src={circle4} alt="Chirofoam Lumbar Support" width="150px" height="150px" />
+			 				 	</div>
+			 				 	<p className="filson-pro-reg text-1 pt-3">Chirofoam Lumbar Support</p>
+			 				 </div>
+						</div>
+						<div className="key-tooltip key-tooltip-3">
+			 				 <div className="tooltiptext">
+			 				 	<div className="tooltip-image">
+			 				 		<img src={circle5} alt="Firm Support Chirofoam™" width="150px" height="150px" />
+			 				 	</div>
+			 				 	<p className="filson-pro-reg text-1 pt-3">Firm Support Chirofoam™</p>
+			 				 </div>
+						</div>
+						<div className="key-tooltip key-tooltip-4">
+			 				 <div className="tooltiptext">
+			 				 	<div className="tooltip-image">
+			 				 		<img src={circle2} alt="Cool Gel Infused Memory Foam" width="150px" height="150px" />
+			 				 	</div>
+			 				 	<p className="filson-pro-reg text-1 pt-3">Cool Gel Infused Memory Foam</p>
+			 				 </div>
+						</div>
+						<div className="key-tooltip key-tooltip-5">
+			 				 <div className="tooltiptext">
+			 				 	<div className="tooltip-image">
+			 				 		<img src={circle3} alt="Soft Cotton Cover with Ultra Durable Denim Border" width="150px" height="150px" />
+			 				 	</div>
+			 				 	<p className="filson-pro-reg text-1 pt-3">Soft Cotton Cover with Ultra Durable Denim Border</p>
+			 				 </div>
+						</div>
 					</Col>
 				</Row>
 			</div>

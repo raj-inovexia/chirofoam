@@ -231,7 +231,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
-		<section className="mt-4 py-5 max-support bg-image">
+		<section className="mt-4 py-5 max-support-single">
 			<Container>
 				<Row className="">
 					<Col sm="4">
