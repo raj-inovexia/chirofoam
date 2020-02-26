@@ -301,7 +301,7 @@ const Reviews = (props) => {
                     </ul>
                     <div className="position-relative">
                       {
-                        (loadingReviews) && <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute" {{
+                        (loadingReviews) && <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute" style={{
                               zIndex: 1
                             }}>
                             <div className="spinner-border color-primary" role="status" style={{
