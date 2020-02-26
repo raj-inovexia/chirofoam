@@ -17,23 +17,72 @@ import {
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 
-const Example = (props) => {
-  const [activeTab, setActiveTab] = useState('1');
-  const [showReviews, setShowReviews] = useState(5);
-  const [modal, setModal] = useState(false);
-  const [iframeSrc, setIframeSrc] = useState('');
+const Reviews = (props) => {
+  const shopName = "chirofoam.myshopify.com"
+  const [shopID, setShopID] = useState('')
+  const [productID, setProductID] = useState('')
+  const [productHandle, setProductHandle] = useState('')
+  const [productTitle, setProductTitle] = useState('')
+  const [productRating, setProductRating] = useState(0)
+  const [productImg, setProductImg] = useState('')
+  const [showReviews, setShowReviews] = useState(5)
+  const [loadingReviews, setLoadingReviews] = useState(false)
+  const [avgRating, setAvgRating] = useState(0)
+  const [totalRating, setTotalRating] = useState(0)
+  const [data, setData] = useState([])
+  const [overAllRating, setOverAllRating] = useState({})
+  const [activeTab, setActiveTab] = useState('1')
+  const [modal, setModal] = useState(false)
   const closeModal = () => setModal(false)
-  const openModal = (e, id) => {
-    setIframeSrc(`/review/${id}/`)
+  const openModal = (e, id, item) => {
+    const image = item.title.includes('XF')
+      ? '//cdn.shopify.com/s/files/1/0254/7731/6663/products/chrofoam-xf-queen-10NNew-600x307_1_large.jpg'
+      : '//cdn.shopify.com/s/files/1/0254/7731/6663/products/Chirofoam-Memory-Foam-Mattress-Angle-4-600x307_large.jpg'
+    setProductID(id)
+    setProductHandle(item.handle)
+    setProductTitle(item.title)
+    setProductImg(image)
     setModal(true)
   }
-  const externalCloseBtn = <button className="close" style={{
+  const mouseOverRating = (event, selectedButton) => {
+    event.preventDefault()
+    const buttons = document.querySelectorAll(".rating-starts button");
+    for (let i = 0; i <= selectedButton; i++) {
+      buttons[i].firstChild.classList.remove('fa-star-o')
+      buttons[i].firstChild.classList.add('fa-star')
+    }
+  }
+  const mouseLeaveRating = (event, selectedButton) => {
+    event.preventDefault()
+    if (productRating === 0) {
+      const buttons = document.querySelectorAll(".rating-starts button");
+      for (let i = 0; i <= selectedButton; i++) {
+        buttons[i].firstChild.classList.remove('fa-star')
+        buttons[i].firstChild.classList.add('fa-star-o')
+      }
+    }
+  }
+  const changeRating = (event, selectedButton) => {
+    event.preventDefault()
+    const spans = document.querySelectorAll(".rating-starts button span");
+    spans.forEach((span) => {
+      span.classList.remove('fa-star')
+      span.classList.add('fa-star-o')
+    })
+    const buttons = document.querySelectorAll(".rating-starts button");
+    for (let i = 0; i <= selectedButton; i++) {
+      buttons[i].firstChild.classList.remove('fa-star-o')
+      buttons[i].firstChild.classList.add('fa-star')
+    }
+    setProductRating(selectedButton + 1)
+  }
+  const externalCloseBtn = <button className="close d-none d-md-inline-block" style={{
       position: 'absolute',
       top: '0',
       right: '15px',
       fontSize: '3em',
       color: '#fff'
-    }} onClick={closeModal}>&times;</button>;
+    }} onClick={closeModal}>&times;</button>
   const {allShopifyProduct} = useStaticQuery(graphql `query {
       allShopifyProduct(sort: {fields: [title], order: DESC}) {
         nodes {
@@ -46,25 +95,66 @@ const Example = (props) => {
         }
       }
     }`)
-  const [avgRating, setAvgRating] = useState(0);
-  const [totalRating, setTotalRating] = useState(0);
-  const [data, setData] = useState([]);
 
   const handleLoadMore = () => {
     if (data.length >= showReviews) {
-      setShowReviews(showReviews + 5)
+      setLoadingReviews(true)
+      setTimeout(() => {
+        setShowReviews(showReviews + 5)
+        setLoadingReviews(false)
+      }, 3000)
     }
   }
-  const getDate = (date) => {
-    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_");
-    const msec = Date.parse(date);
-    const d = new Date(msec);
-    const month = Months[d.getMonth()];
-    const day = d.getDate();
-    const year = d.getFullYear()
-    return `${month} ${day}, ${year}`;
+  const submitReview = (event) => {
+    event.preventDefault();
+    const reviewForm = event.target;
+    const elements = event.target.elements;
+    const data = {
+      author: elements.author.value,
+      email: elements.email.value,
+      rating: parseInt(elements.rating.value),
+      title: elements.title.value,
+      body: elements.body.value,
+      shopify_id: elements.shopify_id.value,
+      product_id: parseInt(elements.product_id.value),
+      product_handle: elements.product_handle.value,
+      product_title: elements.product_title.value,
+      product_image: elements.product_image.value
+    };
+    const sendReview = async (URL) => {
+      return await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-requested-with': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(data)
+      }).then((response) => {
+        if (response.status === 200) {
+          response.json().then((responseJson) => {
+            console.log(responseJson)
+            reviewForm.reset()
+          })
+        } else if (response.status === 422) {
+          response.json().then((responseJson) => {
+            console.log(responseJson)
+          })
+        }
+      }).catch((error) => {
+        console.log(error);
+      })
+    }
+    sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
   }
-  const [overAllRating, setOverAllRating] = useState({});
+  const getDate = (date) => {
+    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
+    const msec = Date.parse(date)
+    const d = new Date(msec)
+    const month = Months[d.getMonth()]
+    const day = d.getDate()
+    const year = d.getFullYear()
+    return `${month} ${day}, ${year}`
+  }
   useEffect(() => {
     const fetchAllRating = async (URL) => {
       const res = await fetch(URL, {
@@ -72,9 +162,9 @@ const Example = (props) => {
         headers: {
           'Content-Type': 'application/json'
         }
-      });
+      })
       res.json().then((responseJson) => {
-        const allRating = responseJson.data;
+        const allRating = responseJson.data
         let starRatings = {
           5: 0,
           4: 0,
@@ -93,7 +183,14 @@ const Example = (props) => {
         setData(allRating)
       })
     }
-    fetchAllRating(`https://reviews.hulkapps.com/api/shop/25477316663/reviews/all`)
+    const fetchShopID = async (URL) => {
+      const res = await fetch(URL)
+      res.json().then((responseJson) => {
+        setShopID(responseJson.data.shopify_id)
+        fetchAllRating(`https://reviews.hulkapps.com/api/shop/${responseJson.data.shopify_id}/reviews/all`)
+      })
+    }
+    fetchShopID(`https://reviews.hulkapps.com/api/shop?shopify_domain=${shopName}`)
   }, [])
   return (<> < SEO title = "CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
   <section>
@@ -114,7 +211,7 @@ const Example = (props) => {
   <section className="mb-0 py-5 position-relative">
     <Container>
       <div className="col-md-12">
-        <Nav tabs="tabs" id="tabs" className="d-block">
+        <Nav tabs={true} id="tabs" className="d-block">
           <NavItem>
             <NavLink className={activeTab === '1'
                 ? 'active'
@@ -151,10 +248,10 @@ const Example = (props) => {
                 }
                 <Row className="mx-0">
                   <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
-                    <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}
+                    <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}&nbsp;
                       out of 5 stars</p>
                     <p>
-                      <span>{totalRating}
+                      <span>{totalRating}&nbsp;
                       </span>
                       reviews
                     </p>
@@ -175,7 +272,7 @@ const Example = (props) => {
                 </Row>
                 <Row className="mx-0">
                   <div className="w-100 m-auto">
-                    <ul className="list-unstyled p-0 ratings">
+                    <ul className="list-unstyled d-inline-block p-0 mb-0 ratings">
                       {
                         data.slice(0, showReviews).map((review, index) => (<li className="border mb-4" key={index}>
                           <h4 className="color-primary erbaum-bold text-uppercase" style={{
@@ -185,7 +282,7 @@ const Example = (props) => {
                             {
                               [...Array(review.rating)].map((elem, i) => (<button data-rating-value={i} data-rating-text={i} className={(
                                   (review.rating - 1) === i)
-                                  ? "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent br-current"
+                                  ? "p-0 border-0 bg-transparent p-0 border-0 bg-transparent"
                                   : "br-selected p-0 border-0 bg-transparent p-0 border-0 bg-transparent"} key={i}>
                                 <span className="color-primary fa fa-star"></span>
                               </button>))
@@ -201,13 +298,27 @@ const Example = (props) => {
                         </li>))
                       }
                     </ul>
-                    {
-                      (data.length >= showReviews) && <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
-                          <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={handleLoadMore} style={{
-                              outline: 'none'
-                            }}>LOAD MORE</button>
-                        </p>
-                    }
+                    <div className="position-relative">
+                      {
+                        (loadingReviews) && <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute" style={{
+                              zIndex: 1
+                            }}>
+                            <div className="spinner-border color-primary" role="status" style={{
+                                width: '3rem',
+                                height: '3rem'
+                              }}>
+                              <span className="sr-only">Loading...</span>
+                            </div>
+                          </div>
+                      }
+                      {
+                        (data.length >= showReviews) && <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
+                            <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={handleLoadMore} style={{
+                                outline: 'none'
+                              }}>LOAD MORE</button>
+                          </p>
+                      }
+                    </div>
                   </div>
                 </Row>
               </div>
@@ -221,7 +332,7 @@ const Example = (props) => {
                     {
                       allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
                         <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                          <button className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4" onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop())}>{
+                          <button onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)} className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">{
                               item.title.includes('XF')
                                 ? 'Chirofoam X-Firm mattress'
                                 : 'Chirofoam Premium Mattress'
@@ -265,11 +376,71 @@ const Example = (props) => {
     </Container>
   </section>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
-    <div className="modal-body p-0">
-      <iframe src={iframeSrc} title="Write Review" frameBorder="0" className="w-100 write-review"></iframe>
-    </div>
+    <form encType="multipart/form-data" onSubmit={e => submitReview(e)}>
+      <div className="modal-header border-bottom-0 position-relative">
+        <h5 className="modal-title mx-auto">Write Review</h5>
+        <button type="button" className="close m-0 d-md-none position-absolute" onClick={closeModal} aria-label="Close" style={{
+            top: 0,
+            right: 0
+          }}>
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div className="modal-body py-0">
+        <div className="card rounded-0">
+          <div className="card-header bg-transparent">
+            <h6 className="card-title mb-0 text-center">{productTitle}</h6>
+          </div>
+          <div className="card-body">
+            <div className="form-row">
+              <div className="col-6 form-group">
+                <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true}/>
+              </div>
+              <div className="col-6 form-group">
+                <input type="email" className="form-control rounded-0" name="email" placeholder="E-mail" required={true}/>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="col-12 form-group">
+                <label htmlFor="rating">Rating:&nbsp;{productRating}&nbsp;</label>
+                <div className="rating-starts d-inline">
+                  {
+                    [...Array(5)].map((elem, i) => (<button key={i} className="p-0 border-0 bg-transparent p-0 border-0 bg-transparent outline-none" onMouseOver={e => mouseOverRating(e, i)} onFocus={e => mouseOverRating(e, i)} onMouseLeave={e => mouseLeaveRating(e, i)} onBlur={e => mouseLeaveRating(e, i)} onClick={e => changeRating(e, i)}>
+                      <span className="color-primary fa fa-star-o"></span>
+                    </button>))
+                  }
+                </div>
+                <input type="hidden" name="rating" value={productRating}/>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="col-12 form-group">
+                <input type="text" className="form-control rounded-0" name="title" placeholder="Review Title" required={true}/>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="col-sm-12 form-group">
+                <textarea className="form-control rounded-0" name="body" placeholder="Review Body" rows="4" required={true} style={{
+                    resize: 'none'
+                  }}></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="modal-footer border-top-0 justify-content-center">
+        <input type="hidden" name="shopify_id" value={shopID}/>
+        <input type="hidden" name="product_id" value={productID}/>
+        <input type="hidden" name="product_handle" value={productHandle}/>
+        <input type="hidden" name="product_title" value={productTitle}/>
+        <input type="hidden" name="product_image" value={productImg}/>
+        <button type="submit" className="btn btn-custom-primary text-white" style={{
+            opacity: 1
+          }}>Submit</button>
+      </div>
+    </form>
   </Modal>
   <Footer/> < />
 );
 };
-export default Example;
+export default Reviews;
