@@ -1184,7 +1184,7 @@ body .table-rows .row-list:first-child ul li{
     content: "\f104";
     font-family: "fontAwesome";
 }
-<<<<<<< HEAD
+
 .chirofoam-video{
 	width:90%;
 }
@@ -1459,11 +1459,10 @@ body .key-tooltip-5{
 }
 #tabs li.nav-item:hover {
     cursor: pointer;
-=======
+}
 .write-review {
     min-height: 500px;
 }
 .outline-none {
     outline: none !important;
->>>>>>> aef716ad1f9a7863ae23a6c5ce884d0a3da01b79
 }
