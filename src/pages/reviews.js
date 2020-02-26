@@ -102,7 +102,7 @@ const Reviews = (props) => {
       setLoadingReviews(true)
       setTimeout(()=>{
         setShowReviews(showReviews + 5)
-        setLoadingReviews(true)
+        setLoadingReviews(false)
       }, 3000)
     }
   }
