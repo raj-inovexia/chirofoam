@@ -248,7 +248,7 @@ const Reviews = (props) => {
                 }
                 <Row className="mx-0">
                   <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
-                    <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}
+                    <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}&nbsp;
                       out of 5 stars</p>
                     <p>
                       <span>{totalRating}&nbsp;
