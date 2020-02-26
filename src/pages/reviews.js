@@ -314,7 +314,7 @@ const Reviews = (props) => {
                       }
                       {
                         (data.length >= showReviews) && <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
-                            <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={e = handleLoadMore(e)} style={{
+                            <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={e => handleLoadMore(e)} style={{
                                 outline: 'none'
                               }}>LOAD MORE</button>
                           </p>
