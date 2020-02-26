@@ -209,7 +209,7 @@ const Reviews = (props) => {
   </section>
 
   <section className="mb-0 py-5 position-relative">
-    <Container>
+    <Container className="no-gutters">
       <div className="col-md-12">
         <Nav tabs={true} id="tabs" className="d-block">
           <NavItem>
