@@ -96,11 +96,10 @@ const Reviews = (props) => {
       }
     }`)
 
-  const handleLoadMore = (event) => {
+  const handleLoadMore = () => {
     if (data.length >= showReviews) {
-      console.log(event.target, event.target.classList)
       setLoadingReviews(true)
-      setTimeout(()=>{
+      setTimeout(() => {
         setShowReviews(showReviews + 5)
         setLoadingReviews(false)
       }, 3000)
@@ -314,7 +313,7 @@ const Reviews = (props) => {
                       }
                       {
                         (data.length >= showReviews) && <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0 text-center">
-                            <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={e => handleLoadMore(e)} style={{
+                            <button className="btn-cta color-primary erbaum-bold space-1 bg-transparent border-0 p-0" onClick={handleLoadMore} style={{
                                 outline: 'none'
                               }}>LOAD MORE</button>
                           </p>
@@ -378,9 +377,12 @@ const Reviews = (props) => {
   </section>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
     <form encType="multipart/form-data" onSubmit={e => submitReview(e)}>
-      <div className="modal-header border-bottom-0">
+      <div className="modal-header border-bottom-0 position-relative">
         <h5 className="modal-title mx-auto">Write Review</h5>
-        <button type="button" className="close ml-0 d-md-none" onClick={closeModal} aria-label="Close">
+        <button type="button" className="close m-0 d-md-none position-absolute" onClick={closeModal} aria-label="Close" style={{
+            top: 0,
+            right: 0
+          }}>
           <span aria-hidden="true">×</span>
         </button>
       </div>
