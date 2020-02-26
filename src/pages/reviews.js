@@ -99,10 +99,10 @@ const Reviews = (props) => {
   const handleLoadMore = (event) => {
     if (data.length >= showReviews) {
       console.log(event.target, event.target.classList)
-      loadingReviews(true)
+      setLoadingReviews(true)
       setTimeout(()=>{
         setShowReviews(showReviews + 5)
-        loadingReviews(true)
+        setLoadingReviews(true)
       }, 3000)
     }
   }
