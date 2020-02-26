@@ -154,7 +154,8 @@ const Example = (props) => {
                     <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}
                       out of 5 stars</p>
                     <p>
-                      <span>{totalRating}
+                      <span>
+                        {totalRating}&nbsp;
                       </span>
                       reviews
                     </p>
