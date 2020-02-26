@@ -69,14 +69,14 @@ export default (props) => {
 				<Row className="mx-0">
 					<Col className="col-12 col-md-5 col-lg-5 col-xl-5 pt-0 pt-lg-5 pt-xl-5">
 						<h2 className="erbaum-bold text-white ml-3">MAX SUPPORT MAX RESULTS</h2>
-						<p className="text-white proxima-r feat pt-0 pt-sm-1 ml-3 text-1">
+						<div className="text-white proxima-r feat pt-0 pt-sm-1 ml-3 text-1 mb-2">
 							<ul className="pl-3">
 								<li>COOL GEL INFUSED MEMORY FOAM</li>
 								<li>EXTRA FIRM SUPPORT CHIROFOAM</li>
 								<li>CHIROFOAM LUMBAR SUPPORT</li>
 								<li>BODY SUPPORT BIO FOAM CORE</li>
 							</ul>
-						</p>
+						</div>
 						<p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 mb-sm-2 ml-3">
 							<Link to="/product/the-chirofoam™-xf-mattress-extra-firm/" className="btn-cta text-white erbaum-bold space-1">READ MORE</Link>
 						</p>
