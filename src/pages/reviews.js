@@ -12,7 +12,8 @@ import {
   NavLink,
   TabContent,
   TabPane,
-  Modal
+  Modal,
+  UncontrolledAlert
 } from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
@@ -33,6 +34,7 @@ const Reviews = (props) => {
   const [overAllRating, setOverAllRating] = useState({})
   const [activeTab, setActiveTab] = useState('1')
   const [modal, setModal] = useState(false)
+  const [response, setResponse] = useState(false)
   const closeModal = () => setModal(false)
   const openModal = (e, id, item) => {
     const image = item.title.includes('XF')
@@ -133,10 +135,13 @@ const Reviews = (props) => {
         if (response.status === 200) {
           response.json().then((responseJson) => {
             console.log(responseJson)
+            setResponse(<UncontrolledAlert className="rounded-0" color="success">{responseJson.message}</UncontrolledAlert>)
             reviewForm.reset()
+            setProductRating(0)
           })
         } else if (response.status === 422) {
           response.json().then((responseJson) => {
+            setResponse(<UncontrolledAlert className="rounded-0" color="warning">{responseJson.message}</UncontrolledAlert>)
             console.log(responseJson)
           })
         }
@@ -246,7 +251,7 @@ const Reviews = (props) => {
                       </div>
                   }
                   <Row className="mx-0 align-items-center">
-                    <Col sm="6" className="pt-5 p-sm-0 text-center col-12">
+                    <Col md="6" className="pt-5 p-sm-0 text-center col-12">
                       <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}&nbsp; out of 5 stars</p>
                       <p>
                         <span>{totalRating}&nbsp;
@@ -254,7 +259,7 @@ const Reviews = (props) => {
                         reviews
                       </p>
                     </Col>
-                    <Col sm="6" className="py-5 col-12">
+                    <Col md="6" className="py-5 col-12">
                       <div className="p-0 list-unstyled col-md-9 review-details">
                         {
                           Object.keys(overAllRating).reverse().map((index) => (<div key={index} className="w-100 d-flex color-primary mb-4"><span>{index}</span><i className=" pl-1 pr-3 color-primary fa fa-star"></i>
@@ -393,6 +398,7 @@ const Reviews = (props) => {
             <h6 className="card-title mb-0 text-center">{productTitle}</h6>
           </div>
           <div className="card-body">
+            {response}
             <div className="form-row">
               <div className="col-6 form-group">
                 <input type="text" className="form-control rounded-0" name="author" placeholder="Name" required={true}/>
