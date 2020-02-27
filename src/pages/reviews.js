@@ -117,10 +117,9 @@ const Reviews = (props) => {
       }, 3000)
     }
   }
-  const recaptchaLoaded = () => {
-    console.log('recaptcha Loaded');
-  }
   const verifyreCaptcha = () => {
+    setResponseColor("")
+    dismissResponse()
     setVerified(true)
   }
   const submitReview = (event) => {
@@ -172,7 +171,7 @@ const Reviews = (props) => {
                 responseJson.message
               }</strong> < ul className = "mb-0 pl-4" > {
                 Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
-              } </ul></>)
+              } < /ul></ >)
               console.log(responseJson)
             })
           }
@@ -184,10 +183,10 @@ const Reviews = (props) => {
     } else {
       setResponseVisible(true)
       setResponseColor("success")
-      setResponseContent(<p>
+      setResponseContent(<div>
         <strong>Verify!
         </strong>
-        Your are not a bot.</p>)
+        Your are not a bot.</div>)
     }
   }
   const getDate = (date) => {
@@ -478,7 +477,7 @@ const Reviews = (props) => {
             <div className="form-row">
               <div className="col-sm-12 form-group">
                 <div class="d-flex justify-content-center">
-                  <Recaptcha ref={e => recaptchaInstance = e} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" onloadCallback={recaptchaLoaded} verifyCallback={verifyreCaptcha}/>
+                  <Recaptcha ref={e => recaptchaInstance = e} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyreCaptcha}/>
                 </div>
               </div>
             </div>
@@ -497,7 +496,7 @@ const Reviews = (props) => {
       </div>
     </form>
   </Modal>
-  <Footer/> </>
+  <Footer/> < />
 );
 };
 export default Reviews;
