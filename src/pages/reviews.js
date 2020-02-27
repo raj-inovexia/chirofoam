@@ -498,18 +498,22 @@ const Reviews = (props) => {
         <input type="hidden" name="product_handle" value={productHandle}/>
         <input type="hidden" name="product_title" value={productTitle}/>
         <input type="hidden" name="product_image" value={productImg}/>
-        <button type="submit" className="btn btn-custom-primary text-white" style={{
+        <button type="submit" className={(
+            submitting)
+            ? "btn btn-custom-primary color-primary position-relative"
+            : "btn btn-custom-primary text-white"} style={{
             opacity: 1
           }}>
-          {(submitting)&&<div className="h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style={{
+          {
+            (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
               zIndex: 1,
               left: 0,
               top: 0
-            }}>
-            <div className="spinner-border text-white" role="status">
-              <span className="sr-only">Loading...</span>
+            }} > <div className="spinner-border text-white" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
             </div>
-          </div>}
+          }
           Submit</button>
       </div>
     </form>
