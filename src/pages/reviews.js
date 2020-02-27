@@ -145,6 +145,11 @@ const Reviews = (props) => {
             setResponseContent(<strong>{responseJson.message}</strong>)
             reviewForm.reset()
             setProductRating(0)
+            const spans = document.querySelectorAll(".rating-starts button span");
+            spans.forEach((span) => {
+              span.classList.remove('fa-star')
+              span.classList.add('fa-star-o')
+            })
             console.log(responseJson)
           })
         } else if (response.status === 422) {
@@ -279,7 +284,7 @@ const Reviews = (props) => {
                           Object.keys(overAllRating).reverse().map((index) => (<div key={index} className="w-100 d-flex color-primary mb-4">
                             <span>{index}</span>
                             <i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                            <div className="progress rounded-0 bg-transparent p-0 col col-md-10 mt-1 pr-3">
+                            <div className="progress rounded-0 bg-transparent p-0 flex-grow-1 mt-1">
                               <div className="progress-bar rounded-0" style={{
                                   width: ((overAllRating[index] / totalRating) * 100) + '%',
                                   backgroundColor: 'rgb(186, 33, 84)'
