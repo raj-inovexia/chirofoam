@@ -156,9 +156,9 @@ const Reviews = (props) => {
           response.json().then((responseJson) => {
             setResponseVisible(true)
             setResponseColor("warning")
-            setResponseContent(<><strong> {
+            setResponseContent(<><strong>{
               responseJson.message
-            }</strong> < ul class = "mb-0 pl-4" > {
+            }</strong><ul className="mb-0 pl-4"> {
               Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
             } </ul></>)
             console.log(responseJson)
