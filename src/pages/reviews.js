@@ -117,6 +117,9 @@ const Reviews = (props) => {
       }, 3000)
     }
   }
+  const recaptchaLoaded = () => {
+    console.log(recaptchaInstance);
+  }
   const verifyreCaptcha = () => {
     setResponseColor("")
     dismissResponse()
@@ -182,10 +185,9 @@ const Reviews = (props) => {
       sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
     } else {
       setResponseVisible(true)
-      setResponseColor("success")
+      setResponseColor("warning")
       setResponseContent(<div>
-        <strong>Verify!
-        </strong>
+        <strong>Verify!&nbsp;</strong>
         Your are not a bot.</div>)
     }
   }
@@ -477,7 +479,7 @@ const Reviews = (props) => {
             <div className="form-row">
               <div className="col-sm-12 form-group">
                 <div class="d-flex justify-content-center">
-                  <Recaptcha ref={e => recaptchaInstance = e} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyreCaptcha}/>
+                  <Recaptcha ref={e => recaptchaInstance = e} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" onloadCallback={recaptchaLoaded} verifyCallback={verifyreCaptcha}/>
                 </div>
               </div>
             </div>
