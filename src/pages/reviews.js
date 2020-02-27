@@ -176,7 +176,7 @@ const Reviews = (props) => {
                 responseJson.message
               }</strong> < ul className = "mb-0 pl-4" > {
                 Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
-              } < /ul></ >)
+              } </ul></>)
             })
           }
         }).catch((error) => {
@@ -495,11 +495,21 @@ const Reviews = (props) => {
         <input type="hidden" name="product_image" value={productImg}/>
         <button type="submit" className="btn btn-custom-primary text-white" style={{
             opacity: 1
-          }}>Submit</button>
+          }}>
+          <div className="h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style={{
+              zIndex: 1,
+              left: 0,
+              top: 0
+            }}>
+            <div className="spinner-border text-white" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+          Submit</button>
       </div>
     </form>
   </Modal>
-  <Footer/> < />
+  <Footer/> </>
 )
 }
 export default Reviews
