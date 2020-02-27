@@ -120,8 +120,6 @@ const Reviews = (props) => {
   const recaptchaReference = (event) => {
     if(event.reset !== undefined){
       setRecaptchainstance(event)
-    }else{
-      setRecaptchainstance(grecaptcha)
     }
   }
   const recaptchaLoaded = (event) => {
