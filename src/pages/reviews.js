@@ -210,7 +210,7 @@ const Reviews = (props) => {
 
   <section className="mb-0 py-5 position-relative">
     <Container>
-      <Row className="mx-0">
+      <Row>
         <div className="col-md-12">
           <Nav tabs={true} id="tabs" className="d-block">
             <NavItem>
@@ -231,9 +231,7 @@ const Reviews = (props) => {
           <TabContent activeTab={activeTab}>
             <TabPane tabId="1">
               <div id="tabsContent" className="tab-content border border-top-0">
-                <div id="customer-revieew" className="tab-pane active show m-auto pb-5 position-relative" style={{
-                    width: '85%'
-                  }}>
+                <div id="customer-revieew" className="tab-pane col-12 col-md-10 m-auto pb-5 position-relative">
                   {
                     (avgRating === 0) && <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute" style={{
                           zIndex: 1
