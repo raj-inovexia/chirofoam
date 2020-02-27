@@ -325,10 +325,11 @@ const Reviews = (props) => {
             <TabPane tabId="2">
               <div id="tabsContent" className="tab-content border border-top-0">
                 <div id="leave-review" className="m-auto py-5 col-12 col-sm-10 col-lg-10 col-xl-10 p-0 px-sm-2">
-                  <Row className="mx-0">
-                    <div className="col-12 col-sm-12 col-lg-6 col-xl-6 m-auto d-flex no-gutters select-mattress">
+                  <Row>
+                    <div className="col-12 col-md-10 col-lg-8 col-xl-6 m-auto select-mattress">
+                      <Row className="no-gutters">
                       {
-                        allShopifyProduct.nodes.map((item, i) => (<Col key={i} className="col-6">
+                        allShopifyProduct.nodes.map((item, i) => (<div key={i} className="col-md-6 col-10 mx-auto">
                           <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
                             <button onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)} className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">{
                                 item.title.includes('XF')
@@ -337,8 +338,9 @@ const Reviews = (props) => {
                               }</button>
                             <p className="filson-pro-reg pt-4 color-secondary">Click here to add your reviews for our {item.title}</p>
                           </div>
-                        </Col>))
+                        </div>))
                       }
+                      </Row>
                     </div>
                   </Row>
                 </div>
