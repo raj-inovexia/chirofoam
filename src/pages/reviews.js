@@ -40,7 +40,7 @@ const Reviews = (props) => {
   const [modal, setModal] = useState(false)
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
-  const [responseVisible, setResponseVisible] = useState(false);
+  const [responseVisible, setResponseVisible] = useState(false)
   const dismissResponse = () => {
     setResponseVisible(false)
     setResponseContent(false)
@@ -58,7 +58,7 @@ const Reviews = (props) => {
   }
   const mouseOverRating = (event, selectedButton) => {
     event.preventDefault()
-    const buttons = document.querySelectorAll(".rating-starts button");
+    const buttons = document.querySelectorAll(".rating-starts button")
     for (let i = 0; i <= selectedButton; i++) {
       buttons[i].firstChild.classList.remove('fa-star-o')
       buttons[i].firstChild.classList.add('fa-star')
@@ -67,7 +67,7 @@ const Reviews = (props) => {
   const mouseLeaveRating = (event, selectedButton) => {
     event.preventDefault()
     if (productRating === 0) {
-      const buttons = document.querySelectorAll(".rating-starts button");
+      const buttons = document.querySelectorAll(".rating-starts button")
       for (let i = 0; i <= selectedButton; i++) {
         buttons[i].firstChild.classList.remove('fa-star')
         buttons[i].firstChild.classList.add('fa-star-o')
@@ -76,12 +76,12 @@ const Reviews = (props) => {
   }
   const changeRating = (event, selectedButton) => {
     event.preventDefault()
-    const spans = document.querySelectorAll(".rating-starts button span");
+    const spans = document.querySelectorAll(".rating-starts button span")
     spans.forEach((span) => {
       span.classList.remove('fa-star')
       span.classList.add('fa-star-o')
     })
-    const buttons = document.querySelectorAll(".rating-starts button");
+    const buttons = document.querySelectorAll(".rating-starts button")
     for (let i = 0; i <= selectedButton; i++) {
       buttons[i].firstChild.classList.remove('fa-star-o')
       buttons[i].firstChild.classList.add('fa-star')
@@ -120,11 +120,7 @@ const Reviews = (props) => {
   const recaptchaReference = (event) => {
     setRecaptchaInstance(event)
   }
-  const recaptchaLoaded = (event) => {
-    console.log("recaptcha loaded");
-  }
   const resetRecaptcha = () => {
-    console.log(recaptchaInstance)
     recaptchaInstance.reset()
   }
   const verifyreCaptcha = () => {
@@ -133,10 +129,10 @@ const Reviews = (props) => {
     setVerified(true)
   }
   const submitReview = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     if (isVerified) {
-      const reviewForm = event.target;
-      const elements = event.target.elements;
+      const reviewForm = event.target
+      const elements = event.target.elements
       const data = {
         author: elements.author.value,
         email: elements.email.value,
@@ -148,7 +144,7 @@ const Reviews = (props) => {
         product_handle: elements.product_handle.value,
         product_title: elements.product_title.value,
         product_image: elements.product_image.value
-      };
+      }
       const sendReview = async (URL) => {
         return await fetch(URL, {
           method: 'POST',
@@ -165,13 +161,12 @@ const Reviews = (props) => {
               setResponseContent(<strong>{responseJson.message}</strong>)
               reviewForm.reset()
               setProductRating(0)
-              const spans = document.querySelectorAll(".rating-starts button span");
+              const spans = document.querySelectorAll(".rating-starts button span")
               spans.forEach((span) => {
                 span.classList.remove('fa-star')
                 span.classList.add('fa-star-o')
               })
               resetRecaptcha()
-              console.log(responseJson)
             })
           } else if (response.status === 422) {
             response.json().then((responseJson) => {
@@ -182,11 +177,10 @@ const Reviews = (props) => {
               }</strong> < ul className = "mb-0 pl-4" > {
                 Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
               } < /ul></ >)
-              console.log(responseJson)
             })
           }
         }).catch((error) => {
-          console.log(error);
+          console.log(error)
         })
       }
       sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
@@ -486,7 +480,7 @@ const Reviews = (props) => {
             <div className="form-row">
               <div className="col-sm-12 form-group">
                 <div className="d-flex justify-content-center">
-                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" onloadCallback={e => recaptchaLoaded(e)} verifyCallback={verifyreCaptcha}/>
+                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyreCaptcha}/>
                 </div>
               </div>
             </div>
@@ -506,6 +500,6 @@ const Reviews = (props) => {
     </form>
   </Modal>
   <Footer/> < />
-);
-};
-export default Reviews;
+)
+}
+export default Reviews
