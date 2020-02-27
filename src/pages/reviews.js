@@ -503,7 +503,7 @@ const Reviews = (props) => {
             ? "btn btn-custom-primary color-primary position-relative"
             : "btn btn-custom-primary text-white"} style={{
             opacity: 1
-          }}>
+          }} disabled={submitting}>
           {
             (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
               zIndex: 1,
