@@ -84,42 +84,47 @@ export default (props) => {
 					<Col className="col-12 col-md-7 col-lg-7 col-xl-7 key-tools">
 						<div className="key-tooltip key-tooltip-1">
 			 				 <div className="tooltiptext">
-			 				 	<div className="tooltip-image">
+			 				 	<div className="tooltip-image d-fex d-sm-flex">
+									<p className="filson-pro-reg text-1 pt-3">Bio Foam Support Core</p>
 			 				 		<img src={circle1} alt="Bio Foam Support Core" width="150px" height="150px" />
 			 				 	</div>
-			 				 	<p className="filson-pro-reg text-1 pt-3">Bio Foam Support Core</p>
+			 				 	
 			 				 </div>
 						</div>
 						<div className="key-tooltip key-tooltip-2">
 			 				 <div className="tooltiptext">
-			 				 	<div className="tooltip-image">
+			 				 	<div className="tooltip-image d-flex d-sm-flex">
+									<p className="filson-pro-reg text-1 pt-3">Chirofoam Lumbar Support</p>
 			 				 		<img src={circle4} alt="Chirofoam Lumbar Support" width="150px" height="150px" />
 			 				 	</div>
-			 				 	<p className="filson-pro-reg text-1 pt-3">Chirofoam Lumbar Support</p>
+			 				 	
 			 				 </div>
 						</div>
 						<div className="key-tooltip key-tooltip-3">
 			 				 <div className="tooltiptext">
-			 				 	<div className="tooltip-image">
+			 				 	<div className="tooltip-image d-flex d-sm-flex">
+									<p className="filson-pro-reg text-1 pt-3">Firm Support Chirofoam™</p>
 			 				 		<img src={circle5} alt="Firm Support Chirofoam™" width="150px" height="150px" />
 			 				 	</div>
-			 				 	<p className="filson-pro-reg text-1 pt-3">Firm Support Chirofoam™</p>
+			 				 	
 			 				 </div>
 						</div>
 						<div className="key-tooltip key-tooltip-4">
 			 				 <div className="tooltiptext">
-			 				 	<div className="tooltip-image">
+			 				 	<div className="tooltip-image d-flex d-sm-flex">
+									<p className="filson-pro-reg text-1 pt-3">Cool Gel Infused Memory Foam</p>
 			 				 		<img src={circle2} alt="Cool Gel Infused Memory Foam" width="150px" height="150px" />
 			 				 	</div>
-			 				 	<p className="filson-pro-reg text-1 pt-3">Cool Gel Infused Memory Foam</p>
+			 				 	
 			 				 </div>
 						</div>
 						<div className="key-tooltip key-tooltip-5">
 			 				 <div className="tooltiptext">
-			 				 	<div className="tooltip-image">
+			 				 	<div className="tooltip-image d-flex d-sm-flex">
+									<p className="filson-pro-reg text-1 pt-3">Soft Cotton Cover with Ultra Durable Denim Border</p>
 			 				 		<img src={circle3} alt="Soft Cotton Cover with Ultra Durable Denim Border" width="150px" height="150px" />
 			 				 	</div>
-			 				 	<p className="filson-pro-reg text-1 pt-3">Soft Cotton Cover with Ultra Durable Denim Border</p>
+			 				 	
 			 				 </div>
 						</div>
 					</Col>
