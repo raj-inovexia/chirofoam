@@ -84,10 +84,11 @@ export default (props) => {
 					<Col className="col-12 col-md-7 col-lg-7 col-xl-7 key-tools">
 						<div className="key-tooltip key-tooltip-1">
 			 				 <div className="tooltiptext">
-			 				 	<div className="tooltip-image">
+			 				 	<div className="tooltip-image d-fex d-sm-flex">
+									<p className="filson-pro-reg text-1 pt-3">Bio Foam Support Core</p>
 			 				 		<img src={circle1} alt="Bio Foam Support Core" width="150px" height="150px" />
 			 				 	</div>
-			 				 	<p className="filson-pro-reg text-1 pt-3">Bio Foam Support Core</p>
+			 				 	
 			 				 </div>
 						</div>
 						<div className="key-tooltip key-tooltip-2">
