@@ -117,38 +117,38 @@ const TAKETEST = (props) => {
 		<section className="mb-0 py-5 bg-white position-relative d-none" id="take-test">
 			<div className="container-large no-gutters">
 				<div className="col-md-12">
-					<Nav tabs id="tabs" className="d-flex">
-						<NavItem>
+					<Nav tabs id="tabs" className="d-flex all-steps">
+						<NavItem className={(activeTab === '1' ? 'active ' : '')}>
 							<NavLink  className={(activeTab === '1' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>1</span>
 								<span className="fs-2 d-none d-md-block">Sleep Position</span>
 							</NavLink>
 						</NavItem>
-						<NavItem>
+						<NavItem className={(activeTab === '2' ? 'active ' : '')}>
 							<NavLink  className={(activeTab === '2' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>2</span>
 								<span className="fs-2 d-none d-md-block">Surface</span>
 							</NavLink>
 						</NavItem>
-						<NavItem>
+						<NavItem className={(activeTab === '3' ? 'active ' : '')}>
 							<NavLink  className={(activeTab === '3' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>3</span>
 								<span className="fs-2 d-none d-md-block">Body Type</span>
 							</NavLink>
 						</NavItem>
-						<NavItem>
+						<NavItem className={(activeTab === '4' ? 'active ' : '')}>
 							<NavLink  className={(activeTab === '4' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>4</span>
 								<span className="fs-2 d-none d-md-block">Temperature</span>
 							</NavLink>
 						</NavItem>
-						<NavItem>
+						<NavItem className={(activeTab === '5' ? 'active ' : '')}>
 							<NavLink  className={(activeTab === '5' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>5</span>
 								<span className="fs-2 d-none d-md-block">Exercise</span>
 							</NavLink>
 						</NavItem>
-						<NavItem>
+						<NavItem className={(activeTab === '6' ? 'active ' : '')}>
 							<NavLink  className={(activeTab === '6' ? 'active ' : '') + 'px-xs-0'}>
 								<span className="fs-2 fs-md-4 fs-sm-3">Step <br/>6</span>
 								<span className="fs-2 d-none d-md-block">Back Pain</span>
