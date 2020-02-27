@@ -36,7 +36,7 @@ const Reviews = (props) => {
   const [overAllRating, setOverAllRating] = useState({})
   const [activeTab, setActiveTab] = useState('1')
   const [isVerified, setVerified] = useState(false)
-  const [recaptchaInstance, setRecaptchainstance] = useState(null)
+  const [recaptchaInstance, setRecaptchaInstance] = useState(null)
   const [modal, setModal] = useState(false)
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
@@ -118,13 +118,14 @@ const Reviews = (props) => {
     }
   }
   const recaptchaReference = (event) => {
-    setRecaptchainstance(event)
+    setRecaptchaInstance(event)
   }
   const recaptchaLoaded = (event) => {
     console.log("recaptcha loaded");
   }
   const resetRecaptcha = () => {
-    recaptchaInstance.reset();
+    console.log(recaptchaInstance)
+    recaptchaInstance.reset()
   }
   const verifyreCaptcha = () => {
     setResponseColor("")
