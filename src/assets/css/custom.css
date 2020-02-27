@@ -1474,3 +1474,9 @@ body .key-tooltip-5{
     width: 250px;
     height: 250px;
 }
+.all-steps li.nav-item a.nav-link{
+	background-color:unset !important;
+}
+.all-steps li.active.nav-item{
+	background-color:#ba2154 !important;
+}

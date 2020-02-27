@@ -128,7 +128,7 @@ export default (props) => {
 			<Container>
 				<Row className="mx-0 no-gutters">
 					<Col className="left-list col-12 col-md-6 col-lg-6 px-0 px-sm-0 px-md-2 px-lg-3 px-xl-3">
-						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase text-center">SPECIALTY FEATURES OVERVIEW</h5>
+						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase">SPECIALTY FEATURES OVERVIEW</h5>
 						<ul className="pl-0 list-unstyled left-list filson-pro-reg color-secondary">
 							<li>
 								<strong>Cool Gel Infused Visco Memory Foam </strong> – Designed to reduce pressure points and motion transfer, while keeping you cool and comfortable during your sleep.
@@ -148,7 +148,7 @@ export default (props) => {
 						</ul>
 					</Col>
 					<Col className="right-list col-12 col-md-6 col-lg-6 px-0 px-sm-0 px-md-2 px-lg-3 px-xl-3">
-						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase text-center">TECHNICAL SPECIFICATIONS</h5>
+						<h5 className="erbaum-bold color-primary pb-2 pb-sm-5 text-uppercase">TECHNICAL SPECIFICATIONS</h5>
 						<p className="filson-pro-reg color-primary">Top Upholstery</p>
 						<ul className="color-secondary filson-pro-reg">
 							<li>Soft Luxurious and Breathable Removable Cover with Non-Skid Bottom.</li>
