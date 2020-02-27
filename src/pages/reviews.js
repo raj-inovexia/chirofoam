@@ -13,7 +13,7 @@ import {
   TabContent,
   TabPane,
   Modal,
-  UncontrolledAlert
+  Alert
 } from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
@@ -35,6 +35,11 @@ const Reviews = (props) => {
   const [activeTab, setActiveTab] = useState('1')
   const [modal, setModal] = useState(false)
   const [response, setResponse] = useState(false)
+  const [responseVisible, setResponseVisible] = useState(true);
+  const dismissResponse = () => {
+    setResponseVisible(false)
+    setResponse(false)
+  }
   const closeModal = () => setModal(false)
   const openModal = (e, id, item) => {
     const image = item.title.includes('XF')
@@ -135,13 +140,19 @@ const Reviews = (props) => {
         if (response.status === 200) {
           response.json().then((responseJson) => {
             console.log(responseJson)
-            setResponse(<UncontrolledAlert className="rounded-0" color="success">{responseJson.message}</UncontrolledAlert>)
+            setResponseVisible(true)
+            setResponse(<Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color="success">
+              <strong>{responseJson.message}</strong>
+            </Alert>)
             reviewForm.reset()
             setProductRating(0)
           })
         } else if (response.status === 422) {
           response.json().then((responseJson) => {
-            setResponse(<UncontrolledAlert className="rounded-0" color="warning">{responseJson.message}</UncontrolledAlert>)
+            setResponseVisible(true)
+            setResponse(<Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color="warning">
+              <strong>{responseJson.message}</strong>
+            </Alert>)
             console.log(responseJson)
           })
         }
@@ -262,13 +273,17 @@ const Reviews = (props) => {
                     <Col md="6" className="py-5 col-12">
                       <div className="p-0 list-unstyled col-md-9 review-details">
                         {
-                          Object.keys(overAllRating).reverse().map((index) => (<div key={index} className="w-100 d-flex color-primary mb-4"><span>{index}</span><i className=" pl-1 pr-3 color-primary fa fa-star"></i>
-                        <div className="progress rounded-0 bg-transparent p-0 col col-md-10 mt-1 pr-3">
+                          Object.keys(overAllRating).reverse().map((index) => (<div key={index} className="w-100 d-flex color-primary mb-4">
+                            <span>{index}</span>
+                            <i className=" pl-1 pr-3 color-primary fa fa-star"></i>
+                            <div className="progress rounded-0 bg-transparent p-0 col col-md-10 mt-1 pr-3">
                               <div className="progress-bar rounded-0" style={{
                                   width: ((overAllRating[index] / totalRating) * 100) + '%',
                                   backgroundColor: 'rgb(186, 33, 84)'
                                 }}></div>
-                            </div><span>{overAllRating[index]}</span></div>))
+                            </div>
+                            <span>{overAllRating[index]}</span>
+                          </div>))
                         }
                       </div>
                     </Col>
@@ -333,18 +348,18 @@ const Reviews = (props) => {
                   <Row>
                     <div className="col-12 col-md-10 col-lg-8 col-xl-6 m-auto select-mattress">
                       <Row className="no-gutters">
-                      {
-                        allShopifyProduct.nodes.map((item, i) => (<div key={i} className="col-md-6 col-10 mx-auto">
-                          <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                            <button onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)} className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">{
-                                item.title.includes('XF')
-                                  ? 'Chirofoam X-Firm mattress'
-                                  : 'Chirofoam Premium Mattress'
-                              }</button>
-                            <p className="filson-pro-reg pt-4 color-secondary">Click here to add your reviews for our {item.title}</p>
-                          </div>
-                        </div>))
-                      }
+                        {
+                          allShopifyProduct.nodes.map((item, i) => (<div key={i} className="col-md-6 col-10 mx-auto">
+                            <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
+                              <button onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)} className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">{
+                                  item.title.includes('XF')
+                                    ? 'Chirofoam X-Firm mattress'
+                                    : 'Chirofoam Premium Mattress'
+                                }</button>
+                              <p className="filson-pro-reg pt-4 color-secondary">Click here to add your reviews for our {item.title}</p>
+                            </div>
+                          </div>))
+                        }
                       </Row>
                     </div>
                   </Row>
