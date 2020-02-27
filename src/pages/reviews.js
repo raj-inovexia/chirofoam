@@ -117,8 +117,8 @@ const Reviews = (props) => {
       }, 3000)
     }
   }
-  const recaptchaLoaded = () => {
-    console.log(recaptchaInstance);
+  const recaptchaLoaded = (event) => {
+    console.log(event, recaptchaInstance);
   }
   const resetRecaptcha = () => {
     recaptchaInstance.reset();
@@ -481,8 +481,8 @@ const Reviews = (props) => {
             </div>
             <div className="form-row">
               <div className="col-sm-12 form-group">
-                <div class="d-flex justify-content-center">
-                  <Recaptcha ref={e => recaptchaInstance = e} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" onloadCallback={recaptchaLoaded} verifyCallback={verifyreCaptcha}/>
+                <div className="d-flex justify-content-center">
+                  <Recaptcha ref={e => recaptchaInstance = e} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" onloadCallback={e => recaptchaLoaded(e)} verifyCallback={verifyreCaptcha}/>
                 </div>
               </div>
             </div>
