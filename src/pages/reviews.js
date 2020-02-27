@@ -118,9 +118,7 @@ const Reviews = (props) => {
     }
   }
   const recaptchaReference = (event) => {
-    if(event.reset !== undefined){
-      setRecaptchainstance(event)
-    }
+    setRecaptchainstance(event)
   }
   const recaptchaLoaded = (event) => {
     console.log("recaptcha loaded");
