@@ -140,18 +140,21 @@ const Reviews = (props) => {
       }).then((response) => {
         if (response.status === 200) {
           response.json().then((responseJson) => {
-            console.log(responseJson)
             setResponseVisible(true)
             setResponseColor("success")
             setResponseContent(<strong>{responseJson.message}</strong>)
             reviewForm.reset()
             setProductRating(0)
+            console.log(responseJson)
           })
         } else if (response.status === 422) {
           response.json().then((responseJson) => {
             setResponseVisible(true)
             setResponseColor("warning")
-            setResponseContent(<strong>{responseJson.message}</strong>)
+            setResponseContent(<strong>{responseJson.message}</strong>
+            <ul class="mb-0 pl-4">
+              {Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))}
+            </ul>)
             console.log(responseJson)
           })
         }
