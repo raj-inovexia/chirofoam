@@ -38,6 +38,7 @@ const Reviews = (props) => {
   const [isVerified, setVerified] = useState(false)
   const [recaptchaInstance, setRecaptchaInstance] = useState(null)
   const [modal, setModal] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
   const [responseVisible, setResponseVisible] = useState(false)
@@ -130,6 +131,7 @@ const Reviews = (props) => {
   }
   const submitReview = (event) => {
     event.preventDefault()
+    setSubmitting(true)
     if (isVerified) {
       const reviewForm = event.target
       const elements = event.target.elements
@@ -167,6 +169,7 @@ const Reviews = (props) => {
                 span.classList.add('fa-star-o')
               })
               resetRecaptcha()
+              setSubmitting(false)
             })
           } else if (response.status === 422) {
             response.json().then((responseJson) => {
@@ -177,6 +180,7 @@ const Reviews = (props) => {
               }</strong> < ul className = "mb-0 pl-4" > {
                 Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
               } </ul></>)
+              setSubmitting(false)
             })
           }
         }).catch((error) => {
@@ -190,6 +194,7 @@ const Reviews = (props) => {
       setResponseContent(<div>
         <strong>Verify!&nbsp;</strong>
         Your are not a bot.</div>)
+      setSubmitting(false)
     }
   }
   const getDate = (date) => {
@@ -496,7 +501,7 @@ const Reviews = (props) => {
         <button type="submit" className="btn btn-custom-primary text-white" style={{
             opacity: 1
           }}>
-          <div className="h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style={{
+          {(submitting)&&<div className="h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style={{
               zIndex: 1,
               left: 0,
               top: 0
@@ -504,7 +509,7 @@ const Reviews = (props) => {
             <div className="spinner-border text-white" role="status">
               <span className="sr-only">Loading...</span>
             </div>
-          </div>
+          </div>}
           Submit</button>
       </div>
     </form>
