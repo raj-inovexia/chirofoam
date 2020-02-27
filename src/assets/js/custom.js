@@ -6,11 +6,12 @@
     script_tag.text += 'Shopify.shop = "chirofoam.myshopify.com";';
     var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(script_tag, x);
-    var urls = ["https:\/\/reviews.hulkapps.com\/js\/reviews-by-hulkapps.js?shop=chirofoam.myshopify.com"];
+    var urls = ["https:\/\/www.google.com\/recaptcha\/api.js?render=explicit"];
     for (var i = 0; i < urls.length; i++) {
       var s = document.createElement('script');
       s.type = 'text/javascript';
       s.async = true;
+      s.defer = true;
       s.src = urls[i];
       var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);

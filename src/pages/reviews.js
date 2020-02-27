@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {useStaticQuery, Link} from "gatsby"
+import Recaptcha from 'react-recaptcha'
 import Header from "../components/header"
 import Footer from "../components/footer"
 import {
@@ -14,9 +15,10 @@ import {
   TabPane,
   Modal,
   Alert
-} from 'reactstrap';
+} from 'reactstrap'
 import SEO from '~/components/seo'
-import "../assets/css/bootstrap.min.css"
+import "~/assets/css/bootstrap.min.css"
+import "~/assets/js/custom.js"
 
 const Reviews = (props) => {
   const shopName = "chirofoam.myshopify.com"
@@ -112,6 +114,9 @@ const Reviews = (props) => {
         setLoadingReviews(false)
       }, 3000)
     }
+  }
+  const recaptchaLoaded = () => {
+    console.log('recaptcha Loaded');
   }
   const submitReview = (event) => {
     event.preventDefault();
@@ -453,6 +458,15 @@ const Reviews = (props) => {
                 <textarea className="form-control rounded-0" name="body" placeholder="Review Body" rows="4" required={true} style={{
                     resize: 'none'
                   }}></textarea>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="col-sm-12 form-group">
+                <Recaptcha
+                  sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4"
+                  render="explicit"
+                  onloadCallback={recaptchaLoaded}
+                />
               </div>
             </div>
           </div>
