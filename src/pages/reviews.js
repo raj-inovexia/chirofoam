@@ -34,9 +34,9 @@ const Reviews = (props) => {
   const [overAllRating, setOverAllRating] = useState({})
   const [activeTab, setActiveTab] = useState('1')
   const [modal, setModal] = useState(false)
-  const [responseColor, setResponseColor] = useState(false)
+  const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
-  const [responseVisible, setResponseVisible] = useState(true);
+  const [responseVisible, setResponseVisible] = useState(false);
   const dismissResponse = () => {
     setResponseVisible(false)
     setResponseContent(false)
