@@ -129,7 +129,7 @@ const TAKETEST = (props) => {
             <NavLink className={(
                 activeTab === '1'
                 ? 'active '
-                : '') + 'px-xs-0 h-100'}>
+                : '') + 'px-xs-0 px-lg-3 px-sm-0 h-100'}>
               <div className="d-flex flex-column h-100">
                 <span className="fs-2 fs-md-4 fs-sm-3">Step
                   <br/>1</span>
@@ -144,7 +144,7 @@ const TAKETEST = (props) => {
             <NavLink className={(
                 activeTab === '2'
                 ? 'active '
-                : '') + 'px-xs-0 h-100'}>
+                : '') + 'px-xs-0 px-lg-3 px-sm-0 h-100'}>
               <div className="d-flex flex-column h-100">
                 <span className="fs-2 fs-md-4 fs-sm-3">Step
                   <br/>2</span>
@@ -159,7 +159,7 @@ const TAKETEST = (props) => {
             <NavLink className={(
                 activeTab === '3'
                 ? 'active '
-                : '') + 'px-xs-0 h-100'}>
+                : '') + 'px-xs-0 px-lg-3 px-sm-0 h-100'}>
               <div className="d-flex flex-column h-100">
                 <span className="fs-2 fs-md-4 fs-sm-3">Step
                   <br/>3</span>
@@ -174,7 +174,7 @@ const TAKETEST = (props) => {
             <NavLink className={(
                 activeTab === '4'
                 ? 'active '
-                : '') + 'px-xs-0 h-100'}>
+                : '') + 'px-xs-0 px-lg-3 px-sm-0 h-100'}>
               <div className="d-flex flex-column h-100">
                 <span className="fs-2 fs-md-4 fs-sm-3">Step
                   <br/>4</span>
@@ -189,7 +189,7 @@ const TAKETEST = (props) => {
             <NavLink className={(
                 activeTab === '5'
                 ? 'active '
-                : '') + 'px-xs-0 h-100'}>
+                : '') + 'px-xs-0 px-lg-3 px-sm-0 h-100'}>
               <div className="d-flex flex-column h-100">
                 <span className="fs-2 fs-md-4 fs-sm-3">Step
                   <br/>5</span>
@@ -204,7 +204,7 @@ const TAKETEST = (props) => {
             <NavLink className={(
                 activeTab === '6'
                 ? 'active '
-                : '') + 'px-xs-0 h-100'}>
+                : '') + 'px-xs-0 px-lg-3 px-sm-0 h-100'}>
               <div className="d-flex flex-column h-100">
                 <span className="fs-2 fs-md-4 fs-sm-3">Step
                   <br/>6</span>
