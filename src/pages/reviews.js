@@ -212,15 +212,15 @@ const Reviews = (props) => {
     <Container>
       <Row>
         <div className="col-md-12">
-          <Nav tabs={true} id="tabs" className="d-block">
-            <NavItem>
+          <Nav tabs={true} id="tabs" className="nav-fill flex-md-wrap flex-nowrap">
+            <NavItem className="flex-md-grow-0 flex-grow-1">
               <NavLink className={activeTab === '1'
                   ? 'active'
                   : ''} onClick={() => setActiveTab('1')}>
                 Customer Reviews
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="flex-md-grow-0 flex-grow-1">
               <NavLink className={activeTab === '2'
                   ? 'active'
                   : ''} onClick={() => setActiveTab('2')}>
@@ -231,7 +231,7 @@ const Reviews = (props) => {
           <TabContent activeTab={activeTab}>
             <TabPane tabId="1">
               <div id="tabsContent" className="tab-content border border-top-0">
-                <div id="customer-revieew" className="tab-pane col-12 col-md-10 m-auto pb-5 position-relative">
+                <div id="customer-revieew" className="col-12 col-md-10 m-auto pb-5 position-relative">
                   {
                     (avgRating === 0) && <div className="h-100 w-100 bg-white d-flex justify-content-center align-items-center position-absolute" style={{
                           zIndex: 1
