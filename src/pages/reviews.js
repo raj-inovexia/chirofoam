@@ -245,8 +245,8 @@ const Reviews = (props) => {
                         </div>
                       </div>
                   }
-                  <Row className="mx-0">
-                    <Col sm="6" className="text-center py-0 py-sm-5 py-lg-5 py-xl-5">
+                  <Row className="mx-0 align-items-center">
+                    <Col sm="6" className="pt-5 p-sm-0 text-center col-12">
                       <p className="erbaum-bold color-secondary pt-5 mt-3">{avgRating}&nbsp; out of 5 stars</p>
                       <p>
                         <span>{totalRating}&nbsp;
@@ -254,8 +254,8 @@ const Reviews = (props) => {
                         reviews
                       </p>
                     </Col>
-                    <Col sm="6" className="py-5">
-                      <div className="p-0 list-unstyled review-details w-75 float-left float-sm-right float-lg-right float-xl-right">
+                    <Col sm="6" className="py-5 col-12">
+                      <div className="p-0 list-unstyled col-md-9 review-details">
                         {
                           Object.keys(overAllRating).reverse().map((index) => (<div key={index} className="w-100 d-flex color-primary mb-4">{index}<i className=" pl-1 pr-3 color-primary fa fa-star"></i>
                             <div className="progress rounded-0 bg-transparent w-75 mt-1">
