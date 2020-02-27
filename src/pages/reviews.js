@@ -21,6 +21,7 @@ import "~/assets/css/bootstrap.min.css"
 import "~/assets/js/custom.js"
 
 const Reviews = (props) => {
+  let recaptchaInstance
   const shopName = "chirofoam.myshopify.com"
   const [shopID, setShopID] = useState('')
   const [productID, setProductID] = useState('')
@@ -35,6 +36,7 @@ const Reviews = (props) => {
   const [data, setData] = useState([])
   const [overAllRating, setOverAllRating] = useState({})
   const [activeTab, setActiveTab] = useState('1')
+  const [isVerified, setVerified] = useState(false)
   const [modal, setModal] = useState(false)
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
@@ -118,62 +120,75 @@ const Reviews = (props) => {
   const recaptchaLoaded = () => {
     console.log('recaptcha Loaded');
   }
+  const verifyreCaptcha = () => {
+    setVerified(true)
+  }
   const submitReview = (event) => {
     event.preventDefault();
-    const reviewForm = event.target;
-    const elements = event.target.elements;
-    const data = {
-      author: elements.author.value,
-      email: elements.email.value,
-      rating: parseInt(elements.rating.value),
-      title: elements.title.value,
-      body: elements.body.value,
-      shopify_id: elements.shopify_id.value,
-      product_id: parseInt(elements.product_id.value),
-      product_handle: elements.product_handle.value,
-      product_title: elements.product_title.value,
-      product_image: elements.product_image.value
-    };
-    const sendReview = async (URL) => {
-      return await fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-requested-with': 'XMLHttpRequest'
-        },
-        body: JSON.stringify(data)
-      }).then((response) => {
-        if (response.status === 200) {
-          response.json().then((responseJson) => {
-            setResponseVisible(true)
-            setResponseColor("success")
-            setResponseContent(<strong>{responseJson.message}</strong>)
-            reviewForm.reset()
-            setProductRating(0)
-            const spans = document.querySelectorAll(".rating-starts button span");
-            spans.forEach((span) => {
-              span.classList.remove('fa-star')
-              span.classList.add('fa-star-o')
+    if (isVerified) {
+      const reviewForm = event.target;
+      const elements = event.target.elements;
+      const data = {
+        author: elements.author.value,
+        email: elements.email.value,
+        rating: parseInt(elements.rating.value),
+        title: elements.title.value,
+        body: elements.body.value,
+        shopify_id: elements.shopify_id.value,
+        product_id: parseInt(elements.product_id.value),
+        product_handle: elements.product_handle.value,
+        product_title: elements.product_title.value,
+        product_image: elements.product_image.value
+      };
+      const sendReview = async (URL) => {
+        return await fetch(URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-requested-with': 'XMLHttpRequest'
+          },
+          body: JSON.stringify(data)
+        }).then((response) => {
+          if (response.status === 200) {
+            response.json().then((responseJson) => {
+              setResponseVisible(true)
+              setResponseColor("success")
+              setResponseContent(<strong>{responseJson.message}</strong>)
+              reviewForm.reset()
+              recaptchaInstance.reset()
+              setProductRating(0)
+              const spans = document.querySelectorAll(".rating-starts button span");
+              spans.forEach((span) => {
+                span.classList.remove('fa-star')
+                span.classList.add('fa-star-o')
+              })
+              console.log(responseJson)
             })
-            console.log(responseJson)
-          })
-        } else if (response.status === 422) {
-          response.json().then((responseJson) => {
-            setResponseVisible(true)
-            setResponseColor("warning")
-            setResponseContent(<><strong>{
-              responseJson.message
-            }</strong><ul className="mb-0 pl-4"> {
-              Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
-            } </ul></>)
-            console.log(responseJson)
-          })
-        }
-      }).catch((error) => {
-        console.log(error);
-      })
+          } else if (response.status === 422) {
+            response.json().then((responseJson) => {
+              setResponseVisible(true)
+              setResponseColor("warning")
+              setResponseContent(<><strong> {
+                responseJson.message
+              }</strong> < ul className = "mb-0 pl-4" > {
+                Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
+              } </ul></>)
+              console.log(responseJson)
+            })
+          }
+        }).catch((error) => {
+          console.log(error);
+        })
+      }
+      sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
+    } else {
+      setResponseVisible(true)
+      setResponseColor("success")
+      setResponseContent(<p>
+        <strong>Verify!
+        </strong>
+        Your are not a bot.</p>)
     }
-    sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
@@ -462,11 +477,9 @@ const Reviews = (props) => {
             </div>
             <div className="form-row">
               <div className="col-sm-12 form-group">
-                <Recaptcha
-                  sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4"
-                  render="explicit"
-                  onloadCallback={recaptchaLoaded}
-                />
+                <div class="d-flex justify-content-center">
+                  <Recaptcha ref={e => recaptchaInstance = e} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" onloadCallback={recaptchaLoaded} verifyCallback={verifyreCaptcha}/>
+                </div>
               </div>
             </div>
           </div>
