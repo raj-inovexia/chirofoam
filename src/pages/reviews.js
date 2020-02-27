@@ -34,11 +34,12 @@ const Reviews = (props) => {
   const [overAllRating, setOverAllRating] = useState({})
   const [activeTab, setActiveTab] = useState('1')
   const [modal, setModal] = useState(false)
-  const [response, setResponse] = useState(false)
+  const [responseColor, setResponseColor] = useState(false)
+  const [responseContent, setResponseContent] = useState(false)
   const [responseVisible, setResponseVisible] = useState(true);
   const dismissResponse = () => {
     setResponseVisible(false)
-    setResponse(false)
+    setResponseContent(false)
   }
   const closeModal = () => setModal(false)
   const openModal = (e, id, item) => {
@@ -102,7 +103,7 @@ const Reviews = (props) => {
         }
       }
     }`)
-
+  const response = <Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color={responseColor}>{responseContent}</Alert>
   const handleLoadMore = () => {
     if (data.length >= showReviews) {
       setLoadingReviews(true)
@@ -141,18 +142,16 @@ const Reviews = (props) => {
           response.json().then((responseJson) => {
             console.log(responseJson)
             setResponseVisible(true)
-            setResponse(<Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color="success">
-              <strong>{responseJson.message}</strong>
-            </Alert>)
+            setResponseColor("success")
+            setResponseContent(<strong>{responseJson.message}</strong>)
             reviewForm.reset()
             setProductRating(0)
           })
         } else if (response.status === 422) {
           response.json().then((responseJson) => {
             setResponseVisible(true)
-            setResponse(<Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color="warning">
-              <strong>{responseJson.message}</strong>
-            </Alert>)
+            setResponseColor("warning")
+            setResponseContent(<strong>{responseJson.message}</strong>)
             console.log(responseJson)
           })
         }
