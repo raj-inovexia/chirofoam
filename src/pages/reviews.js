@@ -21,7 +21,6 @@ import "~/assets/css/bootstrap.min.css"
 import "~/assets/js/custom.js"
 
 const Reviews = (props) => {
-  let recaptchaInstance
   const shopName = "chirofoam.myshopify.com"
   const [shopID, setShopID] = useState('')
   const [productID, setProductID] = useState('')
@@ -37,6 +36,7 @@ const Reviews = (props) => {
   const [overAllRating, setOverAllRating] = useState({})
   const [activeTab, setActiveTab] = useState('1')
   const [isVerified, setVerified] = useState(false)
+  const [recaptchaInstance, setRecaptchainstance] = useState(null)
   const [modal, setModal] = useState(false)
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
@@ -118,11 +118,14 @@ const Reviews = (props) => {
     }
   }
   const recaptchaReference = (event) => {
-    recaptchaInstance = event;
-    console.log(event, recaptchaInstance);
+    if(event.reset !== undefined){
+      setRecaptchainstance(event)
+    }else{
+      setRecaptchainstance(grecaptcha)
+    }
   }
   const recaptchaLoaded = (event) => {
-    console.log(event, recaptchaInstance);
+    console.log("recaptcha loaded");
   }
   const resetRecaptcha = () => {
     recaptchaInstance.reset();
