@@ -120,6 +120,9 @@ const Reviews = (props) => {
   const recaptchaLoaded = () => {
     console.log(recaptchaInstance);
   }
+  const resetRecaptcha = () => {
+    recaptchaInstance.reset();
+  }
   const verifyreCaptcha = () => {
     setResponseColor("")
     dismissResponse()
@@ -157,13 +160,13 @@ const Reviews = (props) => {
               setResponseColor("success")
               setResponseContent(<strong>{responseJson.message}</strong>)
               reviewForm.reset()
-              recaptchaInstance.reset()
               setProductRating(0)
               const spans = document.querySelectorAll(".rating-starts button span");
               spans.forEach((span) => {
                 span.classList.remove('fa-star')
                 span.classList.add('fa-star-o')
               })
+              resetRecaptcha()
               console.log(responseJson)
             })
           } else if (response.status === 422) {
