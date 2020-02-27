@@ -483,7 +483,7 @@ const Reviews = (props) => {
               </div>
             </div>
             <div className="form-row">
-              <div className="col-sm-12 form-group">
+              <div className="col-sm-12">
                 <div className="d-flex justify-content-center">
                   <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyreCaptcha}/>
                 </div>
