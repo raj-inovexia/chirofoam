@@ -117,6 +117,10 @@ const Reviews = (props) => {
       }, 3000)
     }
   }
+  const recaptchaReference = (event) => {
+    recaptchaInstance = event;
+    console.log(event, recaptchaInstance);
+  }
   const recaptchaLoaded = (event) => {
     console.log(event, recaptchaInstance);
   }
@@ -482,7 +486,7 @@ const Reviews = (props) => {
             <div className="form-row">
               <div className="col-sm-12 form-group">
                 <div className="d-flex justify-content-center">
-                  <Recaptcha ref={e => recaptchaInstance = e} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" onloadCallback={e => recaptchaLoaded(e)} verifyCallback={verifyreCaptcha}/>
+                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" onloadCallback={e => recaptchaLoaded(e)} verifyCallback={verifyreCaptcha}/>
                 </div>
               </div>
             </div>
