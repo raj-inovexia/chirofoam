@@ -1361,26 +1361,6 @@ body .table-rows .row-list:first-child ul li{
 	color:#ba2154;
 	font-size:25px;
 }
-
-/*.key-tooltip .tooltiptext {
-  visibility: hidden;
-  width:300px;
-  height:auto;
-  text-align:center;
-  background-color:#24336c;
-  color: #fff;
-  text-align: center;
-  border-radius:5px;
-  padding:20px;
-  position: absolute;
-  z-index: 1;
-  top:45px;
-  left:0;
-  right:0;
-  margin-left:-145px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}*/
 .key-tooltip .tooltiptext {
 	visibility: hidden;
 	width: 300px;
@@ -1393,43 +1373,20 @@ body .table-rows .row-list:first-child ul li{
 	padding: 20px;
 	position: absolute;
 	z-index: 1;
-	top: 175px;
-	left: 60px;
-	right: 0;
 	margin-left: -165px;
 	opacity: 0;
 	-webkit-transition: opacity 0.3s;
 	transition: opacity 0.3s;
 }
 
-/*.key-tooltip .tooltiptext::after {
-  content:"";
-  position: absolute;
-  top:-20px;
-  font-family: "fontAwesome";
-  left: 50%;
-  font-size:30px;
-  margin-left: -5px;
-  width:5px;
-  height:150px;
-  border-left:2px dashed #fff;
- }*/
- .key-tooltip .tooltiptext::after {
+.key-tooltip .tooltiptext::after {
 	content: "";
+	width:60px;
 	position: absolute;
-	top: -130px;
-	font-family: "fontAwesome";
-	left: 15%;
-	font-size: 30px;
-	margin-left: 20px;
-	width: 110px;
-	height: 150px;
 	border: 3px dashed #fff;
-	border-radius: 0px 0px 0px 83px;
-	-webkit-transform: rotate(30deg);
-	transform: rotate(30deg);
 	border-top: 0px;
 	border-right: 0;
+	border-bottom: 0;
 }
 .key-tooltip .tooltiptext::before {
 	content: "\F063";
@@ -1445,10 +1402,31 @@ body .table-rows .row-list:first-child ul li{
   visibility: visible;
   opacity: 1;
 }
-body .key-tooltip-1 {
-    top: 8%;
-    left: 25%;
+.key-tooltip .tooltiptext.tool-tip-1 {
+	top: 410px;
+	left:300px;
 }
+.tooltiptext.tool-tip-2 {
+	top: 325px;
+	left:-23px;
+}
+.tooltiptext.tool-tip-3 {
+	top: 365px;
+	right:8px;
+}
+.tooltiptext.tool-tip-4 {
+	top: 357px;
+	right:112px;
+}
+.tooltiptext.tool-tip-5 {
+	top:87px;
+	right:44px;
+}
+body .key-tooltip-1::before {
+	top:75px;
+	left:205px;
+}
+
 body .key-tooltip-2 {
     top:13%;
     left:48%;
@@ -1465,6 +1443,76 @@ body .key-tooltip-5{
     bottom:50%;
     right:30%;
 }
+
+.key-tooltip .tooltiptext.tool-tip-1::after {
+	top: -318px;
+	left: 108px;
+	margin-left: 16px;
+	height: 325px;
+	-webkit-transform: rotate(30deg);
+	transform: rotate(-15deg);
+}
+.key-tooltip .tooltiptext.tool-tip-1::before {
+	top: 8px;
+	margin-left: 15px;
+	-webkit-transform: rotate(-18deg);
+	transform: rotate(-18deg);
+}
+.key-tooltip .tooltiptext.tool-tip-2::after {
+	top:-295px;
+	right:40px;
+	height:295px;
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.key-tooltip .tooltiptext.tool-tip-2::before {
+	top:0px;
+	margin-left:44px;
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.key-tooltip .tooltiptext.tool-tip-3::after {
+	top: -335px;
+	right: -20px;
+	height: 350px;
+	-webkit-transform: rotate(17deg);
+	transform: rotate(17deg);
+}
+.key-tooltip .tooltiptext.tool-tip-3::before {
+	top:0px;
+	margin-left:50px;
+	-webkit-transform: rotate(17deg);
+	transform: rotate(17deg);
+}
+.key-tooltip .tooltiptext.tool-tip-4::after {
+	top: -335px;
+	right:-85px;
+	height:375px;
+	-webkit-transform: rotate(27deg);
+	transform: rotate(27deg);
+}
+.key-tooltip .tooltiptext.tool-tip-4::before {
+	top:5px;
+	margin-left:82px;
+	-webkit-transform: rotate(25deg);
+	transform: rotate(25deg);
+}
+.key-tooltip .tooltiptext.tool-tip-5::after {
+	top:-55px;
+	right:-60px;
+	height:110px;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.key-tooltip .tooltiptext.tool-tip-5::before {
+	top:17px;
+	right:33px;
+	-webkit-transform: rotate(50deg);
+	transform: rotate(50deg);
+}
+
+
+
 #tabs li.nav-item:hover {
     cursor: pointer;
 }
@@ -1487,3 +1535,4 @@ body .key-tooltip-5{
 .all-steps li.active.nav-item{
 	background-color:#ba2154 !important;
 }
+

@@ -215,6 +215,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+		
 		<Footer />
 	</>
   );
