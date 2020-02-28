@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import {useStaticQuery, Link} from "gatsby"
+import Recaptcha from 'react-recaptcha'
 import Header from "../components/header"
 import Footer from "../components/footer"
 import {
@@ -14,9 +15,10 @@ import {
   TabPane,
   Modal,
   Alert
-} from 'reactstrap';
+} from 'reactstrap'
 import SEO from '~/components/seo'
-import "../assets/css/bootstrap.min.css"
+import "~/assets/css/bootstrap.min.css"
+import "~/assets/js/custom.js"
 
 const Reviews = (props) => {
   const shopName = "chirofoam.myshopify.com"
@@ -33,10 +35,13 @@ const Reviews = (props) => {
   const [data, setData] = useState([])
   const [overAllRating, setOverAllRating] = useState({})
   const [activeTab, setActiveTab] = useState('1')
+  const [isVerified, setVerified] = useState(false)
+  const [recaptchaInstance, setRecaptchaInstance] = useState(null)
   const [modal, setModal] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
-  const [responseVisible, setResponseVisible] = useState(false);
+  const [responseVisible, setResponseVisible] = useState(false)
   const dismissResponse = () => {
     setResponseVisible(false)
     setResponseContent(false)
@@ -54,7 +59,7 @@ const Reviews = (props) => {
   }
   const mouseOverRating = (event, selectedButton) => {
     event.preventDefault()
-    const buttons = document.querySelectorAll(".rating-starts button");
+    const buttons = document.querySelectorAll(".rating-starts button")
     for (let i = 0; i <= selectedButton; i++) {
       buttons[i].firstChild.classList.remove('fa-star-o')
       buttons[i].firstChild.classList.add('fa-star')
@@ -63,7 +68,7 @@ const Reviews = (props) => {
   const mouseLeaveRating = (event, selectedButton) => {
     event.preventDefault()
     if (productRating === 0) {
-      const buttons = document.querySelectorAll(".rating-starts button");
+      const buttons = document.querySelectorAll(".rating-starts button")
       for (let i = 0; i <= selectedButton; i++) {
         buttons[i].firstChild.classList.remove('fa-star')
         buttons[i].firstChild.classList.add('fa-star-o')
@@ -72,12 +77,12 @@ const Reviews = (props) => {
   }
   const changeRating = (event, selectedButton) => {
     event.preventDefault()
-    const spans = document.querySelectorAll(".rating-starts button span");
+    const spans = document.querySelectorAll(".rating-starts button span")
     spans.forEach((span) => {
       span.classList.remove('fa-star')
       span.classList.add('fa-star-o')
     })
-    const buttons = document.querySelectorAll(".rating-starts button");
+    const buttons = document.querySelectorAll(".rating-starts button")
     for (let i = 0; i <= selectedButton; i++) {
       buttons[i].firstChild.classList.remove('fa-star-o')
       buttons[i].firstChild.classList.add('fa-star')
@@ -113,62 +118,84 @@ const Reviews = (props) => {
       }, 3000)
     }
   }
+  const recaptchaReference = (event) => {
+    setRecaptchaInstance(event)
+  }
+  const resetRecaptcha = () => {
+    recaptchaInstance.reset()
+  }
+  const verifyreCaptcha = () => {
+    setResponseColor("")
+    dismissResponse()
+    setVerified(true)
+  }
   const submitReview = (event) => {
-    event.preventDefault();
-    const reviewForm = event.target;
-    const elements = event.target.elements;
-    const data = {
-      author: elements.author.value,
-      email: elements.email.value,
-      rating: parseInt(elements.rating.value),
-      title: elements.title.value,
-      body: elements.body.value,
-      shopify_id: elements.shopify_id.value,
-      product_id: parseInt(elements.product_id.value),
-      product_handle: elements.product_handle.value,
-      product_title: elements.product_title.value,
-      product_image: elements.product_image.value
-    };
-    const sendReview = async (URL) => {
-      return await fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-requested-with': 'XMLHttpRequest'
-        },
-        body: JSON.stringify(data)
-      }).then((response) => {
-        if (response.status === 200) {
-          response.json().then((responseJson) => {
-            setResponseVisible(true)
-            setResponseColor("success")
-            setResponseContent(<strong>{responseJson.message}</strong>)
-            reviewForm.reset()
-            setProductRating(0)
-            const spans = document.querySelectorAll(".rating-starts button span");
-            spans.forEach((span) => {
-              span.classList.remove('fa-star')
-              span.classList.add('fa-star-o')
+    event.preventDefault()
+    setSubmitting(true)
+    if (isVerified) {
+      const reviewForm = event.target
+      const elements = event.target.elements
+      const data = {
+        author: elements.author.value,
+        email: elements.email.value,
+        rating: parseInt(elements.rating.value),
+        title: elements.title.value,
+        body: elements.body.value,
+        shopify_id: elements.shopify_id.value,
+        product_id: parseInt(elements.product_id.value),
+        product_handle: elements.product_handle.value,
+        product_title: elements.product_title.value,
+        product_image: elements.product_image.value
+      }
+      const sendReview = async (URL) => {
+        return await fetch(URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-requested-with': 'XMLHttpRequest'
+          },
+          body: JSON.stringify(data)
+        }).then((response) => {
+          if (response.status === 200) {
+            response.json().then((responseJson) => {
+              setResponseVisible(true)
+              setResponseColor("success")
+              setResponseContent(<strong>{responseJson.message}</strong>)
+              reviewForm.reset()
+              setProductRating(0)
+              const spans = document.querySelectorAll(".rating-starts button span")
+              spans.forEach((span) => {
+                span.classList.remove('fa-star')
+                span.classList.add('fa-star-o')
+              })
+              resetRecaptcha()
+              setSubmitting(false)
             })
-            console.log(responseJson)
-          })
-        } else if (response.status === 422) {
-          response.json().then((responseJson) => {
-            setResponseVisible(true)
-            setResponseColor("warning")
-            setResponseContent(<><strong>{
-              responseJson.message
-            }</strong><ul className="mb-0 pl-4"> {
-              Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
-            } </ul></>)
-            console.log(responseJson)
-          })
-        }
-      }).catch((error) => {
-        console.log(error);
-      })
+          } else if (response.status === 422) {
+            response.json().then((responseJson) => {
+              setResponseVisible(true)
+              setResponseColor("warning")
+              setResponseContent(<><strong> {
+                responseJson.message
+              }</strong> < ul className = "mb-0 pl-4" > {
+                Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
+              } </ul></>)
+              setSubmitting(false)
+            })
+          }
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
+      sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
+    } else {
+      setResponseVisible(true)
+      setResponseColor("warning")
+      setResponseContent(<div>
+        <strong>Verify!&nbsp;</strong>
+        Your are not a bot.</div>)
+      setSubmitting(false)
     }
-    sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
@@ -455,6 +482,13 @@ const Reviews = (props) => {
                   }}></textarea>
               </div>
             </div>
+            <div className="form-row">
+              <div className="col-sm-12">
+                <div className="d-flex justify-content-center">
+                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyreCaptcha}/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -464,13 +498,27 @@ const Reviews = (props) => {
         <input type="hidden" name="product_handle" value={productHandle}/>
         <input type="hidden" name="product_title" value={productTitle}/>
         <input type="hidden" name="product_image" value={productImg}/>
-        <button type="submit" className="btn btn-custom-primary text-white" style={{
+        <button type="submit" className={(
+            submitting)
+            ? "btn btn-custom-primary color-primary position-relative"
+            : "btn btn-custom-primary text-white"} style={{
             opacity: 1
-          }}>Submit</button>
+          }} disabled={submitting}>
+          {
+            (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
+              zIndex: 1,
+              left: 0,
+              top: 0
+            }} > <div className="spinner-border text-white" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+            </div>
+          }
+          Submit</button>
       </div>
     </form>
   </Modal>
   <Footer/> </>
-);
-};
-export default Reviews;
+)
+}
+export default Reviews
