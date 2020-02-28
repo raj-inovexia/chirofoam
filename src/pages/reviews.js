@@ -133,7 +133,7 @@ const Reviews = (props) => {
     setResponseVisible(true)
     setResponseColor("warning")
     setResponseContent(<div>
-      <strong>reCaptcha Verification Expired!&nbsp;</strong>Check the Checkbox Again.</div>)
+      <strong>Verification Expired!&nbsp;</strong>Check the Checkbox Again.</div>)
     setVerified(false)
   }
   const submitReview = (event) => {
