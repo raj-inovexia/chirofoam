@@ -66,6 +66,7 @@ module.exports = {
       // startup, try decreasing this number.
       paginationSize: 250,
 
+
       // List of collections you want to fetch.
       // Possible values are: 'shop' and 'content'.
       // Defaults to ['shop', 'content'].
