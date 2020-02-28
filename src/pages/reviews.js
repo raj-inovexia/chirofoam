@@ -124,10 +124,16 @@ const Reviews = (props) => {
   const resetRecaptcha = () => {
     recaptchaInstance.reset()
   }
-  const verifyreCaptcha = () => {
+  const verifyCaptcha = () => {
     setResponseColor("")
     dismissResponse()
     setVerified(true)
+  }
+  const expiredCaptcha = () => {
+    setResponseColor("warning")
+    setResponseContent(<div>
+      <strong>reCaptcha Verification Expired!&nbsp;</strong>Check the Checkbox Again.</div>)
+    setVerified(false)
   }
   const submitReview = (event) => {
     event.preventDefault()
@@ -179,7 +185,7 @@ const Reviews = (props) => {
                 responseJson.message
               }</strong> < ul className = "mb-0 pl-4" > {
                 Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
-              } </ul></>)
+              } < /ul></ >)
               setSubmitting(false)
             })
           }
@@ -485,7 +491,7 @@ const Reviews = (props) => {
             <div className="form-row">
               <div className="col-sm-12">
                 <div className="d-flex justify-content-center">
-                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyreCaptcha}/>
+                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyCaptcha} expiredCallback={expiredCaptcha}/>
                 </div>
               </div>
             </div>
@@ -518,7 +524,7 @@ const Reviews = (props) => {
       </div>
     </form>
   </Modal>
-  <Footer/> </>
+  <Footer/> < />
 )
 }
 export default Reviews
