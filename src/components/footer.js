@@ -70,6 +70,7 @@ const Footer = () => (
 				</Col>
 			</Row>
 		</div>
+	<div id="add_this_script"></div>
 	</footer>
 )
 
