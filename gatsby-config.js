@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     title: `Chirofoam™ Memory Foam Mattress`,
     description: `The Chirofoam™ Memory Foam Mattress is designed to get you a more effective and efficient sleep, and helps to relieve back pain. Made in Toronto, ON.`,
-    author: `@alexanderhorl`,
+    author: `@Team-Innovexia`,
   },
   plugins: [
 

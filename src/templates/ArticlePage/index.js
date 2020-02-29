@@ -50,17 +50,6 @@ const ArticlePage = ({ data }) => {
         </Row>
       </div>
     </section>
-    <section>
-      <div className="container">
-      
-             
-            {article.comments.map((comment,index) => (
-          <div className="">{comment.author.name}<br/>{comment.author.email}<br/>{comment.content}</div>
-         
-           ))
-         }
-      </div>
-    </section>
     <section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
       <div className="container-large pb-0 pb-sm-5">
         <h3 className="text-center mb-4" style={{fontSize:'18px'}}>RECENT POSTS</h3>
@@ -91,15 +80,6 @@ export const query = graphql`
       publishedAt(formatString: "MMMM DD, YYYY")
       excerpt
       contentHtml
-      comments {
-          id
-          author {
-            email
-            name
-          }
-          content
-          contentHtml
-        }
     }
   }
 `
