@@ -77,6 +77,7 @@ const Blogs = ({ id }) => {
                   </div>
                 </Link>
               </div>
+              <div class="addthis_inline_share_toolbox"></div>
               <div className="blogs-content d-flex mt-4">
                 <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
                   <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0"><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
