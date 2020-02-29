@@ -35,6 +35,7 @@ export default ({data}) => {
 								<p style={{fontSize:'12px'}}>By <span>Chirofoam</span> In <span>Sleep</span> Posted <span>June 15, 2019</span></p>
 							</Col>
 							<Col sm="6" className="text-right" style={{display:'ruby'}}>
+								<div class="addthis_inline_share_toolbox"></div>
 								<p style={{color:'rgba(0,0,0,0.4)'}} className="ml-4"><i className="fa fa-share-alt"></i><span className="pl-2">2</span></p>
 								<p className="px-2 ml-4" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="pl-2">2</span></p>
 								<p className="mb-0 ml-4" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-heart"></i><span className="pl-2">2</span></p>
