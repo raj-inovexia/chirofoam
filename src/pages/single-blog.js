@@ -29,12 +29,13 @@ export default ({data}) => {
 						<div className="featured-image position-relative overflow-hidden">
 							<img src={blogs1} className="img-fluid" alt="Blog" style={{transition:'all 0.15s ease-in-out', width:'100%'}}/>
 						</div>
-						<h2 className="mb-3 color-primary text-uppercase erbaum-bold pt-4 space-1">4 Benefits of Juicing and How it Helps Improve Sleep</h2>
+						<h2 className="mb-3 color-primary text-uppercase erbaum-bold pt-4 space-1">4 12Benefits of Juicing and How it Helps Improve Sleep</h2>
 						<Row>
 							<Col sm="6">
 								<p style={{fontSize:'12px'}}>By <span>Chirofoam</span> In <span>Sleep</span> Posted <span>June 15, 2019</span></p>
 							</Col>
 							<Col sm="6" className="text-right" style={{display:'ruby'}}>
+								<div className="addthis_inline_share_toolbox"></div>
 								<p style={{color:'rgba(0,0,0,0.4)'}} className="ml-4"><i className="fa fa-share-alt"></i><span className="pl-2">2</span></p>
 								<p className="px-2 ml-4" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="pl-2">2</span></p>
 								<p className="mb-0 ml-4" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-heart"></i><span className="pl-2">2</span></p>

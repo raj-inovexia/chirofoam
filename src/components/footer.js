@@ -47,6 +47,7 @@ const Footer = () => (
 					<ul className="pl-0 pb-0 filson-pro-reg " style={{
 						listStyle:'none',
 					}} >
+						<li className="mr-2 pb-sm-2 pb-1"><a target="_blank" rel="noopener noreferrer" href="https://chirofoam.goaffpro.com/create-account" style={{color:'#b2b2b2',fontSize:'12px'}}>Affiliate</a></li>
 						<li className="mr-2 pb-sm-2 pb-1"><Link to="/charity/" style={{color:'#b2b2b2',fontSize:'12px'}}>Charity</Link></li>
 						<li className="mr-2 pb-sm-2 pb-1"><Link to="/our-story/" style={{color:'#b2b2b2',fontSize:'12px'}}>Our Story</Link></li>
 						<li className="mr-2 pb-sm-2 pb-1"><Link to="/chiropractor-recommended/" style={{color:'#b2b2b2',fontSize:'12px'}}>Chiropractor Recommended</Link></li>
@@ -64,11 +65,12 @@ const Footer = () => (
 						<li className="mr-2 pb-sm-2 pb-lg-2 pb-xl-2 pb-1 m-0 pt-0"><Link to="/warranty/" style={{color:'#b2b2b2',fontSize:'12px'}}>Warranty</Link></li>
 						<li className="mr-2 pb-sm-2 pb-lg-2 pb-xl-2 pb-1 m-0 pt-0"><Link to="/privacy-policy/" style={{color:'#b2b2b2',fontSize:'12px'}}>Privacy Policy</Link></li>
 						<li className="mr-2 pb-sm-2 pb-lg-2 pb-xl-2 pb-1 m-0 pt-0"><Link to="/term-and-conditions/" style={{color:'#b2b2b2',fontSize:'12px'}}>Terms And Conditions</Link></li>
-						<li className="mr-2 pb-sm-2 pb-lg-2 pb-xl-2 pb-1 m-0 pt-0"><Link to="/blogs/" style={{color:'#b2b2b2',fontSize:'12px'}}>Blog</Link></li>
+						<li className="mr-2 pb-sm-2 pb-lg-2 pb-xl-2 pb-1 m-0 pt-0"><Link to="/blogs/" style={{color:'#b2b2b2',fontSize:'12px'}}>Blogs</Link></li>
 					</ul>
 				</Col>
 			</Row>
 		</div>
+	<div id="add_this_script"></div>
 	</footer>
 )
 
