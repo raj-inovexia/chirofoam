@@ -29,7 +29,7 @@ export default ({data}) => {
 						<div className="featured-image position-relative overflow-hidden">
 							<img src={blogs1} className="img-fluid" alt="Blog" style={{transition:'all 0.15s ease-in-out', width:'100%'}}/>
 						</div>
-						<h2 className="mb-3 color-primary text-uppercase erbaum-bold pt-4 space-1">4 Benefits of Juicing and How it Helps Improve Sleep</h2>
+						<h2 className="mb-3 color-primary text-uppercase erbaum-bold pt-4 space-1">4 12Benefits of Juicing and How it Helps Improve Sleep</h2>
 						<Row>
 							<Col sm="6">
 								<p style={{fontSize:'12px'}}>By <span>Chirofoam</span> In <span>Sleep</span> Posted <span>June 15, 2019</span></p>
