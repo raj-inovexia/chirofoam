@@ -1535,4 +1535,50 @@ body .key-tooltip-5{
 .all-steps li.active.nav-item{
 	background-color:#ba2154 !important;
 }
-
+.profile-card {
+	display: table;
+}
+.profile-card span i {
+	font-size:45px;
+	color:#CACACA;
+}
+.profile-card strong, .profile-card a {
+	display: table-cell;
+	vertical-align: middle;
+}
+.comment-card{
+	border:1px solid #eee;
+}
+.comment-card::before {
+	content: "";
+	width:15px;
+	height:15px;
+	position: absolute;
+	top:-8px;
+	left:30px;
+	background-color:#fff;
+	border: 1px solid #eee;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	border-right: 0px;
+	border-bottom: none;
+	z-index: 99;
+}
+.comment-form form textarea, .comment-form form input {
+	border: 1px solid #eee;
+	padding:15px;
+}
+.comment-form form input{
+	margin-top:10px;
+}
+.input-data-field .col:nth-child(2){
+	padding-left:0;
+	padding-right:0;
+}
+.comment-submit{
+	background-color:#24336c;
+	color:#fff;
+	border:none;
+	border-radius:2px;
+	padding:10px 20px;
+}

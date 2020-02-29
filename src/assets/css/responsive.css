@@ -1,4 +1,8 @@
 @media only screen and (max-width: 767px) {
+	.input-data-field .col:nth-child(2) {
+	padding-left:15px;
+	padding-right:15px;
+}
 	.five-key-features-outer img {
 	    width: 175px;
 	    height: 175px;
