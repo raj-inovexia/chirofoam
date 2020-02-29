@@ -47,6 +47,9 @@ export default (props) => {
 		</section>
 
 		<Footer />
+	  
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e5a2594b9526dca"></script>
+
 	</>
   );
 };
