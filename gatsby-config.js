@@ -12,11 +12,11 @@ module.exports = {
   },
   plugins: [
 
-    {
+{
       resolve: 'gatsby-source-rest-api',
       options: {
         endpoints: [
-          'https://chirofoam.myshopify.com/admin/api/2020-01/comments.json',
+          ...
         ],
       },
     },
