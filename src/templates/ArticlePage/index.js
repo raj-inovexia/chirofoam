@@ -22,7 +22,7 @@ const ArticlePage = ({ data }) => {
       <div className="container-large">
         <Row>
           <Col sm="12" className="align-middle single-article">
-              
+
             <div className="featured-image position-relative overflow-hidden">
               <img src={article.image.src} className="img-fluid" alt={article.image.altText} style={{transition:'all 0.15s ease-in-out', width:'100%'}}/>
             </div>
@@ -36,7 +36,7 @@ const ArticlePage = ({ data }) => {
                 <span className="px-2 ml-4" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="pl-2">2</span></span>
                 <span className="mb-0 ml-4" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-heart"></i><span className="pl-2">2</span></span>
               </Col>
-            </Row>  
+            </Row>
             <Row className="mt-3">
               <Col sm="12">
                 <div
@@ -48,6 +48,17 @@ const ArticlePage = ({ data }) => {
             </Row>
           </Col>
         </Row>
+      </div>
+    </section>
+    <section>
+      <div className="container">
+      
+             
+            {article.comments.map((comment,index) => (
+          <div className="">{comment.author.name}<br/>{comment.author.email}<br/>{comment.content}</div>
+         
+           ))
+         }
       </div>
     </section>
     <section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
@@ -66,10 +77,6 @@ export const query = graphql`
     shopifyArticle(id: {eq: $id}) {
       id
       title
-      image {
-        src
-        altText
-      }
       author {
         firstName
       }
@@ -77,9 +84,30 @@ export const query = graphql`
         title
         url
       }
-      publishedAt(formatString: "MMMM DD, YYYY")
-      excerpt
+      comments {
+        author {
+          email
+          name
+        }
+        contentHtml
+        content
+      }
       contentHtml
+      comments {
+          id
+          author {
+            email
+            name
+          }
+          content
+          contentHtml
+        }
+      excerpt
+      image {
+        src
+        altText
+      }
+      publishedAt(formatString: "MMMM DD, YYYY")
     }
   }
 `
