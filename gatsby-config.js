@@ -11,6 +11,15 @@ module.exports = {
     author: `@alexanderhorl`,
   },
   plugins: [
+
+    {
+      resolve: 'gatsby-source-rest-api',
+      options: {
+        endpoints: [
+          'https://chirofoam.myshopify.com/admin/api/2020-01/comments.json'
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -65,7 +74,7 @@ module.exports = {
       // at startup. If your application encounters timeout errors during
       // startup, try decreasing this number.
       paginationSize: 250,
-      
+
       // List of collections you want to fetch.
       // Possible values are: 'shop' and 'content'.
       // Defaults to ['shop', 'content'].
