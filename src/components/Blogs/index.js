@@ -77,7 +77,7 @@ const Blogs = ({ id }) => {
                   </div>
                 </Link>
               </div>
-              <div class="addthis_inline_share_toolbox"></div>
+              
               <div className="blogs-content d-flex mt-4">
                 <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
                   
