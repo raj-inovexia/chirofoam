@@ -39,12 +39,17 @@ const ArticlePage = ({data}) => {
     event.preventDefault()
     const elements = event.target.elements
     const data = {
-      author: elements.author.value,
-      email: elements.email.value,
-      body: elements.body.value,
-      article_id: article_id,
-      blog_id: blog_id,
-      ip: ip
+      api: "/admin/api/2020-01/comments.json",
+      query:{
+        comment:{
+          author: elements.author.value,
+          email: elements.email.value,
+          body: elements.body.value,
+          article_id: article_id,
+          blog_id: blog_id,
+          ip: ip
+        }
+      }
     }
     const sendComment = async (URL) => {
       return await fetch(URL, {
@@ -181,18 +186,18 @@ const ArticlePage = ({data}) => {
           fontSize: '18px'
         }}>SHOWING&nbsp;{totalComments}&nbsp;COMMENTS</h3>
       {
-        comments.map((comment, index) => (<div className="mb-4">
+        comments.map((comment, index) => (<div key={index} className="mb-4">
           <div className="profile-card pl-3">
             <div className="media">
               <span className="media-left">
-                <i class="fa fa-user-circle"></i>
+                <i className="fa fa-user-circle"></i>
               </span>
               <div className="media-body my-auto">
                 <div className="media">
                   <strong className="media-left color-secondary filson-pro-reg pl-3 color-secondary mt-auto" style={{
                       fontSize: '12px'
                     }}>{comment.author}</strong>
-                  <time className="media-body pl-3 color-secondary fs-1 mt-auto" datetime={comment.published_at}>{getDate(comment.published_at)}</time>
+                  <time className="media-body pl-3 color-secondary fs-1 mt-auto" dateTime={comment.published_at}>{getDate(comment.published_at)}</time>
                   <div className="media-right pl-3">
                     <button className="btn btn-link color-secondary p-0 border-0">
                       <strong style={{
