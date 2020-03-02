@@ -1,6 +1,14 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link, navigate} from 'gatsby'
 import {Col, Pagination, PaginationItem} from 'reactstrap';
+import { FacebookShareButton,  LinkedinShareButton,  PinterestShareButton,  TwitterShareButton,} from "react-share";
+import {  FacebookIcon,  LinkedinIcon,  PinterestIcon,  TwitterIcon,} from "react-share";
+import {  FacebookShareCount,  OKShareCount,  PinterestShareCount,  RedditShareCount,  TumblrShareCount,  VKShareCount,} from "react-share";
+
+const fshareUrl = "facebook.com"
+const tshareUrl = "twitter.com"
+const pshareUrl = "pinterest.com"
+const lshareUrl = "linkedin.com"
 
 const Blogs = ({ id }) => {
   const { allShopifyArticle } = useStaticQuery(
@@ -80,7 +88,11 @@ const Blogs = ({ id }) => {
               
               <div className="blogs-content d-flex mt-4">
                 <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
-                   <div className="addthis_inline_share_toolbox"></div>
+                  <div className="addthis_inline_share_toolbox"></div>
+                  <FacebookShareButton url={fshareUrl}><FacebookIcon size={32} round={true} /></FacebookShareButton>
+                <TwitterShareButton url={tshareUrl}><TwitterIcon size={32} round={true} /></TwitterShareButton>
+                <PinterestShareButton url={pshareUrl}><PinterestIcon size={32} round={true} /></PinterestShareButton>
+                <LinkedinShareButton url={lshareUrl}><LinkedinIcon size={32} round={true} /></LinkedinShareButton>
                   <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0"><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
                  <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="d-block">2</span></p>
                   <p className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-heart"></i><span className="d-block">2</span></p>
@@ -90,6 +102,10 @@ const Blogs = ({ id }) => {
                   <h3 className="mb-3"><Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{ fromFeed: true }} className="text-uppercase erbaum space-1 text-dark">{title}</Link></h3>
                   <p className="filson-pro-reg text-1">{excerpt}</p>
                   <div className="addthis_inline_share_toolbox"></div>
+                  <FacebookShareButton url={fshareUrl}><FacebookIcon size={32} round={true} /></FacebookShareButton>
+                  <TwitterShareButton url={tshareUrl}><TwitterIcon size={32} round={true} /></TwitterShareButton>
+                  <PinterestShareButton url={pshareUrl}><PinterestIcon size={32} round={true} /></PinterestShareButton>
+                  <LinkedinShareButton url={lshareUrl}><LinkedinIcon size={32} round={true} /></LinkedinShareButton>
                   <p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 w-100">
                     <Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{ fromFeed: true }} className="btn-cta color-primary erbaum-bold space-1">READ MORE</Link>
                   </p>

@@ -1,29 +1,42 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import Header from "~/components/header"
 import Footer from "~/components/footer"
-import {Container, Row, Col, Form} from 'reactstrap';
+import {Container, Row, Col, Alert} from 'reactstrap'
+import { graphql } from 'gatsby'
 import SEO from '~/components/seo'
-import "~/assets/css/bootstrap.min.css"
 import RecentPosts from "~/components/Blogs/RecentPostsFooter"
+import atob from "atob"
+import "~/assets/css/bootstrap.min.css"
+import "~/assets/js/custom.js"
 
 const ArticlePage = ({data}) => {
   const article = data.shopifyArticle
-  const article_id = parseInt(window.atob(article.shopifyId).split("/").pop())
-  const blog_id = parseInt(window.atob(article.blog.shopifyId).split("/").pop())
+  const [articleId, setArticleId] = useState(parseInt(atob(article.shopifyId).split("/").pop()))
+  const [blogId, setBlogId] = useState(parseInt(atob(article.blog.shopifyId).split("/").pop()))
+  const [ip, setIp] = useState("")
+  const token = "8688ae404288aacf2fd070b0bf36952a"
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
-    }).join('&');
+      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
+    }).join('&')
   }
+  const getIp = (async () => {
+    return await fetch(`//api.ipify.org/?format=json`, {
+      method: 'GET'
+    }).then(results => results.json()).then((data) => {
+      setIp(data.ip)
+    })
+  })()
   const getData = {
     "api": "/admin/api/2020-01/comments.json",
-    "blog_id": blog_id,
-    "article_id": article_id,
-    "order": "published_at asc"
+    "blog_id": blogId,
+    "article_id": articleId,
+    "status": "published",
+    "order": "updated_at asc"
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
-    const d = new Date(date);
+    const d = new Date(date)
     const month = Months[d.getMonth()]
     const day = d.getDate()
     const year = d.getFullYear()
@@ -32,14 +45,65 @@ const ArticlePage = ({data}) => {
   const reqData = jsonToQueryString(getData)
   const [totalComments, setTotalComments] = useState(0)
   const [comments, setComments] = useState([])
+  const [responseColor, setResponseColor] = useState("")
+  const [responseContent, setResponseContent] = useState(false)
+  const [responseVisible, setResponseVisible] = useState(false)
+  const dismissResponse = () => {
+    setResponseColor("")
+    setResponseVisible(false)
+    setResponseContent(false)
+  }
+  const response = <Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color={responseColor}>{responseContent}</Alert>
+  const handlePostComment = (event) => {
+    event.preventDefault()
+    const elements = event.target.elements
+    const data = {
+      api: "/admin/api/2020-01/comments.json",
+      query: {
+        comment: {
+          author: elements.author.value,
+          email: elements.email.value,
+          body: elements.body.value,
+          article_id: articleId,
+          blog_id: blogId,
+          ip: ip
+        }
+      }
+    }
+    const sendComment = async (URL) => {
+      return await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "X-Shopify-Access-Token": token
+        },
+        body: JSON.stringify(data)
+      }).then((response) => {
+        if (response.status === 200) {
+          response.json().then((responseJson) => {
+            setResponseVisible(true)
+            setResponseColor("success")
+            setResponseContent(<div>Your comment has been submitted <strong>Successfully</strong> and will be published soon.</div>)
+            console.log(responseJson)
+          })
+        } else {
+          response.json().then((responseJson) => {
+            console.log(responseJson);
+          })
+        }
+      }).catch((error) => {
+        console.error(error)
+      })
+    }
+    sendComment(`//icbtc.com/development/shopify-api/`)
+  }
   useEffect(() => {
-    const fetchComments = async (URL) => {
-      console.log(URL);
+    const fetchComments = (async (URL) => {
       const res = await fetch(URL, {
         method: 'GET',
         headers: {
           "Content-type": "application/json",
-          "X-Shopify-Access-Token": "8688ae404288aacf2fd070b0bf36952a"
+          "X-Shopify-Access-Token": token
         }
       })
       res.json().then((responseJson) => {
@@ -48,10 +112,8 @@ const ArticlePage = ({data}) => {
           setTotalComments(responseJson.response.comments.length)
         }
       })
-    }
-    fetchComments(`https://icbtc.com/development/shopify-api/${reqData}`)
+    })(`//icbtc.com/development/shopify-api/${reqData}`)
   }, [])
-  console.log(article, totalComments, comments);
   return (<> <SEO title = {
     article.title
   }
@@ -144,27 +206,32 @@ const ArticlePage = ({data}) => {
           fontSize: '18px'
         }}>SHOWING&nbsp;{totalComments}&nbsp;COMMENTS</h3>
       {
-        comments.map((comment, index) => (<div className="mb-4">
+        comments.map((comment, index) => (<div key={index} className="mb-4">
           <div className="profile-card pl-3">
-            <span>
-              <i class="fa fa-user-circle"></i>
-            </span>
-            <strong className="color-secondary filson-pro-reg pl-3 color-secondary" style={{
-                fontSize: '12px'
-              }}>{comment.author}</strong>
-            <time datetime={comment.published_at}>{getDate(comment.published_at)}</time>
-            <span className="pl-3">
-              <button className="btn btn-link color-secondary">
-                <strong style={{
-                    fontSize: '12px'
-                  }}>Reply</strong></button>
+            <div className="media">
+              <span className="media-left">
+                <i className="fa fa-user-circle"></i>
               </span>
+              <div className="media-body my-auto">
+                <div className="media">
+                  <strong className="media-left color-secondary filson-pro-reg pl-3 color-secondary mt-auto" style={{
+                      fontSize: '12px'
+                    }}>{comment.author}</strong>
+                  <time className="media-body pl-3 color-secondary fs-1 mt-auto" dateTime={comment.published_at}>{getDate(comment.published_at)}</time>
+                  <div className="media-right pl-3">
+                    <button className="btn btn-link color-secondary p-0 border-0">
+                      <strong style={{
+                          fontSize: '12px'
+                        }}>Reply</strong>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="comment-card p-3 position-relative mt-3 filson-pro-reg text-1 color-secondary"
-            dangerouslySetInnerHTML={{
+          <div className="comment-card p-3 position-relative mt-3 filson-pro-reg text-1 color-secondary" dangerouslySetInnerHTML={{
               __html: comment.body_html
-            }}>
-          </div>
+            }}></div>
         </div>))
       }
 
@@ -177,9 +244,10 @@ const ArticlePage = ({data}) => {
         }}>LEAVE A COMMENT</h3>
       <Row className="mx-0">
         <div className="comment-form w-100">
-          <form method="post" action="">
+          {response}
+          <form onSubmit={e => handlePostComment(e)}>
             <Col className="col-12">
-              <textarea placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
+              <textarea name="body" placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
             </Col>
             <Row className="mx-0 input-data-field">
               <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -189,14 +257,9 @@ const ArticlePage = ({data}) => {
                 <input type="email" name="email" placeholder="Email (Required)" required="required" className="w-100 text-1 color-secondary filson-pro-reg"/>
               </Col>
               <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <input type="text" name="website" placeholder="Website" className="w-100 text-1 color-secondary filson-pro-reg"/>
+                <input type="url" name="website" placeholder="Website" className="w-100 text-1 color-secondary filson-pro-reg"/>
               </Col>
             </Row>
-            <Col sm="12">
-              <input type="hidden" name="ip"/>
-              <input type="hidden" name="blog_id"/>
-              <input type="hidden" name="article_id"/>
-            </Col>
             <Col className="col-12">
               <button type="submit" className="comment-submit text-1 filson-pro-reg mt-3">POST COMMENT</button>
             </Col>
@@ -221,24 +284,7 @@ query ($id: String!) {
       url
       shopifyId
     }
-    comments {
-      author {
-        email
-        name
-      }
-      contentHtml
-      content
-    }
     contentHtml
-    comments {
-      id
-      author {
-        email
-        name
-      }
-      content
-      contentHtml
-    }
     excerpt
     image {
       src

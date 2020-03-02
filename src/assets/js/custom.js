@@ -6,7 +6,7 @@
     script_tag.text += 'Shopify.shop = "chirofoam.myshopify.com";';
     var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(script_tag, x);
-    var urls = ["https://www.google.com/recaptcha/api.js?render=explicit"];
+    var urls = ["https://www.google.com/recaptcha/api.js?render=explicit", "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e5a2594b9526dca"];
     for (var i = 0; i < urls.length; i++) {
       var s = document.createElement('script');
       s.type = 'text/javascript';
@@ -17,16 +17,17 @@
       x.parentNode.insertBefore(s, x);
     }
   };
-  if(window.attachEvent) {
-    window.attachEvent('onload', asyncLoad);
-  } else {
-    window.addEventListener('load', asyncLoad, false);
+  if (typeof window !== 'undefined') {
+    if (window.attachEvent) {
+      window.attachEvent('onload', asyncLoad);
+    } else {
+      window.addEventListener('load', asyncLoad, false);
+    }
   }
-})();
-  
-  (function() {
+  if (typeof document !== 'undefined') {
     var po = document.createElement('script');
     po.type = 'text/javascript';
     po.src = '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e5a59d03affc180';
     document.body.appendChild(po);
-  })();
+  }
+})();

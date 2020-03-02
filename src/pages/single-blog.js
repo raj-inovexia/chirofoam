@@ -1,13 +1,12 @@
 import React from 'react';
 import Header from "../components/header"
 import Footer from "../components/footer"
-import {Row, Col} from 'reactstrap';
+import {Row, Col} from 'reactstrap'
+import { graphql } from 'gatsby'
 import "../assets/css/bootstrap.min.css"
 import blogs1 from "../assets/img/blogs5.jpg"
 import girl from "../assets/img/girl.jpg"
 import RecentPosts from "../components/Blogs/RecentPostsFooter"
-/*import SingleArticle from "../components/Blogs/SingleArticle"*/
-/*import SingleBlogs from "../components/Blogs/SingleBlogs"*/
 
 export default ({data}) => {
   return (
@@ -20,12 +19,12 @@ export default ({data}) => {
 				<h3 className="text-uppercase filson-pro-reg m-0" style={{fontSize:'22px'}}>{data.title}</h3>
 			</div>
 		</section>
-	
+
 		<section className="mb-0 py-5 position-relative">
 			<div className="container-large">
 				<Row>
 					<Col sm="12" className="align-middle">
-	  					
+
 						<div className="featured-image position-relative overflow-hidden">
 							<img src={blogs1} className="img-fluid" alt="Blog" style={{transition:'all 0.15s ease-in-out', width:'100%'}}/>
 						</div>
@@ -40,7 +39,7 @@ export default ({data}) => {
 								<p className="px-2 ml-4" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="pl-2">2</span></p>
 								<p className="mb-0 ml-4" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-heart"></i><span className="pl-2">2</span></p>
 							</Col>
-						</Row>	
+						</Row>
 						<Row className="mt-3">
 							<Col sm="9">
 								<p className="filson-pro-reg" style={{color:'rgba(0,0,0,0.5)', fontSize:'13px', lineHeight:'30px'}}>
