@@ -36,6 +36,7 @@ const ArticlePage = ({data}) => {
   const [comments, setComments] = useState([])
   const handlePostComment = (event) => {
     event.preventDefault()
+    const elements = event.target.elements
     const data = {
       author: elements.author.value,
       email: elements.email.value,
@@ -64,7 +65,7 @@ const ArticlePage = ({data}) => {
     }
     fetchComments(`https://icbtc.com/development/shopify-api/${reqData}`)
   }, [])
-  console.log(article, totalComments, comments)
+  console.log(article)
   return (<> <SEO title = {
     article.title
   }
@@ -234,24 +235,7 @@ query ($id: String!) {
       url
       shopifyId
     }
-    comments {
-      author {
-        email
-        name
-      }
-      contentHtml
-      content
-    }
     contentHtml
-    comments {
-      id
-      author {
-        email
-        name
-      }
-      content
-      contentHtml
-    }
     excerpt
     image {
       src
