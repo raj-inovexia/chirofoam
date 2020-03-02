@@ -19,7 +19,7 @@ const ArticlePage = ({data}) => {
     }).join('&')
   }
   const getIp = (async () => {
-    return await fetch(`//api.ipify.org/?format=json` {
+    return await fetch(`//api.ipify.org/?format=json`, {
       method: 'GET'
     }).then(results => results.json()).then((data) => {
       setIp(data.ip)
