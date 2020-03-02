@@ -13,8 +13,6 @@ import run from "../assets/img/runing-man.jpg"
 import product1 from "../assets/img/product1.jpg"
 import product2 from "../assets/img/product2.jpg"
 
-
-
 export default (props) => {
   return (
 	<>
