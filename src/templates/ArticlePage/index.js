@@ -8,8 +8,20 @@ import RecentPosts from "~/components/Blogs/RecentPostsFooter"
 
 const ArticlePage = ({data}) => {
   const article = data.shopifyArticle
+  const article_id = window.atob(article.shopifyId).split("/").pop()
+  const blog_id = window.atob(article.blog.shopifyId).split("/").pop()
+  const jsonToQueryString = (json) => {
+    return '?' + Object.keys(json).map(function(key) {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
+    }).join('&');
+  }
+  const getData = {
+    "api": "/admin/api/2020-01/comments.json",
+    "blog_id": blog_id,
+    "article_id": article_id
+  }
   const totalcomments = article.comments.length
-  console.log(article);
+  console.log(article, getData);
   return (<> <SEO title = {
     article.title
   }
@@ -162,8 +174,7 @@ const ArticlePage = ({data}) => {
       </Row>
     </Container>
   </section>
-  <Footer/>
-</>)
+  <Footer/> </>)
 }
 
 export const query = graphql `
