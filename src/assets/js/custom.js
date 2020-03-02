@@ -17,10 +17,12 @@
       x.parentNode.insertBefore(s, x);
     }
   };
-  if(window.attachEvent) {
-    window.attachEvent('onload', asyncLoad);
-  } else {
-    window.addEventListener('load', asyncLoad, false);
+  if (typeof window !== 'undefined') {
+    if (window.attachEvent) {
+      window.attachEvent('onload', asyncLoad);
+    } else {
+      window.addEventListener('load', asyncLoad, false);
+    }
   }
   var po = document.createElement('script');
   po.type = 'text/javascript';
