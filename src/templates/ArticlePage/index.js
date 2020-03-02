@@ -31,6 +31,7 @@ const ArticlePage = ({data}) => {
     "api": "/admin/api/2020-01/comments.json",
     "blog_id": blogId,
     "article_id": articleId,
+    "status": "approved",
     "order": "updated_at asc"
   }
   const getDate = (date) => {
