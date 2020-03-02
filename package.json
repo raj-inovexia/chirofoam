@@ -8,6 +8,7 @@
     "node": "=> 10.13 < 10.11"
   },
   "dependencies": {
+    "atob": "^2.1.2",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.22",
     "gatsby": "^2.19.17",
