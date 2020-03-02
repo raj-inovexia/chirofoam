@@ -19,7 +19,7 @@ const ArticlePage = ({data}) => {
     "api": "/admin/api/2020-01/comments.json",
     "blog_id": blog_id,
     "article_id": article_id,
-    "order": "published_at asc"
+    "order": "updated_at asc"
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
@@ -146,19 +146,23 @@ const ArticlePage = ({data}) => {
       {
         comments.map((comment, index) => (<div className="mb-4">
           <div className="profile-card pl-3">
-            <span>
-              <i class="fa fa-user-circle"></i>
-            </span>
-            <strong className="color-secondary filson-pro-reg pl-3 color-secondary" style={{
-                fontSize: '12px'
-              }}>{comment.author}</strong>
-            <time datetime={comment.published_at}>{getDate(comment.published_at)}</time>
-            <span className="pl-3">
-              <button className="btn btn-link color-secondary">
-                <strong style={{
-                    fontSize: '12px'
-                  }}>Reply</strong></button>
+            <div className="media">
+              <span className="media-left">
+                <i class="fa fa-user-circle"></i>
               </span>
+              <div className="media-body">
+                <strong className="color-secondary filson-pro-reg pl-3 color-secondary" style={{
+                    fontSize: '12px'
+                  }}>{comment.author}</strong>
+                <time className="pl-3 color-secondary fs-1" datetime={comment.published_at}>{getDate(comment.published_at)}</time>
+                <span className="pl-3">
+                  <button className="btn btn-link color-secondary p-0">
+                    <strong style={{
+                        fontSize: '12px'
+                      }}>Reply</strong></button>
+                  </span>
+              </div>
+            </div>
           </div>
           <div className="comment-card p-3 position-relative mt-3 filson-pro-reg text-1 color-secondary"
             dangerouslySetInnerHTML={{
