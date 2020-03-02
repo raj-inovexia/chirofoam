@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from "~/components/header"
 import Footer from "~/components/footer"
 import {Container, Row, Col, Form} from 'reactstrap';
@@ -21,7 +21,8 @@ const ArticlePage = ({data}) => {
     "article_id": article_id
   }
   const reqData = jsonToQueryString(getData)
-  const totalcomments = article.comments.length
+  const [totalComments, setTotalComments] = useState(0)
+  const [comments, setComments] = useState([])
   useEffect(() => {
     const fetchComments = async (URL) => {
       console.log(URL);
@@ -33,12 +34,15 @@ const ArticlePage = ({data}) => {
         }
       })
       res.json().then((responseJson) => {
-        console.log(responseJson)
+        if(responseJson.status===200){
+          setComments(responseJson.response.comments)
+          setTotalComments(responseJson.response.comments.length)
+        }
       })
     }
     fetchComments(`https://icbtc.com/development/shopify-api/${reqData}`)
   }, [])
-  console.log(article, getData);
+  console.log(article, totalComments, comments);
   return (<> <SEO title = {
     article.title
   }
