@@ -9,8 +9,12 @@ import "~/assets/js/custom.js"
 
 const ArticlePage = ({data}) => {
   const article = data.shopifyArticle
-  const article_id = parseInt(window.atob(article.shopifyId).split("/").pop())
-  const blog_id = parseInt(window.atob(article.blog.shopifyId).split("/").pop())
+  if (typeof window !== 'undefined') {
+    const atob = window.atob
+    console.log(atob)
+    const article_id = parseInt(window.atob(article.shopifyId).split("/").pop())
+    const blog_id = parseInt(window.atob(article.blog.shopifyId).split("/").pop())
+  }
   const [ip, setIp] = useState("")
   const token = "8688ae404288aacf2fd070b0bf36952a"
   const jsonToQueryString = (json) => {
