@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Header from "~/components/header"
 import Footer from "~/components/footer"
 import {Container, Row, Col, Form} from 'reactstrap';
@@ -8,8 +8,8 @@ import RecentPosts from "~/components/Blogs/RecentPostsFooter"
 
 const ArticlePage = ({data}) => {
   const article = data.shopifyArticle
-  const article_id = window.atob(article.shopifyId).split("/").pop()
-  const blog_id = window.atob(article.blog.shopifyId).split("/").pop()
+  const article_id = parseInt(window.atob(article.shopifyId).split("/").pop())
+  const blog_id = parseInt(window.atob(article.blog.shopifyId).split("/").pop())
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
@@ -20,7 +20,24 @@ const ArticlePage = ({data}) => {
     "blog_id": blog_id,
     "article_id": article_id
   }
+  const reqData = jsonToQueryString(getData)
   const totalcomments = article.comments.length
+  useEffect(() => {
+    const fetchComments = async (URL) => {
+      console.log(URL);
+      const res = await fetch(URL, {
+        method: 'GET',
+        headers: {
+          "Content-type": "application/json",
+          "X-Shopify-Access-Token": "8688ae404288aacf2fd070b0bf36952a",
+        }
+      })
+      res.json().then((responseJson) => {
+        console.log(responseJson)
+      })
+    }
+    fetchComments(`https://icbtc.com/development/shopify-api/${reqData}`)
+  }, [])
   console.log(article, getData);
   return (<> <SEO title = {
     article.title
