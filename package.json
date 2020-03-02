@@ -33,6 +33,7 @@
     "react-google-recaptcha": "^2.0.1",
     "react-helmet": "^5.2.1",
     "react-recaptcha": "^2.3.10",
+    "react-share": "^4.0.1",
     "react-slick": "^0.25.2",
     "react-whirligig": "^6.6.1",
     "reactstrap": "^8.2.0",
