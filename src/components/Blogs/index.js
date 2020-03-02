@@ -96,10 +96,10 @@ const Blogs = ({ id }) => {
                   <p style={{fontSize:'12px'}}>By <span>{author.name}</span> In <span>{blog.title}</span> Posted <span> {publishedAt}</span></p>
                   <h3 className="mb-3"><Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{ fromFeed: true }} className="text-uppercase erbaum space-1 text-dark">{title}</Link></h3>
                   <p className="filson-pro-reg text-1">{excerpt}</p>
-                  <FacebookShareButton url={fshareUrl}><FacebookIcon size={16} round={true} /></FacebookShareButton>
-                  <TwitterShareButton url={tshareUrl}><TwitterIcon size={16} round={true} /></TwitterShareButton>
-                  <PinterestShareButton url={pshareUrl}><PinterestIcon size={16} round={true} /></PinterestShareButton>
-                  <LinkedinShareButton url={lshareUrl}><LinkedinIcon size={16} round={true} /></LinkedinShareButton>
+                  <FacebookShareButton url={fshareUrl}><FacebookIcon size={32} round={true} /></FacebookShareButton>
+                  <TwitterShareButton url={tshareUrl}><TwitterIcon size={32} round={true} /></TwitterShareButton>
+                  <PinterestShareButton url={pshareUrl}><PinterestIcon size={32} round={true} /></PinterestShareButton>
+                  <LinkedinShareButton url={lshareUrl}><LinkedinIcon size={32} round={true} /></LinkedinShareButton>
                   <p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 w-100">
                     <Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{ fromFeed: true }} className="btn-cta color-primary erbaum-bold space-1">READ MORE</Link>
                   </p>
