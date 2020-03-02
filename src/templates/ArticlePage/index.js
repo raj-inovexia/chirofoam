@@ -1,19 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 import Header from "~/components/header"
 import Footer from "~/components/footer"
-import {Container, Row, Col, Form} from 'reactstrap';
+import {Container, Row, Col, Form} from 'reactstrap'
 import SEO from '~/components/seo'
-import "~/assets/css/bootstrap.min.css"
 import RecentPosts from "~/components/Blogs/RecentPostsFooter"
+import "~/assets/css/bootstrap.min.css"
+import "~/assets/js/custom.js"
 
 const ArticlePage = ({data}) => {
   const article = data.shopifyArticle
   const article_id = parseInt(window.atob(article.shopifyId).split("/").pop())
   const blog_id = parseInt(window.atob(article.blog.shopifyId).split("/").pop())
+  const ip = "chirofoam.com"
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
-    }).join('&');
+      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
+    }).join('&')
   }
   const getData = {
     "api": "/admin/api/2020-01/comments.json",
@@ -23,7 +25,7 @@ const ArticlePage = ({data}) => {
   }
   const getDate = (date) => {
     const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
-    const d = new Date(date);
+    const d = new Date(date)
     const month = Months[d.getMonth()]
     const day = d.getDate()
     const year = d.getFullYear()
@@ -32,9 +34,20 @@ const ArticlePage = ({data}) => {
   const reqData = jsonToQueryString(getData)
   const [totalComments, setTotalComments] = useState(0)
   const [comments, setComments] = useState([])
+  const handlePostComment = (event) => {
+    event.preventDefault()
+    const data = {
+      author: elements.author.value,
+      email: elements.email.value,
+      body: elements.body.value,
+      article_id: article_id,
+      blog_id: blog_id,
+      ip: ip
+    }
+    console.log(data)
+  }
   useEffect(() => {
     const fetchComments = async (URL) => {
-      console.log(URL);
       const res = await fetch(URL, {
         method: 'GET',
         headers: {
@@ -51,7 +64,7 @@ const ArticlePage = ({data}) => {
     }
     fetchComments(`https://icbtc.com/development/shopify-api/${reqData}`)
   }, [])
-  console.log(article, totalComments, comments);
+  console.log(article, totalComments, comments)
   return (<> <SEO title = {
     article.title
   }
@@ -182,7 +195,7 @@ const ArticlePage = ({data}) => {
         }}>LEAVE A COMMENT</h3>
       <Row className="mx-0">
         <div className="comment-form w-100">
-          <form method="post" action="">
+          <form onSubmit={e => handlePostComment(e)}>
             <Col className="col-12">
               <textarea placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
             </Col>
@@ -194,14 +207,9 @@ const ArticlePage = ({data}) => {
                 <input type="email" name="email" placeholder="Email (Required)" required="required" className="w-100 text-1 color-secondary filson-pro-reg"/>
               </Col>
               <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <input type="text" name="website" placeholder="Website" className="w-100 text-1 color-secondary filson-pro-reg"/>
+                <input type="url" name="website" placeholder="Website" className="w-100 text-1 color-secondary filson-pro-reg"/>
               </Col>
             </Row>
-            <Col sm="12">
-              <input type="hidden" name="ip"/>
-              <input type="hidden" name="blog_id"/>
-              <input type="hidden" name="article_id"/>
-            </Col>
             <Col className="col-12">
               <button type="submit" className="comment-submit text-1 filson-pro-reg mt-3">POST COMMENT</button>
             </Col>
