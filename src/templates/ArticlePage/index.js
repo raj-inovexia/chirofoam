@@ -114,7 +114,6 @@ const ArticlePage = ({data}) => {
       })
     })(`//icbtc.com/development/shopify-api/${reqData}`)
   }, [])
-  console.log(article)
   return (<> <SEO title = {
     article.title
   }
