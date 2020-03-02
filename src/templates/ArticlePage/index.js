@@ -198,7 +198,7 @@ const ArticlePage = ({data}) => {
         <div className="comment-form w-100">
           <form onSubmit={e => handlePostComment(e)}>
             <Col className="col-12">
-              <textarea placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
+              <textarea name="body" placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
             </Col>
             <Row className="mx-0 input-data-field">
               <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
