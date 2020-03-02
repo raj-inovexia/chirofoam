@@ -12,6 +12,7 @@ const ArticlePage = ({data}) => {
   const article_id = parseInt(window.atob(article.shopifyId).split("/").pop())
   const blog_id = parseInt(window.atob(article.blog.shopifyId).split("/").pop())
   const ip = "chirofoam.com"
+  const token = "8688ae404288aacf2fd070b0bf36952a"
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
@@ -45,7 +46,29 @@ const ArticlePage = ({data}) => {
       blog_id: blog_id,
       ip: ip
     }
-    console.log(data)
+    const sendComment = async (URL) => {
+      return await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "X-Shopify-Access-Token": token
+        },
+        body: JSON.stringify(data)
+      }).then((response) => {
+        if (response.status === 200) {
+          response.json().then((responseJson) => {
+            console.log(responseJson)
+          })
+        } else {
+          response.json().then((responseJson) => {
+            console.log(responseJson);
+          })
+        }
+      }).catch((error) => {
+        console.error(error)
+      })
+    }
+    sendComment(`https://icbtc.com/development/shopify-api/`)
   }
   useEffect(() => {
     const fetchComments = async (URL) => {
@@ -53,7 +76,7 @@ const ArticlePage = ({data}) => {
         method: 'GET',
         headers: {
           "Content-type": "application/json",
-          "X-Shopify-Access-Token": "8688ae404288aacf2fd070b0bf36952a"
+          "X-Shopify-Access-Token": token
         }
       })
       res.json().then((responseJson) => {
