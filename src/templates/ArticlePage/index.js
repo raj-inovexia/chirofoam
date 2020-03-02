@@ -21,6 +21,14 @@ const ArticlePage = ({data}) => {
     "article_id": article_id,
     "order": "updated_at asc"
   }
+  const getDate = (date) => {
+    const Months = "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
+    const d = new Date(date);
+    const month = Months[d.getMonth()]
+    const day = d.getDate()
+    const year = d.getFullYear()
+    return `${month} ${day}, ${year}`
+  }
   const reqData = jsonToQueryString(getData)
   const [totalComments, setTotalComments] = useState(0)
   const [comments, setComments] = useState([])
@@ -135,25 +143,27 @@ const ArticlePage = ({data}) => {
       <h3 className="text-center mb-4" style={{
           fontSize: '18px'
         }}>SHOWING&nbsp;{totalComments}&nbsp;COMMENTS</h3>
-
       {
-        article.comments.map((comment, index) => (<div className="mb-4">
+        comments.map((comment, index) => (<div className="mb-4">
           <div className="profile-card pl-3">
             <span>
               <i class="fa fa-user-circle"></i>
             </span>
             <strong className="color-secondary filson-pro-reg pl-3 color-secondary" style={{
                 fontSize: '12px'
-              }}>{comment.author.name}</strong>
+              }}>{comment.author}</strong>
             <p></p>
-            <strong className="pl-3" style={{
-                fontSize: '12px'
-              }}>
-              <a href="#" className="color-secondary">Reply</a>
-            </strong>
+            <span className="pl-3">
+              <button className="btn btn-link color-secondary">
+                <strong style={{
+                    fontSize: '12px'
+                  }}>Reply</strong></button>
+              </span>
           </div>
-          <div className="comment-card p-3 position-relative mt-3">
-            <p className="filson-pro-reg text-1 color-secondary">{comment.content}</p>
+          <div className="comment-card p-3 position-relative mt-3 filson-pro-reg text-1 color-secondary"
+            dangerouslySetInnerHTML={{
+              __html: comment.body_html
+            }}>
           </div>
         </div>))
       }
