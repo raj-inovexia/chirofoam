@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Header from "~/components/header"
 import Footer from "~/components/footer"
 import {Container, Row, Col, Alert} from 'reactstrap'
+import { graphql } from 'gatsby'
 import SEO from '~/components/seo'
 import RecentPosts from "~/components/Blogs/RecentPostsFooter"
 import "~/assets/css/bootstrap.min.css"
