@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link, navigate} from 'gatsby'
 import {Col, Pagination, PaginationItem} from 'reactstrap';
-import {  EmailShareButton, FacebookShareButton, } from "react-share";
+import {  FacebookShareButton, } from "react-share";
 
 const Blogs = ({ id }) => {
   const { allShopifyArticle } = useStaticQuery(
@@ -81,7 +81,7 @@ const Blogs = ({ id }) => {
               
               <div className="blogs-content d-flex mt-4">
                 <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
-                  <FacebookShareButton url={shareUrl} />
+                  <FacebookShareButton url={'https://www.facebook.com/'} />
                    <div className="addthis_inline_share_toolbox"></div>
                   <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0"><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
                  <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="d-block">2</span></p>
