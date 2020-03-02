@@ -393,7 +393,7 @@ const Reviews = (props) => {
                         {
                           allShopifyProduct.nodes.map((item, i) => (<div key={i} className="col-md-6 col-10 mx-auto">
                             <div className="card card-body text-center border-0 px-0 px-sm-2 px-lg-2 px-xl-2 mx-1">
-                              <button onClick={e => openModal(e, window.atob(item.shopifyId).split("/").pop(), item)} className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">{
+                              <button onClick={e => openModal(e, atob(item.shopifyId).split("/").pop(), item)} className="filson-pro-reg space-1 px-3 px-sm-4 px-lg-4 px-xl-4">{
                                   item.title.includes('XF')
                                     ? 'Chirofoam X-Firm mattress'
                                     : 'Chirofoam Premium Mattress'
