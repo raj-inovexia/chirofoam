@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Header from "~/components/header"
 import Footer from "~/components/footer"
-import {Container, Row, Col, Form} from 'reactstrap'
+import {Container, Row, Col, Alert} from 'reactstrap'
 import SEO from '~/components/seo'
 import RecentPosts from "~/components/Blogs/RecentPostsFooter"
 import "~/assets/css/bootstrap.min.css"
@@ -42,6 +42,15 @@ const ArticlePage = ({data}) => {
   const reqData = jsonToQueryString(getData)
   const [totalComments, setTotalComments] = useState(0)
   const [comments, setComments] = useState([])
+  const [responseColor, setResponseColor] = useState("")
+  const [responseContent, setResponseContent] = useState(false)
+  const [responseVisible, setResponseVisible] = useState(false)
+  const dismissResponse = () => {
+    setResponseColor("")
+    setResponseVisible(false)
+    setResponseContent(false)
+  }
+  const response = <Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color={responseColor}>{responseContent}</Alert>
   const handlePostComment = (event) => {
     event.preventDefault()
     const elements = event.target.elements
@@ -69,6 +78,9 @@ const ArticlePage = ({data}) => {
       }).then((response) => {
         if (response.status === 200) {
           response.json().then((responseJson) => {
+            setResponseVisible(true)
+            setResponseColor("success")
+            setResponseContent(<strong>{responseJson.message}</strong>)
             console.log(responseJson)
           })
         } else {
@@ -230,6 +242,7 @@ const ArticlePage = ({data}) => {
         }}>LEAVE A COMMENT</h3>
       <Row className="mx-0">
         <div className="comment-form w-100">
+          {response}
           <form onSubmit={e => handlePostComment(e)}>
             <Col className="col-12">
               <textarea name="body" placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
