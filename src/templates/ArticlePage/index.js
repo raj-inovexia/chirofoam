@@ -18,7 +18,8 @@ const ArticlePage = ({data}) => {
   const getData = {
     "api": "/admin/api/2020-01/comments.json",
     "blog_id": blog_id,
-    "article_id": article_id
+    "article_id": article_id,
+    "order": "updated_at asc"
   }
   const reqData = jsonToQueryString(getData)
   const [totalComments, setTotalComments] = useState(0)
@@ -30,11 +31,11 @@ const ArticlePage = ({data}) => {
         method: 'GET',
         headers: {
           "Content-type": "application/json",
-          "X-Shopify-Access-Token": "8688ae404288aacf2fd070b0bf36952a",
+          "X-Shopify-Access-Token": "8688ae404288aacf2fd070b0bf36952a"
         }
       })
       res.json().then((responseJson) => {
-        if(responseJson.status===200){
+        if (responseJson.status === 200) {
           setComments(responseJson.response.comments)
           setTotalComments(responseJson.response.comments.length)
         }
@@ -95,7 +96,7 @@ const ArticlePage = ({data}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }}>
                 <i className="fa fa-envelope"></i>
-                <span className="pl-2">2</span>
+                <span className="pl-2">{totalComments}</span>
               </span>
               <span className="mb-0 ml-4" style={{
                   color: 'rgba(0,0,0,0.4)'
@@ -133,8 +134,7 @@ const ArticlePage = ({data}) => {
     <Container>
       <h3 className="text-center mb-4" style={{
           fontSize: '18px'
-        }}>SHOWING {article.comments.length}
-        COMMENTS</h3>
+        }}>SHOWING&nbsp;{totalComments}&nbsp;COMMENTS</h3>
 
       {
         article.comments.map((comment, index) => (<div className="mb-4">
