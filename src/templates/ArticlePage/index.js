@@ -83,7 +83,7 @@ const ArticlePage = ({data}) => {
           response.json().then((responseJson) => {
             setResponseVisible(true)
             setResponseColor("success")
-            setResponseContent(<strong>{responseJson.message}</strong>)
+            setResponseContent(<div>Your comment has been submitted <strong>Successfully</strong> and will be published soon.</div>)
             console.log(responseJson)
           })
         } else {
