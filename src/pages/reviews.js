@@ -194,7 +194,7 @@ const Reviews = (props) => {
           console.log(error)
         })
       }
-      sendReview(`https://reviews.hulkapps.com/api/shop/${shopID}/reviews`)
+      sendReview(`//reviews.hulkapps.com/api/shop/${shopID}/reviews`)
     } else {
       setResponseVisible(true)
       setResponseColor("warning")
@@ -245,10 +245,10 @@ const Reviews = (props) => {
       const res = await fetch(URL)
       res.json().then((responseJson) => {
         setShopID(responseJson.data.shopify_id)
-        fetchAllRating(`https://reviews.hulkapps.com/api/shop/${responseJson.data.shopify_id}/reviews/all`)
+        fetchAllRating(`//reviews.hulkapps.com/api/shop/${responseJson.data.shopify_id}/reviews/all`)
       })
     }
-    fetchShopID(`https://reviews.hulkapps.com/api/shop?shopify_domain=${shopName}`)
+    fetchShopID(`//reviews.hulkapps.com/api/shop?shopify_domain=${shopName}`)
   }, [])
   return (<> < SEO title = "CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
   <section>

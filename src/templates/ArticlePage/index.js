@@ -11,13 +11,16 @@ const ArticlePage = ({data}) => {
   const article = data.shopifyArticle
   const article_id = parseInt(window.atob(article.shopifyId).split("/").pop())
   const blog_id = parseInt(window.atob(article.blog.shopifyId).split("/").pop())
-  const ip = "chirofoam.com"
+  const [ip, setIp] = useState("")
   const token = "8688ae404288aacf2fd070b0bf36952a"
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
+  const getIp = (() => {
+    await fetch(`//api.ipify.org/?format=json`).then(results => results.json()).then(data => console.log(data.ip))
+  })()
   const getData = {
     "api": "/admin/api/2020-01/comments.json",
     "blog_id": blog_id,
@@ -73,7 +76,7 @@ const ArticlePage = ({data}) => {
         console.error(error)
       })
     }
-    sendComment(`https://icbtc.com/development/shopify-api/`)
+    sendComment(`//icbtc.com/development/shopify-api/`)
   }
   useEffect(() => {
     const fetchComments = async (URL) => {
@@ -91,7 +94,7 @@ const ArticlePage = ({data}) => {
         }
       })
     }
-    fetchComments(`https://icbtc.com/development/shopify-api/${reqData}`)
+    fetchComments(`//icbtc.com/development/shopify-api/${reqData}`)
   }, [])
   console.log(article)
   return (<> <SEO title = {
