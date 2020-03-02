@@ -5,13 +5,14 @@ import {Container, Row, Col, Alert} from 'reactstrap'
 import { graphql } from 'gatsby'
 import SEO from '~/components/seo'
 import RecentPosts from "~/components/Blogs/RecentPostsFooter"
+import Base64 from "~/components/Base64"
 import "~/assets/css/bootstrap.min.css"
 import "~/assets/js/custom.js"
 
 const ArticlePage = ({data}) => {
   const article = data.shopifyArticle
-  const [articleId, setArticleId] = useState(parseInt(atob(article.shopifyId).split("/").pop()))
-  const [blogId, setBlogId] = useState(parseInt(atob(article.blog.shopifyId).split("/").pop()))
+  const [articleId, setArticleId] = useState(parseInt(Base64.atob(article.shopifyId).split("/").pop()))
+  const [blogId, setBlogId] = useState(parseInt(Base64.atob(article.blog.shopifyId).split("/").pop()))
   const [ip, setIp] = useState("")
   const token = "8688ae404288aacf2fd070b0bf36952a"
   const jsonToQueryString = (json) => {
