@@ -18,10 +18,12 @@ const ArticlePage = ({data}) => {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
-  const getIp = async (() => {
-    return await fetch(`//api.ipify.org/?format=json`)
-    .then(results => results.json())
-    .then(data => console.log(data.ip))
+  const getIp = (async () => {
+    return await fetch(`//api.ipify.org/?format=json` {
+      method: 'GET'
+    }).then(results => results.json()).then((data) => {
+      setIp(data.ip)
+    })
   })()
   const getData = {
     "api": "/admin/api/2020-01/comments.json",
@@ -45,8 +47,8 @@ const ArticlePage = ({data}) => {
     const elements = event.target.elements
     const data = {
       api: "/admin/api/2020-01/comments.json",
-      query:{
-        comment:{
+      query: {
+        comment: {
           author: elements.author.value,
           email: elements.email.value,
           body: elements.body.value,
@@ -81,7 +83,7 @@ const ArticlePage = ({data}) => {
     sendComment(`//icbtc.com/development/shopify-api/`)
   }
   useEffect(() => {
-    const fetchComments = async (URL) => {
+    const fetchComments = (async (URL) => {
       const res = await fetch(URL, {
         method: 'GET',
         headers: {
@@ -95,8 +97,7 @@ const ArticlePage = ({data}) => {
           setTotalComments(responseJson.response.comments.length)
         }
       })
-    }
-    fetchComments(`//icbtc.com/development/shopify-api/${reqData}`)
+    })(`//icbtc.com/development/shopify-api/${reqData}`)
   }, [])
   console.log(article)
   return (<> <SEO title = {
