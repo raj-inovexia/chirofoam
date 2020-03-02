@@ -10,8 +10,12 @@ import "~/assets/js/custom.js"
 
 const ArticlePage = ({data}) => {
   const article = data.shopifyArticle
-  const article_id = parseInt(window.atob(article.shopifyId).split("/").pop())
-  const blog_id = parseInt(window.atob(article.blog.shopifyId).split("/").pop())
+  const [articleId, setArticleId] = useState(article.shopifyId)
+  const [blogId, setBlogId] = useState(article.blog.shopifyId)
+  if (typeof window !== 'undefined') {
+    setArticleId(parseInt(window.atob(articleId).split("/").pop()))
+    setBlogId(parseInt(window.atob(blogId).split("/").pop()))
+  }
   const [ip, setIp] = useState("")
   const token = "8688ae404288aacf2fd070b0bf36952a"
   const jsonToQueryString = (json) => {
@@ -28,8 +32,8 @@ const ArticlePage = ({data}) => {
   })()
   const getData = {
     "api": "/admin/api/2020-01/comments.json",
-    "blog_id": blog_id,
-    "article_id": article_id,
+    "blog_id": blogId,
+    "article_id": articleId,
     "order": "updated_at asc"
   }
   const getDate = (date) => {
@@ -62,8 +66,8 @@ const ArticlePage = ({data}) => {
           author: elements.author.value,
           email: elements.email.value,
           body: elements.body.value,
-          article_id: article_id,
-          blog_id: blog_id,
+          article_id: articleId,
+          blog_id: blogId,
           ip: ip
         }
       }
