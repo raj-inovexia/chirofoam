@@ -150,25 +150,26 @@ const ArticlePage = ({data}) => {
               <span className="media-left">
                 <i class="fa fa-user-circle"></i>
               </span>
-              <div className="media-body">
-                <strong className="color-secondary filson-pro-reg pl-3 color-secondary" style={{
-                    fontSize: '12px'
-                  }}>{comment.author}</strong>
-                <time className="pl-3 color-secondary fs-1" datetime={comment.published_at}>{getDate(comment.published_at)}</time>
-                <span className="pl-3">
-                  <button className="btn btn-link color-secondary p-0">
-                    <strong style={{
-                        fontSize: '12px'
-                      }}>Reply</strong></button>
-                  </span>
+              <div className="media-body my-auto">
+                <div className="media">
+                  <strong className="media-left color-secondary filson-pro-reg pl-3 color-secondary" style={{
+                      fontSize: '12px'
+                    }}>{comment.author}</strong>
+                  <time className="media-body pl-3 color-secondary fs-1" datetime={comment.published_at}>{getDate(comment.published_at)}</time>
+                  <div className="media-right pl-3">
+                    <button className="btn btn-link color-secondary p-0">
+                      <strong style={{
+                          fontSize: '12px'
+                        }}>Reply</strong>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="comment-card p-3 position-relative mt-3 filson-pro-reg text-1 color-secondary"
-            dangerouslySetInnerHTML={{
+          <div className="comment-card p-3 position-relative mt-3 filson-pro-reg text-1 color-secondary" dangerouslySetInnerHTML={{
               __html: comment.body_html
-            }}>
-          </div>
+            }}></div>
         </div>))
       }
 
