@@ -4,13 +4,15 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import Banner from "../components/banner-shop-chirofoam"
 import {Container, Row, Col, Media} from 'reactstrap';
+import CountUp from 'react-countup';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import mattress1 from "../assets/img/mattress1.jpg"
-import run from "../assets/img/run.png"
+import run from "../assets/img/runing-man.jpg"
 //import Products from '~/components/Products'
 import product1 from "../assets/img/product1.jpg"
 import product2 from "../assets/img/product2.jpg"
+
 
 
 export default (props) => {
@@ -97,55 +99,66 @@ export default (props) => {
 			</div>
 		</section>
 		
-		<section className="mt-4 mb-4 py-5 approved bg-image">
-			<Container>
-				<Row>
-					<Col sm="4" className="align-middle">
-						<img src={run} alt="run" width="70%"/>
-					</Col>
-					<Col sm="8">
-						<div className="text-white mb-4 mt-4 pt-3 pl-3">
-							<h4 className="lead-text-font text-white erbaum-bold display-5">CUSTOMER APPROVED</h4>
-							<p className="proxima-b space-1 col-12 col-sm-7 p-0" style={{fontSize:'16px'}}>Our customers have reported the following benefits after sleeping on there chirofoam mattress</p>
-							<div className="pt-3">
-								<Media className="mt-3">
-								  <Media left middle className="mr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
-									97%
-								  </Media>
-								  <Media body middle className="proxima-r" style={{fontSize:'1.1rem'}}>
-									  Improvement in sleep comfort and quality
-								  </Media>
-								</Media>
-								<Media className="mt-3">
-								  <Media left middle className="mr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
-									94%
-								  </Media>
-								  <Media body middle className="proxima-r" style={{fontSize:'1.1rem'}}>
-									  Increased energy in the morning and throughout the day
-								  </Media>
-								</Media>
-								<Media className="mt-3">
-								  <Media left middle className="mr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
-									86%
-								  </Media>
-								  <Media body middle className="proxima-r" style={{fontSize:'1.1rem'}}>
-									  Improved muscle recovery and/or relief in daliy experienced back pain
-								  </Media>
-								</Media>
-								<Media className="mt-3">
-								  <Media left middle className="mr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
-									82%
-								  </Media>
-								  <Media body middle className="proxima-r" style={{fontSize:'1.1rem'}}>
-									  Improvement in sleep comfort and quality
-								  </Media>
-								</Media>
-							</div>
-						</div>
-					</Col>
-				</Row>
-			</Container>
-		</section>
+		<section className="py-4 pt-sm-4 pb-sm-4 approved bg-image">
+               <Container className="">
+                  <Row className="pt-3 no-gutters m-0">
+                    <Col sm="12" className="align-middle col-lg-5 col-xl-5">
+                     
+                    </Col>
+                    <Col sm="12" className="col-lg-7 col-xl-7">
+                      <div className="text-white mb-4">
+                        <h3 className="approved-title text-white erbaum-bold lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">CHIROPRACTOR APPROVED</h3>
+                        <p className="proxima-b space-1 p-0 pt-sm-1 text-1">Chirofoam<sup style={{fontSize:'8px'}}>TM</sup> mattresses are designed by Chiropractors to improve posture, and provide incredible pressure relief. Your back will thank you.</p>
+                        <p className="cta mt-3 mt-sm-0 mt-lg-0 mt-xl-0 pt-sm-0 pt-lg-0 pt-xl-0 mb-sm-2">
+                          <Link to="#" className="btn-cta text-white erbaum-bold space-1">CALL TO ACTION </Link>
+                        </p>
+                      </div>
+
+                      <div className="text-white mb-4 pt-1 pr-0 pr-sm-5">
+                        <h3 className="approved-title text-white erbaum-bold pt-0 pt-sm-3 lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">CUSTOMER APPROVED</h3>
+                        <p className="proxima-b space-1 p-0 pt-sm-2 text-1">Our customers have reported the following benefits after sleeping on there chirofoam mattress</p>
+                        <div className="ml-0 ml-sm-4 pt-0 pt-sm-0 pl-0 pr-sm-5">
+                          <Media className="mt-3">
+                            <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
+                            97%
+                            </Media>
+                            <Media body middle className="proxima-r pl-sm-3 text-1">
+                              Improvement in sleep comfort and quality
+                            </Media>
+                          </Media>
+                          <Media className="pt-3">
+                            <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
+                            94%
+                            </Media>
+                            <Media body middle className="proxima-r pl-sm-3 text-1">
+                              Increased energy in the morning and throughout the day
+                            </Media>
+                          </Media>
+                          <Media className="pt-3">
+                            <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
+                            86%
+                            </Media>
+                            <Media body middle className="proxima-r pl-sm-3 pt-sm-1 text-1">
+                              Improved muscle recovery and/or relief in daliy experienced back pain
+                            </Media>
+                          </Media>
+                          <Media className="pt-3">
+                            <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
+                            82%
+                            </Media>
+                            <Media body middle className="proxima-r pl-sm-3 pt-sm-2 text-1">
+                              Improvement in sleep comfort and quality
+                            </Media>
+                          </Media>
+                        </div>
+                        <p className="cta mt-3 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0">
+                          <Link to="/reviews/" className="btn-cta text-white erbaum-bold space-1">READ CUSTOMER REVIEWS</Link>
+                        </p>
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
+            </section>
 		<section className="py-sm-5 py-4">
 			<Container>
 				<Row>

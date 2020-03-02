@@ -5,11 +5,11 @@ import {Container, Row, Col, Media} from 'reactstrap';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import mattress1 from "../assets/img/mattress1.jpg"
+import active from "../assets/img/activelife.jpg"
 import product1 from "../assets/img/product1.jpg"
 import product2 from "../assets/img/product2.jpg"
 import blog1 from "../assets/img/blog1.jpg"
 import result from "../assets/img/results.jpg"
-import run from "../assets/img/run.png"
 import circle1 from "../assets/img/circle1.png"
 import circle2 from "../assets/img/circle2.png"
 import circle3 from "../assets/img/circle3.png"
@@ -21,6 +21,7 @@ import SlickSlider from "../components/FiveKeys"
 
 
 export default (props) => {
+	
   return (
 	<>
 		<SEO title="Home" />
@@ -44,7 +45,7 @@ export default (props) => {
 						</p>
 					</Col>
 					<Col sm="12" className="col-md-6 col-lg-6 col-xl-6 px-0 px-sm-0 px-md-2 px-lg-3 px-xl-4">
-						<img src={mattress1} alt="Mattress1" width="100%"/>
+						<img src={active} alt="Active Life Style" width="100%"/>
 						 <ul className="list-unstyled mt-3 extra-link text-center d-block text-lg-right text-xl-right text-md-right extra-link">
 							  <li className="mr-1 mr-sm-2 mr-lg-3"><Link to="/our-story/" className="mr-sm-3 mr-lg-3 mr-xl-3 color-primary erbaum-bold position-relative story">OUR STORY</Link></li>
 							  <li className="mr-1 mr-sm-2 mr-lg-3"><Link to="/locations/" className="mr-sm-3 mr-lg-3 mr-xl-3 color-primary erbaum-bold position-relative location">LOCATIONS</Link></li>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Header from "~/components/header"
 import Footer from "~/components/footer"
 import {Container, Row, Col, Media, Carousel, CarouselItem, CarouselControl, Modal} from 'reactstrap';
@@ -213,8 +213,8 @@ const ProductPage = ({ data }) => {
         <Row className="">
           <Col sm="4">
             <h2 className="display-3 erbaum-bold text-white">MAX SUPPORT MAX RESULTS</h2>
-            <p className="cta mt-0 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0">
-              <a href="/faq/" className="btn-cta text-white erbaum-bold space-1">KNOW MORE</a>
+            <p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 mb-sm-2 ml-3">
+              <Link to="/product/the-chirofoam™-xf-mattress-extra-firm/" className="btn-cta text-white erbaum-bold space-1">READ MORE</Link>
             </p>
           </Col>
         </Row>

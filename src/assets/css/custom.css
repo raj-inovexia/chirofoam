@@ -297,6 +297,7 @@ p.cta.erbaum.position-absolute {
 	font-size: 90px;
 	letter-spacing: 0px;
 }
+.max-support-single .btn-cta::after,
 .max-support .btn-cta::after,
 .approved .btn-cta::after,
 .banner-home .btn-cta::after {
@@ -334,7 +335,7 @@ p.cta.erbaum.position-absolute {
 	font-size: 12px;
 }
 .approved {
-	background-image: url('../img/approved-banner.png');
+	background-image: url('../img/runing-man.jpg');
 }
 .active-style h2 {
 	font-weight: 1000 !important;
