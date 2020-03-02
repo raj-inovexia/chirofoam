@@ -152,12 +152,12 @@ const ArticlePage = ({data}) => {
               </span>
               <div className="media-body my-auto">
                 <div className="media">
-                  <strong className="media-left color-secondary filson-pro-reg pl-3 color-secondary" style={{
+                  <strong className="media-left color-secondary filson-pro-reg pl-3 color-secondary mt-auto" style={{
                       fontSize: '12px'
                     }}>{comment.author}</strong>
-                  <time className="media-body pl-3 color-secondary fs-1" datetime={comment.published_at}>{getDate(comment.published_at)}</time>
+                  <time className="media-body pl-3 color-secondary fs-1 mt-auto" datetime={comment.published_at}>{getDate(comment.published_at)}</time>
                   <div className="media-right pl-3">
-                    <button className="btn btn-link color-secondary p-0">
+                    <button className="btn btn-link color-secondary p-0 border-0">
                       <strong style={{
                           fontSize: '12px'
                         }}>Reply</strong>
