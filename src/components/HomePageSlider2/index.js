@@ -10,7 +10,7 @@ import {
 import { Link } from "gatsby"
 import "~/assets/css/bootstrap.min.css"
 import "~/assets/css/animate.css"
-import run from "~/assets/img/runing-man.jpg"
+import run from "~/assets/img/only-man.png"
 import icon1 from "~/assets/img/ic1.png"
 import icon2 from "~/assets/img/ic2.png"
 import icon3 from "~/assets/img/ic3.png"
@@ -67,7 +67,7 @@ const slides = items.map((item, index) => {
                 <div className="container">
                   <Row className="pt-3 no-gutters m-0">
                     <Col sm="12" className="align-middle col-lg-5 col-xl-5">
-                     
+                        <img src={run} alt="run" width="75%" className="mt-sm-3 pl-sm-5 ml-sm-5"/>
                     </Col>
                     <Col sm="12" className="col-lg-7 col-xl-7">
                       <div className="text-white mb-4">

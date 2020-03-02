@@ -20,6 +20,7 @@ import HomePageSlider2 from "../components/HomePageSlider2"
 import SlickSlider from "../components/FiveKeys"
 
 
+
 export default (props) => {
 	
   return (
@@ -32,7 +33,7 @@ export default (props) => {
 				<Row className="pt-0 pt-sm-4 pt-lg-4 pt-xl-4 d-flex m-0">
 					<Col sm="12" className="pt-0 pt-sm-12 pt-lg-12 pt-xl-2 col-md-6 col-lg-6 col-xl-6">
 						<small className="filson-pro-reg color-primary space-4 pl-0 pl-sm-2 pl-lg-2 pl-xl-2" style={{fontSize:'18px'}}>DESIGNED FOR YOUR</small>
-						<h2 className="erbaum-bold color-primary pt-0 pt-sm-2 pt-lg-2 pt-xl-2">ACTIVE LIFESTYLE</h2>
+						<h2 className="erbaum-bold color-primary pt-0 pt-sm-2 pt-lg-2 pt-xl-2 animated fadeInUp slow">ACTIVE LIFESTYLE</h2>
 						<p className="proxima-eb color-primary space-1 pb-0 pb-sm-3 pb-lg-3 pb-xl-3 text-1">
 							"Chirofoam is a premuim memory foam matttress designed with 5 key features consumers voted most important in a new mattress. Created by industry experts, for atheletes and individuals seeking better performance through a better sleep.
 						</p>
@@ -50,7 +51,7 @@ export default (props) => {
 							  <li className="mr-1 mr-sm-2 mr-lg-3"><Link to="/our-story/" className="mr-sm-3 mr-lg-3 mr-xl-3 color-primary erbaum-bold position-relative story">OUR STORY</Link></li>
 							  <li className="mr-1 mr-sm-2 mr-lg-3"><Link to="/locations/" className="mr-sm-3 mr-lg-3 mr-xl-3 color-primary erbaum-bold position-relative location">LOCATIONS</Link></li>
 							  <li className="mr-1 mr-sm-2 mr-lg-3"><Link to="/shop-chirofoam/" className="mr-sm-3 mr-lg-3 mr-xl-3 color-primary erbaum-bold position-relative online">BUY ONLINE</Link></li>
-						</ul> 
+						</ul>
 					</Col>
 				</Row>
 			</div>
@@ -58,7 +59,7 @@ export default (props) => {
 		<section className="py-4 pt-sm-1 pb-sm-1 key-feature">
 			<Container className="py-0 pt-sm-0 pb-sm-1">
 				<Row className="pb-sm-3 pb-lg-4 pb-xl-3 pb-0 m-0">
-					<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold" style={{width:'100%'}}>5 KEY FEATURES IN EVERY CHIROFOAM MATTRESS</h3>
+					<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold animated fadeInUp slow" style={{width:'100%'}}>5 KEY FEATURES IN EVERY CHIROFOAM MATTRESS</h3>
 					<p className="text-center pb-5 pb-sm-4 pt-2 mb-5 color-primary proxima-b m-auto col-12 col-sm-10 col-lg-8 space-1 sub-text sub-sm-text sub-md-text sub-xl-text">Designed by mattress experts with 5 key features that consumers voted most important for a comfortable sleep experience. (Most mattresses don’t succeed in all 5 areas.) </p>
 					<div style={{margin:'0px auto'}} className="key-features-inner 5-key py-5 overflow-hidden my-0 my-sm-0 my-md-3 my-lg-4 my-xl-5">
 						<SlickSlider />
@@ -70,7 +71,7 @@ export default (props) => {
 			<div className="container-large p-0">
 				<Row className="mx-0">
 					<Col className="col-12 col-md-5 col-lg-5 col-xl-5 pt-0 pt-lg-5 pt-xl-5 pb-3 pb-sm-0 pb-md-3 pb-lg-5 pb-xl-5">
-						<h2 className="erbaum-bold text-white ml-3">MAX SUPPORT MAX RESULTS</h2>
+						<h2 className="erbaum-bold text-white ml-3 animated fadeInUp slow">MAX SUPPORT MAX RESULTS</h2>
 						<div className="text-white proxima-r feat pt-0 pt-sm-1 ml-3 text-1 mb-2">
 							<ul className="pl-3">
 								<li>COOL GEL INFUSED MEMORY FOAM</li>

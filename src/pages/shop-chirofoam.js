@@ -8,10 +8,11 @@ import CountUp from 'react-countup';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import mattress1 from "../assets/img/mattress1.jpg"
-import run from "../assets/img/runing-man.jpg"
+import run from "../assets/img/only-man.png"
 //import Products from '~/components/Products'
 import product1 from "../assets/img/product1.jpg"
 import product2 from "../assets/img/product2.jpg"
+
 
 
 export default (props) => {
@@ -102,7 +103,7 @@ export default (props) => {
                <Container className="">
                   <Row className="pt-3 no-gutters m-0">
                     <Col sm="12" className="align-middle col-lg-5 col-xl-5">
-                     
+                      <img src={run} alt="run" width="75%" className="mt-sm-3 pl-sm-5 ml-sm-5"/>
                     </Col>
                     <Col sm="12" className="col-lg-7 col-xl-7">
                       <div className="text-white mb-4">
