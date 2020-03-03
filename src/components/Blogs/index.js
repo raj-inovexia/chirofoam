@@ -10,7 +10,11 @@ const tshareUrl = "twitter.com"
 const pshareUrl = "pinterest.com"
 const lshareUrl = "linkedin.com"
 
+
+
 const Blogs = ({ id }) => {
+  const url = typeof window !== 'undefined' ? window.location.href : '';
+  console.log(url);
   const { allShopifyArticle } = useStaticQuery(
     graphql`
       {
@@ -96,7 +100,7 @@ const Blogs = ({ id }) => {
                   <p style={{fontSize:'12px'}}>By <span>{author.name}</span> In <span>{blog.title}</span> Posted <span> {publishedAt}</span></p>
                   <h3 className="mb-3"><Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{ fromFeed: true }} className="text-uppercase erbaum space-1 text-dark">{title}</Link></h3>
                   <p className="filson-pro-reg text-1">{excerpt}</p>
-                  <FacebookShareButton url={fshareUrl}><FacebookIcon size={32} round={true} /></FacebookShareButton>
+                  <FacebookShareButton url={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`}><FacebookIcon size={32} round={true} /></FacebookShareButton>
                   <TwitterShareButton url={tshareUrl}><TwitterIcon size={32} round={true} /></TwitterShareButton>
                   <PinterestShareButton url={pshareUrl}><PinterestIcon size={32} round={true} /></PinterestShareButton>
                   <LinkedinShareButton url={lshareUrl}><LinkedinIcon size={32} round={true} /></LinkedinShareButton>
