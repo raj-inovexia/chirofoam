@@ -301,10 +301,10 @@ const ArticlePage = ({data}) => {
             </Row>
             <Row className="mx-0 input-data-field">
               <Col className="col-12">
-                  <button type="submit" className={(
+                  <button type="submit" className={"btn btn-custom-primary btn-lg text-1 filson-pro-reg mt-3 "+(
                       submitting)
-                      ? "comment-submit text-1 filson-pro-reg mt-3 position-relative"
-                      : "comment-submit text-1 filson-pro-reg mt-3 text-white"} style={{
+                      ? "color-primary position-relative"
+                      : "text-white"} style={{
                       opacity: 1
                     }} disabled={submitting}>
                     {
