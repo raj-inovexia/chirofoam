@@ -2,12 +2,25 @@ import React from 'react';
 import Header from "~/components/header"
 import Footer from "~/components/footer"
 import { graphql, Link, navigate} from 'gatsby'
-import {Jumbotron, Row, Col, Pagination, PaginationItem} from 'reactstrap';
+import {Jumbotron, Row, Col, Pagination, PaginationItem, UncontrolledPopover, PopoverBody} from 'reactstrap';
 import SEO from '~/components/seo'
 import "~/assets/css/bootstrap.min.css"
 import RecentBlogs from "~/components/Blogs/RecentBlogs"
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  PinterestShareButton,
+  TwitterShareButton,
+  FacebookIcon,
+  LinkedinIcon,
+  PinterestIcon,
+  TwitterIcon
+} from "react-share"
 
 const BlogPage = ({ data }) => {
+  const URL = typeof window !== 'undefined'
+    ? window.location.origin
+    : ''
   const allShopifyArticle = data.allShopifyArticle;
   const pageInfo = allShopifyArticle.pageInfo;
   const currentPage = pageInfo.currentPage;
@@ -49,7 +62,20 @@ const BlogPage = ({ data }) => {
               </div>
               <div className="blogs-content d-flex mt-4">
                  <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
-                  <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0"><i className="fa fa-share-alt"></i><span className="d-unset d-lg-block d-xl-block">2</span></p>
+                  <div style={{
+                  color: 'rgba(0,0,0,0.4)'
+                }} className="mb-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id={"popover-" + index}>
+                <i className="fa fa-share-alt"></i>
+                <span className="d-block">2</span>
+              </div>
+              <UncontrolledPopover trigger="legacy" placement="bottom" target={"popover-" + index}>
+                <PopoverBody>
+                  <FacebookShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><FacebookIcon size={25} round={true}/></FacebookShareButton>
+                  <TwitterShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><TwitterIcon size={25} round={true}/></TwitterShareButton>
+                  <PinterestShareButton media={image.src} url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><PinterestIcon size={25} round={true}/></PinterestShareButton><br/>
+                  <LinkedinShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><LinkedinIcon size={25} round={true}/></LinkedinShareButton>
+                </PopoverBody>
+              </UncontrolledPopover>
                  <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="d-block">{comments.length}</span></p>
                   <p className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-heart"></i><span className="d-block">2</span></p>
                 </Col>
