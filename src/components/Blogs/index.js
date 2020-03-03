@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useStaticQuery, graphql, Link, navigate} from 'gatsby'
-import {Col, Pagination, PaginationItem} from 'reactstrap';
+import {Col, Pagination, PaginationItem, Popover, PopoverBody} from 'reactstrap';
 import { FacebookShareButton,  LinkedinShareButton,  PinterestShareButton,  TwitterShareButton,} from "react-share";
 import {  FacebookIcon,  LinkedinIcon,  PinterestIcon,  TwitterIcon,} from "react-share";
-import {  FacebookShareCount,  OKShareCount,  PinterestShareCount,  RedditShareCount,  TumblrShareCount,  VKShareCount,} from "react-share";
+//import {  FacebookShareCount,  PinterestShareCount, } from "react-share";
 
 const fshareUrl = "facebook.com"
 const tshareUrl = "twitter.com"
 const pshareUrl = "pinterest.com"
 const lshareUrl = "linkedin.com"
-
-
 
 const Blogs = ({ id }) => {
   const url = typeof window !== 'undefined' ? window.location.href : '';
@@ -74,6 +72,10 @@ const Blogs = ({ id }) => {
     })
   console.log(pageInfo);
   */
+  
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const toggle = () => setPopoverOpen(!popoverOpen);
+  
   return (
           <Col sm="8" className="align-middle">
             {allShopifyArticle.edges
@@ -92,7 +94,15 @@ const Blogs = ({ id }) => {
               
               <div className="blogs-content d-flex mt-4">
                 <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
-                 <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0"><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
+                 <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id="Popover2"><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
+                  <Popover placement="bottom" isOpen={popoverOpen} target="Popover2" toggle={toggle}>
+                      <PopoverBody>
+                        <FacebookShareButton url={fshareUrl} className="p-1"><FacebookIcon size={25} round={true} /></FacebookShareButton>
+                        <TwitterShareButton url={tshareUrl} className="p-1"><TwitterIcon size={25} round={true} /></TwitterShareButton>
+                        <PinterestShareButton url={pshareUrl} className="p-1"><PinterestIcon size={25} round={true} /></PinterestShareButton>
+                        <LinkedinShareButton url={lshareUrl} className="p-1"><LinkedinIcon size={25} round={true} /></LinkedinShareButton>
+                      </PopoverBody>
+                    </Popover>
                  <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="d-block">2</span></p>
                   <p className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-heart"></i><span className="d-block">2</span></p>
                 </Col>
