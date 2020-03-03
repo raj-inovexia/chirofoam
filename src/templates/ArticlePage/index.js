@@ -2,15 +2,35 @@ import React, {useState, useEffect} from 'react'
 import Recaptcha from 'react-recaptcha'
 import Header from "~/components/header"
 import Footer from "~/components/footer"
-import {Container, Row, Col, Alert} from 'reactstrap'
-import { graphql } from 'gatsby'
+import {
+  Container,
+  Row,
+  Col,
+  Alert,
+  UncontrolledPopover,
+  PopoverBody
+} from 'reactstrap'
+import {graphql} from 'gatsby'
 import SEO from '~/components/seo'
 import RecentPosts from "~/components/Blogs/RecentPostsFooter"
 import atob from "atob"
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  PinterestShareButton,
+  TwitterShareButton,
+  FacebookIcon,
+  LinkedinIcon,
+  PinterestIcon,
+  TwitterIcon
+} from "react-share"
 import "~/assets/css/bootstrap.min.css"
 import "~/assets/js/custom.js"
 
 const ArticlePage = ({data}) => {
+  const URL = typeof window !== 'undefined'
+    ? window.location.href
+    : ''
   const article = data.shopifyArticle
   const [articleId, setArticleId] = useState(parseInt(atob(article.shopifyId).split("/").pop()))
   const [blogId, setBlogId] = useState(parseInt(atob(article.blog.shopifyId).split("/").pop()))
@@ -22,9 +42,7 @@ const ArticlePage = ({data}) => {
     }).join('&')
   }
   const getIp = (async () => {
-    return await fetch(`//api.ipify.org/?format=json`, {
-      method: 'GET'
-    }).then(results => results.json()).then((data) => {
+    return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
       setIp(data.ip)
     })
   })()
@@ -80,58 +98,58 @@ const ArticlePage = ({data}) => {
     event.preventDefault()
     setSubmitting(true)
     if (isVerified) {
-    const commentForm = event.target
-    const elements = event.target.elements
-    const data = {
-      api: "/admin/api/2020-01/comments.json",
-      query: {
-        comment: {
-          author: elements.author.value,
-          email: elements.email.value,
-          body: elements.body.value,
-          article_id: articleId,
-          blog_id: blogId,
-          ip: ip
+      const elements = event.target.elements
+      const data = {
+        api: "/admin/api/2020-01/comments.json",
+        query: {
+          comment: {
+            author: elements.author.value,
+            email: elements.email.value,
+            body: elements.body.value,
+            article_id: articleId,
+            blog_id: blogId,
+            ip: ip
+          }
         }
       }
+      const sendComment = async (URL) => {
+        return await fetch(URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            "X-Shopify-Access-Token": token
+          },
+          body: JSON.stringify(data)
+        }).then((response) => {
+          if (response.status === 200) {
+            response.json().then((responseJson) => {
+              setResponseVisible(true)
+              setResponseColor("success")
+              setResponseContent(<div>Your comment has been submitted
+                <strong>Successfully</strong>
+                and will be published soon.</div>)
+              resetRecaptcha()
+              setSubmitting(false)
+              console.log(responseJson)
+            })
+          } else {
+            response.json().then((responseJson) => {
+              console.log(responseJson);
+            })
+          }
+        }).catch((error) => {
+          console.error(error)
+        })
+      }
+      sendComment(`//icbtc.com/development/shopify-api/`)
+    } else {
+      setResponseVisible(true)
+      setResponseColor("warning")
+      setResponseContent(<div>
+        <strong>Verify!&nbsp;</strong>
+        Your are not a bot.</div>)
+      setSubmitting(false)
     }
-    const sendComment = async (URL) => {
-      return await fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          "X-Shopify-Access-Token": token
-        },
-        body: JSON.stringify(data)
-      }).then((response) => {
-        if (response.status === 200) {
-          response.json().then((responseJson) => {
-            setResponseVisible(true)
-            setResponseColor("success")
-            setResponseContent(<div>Your comment has been submitted <strong>Successfully</strong> and will be published soon.</div>)
-            commentForm.reset()
-            resetRecaptcha()
-            setSubmitting(false)
-            console.log(responseJson)
-          })
-        } else {
-          response.json().then((responseJson) => {
-            console.log(responseJson);
-          })
-        }
-      }).catch((error) => {
-        console.error(error)
-      })
-    }
-    sendComment(`//icbtc.com/development/shopify-api/`)
-  } else {
-    setResponseVisible(true)
-    setResponseColor("warning")
-    setResponseContent(<div>
-      <strong>Verify!&nbsp;</strong>
-      Your are not a bot.</div>)
-    setSubmitting(false)
-  }
   }
   useEffect(() => {
     const fetchComments = (async (URL) => {
@@ -192,12 +210,22 @@ const ArticlePage = ({data}) => {
             <Col sm="6" className="text-left text-sm-right text-lg-right text-xl-right" style={{
                 display: 'ruby'
               }}>
-              <span style={{
+              <span id="share" style={{
                   color: 'rgba(0,0,0,0.4)'
                 }} className="ml-0 ml-sm-0 ml-lg-4 ml-xl-4">
                 <i className="fa fa-share-alt"></i>
                 <span className="pl-2">2</span>
               </span>
+
+              <UncontrolledPopover trigger="legacy" placement="bottom" target="share">
+                <PopoverBody>
+                  <FacebookShareButton url={URL} className="p-2"><FacebookIcon size={25} round={true}/></FacebookShareButton>
+                  <TwitterShareButton url={URL} className="p-2"><TwitterIcon size={25} round={true}/></TwitterShareButton>
+                  <PinterestShareButton media={article.image.src} url={URL} className="p-2"><PinterestIcon size={25} round={true}/></PinterestShareButton><br/>
+                  <LinkedinShareButton url={URL} className="p-2"><LinkedinIcon size={25} round={true}/></LinkedinShareButton>
+                </PopoverBody>
+              </UncontrolledPopover>
+
               <span className="px-2 ml-4" style={{
                   color: 'rgba(0,0,0,0.4)'
                 }}>
@@ -235,99 +263,98 @@ const ArticlePage = ({data}) => {
       <RecentPosts/>
     </div>
   </section>
-
-  <section id="comments" className="py-5 py-sm-3 py-md-3 py-lg-5 py-xl-5">
-    <Container>
-      <h3 className="text-center mb-4" style={{
-          fontSize: '18px'
-        }}>SHOWING&nbsp;{totalComments}&nbsp;COMMENTS</h3>
-      {
-        comments.map((comment, index) => (<div key={index} className="mb-4">
-          <div className="profile-card pl-3">
-            <div className="media">
-              <span className="media-left">
-                <i className="fa fa-user-circle"></i>
-              </span>
-              <div className="media-body my-auto">
+    {
+    (comments.length > 0) && <section id="comments" className="py-5 py-sm-3 py-md-3 py-lg-5 py-xl-5">
+        <Container>
+          <h3 className="text-center mb-4" style={{
+              fontSize: '18px'
+            }}>SHOWING&nbsp;{totalComments}&nbsp;COMMENTS</h3>
+          {
+            comments.map((comment, index) => (<div key={index} className="mb-4">
+              <div className="profile-card pl-3">
                 <div className="media">
-                  <strong className="media-left color-secondary filson-pro-reg pl-3 color-secondary mt-auto" style={{
-                      fontSize: '12px'
-                    }}>{comment.author}</strong>
-                  <time className="media-body pl-3 color-secondary fs-1 mt-auto" dateTime={comment.published_at}>{getDate(comment.published_at)}</time>
-                  <div className="media-right pl-3">
-                    <button className="btn btn-link color-secondary p-0 border-0">
-                      <strong style={{
+                  <span className="media-left">
+                    <i className="fa fa-user-circle"></i>
+                  </span>
+                  <div className="media-body my-auto">
+                    <div className="media">
+                      <strong className="media-left color-secondary filson-pro-reg pl-3 color-secondary mt-auto" style={{
                           fontSize: '12px'
-                        }}>Reply</strong>
-                    </button>
+                        }}>{comment.author}</strong>
+                      <time className="media-body pl-3 color-secondary fs-1 mt-auto" dateTime={comment.published_at}>{getDate(comment.published_at)}</time>
+                      <div className="media-right pl-3">
+                        <button className="btn btn-link color-secondary p-0 border-0">
+                          <strong style={{
+                              fontSize: '12px'
+                            }}>Reply</strong>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="comment-card p-3 position-relative mt-3 filson-pro-reg text-1 color-secondary" dangerouslySetInnerHTML={{
-              __html: comment.body_html
-            }}></div>
-        </div>))
-      }
+              <div className="comment-card p-3 position-relative mt-3 filson-pro-reg text-1 color-secondary" dangerouslySetInnerHTML={{
+                  __html: comment.body_html
+                }}></div>
+            </div>))
+          }
 
-    </Container>
-  </section>
-  <section className="py-5 py-sm-3 py-md-3 py-lg-5 py-xl-5">
-    <Container>
-      <h3 className="text-center mb-4" style={{
-          fontSize: '18px'
-        }}>LEAVE A COMMENT</h3>
-      <Row className="mx-0">
-        <div className="comment-form w-100">
-          {response}
-          <form onSubmit={e => handlePostComment(e)}>
-            <Col className="col-12">
-              <textarea name="body" placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
+        </Container>
+      </section>
+  } < section className = "py-5 py-sm-3 py-md-3 py-lg-5 py-xl-5" > <Container>
+    <h3 className="text-center mb-4" style={{
+        fontSize: '18px'
+      }}>LEAVE A COMMENT</h3>
+    <Row className="mx-0">
+      <div className="comment-form w-100">
+        {response}
+        <form onSubmit={e => handlePostComment(e)}>
+          <Col className="col-12">
+            <textarea name="body" placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
+          </Col>
+          <Row className="mx-0 input-data-field">
+            <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+              <input type="text" name="author" placeholder="Name (Required)" required="required" className="w-100 text-1 color-secondary filson-pro-reg"/>
             </Col>
-            <Row className="mx-0 input-data-field">
-              <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <input type="text" name="author" placeholder="Name (Required)" required="required" className="w-100 text-1 color-secondary filson-pro-reg"/>
-              </Col>
-              <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <input type="email" name="email" placeholder="Email (Required)" required="required" className="w-100 text-1 color-secondary filson-pro-reg"/>
-              </Col>
-              <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <input type="url" name="website" placeholder="Website" className="w-100 text-1 color-secondary filson-pro-reg"/>
-              </Col>
-            </Row>
-            <Row className="mx-0 input-data-field">
-              <Col className="col-12">
-                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyCaptcha} expiredCallback={expiredCaptcha}/>
-              </Col>
-            </Row>
-            <Row className="mx-0 input-data-field">
-              <Col className="col-12">
-                  <button type="submit" className={(
-                      submitting)
-                      ? "btn btn-custom-primary btn-lg text-1 filson-pro-reg mt-3 color-primary position-relative"
-                      : "btn btn-custom-primary btn-lg text-1 filson-pro-reg mt-3 text-white"} style={{
-                      opacity: 1
-                    }} disabled={submitting}>
-                    {
-                      (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
+            <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+              <input type="email" name="email" placeholder="Email (Required)" required="required" className="w-100 text-1 color-secondary filson-pro-reg"/>
+            </Col>
+            <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+              <input type="url" name="website" placeholder="Website" className="w-100 text-1 color-secondary filson-pro-reg"/>
+            </Col>
+          </Row>
+          <Row className="mx-0 input-data-field">
+            <Col className="col-12">
+              <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyCaptcha} expiredCallback={expiredCaptcha}/>
+            </Col>
+          </Row>
+          <Row className="mx-0 input-data-field">
+            <Col className="col-12">
+              <button type="submit" className={(
+                  submitting)
+                  ? "btn btn-custom-primary btn-lg text-1 filson-pro-reg mt-3 color-primary position-relative"
+                  : "btn btn-custom-primary btn-lg text-1 filson-pro-reg mt-3 text-white"} style={{
+                  opacity: 1
+                }} disabled={submitting}>
+                {
+                  (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
                         zIndex: 1,
                         left: 0,
                         top: 0
                       }} > <div className="spinner-border text-white" role="status">
-                          <span className="sr-only">Loading...</span>
-                        </div>
-                      </div>
-                    }
-                    POST COMMENT</button>
-              </Col>
-            </Row>
-          </form>
-        </div>
-      </Row>
-    </Container>
-  </section>
-  <Footer/> </>)
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                }
+                POST COMMENT</button>
+            </Col>
+          </Row>
+        </form>
+      </div>
+    </Row>
+  </Container>
+</section>
+<Footer/> </>)
 }
 
 export const query = graphql `
