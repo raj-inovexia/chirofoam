@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useStaticQuery, graphql, Link, navigate} from 'gatsby'
-import {Col, Pagination, PaginationItem, Popover, PopoverBody} from 'reactstrap'
+import {Col, Pagination, PaginationItem, UncontrolledPopover, PopoverBody} from 'reactstrap'
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -69,21 +69,6 @@ const Blogs = ({id}) => {
       navigate(path)
     }
   }
-  /*
-  const pages = [...Array(Math.ceil(allShopifyArticle.totalCount/10))]
-  pages.forEach((page, i) => {
-      let path = `/blogs/${i+1}/`
-      if(i===0){
-        path = `/blogs/`
-      }
-      console.log(path, (10*i))
-    })
-  console.log(pageInfo)
-  */
-
-  const [popoverOpen, setPopoverOpen] = useState(false)
-  const toggle = () => setPopoverOpen(!popoverOpen)
-
   return (<Col sm="8" className="align-middle">
     {
       allShopifyArticle.edges
@@ -130,14 +115,14 @@ const Blogs = ({id}) => {
                 <i className="fa fa-share-alt"></i>
                 <span className="d-block">2</span>
               </p>
-              <Popover placement="bottom" isOpen={popoverOpen} target={"popover-" + index} toggle={toggle}>
+              <UncontrolledPopover trigger="legacy" placement="bottom" target={"popover-" + index}>
                 <PopoverBody>
                   <FacebookShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><FacebookIcon size={25} round={true}/></FacebookShareButton>
                   <TwitterShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><TwitterIcon size={25} round={true}/></TwitterShareButton>
                   <PinterestShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><PinterestIcon size={25} round={true}/></PinterestShareButton>
                   <LinkedinShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><LinkedinIcon size={25} round={true}/></LinkedinShareButton>
                 </PopoverBody>
-              </Popover>
+              </UncontrolledPopover>
               <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
                   color: 'rgba(0,0,0,0.4)'
                 }}>
