@@ -4,7 +4,7 @@ import {Col, Pagination, PaginationItem} from 'reactstrap';
 import { FacebookShareButton,  LinkedinShareButton,  PinterestShareButton,  TwitterShareButton,} from "react-share";
 import {  FacebookIcon,  LinkedinIcon,  PinterestIcon,  TwitterIcon,} from "react-share";
 import {  FacebookShareCount,  OKShareCount,  PinterestShareCount,  RedditShareCount,  TumblrShareCount,  VKShareCount,} from "react-share";
-import useSiteMetadata from '../hooks/use-site-metadata';
+
 const fshareUrl = "facebook.com"
 const tshareUrl = "twitter.com"
 const pshareUrl = "pinterest.com"
@@ -13,9 +13,8 @@ const lshareUrl = "linkedin.com"
 
 
 const Blogs = ({ id }) => {
-  const { siteURL } = useSiteMetadata();
   const url = typeof window !== 'undefined' ? window.location.href : '';
-  console.log(siteURL, url);
+  console.log(url);
   const { allShopifyArticle } = useStaticQuery(
     graphql`
       {
