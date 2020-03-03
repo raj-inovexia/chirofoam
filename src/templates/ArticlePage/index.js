@@ -46,6 +46,7 @@ const ArticlePage = ({data}) => {
   const reqData = jsonToQueryString(getData)
   const [totalComments, setTotalComments] = useState(0)
   const [comments, setComments] = useState([])
+  const [submitting, setSubmitting] = useState(false)
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
   const [responseVisible, setResponseVisible] = useState(false)
@@ -77,6 +78,8 @@ const ArticlePage = ({data}) => {
   const response = <Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color={responseColor}>{responseContent}</Alert>
   const handlePostComment = (event) => {
     event.preventDefault()
+    setSubmitting(true)
+    if (isVerified) {
     const elements = event.target.elements
     const data = {
       api: "/admin/api/2020-01/comments.json",
@@ -105,6 +108,8 @@ const ArticlePage = ({data}) => {
             setResponseVisible(true)
             setResponseColor("success")
             setResponseContent(<div>Your comment has been submitted <strong>Successfully</strong> and will be published soon.</div>)
+            resetRecaptcha()
+            setSubmitting(false)
             console.log(responseJson)
           })
         } else {
@@ -117,6 +122,14 @@ const ArticlePage = ({data}) => {
       })
     }
     sendComment(`//icbtc.com/development/shopify-api/`)
+  } else {
+    setResponseVisible(true)
+    setResponseColor("warning")
+    setResponseContent(<div>
+      <strong>Verify!&nbsp;</strong>
+      Your are not a bot.</div>)
+    setSubmitting(false)
+  }
   }
   useEffect(() => {
     const fetchComments = (async (URL) => {
@@ -288,7 +301,23 @@ const ArticlePage = ({data}) => {
             </Row>
             <Row className="mx-0 input-data-field">
               <Col className="col-12">
-                <button type="submit" className="comment-submit text-1 filson-pro-reg mt-3">POST COMMENT</button>
+                  <button type="submit" className={(
+                      submitting)
+                      ? "comment-submit text-1 filson-pro-reg mt-3 position-relative"
+                      : "comment-submit text-1 filson-pro-reg mt-3 text-white"} style={{
+                      opacity: 1
+                    }} disabled={submitting}>
+                    {
+                      (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
+                        zIndex: 1,
+                        left: 0,
+                        top: 0
+                      }} > <div className="spinner-border text-white" role="status">
+                          <span className="sr-only">Loading...</span>
+                        </div>
+                      </div>
+                    }
+                    POST COMMENT</button>
               </Col>
             </Row>
           </form>
