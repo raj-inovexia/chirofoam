@@ -8,7 +8,6 @@ import "../assets/css/bootstrap.min.css"
 import "~/assets/css/bootstrap.min.css"
 import "~/assets/js/custom.js"
 
-
 export default (props) => {
  const [data, setData] = useState([])
   const [overAllRating, setOverAllRating] = useState({})
