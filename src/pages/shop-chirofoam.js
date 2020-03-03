@@ -8,7 +8,7 @@ import CountUp from 'react-countup';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import mattress1 from "../assets/img/mattress1.jpg"
-import run from "../assets/img/only-man.png"
+import run from "../assets/img/man-runing.png"
 //import Products from '~/components/Products'
 import product1 from "../assets/img/product1.jpg"
 import product2 from "../assets/img/product2.jpg"

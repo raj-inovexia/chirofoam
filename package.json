@@ -35,6 +35,7 @@
     "react-dom": "^16.12.0",
     "react-google-recaptcha": "^2.0.1",
     "react-helmet": "^5.2.1",
+    "react-mail-form": "^2.1.0",
     "react-recaptcha": "^2.3.10",
     "react-share": "^4.0.1",
     "react-slick": "^0.25.2",
