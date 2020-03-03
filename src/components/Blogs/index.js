@@ -97,7 +97,7 @@ const Blogs = ({ id }) => {
                  <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id="Popover2"><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
                   <Popover placement="bottom" isOpen={popoverOpen} target="Popover2" toggle={toggle}>
                       <PopoverBody>
-                        <FacebookShareButton url={fshareUrl} className="p-1"><FacebookIcon size={25} round={true} /></FacebookShareButton>
+                        <FacebookShareButton url={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><FacebookIcon size={25} round={true} /></FacebookShareButton>
                         <TwitterShareButton url={tshareUrl} className="p-1"><TwitterIcon size={25} round={true} /></TwitterShareButton>
                         <PinterestShareButton url={pshareUrl} className="p-1"><PinterestIcon size={25} round={true} /></PinterestShareButton>
                         <LinkedinShareButton url={lshareUrl} className="p-1"><LinkedinIcon size={25} round={true} /></LinkedinShareButton>
@@ -110,10 +110,6 @@ const Blogs = ({ id }) => {
                   <p style={{fontSize:'12px'}}>By <span>{author.name}</span> In <span>{blog.title}</span> Posted <span> {publishedAt}</span></p>
                   <h3 className="mb-3"><Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{ fromFeed: true }} className="text-uppercase erbaum space-1 text-dark">{title}</Link></h3>
                   <p className="filson-pro-reg text-1">{excerpt}</p>
-                  <FacebookShareButton url={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`}><FacebookIcon size={32} round={true} /></FacebookShareButton>
-                  <TwitterShareButton url={tshareUrl}><TwitterIcon size={32} round={true} /></TwitterShareButton>
-                  <PinterestShareButton url={pshareUrl}><PinterestIcon size={32} round={true} /></PinterestShareButton>
-                  <LinkedinShareButton url={lshareUrl}><LinkedinIcon size={32} round={true} /></LinkedinShareButton>
                   <p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 w-100">
                     <Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{ fromFeed: true }} className="btn-cta color-primary erbaum-bold space-1">READ MORE</Link>
                   </p>
