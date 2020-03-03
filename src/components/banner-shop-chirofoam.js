@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import "../assets/css/bootstrap.min.css"
-import shop_banner from "../assets/img/shop-banner.png"
+import shop_banner from "../assets/img/Chirofoam_Home-jumping.png"
 
 const Banner = () => (
 	<section>
