@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Recaptcha from 'react-recaptcha'
 import Header from "~/components/header"
 import Footer from "~/components/footer"
 import {Container, Row, Col, Alert} from 'reactstrap'
@@ -45,17 +46,41 @@ const ArticlePage = ({data}) => {
   const reqData = jsonToQueryString(getData)
   const [totalComments, setTotalComments] = useState(0)
   const [comments, setComments] = useState([])
+  const [submitting, setSubmitting] = useState(false)
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
   const [responseVisible, setResponseVisible] = useState(false)
+  const [isVerified, setVerified] = useState(false)
+  const [recaptchaInstance, setRecaptchaInstance] = useState(null)
   const dismissResponse = () => {
     setResponseColor("")
     setResponseVisible(false)
     setResponseContent(false)
   }
+  const recaptchaReference = (event) => {
+    setRecaptchaInstance(event)
+  }
+  const resetRecaptcha = () => {
+    recaptchaInstance.reset()
+  }
+  const verifyCaptcha = () => {
+    setResponseColor("")
+    dismissResponse()
+    setVerified(true)
+  }
+  const expiredCaptcha = () => {
+    setResponseVisible(true)
+    setResponseColor("warning")
+    setResponseContent(<div>
+      <strong>Verification Expired!&nbsp;</strong>Check the Checkbox Again.</div>)
+    setVerified(false)
+  }
   const response = <Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color={responseColor}>{responseContent}</Alert>
   const handlePostComment = (event) => {
     event.preventDefault()
+    setSubmitting(true)
+    if (isVerified) {
+    const commentForm = event.target
     const elements = event.target.elements
     const data = {
       api: "/admin/api/2020-01/comments.json",
@@ -84,6 +109,9 @@ const ArticlePage = ({data}) => {
             setResponseVisible(true)
             setResponseColor("success")
             setResponseContent(<div>Your comment has been submitted <strong>Successfully</strong> and will be published soon.</div>)
+            commentForm.reset()
+            resetRecaptcha()
+            setSubmitting(false)
             console.log(responseJson)
           })
         } else {
@@ -96,6 +124,14 @@ const ArticlePage = ({data}) => {
       })
     }
     sendComment(`//icbtc.com/development/shopify-api/`)
+  } else {
+    setResponseVisible(true)
+    setResponseColor("warning")
+    setResponseContent(<div>
+      <strong>Verify!&nbsp;</strong>
+      Your are not a bot.</div>)
+    setSubmitting(false)
+  }
   }
   useEffect(() => {
     const fetchComments = (async (URL) => {
@@ -260,9 +296,32 @@ const ArticlePage = ({data}) => {
                 <input type="url" name="website" placeholder="Website" className="w-100 text-1 color-secondary filson-pro-reg"/>
               </Col>
             </Row>
-            <Col className="col-12">
-              <button type="submit" className="comment-submit text-1 filson-pro-reg mt-3">POST COMMENT</button>
-            </Col>
+            <Row className="mx-0 input-data-field">
+              <Col className="col-12">
+                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyCaptcha} expiredCallback={expiredCaptcha}/>
+              </Col>
+            </Row>
+            <Row className="mx-0 input-data-field">
+              <Col className="col-12">
+                  <button type="submit" className={(
+                      submitting)
+                      ? "btn btn-custom-primary btn-lg text-1 filson-pro-reg mt-3 color-primary position-relative"
+                      : "btn btn-custom-primary btn-lg text-1 filson-pro-reg mt-3 text-white"} style={{
+                      opacity: 1
+                    }} disabled={submitting}>
+                    {
+                      (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
+                        zIndex: 1,
+                        left: 0,
+                        top: 0
+                      }} > <div className="spinner-border text-white" role="status">
+                          <span className="sr-only">Loading...</span>
+                        </div>
+                      </div>
+                    }
+                    POST COMMENT</button>
+              </Col>
+            </Row>
           </form>
         </div>
       </Row>
