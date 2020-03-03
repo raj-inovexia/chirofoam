@@ -35,7 +35,7 @@ const BlogPage = ({ data }) => {
         <Row>
           <Col sm="8" className="align-middle">
             {allShopifyArticle.edges
-            ? allShopifyArticle.edges.map(({node: { id, url, title, content, excerpt, publishedAt, image, author, blog}}, index) => (
+            ? allShopifyArticle.edges.map(({node: { id, url, title, content, excerpt, publishedAt, image, author, blog, comments}}, index) => (
             <div className="blogs-section mb-4" key={id}>
               <div className="featured-image position-relative overflow-hidden">
                 <Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{ fromFeed: true }}>
@@ -50,7 +50,7 @@ const BlogPage = ({ data }) => {
               <div className="blogs-content d-flex mt-4">
                  <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
                   <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0"><i className="fa fa-share-alt"></i><span className="d-unset d-lg-block d-xl-block">2</span></p>
-                 <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="d-block">2</span></p>
+                 <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="d-block">{comments.length}</span></p>
                   <p className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-heart"></i><span className="d-block">2</span></p>
                 </Col>
                 <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
@@ -78,7 +78,7 @@ const BlogPage = ({ data }) => {
                     <span className="sr-only">Previous</span>
                   </button>
                 </PaginationItem>
-                {[...Array(pageInfo.pageCount)].map((page, i) => 
+                {[...Array(pageInfo.pageCount)].map((page, i) =>
                   <PaginationItem active={(i+1) === currentPage} key={i}>
                     <button
                       onClick={e => handlePagination(e, (i + 1))}
@@ -120,7 +120,7 @@ const BlogPage = ({ data }) => {
           <p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
             <a href="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</a>
           </p>
-          <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p> 
+          <p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p>
         </Row>
       </div>
     </section>
@@ -148,6 +148,9 @@ export const query = graphql`
           blog {
             title
             url
+          }
+          comments {
+            shopifyId
           }
         }
       }

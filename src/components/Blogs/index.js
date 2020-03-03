@@ -36,6 +36,9 @@ const Blogs = ({id}) => {
                 title
                 url
               }
+              comments {
+                shopifyId
+              }
             }
           }
           pageInfo {
@@ -81,7 +84,8 @@ const Blogs = ({id}) => {
             publishedAt,
             image,
             author,
-            blog
+            blog,
+            comments
           }
         }, index) => (<div className="blogs-section mb-4" key={index}>
           <div className="featured-image position-relative overflow-hidden">
@@ -126,7 +130,7 @@ const Blogs = ({id}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }}>
                 <i className="fa fa-envelope"></i>
-                <span className="d-block">2</span>
+                <span className="d-block">{comments.length}</span>
               </p>
               <p className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
                   color: 'rgba(0,0,0,0.4)'
