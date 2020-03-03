@@ -98,7 +98,10 @@ const ArticlePage = ({data}) => {
     const formBody = document.getElementById("body")
     formBody.value = `@*${author}*, `
     formBody.focus()
-    console.log(`@*${author}*, `)
+  }
+  const writeComment = (event) => {
+    event.preventDefault()
+    document.getElementById("body").focus()
   }
   const response = <Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color={responseColor}>{responseContent}</Alert>
   const handlePostComment = (event) => {
@@ -233,7 +236,7 @@ const ArticlePage = ({data}) => {
                 </PopoverBody>
               </UncontrolledPopover>
 
-              <span className="px-2 ml-4" style={{
+              <span className="px-2 ml-4" onClick={e => writeComment(e)} style={{
                   color: 'rgba(0,0,0,0.4)'
                 }}>
                 <i className="fa fa-envelope"></i>
