@@ -93,6 +93,12 @@ const ArticlePage = ({data}) => {
       <strong>Verification Expired!&nbsp;</strong>Check the Checkbox Again.</div>)
     setVerified(false)
   }
+  const replyTo = (author) => {
+    const formBody = document.getElementById("body")
+    formBody.value = `@*${author}*, `
+    formBody.focus()
+    console.log(`@*${author}*, `)
+  }
   const response = <Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color={responseColor}>{responseContent}</Alert>
   const handlePostComment = (event) => {
     event.preventDefault()
@@ -283,7 +289,7 @@ const ArticlePage = ({data}) => {
                         }}>{comment.author}</strong>
                       <time className="media-body pl-3 color-secondary fs-1 mt-auto" dateTime={comment.published_at}>{getDate(comment.published_at)}</time>
                       <div className="media-right pl-3">
-                        <button className="btn btn-link color-secondary p-0 border-0">
+                        <button className="btn btn-link color-secondary p-0 border-0" onClick={replyTo(comment.author)}>
                           <strong style={{
                               fontSize: '12px'
                             }}>Reply</strong>
@@ -301,7 +307,7 @@ const ArticlePage = ({data}) => {
 
         </Container>
       </section>
-  } < section className = "py-5 py-sm-3 py-md-3 py-lg-5 py-xl-5" > <Container>
+  } <section className = "py-5 py-sm-3 py-md-3 py-lg-5 py-xl-5" > <Container>
     <h3 className="text-center mb-4" style={{
         fontSize: '18px'
       }}>LEAVE A COMMENT</h3>
@@ -310,7 +316,7 @@ const ArticlePage = ({data}) => {
         {response}
         <form onSubmit={e => handlePostComment(e)}>
           <Col className="col-12">
-            <textarea name="body" placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
+            <textarea name="body" id="body" placeholder="LEAVE YOUR COMMENT" className="w-100 text-1 color-secondary filson-pro-reg" rows="10"/>
           </Col>
           <Row className="mx-0 input-data-field">
             <Col className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -337,7 +343,7 @@ const ArticlePage = ({data}) => {
                   opacity: 1
                 }} disabled={submitting}>
                 {
-                  (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
+                  (submitting) && <div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
                         zIndex: 1,
                         left: 0,
                         top: 0
