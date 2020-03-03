@@ -5,14 +5,8 @@ import { FacebookShareButton,  LinkedinShareButton,  PinterestShareButton,  Twit
 import {  FacebookIcon,  LinkedinIcon,  PinterestIcon,  TwitterIcon,} from "react-share";
 //import {  FacebookShareCount,  PinterestShareCount, } from "react-share";
 
-const fshareUrl = "facebook.com"
-const tshareUrl = "twitter.com"
-const pshareUrl = "pinterest.com"
-const lshareUrl = "linkedin.com"
-
 const Blogs = ({ id }) => {
-  const url = typeof window !== 'undefined' ? window.location.href : '';
-  console.log(url);
+  const URL = typeof window !== 'undefined' ? window.location.origin : '';
   const { allShopifyArticle } = useStaticQuery(
     graphql`
       {
@@ -97,10 +91,10 @@ const Blogs = ({ id }) => {
                  <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id="Popover2"><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
                   <Popover placement="bottom" isOpen={popoverOpen} target="Popover2" toggle={toggle}>
                       <PopoverBody>
-                        <FacebookShareButton url={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><FacebookIcon size={25} round={true} /></FacebookShareButton>
-                        <TwitterShareButton url={tshareUrl} className="p-1"><TwitterIcon size={25} round={true} /></TwitterShareButton>
-                        <PinterestShareButton url={pshareUrl} className="p-1"><PinterestIcon size={25} round={true} /></PinterestShareButton>
-                        <LinkedinShareButton url={lshareUrl} className="p-1"><LinkedinIcon size={25} round={true} /></LinkedinShareButton>
+                        <FacebookShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><FacebookIcon size={25} round={true} /></FacebookShareButton>
+                        <TwitterShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><TwitterIcon size={25} round={true} /></TwitterShareButton>
+                        <PinterestShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><PinterestIcon size={25} round={true} /></PinterestShareButton>
+                        <LinkedinShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><LinkedinIcon size={25} round={true} /></LinkedinShareButton>
                       </PopoverBody>
                     </Popover>
                  <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{color:'rgba(0,0,0,0.4)'}}><i className="fa fa-envelope"></i><span className="d-block">2</span></p>
