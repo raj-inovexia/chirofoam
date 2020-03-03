@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Recaptcha from 'react-recaptcha'
 import Header from "~/components/header"
 import Footer from "~/components/footer"
 import {Container, Row, Col, Alert} from 'reactstrap'
@@ -48,10 +49,30 @@ const ArticlePage = ({data}) => {
   const [responseColor, setResponseColor] = useState("")
   const [responseContent, setResponseContent] = useState(false)
   const [responseVisible, setResponseVisible] = useState(false)
+  const [isVerified, setVerified] = useState(false)
+  const [recaptchaInstance, setRecaptchaInstance] = useState(null)
   const dismissResponse = () => {
     setResponseColor("")
     setResponseVisible(false)
     setResponseContent(false)
+  }
+  const recaptchaReference = (event) => {
+    setRecaptchaInstance(event)
+  }
+  const resetRecaptcha = () => {
+    recaptchaInstance.reset()
+  }
+  const verifyCaptcha = () => {
+    setResponseColor("")
+    dismissResponse()
+    setVerified(true)
+  }
+  const expiredCaptcha = () => {
+    setResponseVisible(true)
+    setResponseColor("warning")
+    setResponseContent(<div>
+      <strong>Verification Expired!&nbsp;</strong>Check the Checkbox Again.</div>)
+    setVerified(false)
   }
   const response = <Alert className="rounded-0" isOpen={responseVisible} toggle={dismissResponse} color={responseColor}>{responseContent}</Alert>
   const handlePostComment = (event) => {
@@ -260,9 +281,16 @@ const ArticlePage = ({data}) => {
                 <input type="url" name="website" placeholder="Website" className="w-100 text-1 color-secondary filson-pro-reg"/>
               </Col>
             </Row>
-            <Col className="col-12">
-              <button type="submit" className="comment-submit text-1 filson-pro-reg mt-3">POST COMMENT</button>
-            </Col>
+            <Row className="mx-0 input-data-field">
+              <Col className="col-12">
+                  <Recaptcha ref={e => recaptchaReference(e)} sitekey="6LcWuNwUAAAAAM1qrJeF08ksnyt_l-MFIQ9oXJj4" render="explicit" verifyCallback={verifyCaptcha} expiredCallback={expiredCaptcha}/>
+              </Col>
+            </Row>
+            <Row className="mx-0 input-data-field">
+              <Col className="col-12">
+                <button type="submit" className="comment-submit text-1 filson-pro-reg mt-3">POST COMMENT</button>
+              </Col>
+            </Row>
           </form>
         </div>
       </Row>
