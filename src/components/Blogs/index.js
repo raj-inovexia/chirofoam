@@ -88,8 +88,8 @@ const Blogs = ({ id }) => {
               
               <div className="blogs-content d-flex mt-4">
                 <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
-                 <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id="Popover2"><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
-                  <Popover placement="bottom" isOpen={popoverOpen} target="Popover2" toggle={toggle}>
+                 <p style={{color:'rgba(0,0,0,0.4)'}} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id={id}><i className="fa fa-share-alt"></i><span className="d-block">2</span></p>
+                  <Popover placement="bottom" isOpen={popoverOpen} target={id} toggle={toggle}>
                       <PopoverBody>
                         <FacebookShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><FacebookIcon size={25} round={true} /></FacebookShareButton>
                         <TwitterShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><TwitterIcon size={25} round={true} /></TwitterShareButton>
