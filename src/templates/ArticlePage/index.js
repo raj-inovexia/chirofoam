@@ -80,6 +80,7 @@ const ArticlePage = ({data}) => {
     event.preventDefault()
     setSubmitting(true)
     if (isVerified) {
+    const commentForm = event.target
     const elements = event.target.elements
     const data = {
       api: "/admin/api/2020-01/comments.json",
@@ -108,6 +109,7 @@ const ArticlePage = ({data}) => {
             setResponseVisible(true)
             setResponseColor("success")
             setResponseContent(<div>Your comment has been submitted <strong>Successfully</strong> and will be published soon.</div>)
+            commentForm.reset()
             resetRecaptcha()
             setSubmitting(false)
             console.log(responseJson)
