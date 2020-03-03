@@ -93,7 +93,8 @@ const ArticlePage = ({data}) => {
       <strong>Verification Expired!&nbsp;</strong>Check the Checkbox Again.</div>)
     setVerified(false)
   }
-  const replyTo = (author) => {
+  const replyTo = (event, author) => {
+    event.preventDefault()
     const formBody = document.getElementById("body")
     formBody.value = `@*${author}*, `
     formBody.focus()
@@ -289,7 +290,7 @@ const ArticlePage = ({data}) => {
                         }}>{comment.author}</strong>
                       <time className="media-body pl-3 color-secondary fs-1 mt-auto" dateTime={comment.published_at}>{getDate(comment.published_at)}</time>
                       <div className="media-right pl-3">
-                        <button className="btn btn-link color-secondary p-0 border-0" onClick={replyTo(comment.author)}>
+                        <button className="btn btn-link color-secondary p-0 border-0" onClick={e => replyTo(e, comment.author)}>
                           <strong style={{
                               fontSize: '12px'
                             }}>Reply</strong>
