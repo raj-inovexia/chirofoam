@@ -79,7 +79,7 @@ const Blogs = ({id}) => {
   const fetchLikeCount = (blogId, articleId) => {
     console.log(blogId, articleId)
     return 0
-  })
+  }
   const [ip, setIp] = useState("")
   const postLike = (event, blogId, articleId, Ip) => {
     const data = {
