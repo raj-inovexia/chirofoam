@@ -82,6 +82,41 @@ const Blogs = ({id}) => {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
+  const fetchLikeCount = (index, articleId, blogId) => {
+    const article_id = parseInt(atob(articleId).split("/").pop())
+    const blog_id = parseInt(atob(blogId).split("/").pop())
+    if(pageLoaded){
+      const getData = {
+        "api": `/admin/api/2020-01/blogs/${blog_id}/articles/${article_id}/metafields.json`,
+        "namespace": "postlike",
+        "value_type": "string",
+        "fields": "namespace,key,value"
+      }
+      const reqData = jsonToQueryString(getData)
+      const fetchData = (async (URL) => {
+        return await fetch(URL, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            "X-Shopify-Access-Token": token
+          }
+        }).then((response) => {
+          if (response.status === 200) {
+            response.json().then((responseJson) => {
+              likeCounts[index] = responseJson.response.metafields.length
+              console.log(likeCounts, likeCounts[index])
+              setLikeCounts(likeCounts)
+            })
+          }
+        }).catch((error) => {
+          console.error(error)
+        })
+      })(`//icbtc.com/development/shopify-api/${reqData}`)
+    }
+  }
+  const getLikeCount = (index) => {
+    return (likeCounts[index]!== undefined)? likeCounts[index] : 0
+  }
   const [ip, setIp] = useState("")
   const postLike = (event, articleId, blogId, Ip) => {
     const data = {
@@ -116,49 +151,14 @@ const Blogs = ({id}) => {
     })(`//icbtc.com/development/shopify-api/`)
   }
   useEffect(() => {
-    (async () => {
+    const getIp = (async () => {
       return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
         setIp(data.ip)
         setPageLoaded(true)
       })
     })()
-    allShopifyArticle.edges.forEach(({node: {shopifyId, blog}}, index) => {
-      const fetchLikeCount = (index, articleId, blogId) => {
-        console.log('hello')
-        const article_id = parseInt(atob(articleId).split("/").pop())
-        const blog_id = parseInt(atob(blogId).split("/").pop())
-        if(pageLoaded){
-          const getData = {
-            "api": `/admin/api/2020-01/blogs/${blog_id}/articles/${article_id}/metafields.json`,
-            "namespace": "postlike",
-            "value_type": "string",
-            "fields": "namespace,key,value"
-          }
-          const reqData = jsonToQueryString(getData)
-          const fetchData = (async (URL) => {
-            return await fetch(URL, {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                "X-Shopify-Access-Token": token
-              }
-            }).then((response) => {
-              if (response.status === 200) {
-                response.json().then((responseJson) => {
-                  likeCounts[index] = responseJson.response.metafields.length
-                  console.log("like is " + responseJson.response.metafields.length)
-                  setLikeCounts(likeCounts)
-                })
-              }
-            }).catch((error) => {
-              console.error(error)
-            })
-          })(`//icbtc.com/development/shopify-api/${reqData}`)
-        }
-      }
-      fetchLikeCount(index, shopifyId, blog.shopifyId)
-    })
   }, [])
+  console.log(likeCounts)
   return (<Col sm="8" className="align-middle">
     {
       allShopifyArticle.edges
@@ -177,6 +177,7 @@ const Blogs = ({id}) => {
             comments
           }
         }, index) => (<div className="blogs-section mb-4" key={index}>
+          {fetchLikeCount(index, shopifyId, blog.shopifyId)}
           <div className="featured-image position-relative overflow-hidden">
             <Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{
                 fromFeed: true
@@ -230,7 +231,7 @@ const Blogs = ({id}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={(e) => postLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
-                <span className="d-block">{(likeCounts[index]!== undefined)? likeCounts[index] : 0}</span>
+                <span className="d-block">{getLikeCount(index)}</span>
               </div>
             </Col>
             <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
