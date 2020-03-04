@@ -103,13 +103,15 @@ const Blogs = ({id}) => {
           }
         })
         let result = await response.json()
-        setLikeCounts([...likeCounts,
-          {
-            index: index,
-            id: articleId,
-            likeCount: result.response.metafields.length
-          }
-        ])
+        if(result.response.metafields.length> 0){
+          setLikeCounts([...likeCounts,
+            {
+              index: index,
+              id: articleId,
+              likeCount: result.response.metafields.length
+            }
+          ])
+        }
       })(`//icbtc.com/development/shopify-api/${reqData}`)
     }
   }
