@@ -100,14 +100,14 @@ const Blogs = ({id}) => {
           }
         }).then((response) => {
           response.json().then((result) => {
-            return result.response.metafields.length
+            return result.response.metafields.length.toString()
           })
         }).catch((error) => {
           console.error(error)
         })
       })(`//icbtc.com/development/shopify-api/${reqData}`)
     }else{
-      return 0
+      return '0'
     }
   }
   const [ip, setIp] = useState("")
