@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react'
 import Recaptcha from 'react-recaptcha'
 import {Link} from "gatsby"
 import Header from "../components/header"
@@ -10,15 +10,7 @@ import "~/assets/css/bootstrap.min.css"
 import "~/assets/js/custom.js"
 
 export default(props) => {
-  const [data, setData] = useState([])
-  const [overAllRating, setOverAllRating] = useState({})
-  const [activeTab, setActiveTab] = useState('1')
-  const [recaptchaInstance, setRecaptchaInstance] = useState(null)
-  const [modal, setModal] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  const [responseColor, setResponseColor] = useState("")
-  const [responseContent, setResponseContent] = useState(false)
-  const [responseVisible, setResponseVisible] = useState(false)
 
   const submitForm = (event) => {
     event.preventDefault()
@@ -33,7 +25,7 @@ export default(props) => {
       subject: elements.subject.value,
       message: elements.message.value
     }
-    console.log(data);
+    console.log(data)
     const sendFormData = async (URL) => {
       return await fetch(URL, {
         method: 'POST',
@@ -45,7 +37,8 @@ export default(props) => {
       }).then((response) => {
         if (response.status === 200) {
           response.json().then((responseJson) => {
-            console.log(responseJson);
+            console.log(responseJson)
+            reviewForm.reset()
             setSubmitting(false)
           })
         }
@@ -109,7 +102,7 @@ export default(props) => {
           <p className="filson-pro-reg color-secondary pt-2 text-1 pt-sm-2 pt-lg-5 pt-xl-5">Our manufacturing plant located in Toronto, ON is not open to the public, however we may schedule a plant tour by appointment for wholesale clients.</p>
         </Col>
         <Col sm="6" className="mb-3 mb-sm-5 pt-3 pt-sm-3 pt-lg-5 pt-xl-5 email-form">
-          <iframe title="Contact Form" class="w-100 h-100" src="//contactform.hulkapps.com/corepage/contact?id=33933e908affc84cb6c02a" frameBorder="0" style={{minHeight:'600px'}}></iframe>
+          <iframe title="Contact Form" className="w-100 h-100" src="//contactform.hulkapps.com/corepage/contact?id=33933e908affc84cb6c02a" frameBorder="0" style={{minHeight:'600px'}}></iframe>
           <form action="#" method="post" className="d-none" id="contact_form_custom" encType="multipart/form-data" onSubmit={e => submitForm(e)}>
             <div className="modal-body py-0">
               <div className="form-row">
@@ -185,5 +178,5 @@ export default(props) => {
   </section>
 
   <Footer/>
-</>);
-};
+</>)
+}
