@@ -75,9 +75,24 @@ const Blogs = ({id}) => {
       navigate(path)
     }
   }
+  const [pageLoaded, setPageLoaded] = useState(false)
   const [count, setCount] = useState(0)
+  const jsonToQueryString = (json) => {
+    return '?' + Object.keys(json).map(function(key) {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
+    }).join('&')
+  }
   const fetchLikeCount = (blogId, articleId) => {
-    console.log(blogId, articleId)
+    if(pageLoaded){
+      const getData = {
+        "api": `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
+        "namespace": "postlike",
+        "value_type": "string",
+        "fields": "namespace,key,value"
+      }
+      const reqData = jsonToQueryString(getData)
+      console.log(reqData)
+    }
     return 0
   }
   const [ip, setIp] = useState("")
@@ -121,6 +136,7 @@ const Blogs = ({id}) => {
     const getIp = (async () => {
       return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
         setIp(data.ip)
+        setPageLoaded(true)
       })
     })()
   }, [])
