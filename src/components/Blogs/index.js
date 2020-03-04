@@ -77,6 +77,7 @@ const Blogs = ({id}) => {
   }
   const [pageLoaded, setPageLoaded] = useState(false)
   const [count, setCount] = useState(0)
+  const [likes, setLikes] = useState(0)
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
@@ -92,7 +93,7 @@ const Blogs = ({id}) => {
       }
       const reqData = jsonToQueryString(getData)
       const fetchLikeCount = (async (URL) => {
-        const [likes, setLikes] = useState(0)
+        setLikes(0)
         return await fetch(URL, {
           method: 'GET',
           headers: {
