@@ -106,10 +106,9 @@ const Blogs = ({id}) => {
             response.json().then((responseJson) => {
               console.log(responseJson)
               if(responseJson.response.metafields.length> 0){
-                let ary = []
-                ary[index] = responseJson.response.metafields.length
-                console.log([...likeCounts,...ary])
-                setLikeCounts([...likeCounts,...ary])
+                likeCounts[index] = responseJson.response.metafields.length
+                console.log(likeCounts)
+                setLikeCounts(likeCounts)
               }
             })
           }
