@@ -79,7 +79,7 @@ const Blogs = ({id}) => {
   const [count, setCount] = useState(0)
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
+      return encodeURIComponent(key) + '=' + json[key]
     }).join('&')
   }
   const getLikeCount = (blogId, articleId) => {
