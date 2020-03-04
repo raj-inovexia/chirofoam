@@ -109,7 +109,7 @@ export default(props) => {
           <p className="filson-pro-reg color-secondary pt-2 text-1 pt-sm-2 pt-lg-5 pt-xl-5">Our manufacturing plant located in Toronto, ON is not open to the public, however we may schedule a plant tour by appointment for wholesale clients.</p>
         </Col>
         <Col sm="6" className="mb-3 mb-sm-5 pt-3 pt-sm-3 pt-lg-5 pt-xl-5 email-form">
-          <iframe class="w-100 h-100" src="https://contactform.hulkapps.com/corepage/contact?id=33933e908affc84cb6c02a" frameborder="0"></iframe>
+          <iframe class="w-100 h-100" src="//contactform.hulkapps.com/corepage/contact?id=33933e908affc84cb6c02a" frameBorder="0" style={{minHeight:'600px'}}></iframe>
           <form action="#" method="post" className="d-none" id="contact_form_custom" encType="multipart/form-data" onSubmit={e => submitForm(e)}>
             <div className="modal-body py-0">
               <div className="form-row">
