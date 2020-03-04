@@ -92,6 +92,9 @@ const Blogs = ({id}) => {
       }
       const reqData = jsonToQueryString(getData)
       const fetchLikeCount = async (URL) => {
+        let promise = new Promise((resolve, reject) => {
+          setTimeout(() => resolve("done!"), 1000)
+        })
         let response = await fetch(URL, {
           method: 'GET',
           headers: {
@@ -102,16 +105,8 @@ const Blogs = ({id}) => {
         let result = await response.json()
         console.log(result, result.response.metafields.length)
         return result.response.metafields.length
-        // .then((response) => {
-        //   return response.json()
-        // }).then((result) => {
-        //   console.log(result, result.response.metafields.length)
-        //   return result.response.metafields.length
-        // }).catch((error) => {
-        //   console.error(error)
-        // }).done()
       }
-      console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`).then(res => res))
+      console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`))
       return 0
     }else{
       return 0
@@ -131,28 +126,24 @@ const Blogs = ({id}) => {
       }
     }
     console.log(data)
-    // const sendLike = (async () => {
-    //   return await fetch(URL, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       "X-Shopify-Access-Token": token
-    //     },
-    //     body: JSON.stringify(data)
-    //   }).then((response) => {
-    //     if (response.status === 200) {
-    //       response.json().then((responseJson) => {
-    //         console.log(responseJson)
-    //       })
-    //     } else {
-    //       response.json().then((responseJson) => {
-    //         console.log(responseJson);
-    //       })
-    //     }
-    //   }).catch((error) => {
-    //     console.error(error)
-    //   })
-    // })()
+    const sendLike = (async () => {
+      return await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "X-Shopify-Access-Token": token
+        },
+        body: JSON.stringify(data)
+      }).then((response) => {
+        if (response.status === 200) {
+          response.json().then((responseJson) => {
+            console.log(responseJson)
+          })
+        }
+      }).catch((error) => {
+        console.error(error)
+      })
+    })()
   }
   useEffect(() => {
     const getIp = (async () => {
