@@ -56,6 +56,7 @@ const Blogs = ({id}) => {
         }
       }
     `)
+  const token = "8688ae404288aacf2fd070b0bf36952a"
   const pageInfo = allShopifyArticle.pageInfo
   const currentPage = pageInfo.currentPage
   const previousPage = (currentPage === 1)
@@ -76,8 +77,41 @@ const Blogs = ({id}) => {
   }
   const [count, setCount] = useState(0)
   const [ip, setIp] = useState("")
-  const sendLike = (event, blogId, articleId, Ip) => {
-    console.log(blogId, articleId, Ip)
+  const postLike = (event, blogId, articleId, Ip) => {
+    const data = {
+      api: `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
+      query: {
+        metafield: {
+          namespace: "postlike",
+          key: Ip,
+          value: "liked",
+          value_type: "string"
+        }
+      }
+    }
+    console.log(data)
+    // const sendLike = (async () => {
+    //   return await fetch(URL, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       "X-Shopify-Access-Token": token
+    //     },
+    //     body: JSON.stringify(data)
+    //   }).then((response) => {
+    //     if (response.status === 200) {
+    //       response.json().then((responseJson) => {
+    //         console.log(responseJson)
+    //       })
+    //     } else {
+    //       response.json().then((responseJson) => {
+    //         console.log(responseJson);
+    //       })
+    //     }
+    //   }).catch((error) => {
+    //     console.error(error)
+    //   })
+    // })()
   }
   useEffect(() => {
     const getIp = (async () => {
@@ -86,7 +120,6 @@ const Blogs = ({id}) => {
       })
     })()
   }, [])
-  console.log(ip)
   return (<Col sm="8" className="align-middle">
     {
       allShopifyArticle.edges
@@ -156,7 +189,7 @@ const Blogs = ({id}) => {
               </div>
               <div className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
                   color: 'rgba(0,0,0,0.4)'
-                }} onClick={(e) => sendLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
+                }} onClick={(e) => postLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
                 <span className="d-block">{count}</span>
               </div>
