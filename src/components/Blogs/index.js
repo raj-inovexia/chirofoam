@@ -84,6 +84,7 @@ const Blogs = ({id}) => {
   }
   const getLikeCount = (articleId, blogId) => {
     if(pageLoaded){
+      let fetchResult = null
       const getData = {
         "api": `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
         "namespace": "postlike",
@@ -91,7 +92,7 @@ const Blogs = ({id}) => {
         "fields": "namespace,key,value"
       }
       const reqData = jsonToQueryString(getData)
-      const fetchLikeCount = async (URL) => {
+      const fetchLikeCount = (async (URL) => {
         const res = await fetch(URL, {
           method: 'GET',
           headers: {
@@ -100,13 +101,14 @@ const Blogs = ({id}) => {
           }
         })
         res.json().then((result) => {
-          console.log(result, result.response.metafields.length)
-          return result.response.metafields.length
+          fetchResult = result
+          console.log(result.response.metafields.length)
         })
-      }
-      return fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`)
+      })(`//icbtc.com/development/shopify-api/${reqData}`)
+      console.log(fetchResult)
+      return 0
     }else{
-      return '0'
+      return 0
     }
   }
   const [ip, setIp] = useState("")
