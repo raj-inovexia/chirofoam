@@ -101,11 +101,10 @@ const Blogs = ({id}) => {
         })
       }
       const fetchResult = fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`)
-      fetchResult.json().then((result) => {
+      return fetchResult.json().then((result) => {
         console.log(result, result.response.metafields.length)
+        return result.response.metafields.length
       })
-      console.log(fetchResult)
-      return 0
     }else{
       return 0
     }
