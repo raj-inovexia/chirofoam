@@ -76,7 +76,6 @@ const Blogs = ({id}) => {
     }
   }
   const [pageLoaded, setPageLoaded] = useState(false)
-  const [count, setCount] = useState(0)
   const [likeCounts, setLikeCounts] = useState([])
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
@@ -105,9 +104,9 @@ const Blogs = ({id}) => {
           if (response.status === 200) {
             response.json().then((responseJson) => {
               console.log(responseJson)
+              console.log(index)
               if(responseJson.response.metafields.length> 0){
                 likeCounts[index] = responseJson.response.metafields.length
-                console.log(likeCounts)
                 setLikeCounts(likeCounts)
               }
             })
@@ -231,7 +230,7 @@ const Blogs = ({id}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={(e) => postLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
-                <span className="d-block" value={getLikeCount(index, shopifyId, blog.shopifyId)}>{0}</span>
+                <span className="d-block" value={getLikeCount(index, shopifyId, blog.shopifyId)}>{likeCounts[index]}</span>
               </div>
             </Col>
             <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
