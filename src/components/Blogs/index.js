@@ -79,10 +79,10 @@ const Blogs = ({id}) => {
   const [count, setCount] = useState(0)
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
-      return encodeURIComponent(key) + '=' + json[key]
+      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
-  const getLikeCount = (blogId, articleId) => {
+  const getLikeCount = (articleId, blogId) => {
     if(pageLoaded){
       const getData = {
         "api": `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
@@ -112,7 +112,7 @@ const Blogs = ({id}) => {
     }
   }
   const [ip, setIp] = useState("")
-  const postLike = (event, blogId, articleId, Ip) => {
+  const postLike = (event, articleId, blogId, Ip) => {
     const data = {
       api: `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
       query: {
