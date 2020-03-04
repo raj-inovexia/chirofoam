@@ -104,6 +104,7 @@ const Blogs = ({id}) => {
           if (response.status === 200) {
             response.json().then((responseJson) => {
               likeCounts[index] = responseJson.response.metafields.length
+              console.log("like is " + responseJson.response.metafields.length)
               setLikeCounts(likeCounts)
             })
           }
