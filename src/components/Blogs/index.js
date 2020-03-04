@@ -153,8 +153,11 @@ const Blogs = ({id}) => {
         setPageLoaded(true)
       })
     })()
+    allShopifyArticle.edges.forEach((node, index) => {
+      console.log(node, index);
+      //fetchLikeCount(index, shopifyId, blog.shopifyId)
+    })
   }, [])
-  console.log(likeCounts)
   return (<Col sm="8" className="align-middle">
     {
       allShopifyArticle.edges
@@ -173,7 +176,6 @@ const Blogs = ({id}) => {
             comments
           }
         }, index) => (<div className="blogs-section mb-4" key={index}>
-          {fetchLikeCount(index, shopifyId, blog.shopifyId)}
           <div className="featured-image position-relative overflow-hidden">
             <Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{
                 fromFeed: true
