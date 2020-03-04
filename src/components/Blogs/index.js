@@ -98,13 +98,17 @@ const Blogs = ({id}) => {
             "Content-type": "application/json",
             "X-Shopify-Access-Token": token
           }
+        }).then((response) => {
+          return response.json()
+        }).then((result) => {
+          console.log(result, result.response.metafields.length)
+          return result.response.metafields.length
+        }).catch((error) => {
+          console.error(error)
         })
       }
-      const fetchResult = fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`)
-      return fetchResult.json().then((result) => {
-        console.log(result, result.response.metafields.length)
-        return result.response.metafields.length
-      })
+      console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`))
+      return 0
     }else{
       return 0
     }
