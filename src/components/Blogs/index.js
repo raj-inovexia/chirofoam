@@ -82,38 +82,6 @@ const Blogs = ({id}) => {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
-  const fetchLikeCount = (index, articleId, blogId) => {
-    const article_id = parseInt(atob(articleId).split("/").pop())
-    const blog_id = parseInt(atob(blogId).split("/").pop())
-    if(pageLoaded){
-      const getData = {
-        "api": `/admin/api/2020-01/blogs/${blog_id}/articles/${article_id}/metafields.json`,
-        "namespace": "postlike",
-        "value_type": "string",
-        "fields": "namespace,key,value"
-      }
-      const reqData = jsonToQueryString(getData)
-      const fetchData = (async (URL) => {
-        return await fetch(URL, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            "X-Shopify-Access-Token": token
-          }
-        }).then((response) => {
-          if (response.status === 200) {
-            response.json().then((responseJson) => {
-              likeCounts[index] = responseJson.response.metafields.length
-              console.log("like is " + responseJson.response.metafields.length)
-              setLikeCounts(likeCounts)
-            })
-          }
-        }).catch((error) => {
-          console.error(error)
-        })
-      })(`//icbtc.com/development/shopify-api/${reqData}`)
-    }
-  }
   const [ip, setIp] = useState("")
   const postLike = (event, articleId, blogId, Ip) => {
     const data = {
@@ -155,7 +123,39 @@ const Blogs = ({id}) => {
       })
     })()
     allShopifyArticle.edges.forEach(({node: {shopifyId, blog}}, index) => {
-      console.log('hello')
+      const fetchLikeCount = (index, articleId, blogId) => {
+        console.log('hello')
+        const article_id = parseInt(atob(articleId).split("/").pop())
+        const blog_id = parseInt(atob(blogId).split("/").pop())
+        if(pageLoaded){
+          const getData = {
+            "api": `/admin/api/2020-01/blogs/${blog_id}/articles/${article_id}/metafields.json`,
+            "namespace": "postlike",
+            "value_type": "string",
+            "fields": "namespace,key,value"
+          }
+          const reqData = jsonToQueryString(getData)
+          const fetchData = (async (URL) => {
+            return await fetch(URL, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                "X-Shopify-Access-Token": token
+              }
+            }).then((response) => {
+              if (response.status === 200) {
+                response.json().then((responseJson) => {
+                  likeCounts[index] = responseJson.response.metafields.length
+                  console.log("like is " + responseJson.response.metafields.length)
+                  setLikeCounts(likeCounts)
+                })
+              }
+            }).catch((error) => {
+              console.error(error)
+            })
+          })(`//icbtc.com/development/shopify-api/${reqData}`)
+        }
+      }
       fetchLikeCount(index, shopifyId, blog.shopifyId)
     })
   }, [])
