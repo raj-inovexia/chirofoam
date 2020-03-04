@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useStaticQuery, graphql, Link, navigate} from 'gatsby'
 import {Col, Pagination, PaginationItem, UncontrolledPopover, PopoverBody} from 'reactstrap'
 import {
@@ -71,6 +71,8 @@ const Blogs = ({id}) => {
       navigate(path)
     }
   }
+ const [count, setCount] = useState(0);
+  
   return (<Col sm="8" className="align-middle">
     {
       allShopifyArticle.edges
@@ -132,12 +134,12 @@ const Blogs = ({id}) => {
                 <i className="fa fa-envelope"></i>
                 <span className="d-block">{comments.length}</span>
               </p>
-              <p className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
-                  color: 'rgba(0,0,0,0.4)'
-                }}>
+              <div className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
+                  color: 'rgba(0,0,0,0.4)' 
+                }} onClick={() => setCount(count + 1)}>
                 <i className="fa fa-heart"></i>
-                <span className="d-block">2</span>
-              </p>
+                <span className="d-block">{count}</span>
+              </div>
             </Col>
             <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
               <p style={{
