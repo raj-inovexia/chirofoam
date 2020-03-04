@@ -9,7 +9,7 @@ import {
   FacebookIcon,
   LinkedinIcon,
   PinterestIcon,
-  TwitterIcon
+  TwitterIcon, FacebookShareCount
 } from "react-share"
 
 const Blogs = ({id}) => {
@@ -123,7 +123,12 @@ const Blogs = ({id}) => {
               <UncontrolledPopover trigger="legacy" placement="bottom" target={"popover-" + index}>
                 <PopoverBody>
                   <FacebookShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><FacebookIcon size={25} round={true}/></FacebookShareButton>
-                  <TwitterShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><TwitterIcon size={25} round={true}/></TwitterShareButton>
+<FacebookShareCount url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`}>
+                    {shareCount => (
+                        <span className="myShareCountWrapper">{shareCount}</span>
+                    )}
+                    </FacebookShareCount>                  
+<TwitterShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><TwitterIcon size={25} round={true}/></TwitterShareButton>
                   <PinterestShareButton media={image.src} url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><PinterestIcon size={25} round={true}/></PinterestShareButton>
                   <LinkedinShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><LinkedinIcon size={25} round={true}/></LinkedinShareButton>
                 </PopoverBody>
