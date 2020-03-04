@@ -148,13 +148,14 @@ const Blogs = ({id}) => {
     })(`//icbtc.com/development/shopify-api/`)
   }
   useEffect(() => {
-    const getIp = (async () => {
+    (async () => {
       return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
         setIp(data.ip)
         setPageLoaded(true)
       })
     })()
     allShopifyArticle.edges.forEach(({node: {shopifyId, blog}}, index) => {
+      console.log('hello')
       fetchLikeCount(index, shopifyId, blog.shopifyId)
     })
   }, [])
