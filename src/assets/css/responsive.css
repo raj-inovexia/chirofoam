@@ -1,4 +1,8 @@
 @media only screen and (max-width: 767px) {
+	.white-dots img {
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
 	.input-data-field .col:nth-child(2) {
 	padding-left:15px;
 	padding-right:15px;
@@ -248,6 +252,7 @@ body .container-large{
 
 /* Portrait */
 @media (min-width: 576px) and (max-width: 1024px){ 
+	
 	.manufacture-brand{
     text-align: center;
     width: 100%;
@@ -335,6 +340,10 @@ body .container-large{
 */
 
 @media (min-width: 768px) and (max-width: 1024px) {
+	.white-dots img {
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
 	.five-key-features-outer img {
 	width: 200px;
 	height: 200px;
@@ -478,13 +487,40 @@ body .container-large{
 }
   
 }
-
 /* 
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
+	.white-dots img {
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
+	.white-dots {
+	width: 100%;
+	max-width: 463px;
+}
+.white-dots img {
+	max-width: 345px;
+	width: 100%;
+}
+	.white-dot-1 {
+	top: 60px;
+	left: -150px;
+}
+.white-dot-2 {
+	top: 95px;
+	left: -125px;
+}
+.white-dot-3 {
+	top: 105px;
+	left: -80px;
+}
+.white-dot-4 {
+	top: 255px;
+	left: -112px;
+}
 	.five-key-features-outer .row h3 {
 	font-size: 110px;
 	
@@ -566,6 +602,10 @@ body.container{
 
 }
 @media (max-width: 575.98px) {
+	.white-dots {
+	max-width: 135px;
+	margin: 0px auto 37px auto;
+}
 	body .container{
 		padding-left:30px;
 		padding-right:30px;
@@ -599,6 +639,10 @@ body.container{
 
 /* Small devices (portrait tablets and large phones, 576px and up) */
 @media (min-width: 576px) {
+	.white-dots {
+	max-width:250px;
+	margin: 0px auto 37px auto;
+}
 	
 .homepage-slider-2 .btn-cta.carousel-control-prev {
     left:-15px;
@@ -646,6 +690,27 @@ body.container{
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media (min-width: 768px) {
+	.white-dot-1 {
+	top: 75px;
+	left: -180px;
+}
+.white-dot-2 {
+	top: 115px;
+	left: -160px;
+}
+.white-dot-3 {
+	top: 123px;
+	left: -95px;
+}
+.white-dot-4 {
+	top: 310px;
+	left: -134px;
+}
+	
+	.white-dots {
+	width: 100%;
+	max-width:265px;
+}
 	.active-style h2 {
     font-size:65px;
     line-height:70px;
@@ -701,6 +766,7 @@ body.container{
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media (min-width: 992px) {
+	
 	.table-rows {
     overflow-x:unset;
 }
@@ -750,11 +816,57 @@ body.container{
     font-size:90px;
     line-height:100px;
 }
+.white-dot-1 {
+	top: 75px;
+	left: -225px;
+}
+.white-dot-2 {
+	top: 115px;
+	left: -195px;
+}
+.white-dot-3 {
+	top: 120px;
+	left: -135px;
+}
+.white-dot-4 {
+	top: 310px;
+	left: -174px;
+}
+	
+	.white-dots {
+	width: 100%;
+	max-width:265px;
+}
 
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media (min-width: 1200px) {
+	.white-dots {
+	width: 100%;
+	max-width: 463px;
+}
+.white-dots img {
+	max-width: 345px;
+	width: 100%;
+}
+.white-dot-1 {
+	top: 75px;
+	left: -250px;
+}
+.white-dot-2 {
+	top: 135px;
+	left: -215px;
+}
+.white-dot-3 {
+	top: 137px;
+	left: -155px;
+}
+
+.white-dot-4 {
+	top: 345px;
+	left: -200px;
+}
 .active-style h2 {
     font-size:106px;
     line-height:115px;
