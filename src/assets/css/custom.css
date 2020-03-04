@@ -1403,6 +1403,9 @@ body .table-rows .row-list:first-child ul li{
   visibility: visible;
   opacity: 1;
 }
+.key-tooltip:hover .tooltiptext.tool-tip-1::after{
+	height: 
+}
 .key-tooltip .tooltiptext.tool-tip-1 {
 	top: 410px;
 	left:300px;
@@ -1582,4 +1585,43 @@ body .key-tooltip-5{
 	border:none;
 	border-radius:2px;
 	padding:10px 20px;
+}
+.white-dots {
+	width: 100%;
+	max-width: 463px;
+}
+.white-dots img {
+	max-width: 345px;
+	width: 100%;
+}
+.h-effect{
+	transition:all 0.3s ease-in-out;
+}
+.white-dot {
+	top: 0;
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	border-radius: 50%;
+	cursor:pointer;
+}
+.white-dot:hover + .d-flex{
+	transform: scale(1.1,1.1);
+}
+.white-dot-1 {
+	top: 75px;
+	left: -250px;
+}
+.white-dot-2 {
+	top: 135px;
+	left: -215px;
+}
+.white-dot-3 {
+	top: 137px;
+	left: -155px;
+}
+
+.white-dot-4 {
+	top: 345px;
+	left: -200px;
 }

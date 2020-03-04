@@ -8,7 +8,7 @@ import CountUp from 'react-countup';
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import mattress1 from "../assets/img/mattress1.jpg"
-import run from "../assets/img/man-runing.png"
+import run from "../assets/img/only-man.png"
 //import Products from '~/components/Products'
 import product1 from "../assets/img/product1.jpg"
 import product2 from "../assets/img/product2.jpg"
@@ -101,11 +101,13 @@ export default (props) => {
 		
 		<section className="py-4 pt-sm-4 pb-sm-4 approved bg-image">
                <Container className="">
-                  <Row className="pt-3 no-gutters m-0">
-                    <Col sm="12" className="align-middle col-lg-5 col-xl-5">
-                      <img src={run} alt="run" width="75%" className="mt-sm-3 pl-sm-5 ml-sm-5"/>
+                  <Row className="pt-3 no-gutters m-0 position-relative">
+                    <Col className="align-middle col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                    	<div className="white-dots">
+                     		 <img src={run} alt="run" width="75%" className="mt-sm-3 pl-sm-5 ml-sm-5" usemap="#workmap"/>
+                     	</div>
                     </Col>
-                    <Col sm="12" className="col-lg-7 col-xl-7">
+                    <Col className="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
                       <div className="text-white mb-4">
                         <h3 className="approved-title text-white erbaum-bold lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">CHIROPRACTOR APPROVED</h3>
                         <p className="proxima-b space-1 p-0 pt-sm-1 text-1">Chirofoam<sup style={{fontSize:'8px'}}>TM</sup> mattresses are designed by Chiropractors to improve posture, and provide incredible pressure relief. Your back will thank you.</p>
@@ -118,38 +120,34 @@ export default (props) => {
                         <h3 className="approved-title text-white erbaum-bold pt-0 pt-sm-3 lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text">CUSTOMER APPROVED</h3>
                         <p className="proxima-b space-1 p-0 pt-sm-2 text-1">Our customers have reported the following benefits after sleeping on there chirofoam mattress</p>
                         <div className="ml-0 ml-sm-4 pt-0 pt-sm-0 pl-0 pr-sm-5">
-                          <Media className="mt-3">
-                            <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
-                            97%
+                            <Media className="my-3">
+                            	<span className="white-dot-1 white-dot position-absolute"></span>
+                          		<div className="d-flex h-effect">
+                           			<Media left middle className="my-0 pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>97%</Media>
+                            		<Media body middle className="proxima-r pl-sm-3 text-1 align-self-center">Improvement in sleep comfort and quality</Media>
+                            	</div>
                             </Media>
-                            <Media body middle className="proxima-r pl-sm-3 text-1">
-                              Improvement in sleep comfort and quality
+                            <Media className="py-3">
+                             	<span className="white-dot-2 white-dot position-absolute"></span>
+                          		<div className="d-flex h-effect">
+                           			<Media left middle className="my-0 pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>94%</Media>
+                            		<Media body middle className="proxima-r pl-sm-3 text-1 align-self-center">Increased energy in the morning and throughout the day</Media>
+                            	</div>
                             </Media>
-                          </Media>
-                          <Media className="pt-3">
-                            <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
-                            94%
+                            <Media className="py-3">
+                             	<span className="white-dot-3 white-dot position-absolute"></span>
+                          		<div className="d-flex h-effect">
+                            		<Media left middle className="my-0 pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>86%</Media>
+                            		<Media body middle className="proxima-r pl-sm-3 pt-sm-1 text-1 align-self-center">Improved muscle recovery and/or relief in daliy experienced back pain</Media>
+                           		</div>
                             </Media>
-                            <Media body middle className="proxima-r pl-sm-3 text-1">
-                              Increased energy in the morning and throughout the day
-                            </Media>
-                          </Media>
-                          <Media className="pt-3">
-                            <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
-                            86%
-                            </Media>
-                            <Media body middle className="proxima-r pl-sm-3 pt-sm-1 text-1">
-                              Improved muscle recovery and/or relief in daliy experienced back pain
-                            </Media>
-                          </Media>
-                          <Media className="pt-3">
-                            <Media left middle className="pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>
-                            82%
-                            </Media>
-                            <Media body middle className="proxima-r pl-sm-3 pt-sm-2 text-1">
-                              Improvement in sleep comfort and quality
-                            </Media>
-                          </Media>
+                            <Media className="py-3">
+                            	<span className="white-dot-4 white-dot position-absolute"></span>
+                            	<div className="d-flex h-effect">
+                            		<Media left middle className="my-0 pr-4 h4 erbaum-bold" style={{fontSize:'32px'}}>82%</Media>
+                            		<Media body middle className="proxima-r pl-sm-3 pt-sm-2 text-1 align-self-center">Improvement in sleep comfort and quality</Media>
+                         		</div>
+                         	</Media>
                         </div>
                         <p className="cta mt-3 mt-sm-3 pt-sm-4 pt-lg-4 pt-xl-4 mb-sm-2 pl-0">
                           <Link to="/reviews/" className="btn-cta text-white erbaum-bold space-1">READ CUSTOMER REVIEWS</Link>
