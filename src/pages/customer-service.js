@@ -1,13 +1,11 @@
 import React, {useState} from 'react'
-import Recaptcha from 'react-recaptcha'
 import {Link} from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
-import {Container, Jumbotron, Row, Col, Form} from 'reactstrap'
+import {Container, Jumbotron, Row, Col} from 'reactstrap'
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import "~/assets/css/bootstrap.min.css"
-import "~/assets/js/custom.js"
 
 export default(props) => {
   const [submitting, setSubmitting] = useState(false)
