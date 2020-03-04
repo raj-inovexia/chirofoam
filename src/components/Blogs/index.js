@@ -92,20 +92,23 @@ const Blogs = ({id}) => {
       }
       const reqData = jsonToQueryString(getData)
       const fetchLikeCount = async (URL) => {
-        return await fetch(URL, {
+        let response = await fetch(URL, {
           method: 'GET',
           headers: {
             "Content-type": "application/json",
             "X-Shopify-Access-Token": token
           }
-        }).then((response) => {
-          return response.json()
-        }).then((result) => {
-          console.log(result, result.response.metafields.length)
-          return result.response.metafields.length
-        }).catch((error) => {
-          console.error(error)
         })
+        let data = await response.json()
+        return data
+        // .then((response) => {
+        //   return response.json()
+        // }).then((result) => {
+        //   console.log(result, result.response.metafields.length)
+        //   return result.response.metafields.length
+        // }).catch((error) => {
+        //   console.error(error)
+        // }).done()
       }
       console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`))
       return 0
