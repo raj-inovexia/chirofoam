@@ -77,7 +77,6 @@ const Blogs = ({id}) => {
   }
   const [pageLoaded, setPageLoaded] = useState(false)
   const [count, setCount] = useState(0)
-  const [likes, setLikes] = useState(0)
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
@@ -93,22 +92,18 @@ const Blogs = ({id}) => {
       }
       const reqData = jsonToQueryString(getData)
       const fetchLikeCount = (async (URL) => {
-        setLikes(0)
-        return await fetch(URL, {
+        const res = await fetch(URL, {
           method: 'GET',
           headers: {
             "Content-type": "application/json",
             "X-Shopify-Access-Token": token
           }
-        }).then((response) => {
-          response.json().then((result) => {
-            setLikes(result.response.metafields.length)
-          })
-        }).catch((error) => {
-          console.error(error)
+        })
+        res.json().then((result) => {
+          console.log(result, result.response.metafields.length)
         })
       })(`//icbtc.com/development/shopify-api/${reqData}`)
-      return likes
+      return 0
     }else{
       return '0'
     }
