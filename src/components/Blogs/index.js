@@ -99,9 +99,9 @@ const Blogs = ({id}) => {
             "X-Shopify-Access-Token": token
           }
         })
-        let data = await response.json()
-        console.log(data);
-        return 'hello'
+        let result = await response.json()
+        console.log(result, result.response.metafields.length)
+        return result.response.metafields.length
         // .then((response) => {
         //   return response.json()
         // }).then((result) => {
@@ -111,7 +111,7 @@ const Blogs = ({id}) => {
         //   console.error(error)
         // }).done()
       }
-      console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`))
+      console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`).resolve())
       return 0
     }else{
       return 0
