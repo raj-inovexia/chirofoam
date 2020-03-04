@@ -153,23 +153,8 @@ const Blogs = ({id}) => {
         setPageLoaded(true)
       })
     })()
-    allShopifyArticle.edges.forEach(({
-      node: {
-        id,
-        shopifyId,
-        url,
-        title,
-        content,
-        excerpt,
-        publishedAt,
-        image,
-        author,
-        blog,
-        comments
-      }
-    }, index) => {
-      console.log(shopifyId, blog, index);
-      //fetchLikeCount(index, shopifyId, blog.shopifyId)
+    allShopifyArticle.edges.forEach(({node: {shopifyId, blog}}, index) => {
+      fetchLikeCount(index, shopifyId, blog.shopifyId)
     })
   }, [])
   return (<Col sm="8" className="align-middle">
