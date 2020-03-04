@@ -103,7 +103,8 @@ const Blogs = ({id}) => {
         })
         let result = await fetchData.json()
         let response = JSON.stringify(result.response.metafields)
-        console.log(allShopifyArticle.edges[index], result.response.metafields.length)
+        allShopifyArticle.edges[index].likes = result.response.metafields.length
+        console.log(allShopifyArticle.edges[index].likes)
         return result.response.metafields.length
       }
       console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`))
