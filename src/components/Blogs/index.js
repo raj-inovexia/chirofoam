@@ -73,6 +73,9 @@ const Blogs = ({id}) => {
   }
   const [count, setCount] = useState(0)
   const [ip, setIp] = useState("")
+  const sendLike = (event, Ip) => {
+    console.log(Ip)
+  }
   useEffect(() => {
     const getIp = (async () => {
       return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
@@ -122,12 +125,12 @@ const Blogs = ({id}) => {
 
           <div className="blogs-content d-flex mt-4">
             <Col className="blog-icon text-center pr-0 d-table col-1 border-right">
-              <p style={{
+              <div style={{
                   color: 'rgba(0,0,0,0.4)'
-                }} className="pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id={"popover-" + index}>
+                }} className="d-block mb-3 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id={"popover-" + index}>
                 <i className="fa fa-share-alt"></i>
                 <span className="d-block">2</span>
-              </p>
+              </div>
               <UncontrolledPopover trigger="legacy" placement="bottom" target={"popover-" + index}>
                 <PopoverBody>
                   <FacebookShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><FacebookIcon size={25} round={true}/></FacebookShareButton>
@@ -141,15 +144,15 @@ const Blogs = ({id}) => {
                   <LinkedinShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><LinkedinIcon size={25} round={true}/></LinkedinShareButton>
                 </PopoverBody>
               </UncontrolledPopover>
-              <p className="border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
+              <div className="d-block mb-3 border-top border-bottom py-2 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
                   color: 'rgba(0,0,0,0.4)'
                 }}>
                 <i className="fa fa-envelope"></i>
                 <span className="d-block">{comments.length}</span>
-              </p>
+              </div>
               <div className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
                   color: 'rgba(0,0,0,0.4)'
-                }} onClick={() => setCount(count + 1)}>
+                }} onClick={(e) => sendLike(e, ip)}>
                 <i className="fa fa-heart"></i>
                 <span className="d-block">{count}</span>
               </div>
