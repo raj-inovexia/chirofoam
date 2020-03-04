@@ -185,9 +185,9 @@ const Reviews = (props) => {
               setResponseColor("warning")
               setResponseContent(<><strong> {
                 responseJson.message
-              }</strong> < ul className = "mb-0 pl-4" > {
+              }</strong> <ul className = "mb-0 pl-4" > {
                 Object.keys(responseJson.errors).map((error) => (<li key={error}>{responseJson.errors[error][0]}</li>))
-              } < /ul></ >)
+              } </ul></>)
               setSubmitting(false)
             })
           }
@@ -251,7 +251,7 @@ const Reviews = (props) => {
     }
     fetchShopID(`//reviews.hulkapps.com/api/shop?shopify_domain=${shopName}`)
   }, [])
-  return (<> < SEO title = "CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
+  return (<> <SEO title="CHIROFOAM™ MATTRESS REVIEWS" /> <Header/>
   <section>
     <Container>
       <Row className="mx-0">
@@ -526,7 +526,7 @@ const Reviews = (props) => {
       </div>
     </form>
   </Modal>
-  <Footer/> < />
+  <Footer/> </>
 )
 }
 export default Reviews

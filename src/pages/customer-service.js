@@ -3,7 +3,8 @@ import Recaptcha from 'react-recaptcha'
 import {Link} from "gatsby"
 import Header from "../components/header"
 import Footer from "../components/footer"
-import {Container, Jumbotron, Row, Col, Form} from 'reactstrap';
+import {Container, Jumbotron, Row, Col, Form} from 'reactstrap'
+import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import "~/assets/css/bootstrap.min.css"
 import "~/assets/js/custom.js"
@@ -55,7 +56,7 @@ export default(props) => {
     sendFormData("https://contactform.hulkapps.com/ajaxcall/customcontact")
   }
 
-  return (<> <Header /> <section>
+  return (<> <SEO title="CUSTOMER SERVICE" /> <Header /> <section>
     <div className="container-large">
       <Row>
         <Jumbotron className="mb-0 text-center text-white bg-transparent space-1 w-100 m-auto">
@@ -145,7 +146,7 @@ export default(props) => {
                   opacity: 1
                 }} disabled={submitting}>
                 {
-                  (submitting) &&< div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
+                  (submitting) && <div className = "h-100 w-100 bg-custom-primary d-flex justify-content-center align-items-center position-absolute" style = {{
 					              zIndex: 1,
 					              left: 0,
 					              top: 0
