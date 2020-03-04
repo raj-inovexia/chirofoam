@@ -82,6 +82,7 @@ const Blogs = ({id}) => {
     }).join('&')
   }
   const fetchLikeCount = (index, articleId, blogId) => {
+    console.log(index, articleId, blogId)
     const article_id = parseInt(atob(articleId).split("/").pop())
     const blog_id = parseInt(atob(blogId).split("/").pop())
     if(pageLoaded){
@@ -102,6 +103,7 @@ const Blogs = ({id}) => {
         }).then((response) => {
           if (response.status === 200) {
             response.json().then((responseJson) => {
+              console.log(responseJson)
               document.getElementById(`count-${index}`).innerHTML = responseJson.response.metafields.length
             })
           }
