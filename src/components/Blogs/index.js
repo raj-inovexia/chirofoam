@@ -109,7 +109,7 @@ const Blogs = ({id}) => {
       }
       console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`))
       // metafield length
-      return 0
+      return allShopifyArticle.edges[index].likes
     }else{
       return 0
     }
