@@ -23,7 +23,6 @@ export default(props) => {
       subject: elements.subject.value,
       message: elements.message.value
     }
-    console.log(data)
     const sendFormData = async (URL) => {
       return await fetch(URL, {
         method: 'POST',
