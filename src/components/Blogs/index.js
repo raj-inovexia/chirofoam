@@ -82,7 +82,7 @@ const Blogs = ({id}) => {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
-  const getLikeCount = (index, articleId, blogId) => {
+  const fetchLikeCount = (index, articleId, blogId) => {
     const article_id = parseInt(atob(articleId).split("/").pop())
     const blog_id = parseInt(atob(blogId).split("/").pop())
     if(pageLoaded){
@@ -93,7 +93,7 @@ const Blogs = ({id}) => {
         "fields": "namespace,key,value"
       }
       const reqData = jsonToQueryString(getData)
-      const fetchLikeCount = (async (URL) => {
+      const fetchData = (async (URL) => {
         return await fetch(URL, {
           method: 'GET',
           headers: {
@@ -113,6 +113,9 @@ const Blogs = ({id}) => {
         })
       })(`//icbtc.com/development/shopify-api/${reqData}`)
     }
+  }
+  const getLikeCount = (index) => {
+    return (likeCounts[index]!== undefined)? likeCounts[index] : 0
   }
   const [ip, setIp] = useState("")
   const postLike = (event, articleId, blogId, Ip) => {
@@ -174,6 +177,7 @@ const Blogs = ({id}) => {
             comments
           }
         }, index) => (<div className="blogs-section mb-4" key={index}>
+          {fetchLikeCount(index, shopifyId, blog.shopifyId)}
           <div className="featured-image position-relative overflow-hidden">
             <Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{
                 fromFeed: true
@@ -227,7 +231,7 @@ const Blogs = ({id}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={(e) => postLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
-                <span className="d-block" value={getLikeCount(index, shopifyId, blog.shopifyId)}>{likeCounts[index]}</span>
+                <span className="d-block">{getLikeCount(index)}</span>
               </div>
             </Col>
             <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
