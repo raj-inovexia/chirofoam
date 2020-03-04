@@ -92,6 +92,7 @@ const Blogs = ({id}) => {
       }
       const reqData = jsonToQueryString(getData)
       const fetchLikeCount = (async (URL) => {
+        const [likes, setLikes] = useState(0)
         return await fetch(URL, {
           method: 'GET',
           headers: {
@@ -100,12 +101,13 @@ const Blogs = ({id}) => {
           }
         }).then((response) => {
           response.json().then((result) => {
-            return result.response.metafields.length.toString()
+            setLikes(result.response.metafields.length)
           })
         }).catch((error) => {
           console.error(error)
         })
       })(`//icbtc.com/development/shopify-api/${reqData}`)
+      return likes
     }else{
       return '0'
     }
