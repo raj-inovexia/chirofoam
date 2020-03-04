@@ -22,6 +22,7 @@ const Blogs = ({id}) => {
           edges {
             node {
               id
+              shopifyId
               title
               excerpt
               url
@@ -35,6 +36,7 @@ const Blogs = ({id}) => {
               blog {
                 title
                 url
+                shopifyId
               }
               comments {
                 shopifyId
@@ -73,8 +75,8 @@ const Blogs = ({id}) => {
   }
   const [count, setCount] = useState(0)
   const [ip, setIp] = useState("")
-  const sendLike = (event, Ip) => {
-    console.log(Ip)
+  const sendLike = (event, blogId, articleId, Ip) => {
+    console.log(blogId, articleId, Ip)
   }
   useEffect(() => {
     const getIp = (async () => {
@@ -90,6 +92,7 @@ const Blogs = ({id}) => {
         ? allShopifyArticle.edges.map(({
           node: {
             id,
+            shopifyId,
             url,
             title,
             content,
@@ -152,7 +155,7 @@ const Blogs = ({id}) => {
               </div>
               <div className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
                   color: 'rgba(0,0,0,0.4)'
-                }} onClick={(e) => sendLike(e, ip)}>
+                }} onClick={(e) => sendLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
                 <span className="d-block">{count}</span>
               </div>
