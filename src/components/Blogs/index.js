@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState, useEffect} from 'react'
 import {useStaticQuery, graphql, Link, navigate} from 'gatsby'
 import {Col, Pagination, PaginationItem, UncontrolledPopover, PopoverBody} from 'reactstrap'
 import {
@@ -71,8 +71,16 @@ const Blogs = ({id}) => {
       navigate(path)
     }
   }
- const [count, setCount] = useState(0);
-  
+  const [count, setCount] = useState(0)
+  const [ip, setIp] = useState("")
+  useEffect(() => {
+    const getIp = (async () => {
+      return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
+        setIp(data.ip)
+      })
+    })()
+  }, [])
+  console.log(ip)
   return (<Col sm="8" className="align-middle">
     {
       allShopifyArticle.edges
@@ -127,7 +135,7 @@ const Blogs = ({id}) => {
                     {shareCount => (
                         <span className="myShareCountWrapper">{shareCount}</span>
                     )}
-                    </FacebookShareCount>                  
+                    </FacebookShareCount>
 <TwitterShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><TwitterIcon size={25} round={true}/></TwitterShareButton>
                   <PinterestShareButton media={image.src} url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><PinterestIcon size={25} round={true}/></PinterestShareButton>
                   <LinkedinShareButton url={`${URL}/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} className="p-1"><LinkedinIcon size={25} round={true}/></LinkedinShareButton>
@@ -140,7 +148,7 @@ const Blogs = ({id}) => {
                 <span className="d-block">{comments.length}</span>
               </p>
               <div className="mb-0 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" style={{
-                  color: 'rgba(0,0,0,0.4)' 
+                  color: 'rgba(0,0,0,0.4)'
                 }} onClick={() => setCount(count + 1)}>
                 <i className="fa fa-heart"></i>
                 <span className="d-block">{count}</span>
