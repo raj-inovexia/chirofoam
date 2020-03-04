@@ -100,7 +100,8 @@ const Blogs = ({id}) => {
           }
         })
         let data = await response.json()
-        return data
+        console.log(data);
+        return 'hello'
         // .then((response) => {
         //   return response.json()
         // }).then((result) => {
