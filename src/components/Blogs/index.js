@@ -83,11 +83,9 @@ const Blogs = ({id}) => {
   }
   const fetchLikeCount = (index, articleId, blogId) => {
     console.log(index, articleId, blogId)
-    const article_id = parseInt(atob(articleId).split("/").pop())
-    const blog_id = parseInt(atob(blogId).split("/").pop())
     if(pageLoaded){
       const getData = {
-        "api": `/admin/api/2020-01/blogs/${blog_id}/articles/${article_id}/metafields.json`,
+        "api": `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
         "namespace": "postlike",
         "value_type": "string",
         "fields": "namespace,key,value"
@@ -138,7 +136,7 @@ const Blogs = ({id}) => {
       }).then((response) => {
         if (response.status === 200) {
           response.json().then((responseJson) => {
-            //fetchLikeCount(index, articleId, blogId)
+            fetchLikeCount(index, articleId, blogId)
             console.log(responseJson, index, articleId, blogId)
           })
         }
@@ -173,7 +171,7 @@ const Blogs = ({id}) => {
             comments
           }
         }, index) => (<div className="blogs-section mb-4" key={index}>
-          {fetchLikeCount(index, shopifyId, blog.shopifyId)}
+          {fetchLikeCount(index, parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()))}
           <div className="featured-image position-relative overflow-hidden">
             <Link to={`/blogs/${blog.url.split("/").pop()}/${url.split("/").pop()}/`} state={{
                 fromFeed: true
