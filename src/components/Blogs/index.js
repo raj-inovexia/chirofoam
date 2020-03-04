@@ -17,7 +17,7 @@ const Blogs = ({id}) => {
   const URL = typeof window !== 'undefined'
     ? window.location.origin
     : ''
-  const {allShopifyArticle} = useStaticQuery(graphql `
+  let {allShopifyArticle} = useStaticQuery(graphql `
       {
         allShopifyArticle(sort: {order: DESC, fields: publishedAt}, limit: 10, skip: 0) {
           edges {
@@ -82,32 +82,33 @@ const Blogs = ({id}) => {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
-  const getLikeCount = (articleId, blogId) => {
+  const getLikeCount = (index, articleId, blogId) => {
+    const article_id = parseInt(atob(articleId).split("/").pop())
+    const blog_id = parseInt(atob(blogId).split("/").pop())
     if(pageLoaded){
       const getData = {
-        "api": `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
+        "api": `/admin/api/2020-01/blogs/${blog_id}/articles/${article_id}/metafields.json`,
         "namespace": "postlike",
         "value_type": "string",
         "fields": "namespace,key,value"
       }
       const reqData = jsonToQueryString(getData)
       const fetchLikeCount = async (URL) => {
-        let promise = new Promise((resolve, reject) => {
-          setTimeout(() => resolve("done!"), 1000)
-        })
-        let response = await fetch(URL, {
+        let fetchData = await fetch(URL, {
           method: 'GET',
           headers: {
             "Content-type": "application/json",
             "X-Shopify-Access-Token": token
           }
         })
-        let result = await response.json()
-        console.log(result, result.response.metafields.length)
+        let result = await fetchData.json()
+        let response = JSON.stringify(result.response.metafields)
+        console.log(allShopifyArticle.edges[index], result.response.metafields.length)
         return result.response.metafields.length
       }
       console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`))
-      return 0
+      // metafield length
+      return result.response.metafields.length
     }else{
       return 0
     }
@@ -224,7 +225,7 @@ const Blogs = ({id}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={(e) => postLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
-                <span className="d-block">{getLikeCount(parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()))}</span>
+                <span className="d-block">{getLikeCount(index, shopifyId, blog.shopifyId)}</span>
               </div>
             </Col>
             <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
