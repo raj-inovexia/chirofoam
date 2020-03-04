@@ -92,7 +92,7 @@ const Blogs = ({id}) => {
       }
       const reqData = jsonToQueryString(getData)
       const fetchLikeCount = async (URL) => {
-        return = await fetch(URL, {
+        return await fetch(URL, {
           method: 'GET',
           headers: {
             "Content-type": "application/json",
