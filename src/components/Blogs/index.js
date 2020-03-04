@@ -125,8 +125,8 @@ const Blogs = ({id}) => {
         }
       }
     }
-    console.log(data)
-    const sendLike = (async () => {
+    const sendLike = (async (URL) => {
+      console.log(URL, data)
       return await fetch(URL, {
         method: 'POST',
         headers: {
@@ -143,7 +143,7 @@ const Blogs = ({id}) => {
       }).catch((error) => {
         console.error(error)
       })
-    })()
+    })(`//icbtc.com/development/shopify-api/`)
   }
   useEffect(() => {
     const getIp = (async () => {
