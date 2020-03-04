@@ -103,9 +103,10 @@ const Blogs = ({id}) => {
         }).then((response) => {
           if (response.status === 200) {
             response.json().then((responseJson) => {
+              document.getElementById(`count-${index}`).innerHTML = responseJson.response.metafields.length
               likeCounts[index] = responseJson.response.metafields.length
-              console.log(likeCounts, likeCounts[index])
               setLikeCounts(likeCounts)
+              console.log(likeCounts, likeCounts[index])
             })
           }
         }).catch((error) => {
@@ -231,7 +232,7 @@ const Blogs = ({id}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={(e) => postLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
-                <span className="d-block">{getLikeCount(index)}</span>
+                <span className="d-block" id={`count-${index}`}>0</span>
               </div>
             </Col>
             <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
