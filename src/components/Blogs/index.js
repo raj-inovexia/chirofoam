@@ -111,7 +111,7 @@ const Blogs = ({id}) => {
         //   console.error(error)
         // }).done()
       }
-      console.log(fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`).resolve())
+      fetchLikeCount(`//icbtc.com/development/shopify-api/${reqData}`).then(res => console.log(res))
       return 0
     }else{
       return 0
