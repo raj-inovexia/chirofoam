@@ -168,7 +168,7 @@ const Blogs = ({id}) => {
         comments
       }
     }, index) => {
-      console.log(node, index);
+      console.log(shopifyId, blog, index);
       //fetchLikeCount(index, shopifyId, blog.shopifyId)
     })
   }, [])
