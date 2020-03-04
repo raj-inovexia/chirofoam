@@ -76,7 +76,7 @@ const Blogs = ({id}) => {
     }
   }
   const [pageLoaded, setPageLoaded] = useState(false)
-  const [likeCounts, setLikeCounts] = useState([])
+  const [likeCounts, setLikeCounts] = useState([...Array(allShopifyArticle.edges.length)])
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
@@ -104,7 +104,7 @@ const Blogs = ({id}) => {
           if (response.status === 200) {
             response.json().then((responseJson) => {
               likeCounts[index] = responseJson.response.metafields.length
-              console.log(index, responseJson, likeCounts, likeCounts[index])
+              console.log(likeCounts, likeCounts[index])
               setLikeCounts(likeCounts)
             })
           }
