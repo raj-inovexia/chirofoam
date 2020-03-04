@@ -104,7 +104,6 @@ const Blogs = ({id}) => {
           if (response.status === 200) {
             response.json().then((responseJson) => {
               likeCounts[index] = responseJson.response.metafields.length
-              console.log(likeCounts, likeCounts[index])
               setLikeCounts(likeCounts)
             })
           }
@@ -113,9 +112,6 @@ const Blogs = ({id}) => {
         })
       })(`//icbtc.com/development/shopify-api/${reqData}`)
     }
-  }
-  const getLikeCount = (index) => {
-    return (likeCounts[index]!== undefined)? likeCounts[index] : 0
   }
   const [ip, setIp] = useState("")
   const postLike = (event, articleId, blogId, Ip) => {
@@ -231,7 +227,7 @@ const Blogs = ({id}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={(e) => postLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
-                <span className="d-block">{getLikeCount(index)}</span>
+                <span className="d-block">{(likeCounts[index]!== undefined)? likeCounts[index] : 0}</span>
               </div>
             </Col>
             <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
