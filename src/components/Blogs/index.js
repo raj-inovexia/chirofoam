@@ -76,6 +76,10 @@ const Blogs = ({id}) => {
     }
   }
   const [count, setCount] = useState(0)
+  const fetchLikeCount = (blogId, articleId) => {
+    console.log(blogId, articleId)
+    return 0
+  })
   const [ip, setIp] = useState("")
   const postLike = (event, blogId, articleId, Ip) => {
     const data = {
@@ -191,7 +195,7 @@ const Blogs = ({id}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={(e) => postLike(e,parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()), ip)}>
                 <i className="fa fa-heart"></i>
-                <span className="d-block">{count}</span>
+                <span className="d-block">{fetchLikeCount(parseInt(atob(shopifyId).split("/").pop()), parseInt(atob(blog.shopifyId).split("/").pop()))}</span>
               </div>
             </Col>
             <Col className="pl-2 pl-sm-2 pl-lg-4 pl-xl-4 col-11 blog-content">
