@@ -99,14 +99,13 @@ const Blogs = ({id}) => {
             "X-Shopify-Access-Token": token
           }
         }).then((response) => {
-          response.json().then((responseJson) => {
-            console.log(responseJson)
+          response.json().then((result) => {
+            return result.response.metafields.length
           })
         }).catch((error) => {
           console.error(error)
         })
       })(`//icbtc.com/development/shopify-api/${reqData}`)
-      return 0
     }else{
       return 0
     }
