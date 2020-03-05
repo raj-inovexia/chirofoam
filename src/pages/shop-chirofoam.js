@@ -12,7 +12,7 @@ import run from "../assets/img/only-man.png"
 //import Products from '~/components/Products'
 import product1 from "../assets/img/product1.jpg"
 import product2 from "../assets/img/product2.jpg"
-
+import ScrollAnimation from 'react-animate-on-scroll';
 
 
 export default (props) => {
@@ -22,6 +22,7 @@ export default (props) => {
 		<Header />
 		<Banner/>
 		<section className="mt-4 mb py-4" style={{backgroundColor:'#fff'}}>
+		<ScrollAnimation animateIn="fadeInUp">
 				<Row className="no-gutters">
 					<Col sm="4" className="card1 com-card bg-image mx-3 mb-2 mb-sm-0 m-sm-0 m-lg-0">
 						<div className="card-layer">
@@ -39,12 +40,13 @@ export default (props) => {
 						</div>
 					</Col>
 				</Row>
+		</ScrollAnimation>
 		</section>
 
 		<section className="py-4 pt-sm-4 pt-lg-4 pt-xl-4 pb-sm-4 pb-lg-4 pb-xl-4 mb-0 mb-sm-3 mb-lg-3 mb-xl-3 mattresses">
 			<div className="pt-0 pt-sm-5 container-large">
-				<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold display-5 w-100">THE COMFORT AND SUPPORT YOU NEED FOR A BETTER SLEEP</h3>
-				<p className="col-12 col-sm-7 text-center pb-4 pb-sm-5 px-0 px-sm-2 pt-1 mb-5 color-primary proxima-b space-1 m-auto sub-text sub-sm-text sub-md-text sub-xl-text">We have two models to choose from. Whatever your needs are, Chirofoam has your back!</p>
+				<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold display-5 w-100"><ScrollAnimation animateIn="fadeInUp">THE COMFORT AND SUPPORT YOU NEED FOR A BETTER SLEEP</ScrollAnimation></h3>
+				<p className="col-12 col-sm-7 text-center pb-4 pb-sm-5 px-0 px-sm-2 pt-1 mb-5 color-primary proxima-b space-1 m-auto sub-text sub-sm-text sub-md-text sub-xl-text"><ScrollAnimation animateIn="fadeInUp">We have two models to choose from. Whatever your needs are, Chirofoam has your back!</ScrollAnimation></p>
 				<Row className="no-gutters row-eq-height pb-5 m-0">
 					<Col sm="12" className="col-lg-6 col-xl-6 product-border-right pr-0 pr-sm-2 position-relative">
 						<div className="pr-0 pr-lg-5 pr-xl-5 mr-0 mr-sm-4">
