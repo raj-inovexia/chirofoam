@@ -14,13 +14,19 @@ import clip1 from "../assets/img/bed1.jpg"
 import clip2 from "../assets/img/clip.jpg"
 
 const Design = (props) => {
+  const [rightClip, setRightClip] = useState(0)
+  const [bottomClip, setBottomClip] = useState(0)
   const handleDrag = (e, ui) => {
     console.log(ui, ui.deltaX, ui.deltaY)
   }
   useEffect(() => {
     const clipTarget = document.getElementById("clip-target")
     const clipSource = document.getElementById("clip-source")
-    console.log(clipTarget, clipSource, clipSource.style.width)
+    const sourceWidth = clipSource.offsetWidth
+    const sourceHeight = clipSource.offsetHeight
+    setRightClip(Math.floor(sourceWidth/2))
+    setBottomClip(sourceHeight)
+    console.log(clipTarget, sourceWidth, sourceHeight)
   }, [])
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
@@ -224,7 +230,7 @@ const Design = (props) => {
     <div className="twentytwenty-wrapper twentytwenty-horizontal">
       <div className="twentytwenty twentytwenty-container">
         <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip1} className="twentytwenty-before" id="clip-target" style={{
-            clip: 'rect(0px,636px,534px,0px)'
+            clip: `rect(0px,${rightClip}px,${bottomClip}px,0px)`
           }}/>
         <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip2} className="twentytwenty-after" id="clip-source"/>
         <div className="twentytwenty-overlay">
