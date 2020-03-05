@@ -20,6 +20,7 @@ import SEO from '~/components/seo'
 import atob from "atob"
 import "~/assets/css/bootstrap.min.css"
 import "~/assets/js/custom.js"
+import ScrollAnimation from 'react-animate-on-scroll'
 
 const Reviews = (props) => {
   const shopName = "chirofoam.myshopify.com"
@@ -256,11 +257,11 @@ const Reviews = (props) => {
     <Container>
       <Row className="mx-0">
         <Jumbotron className="mb-0 text-center text-white bg-transparent space-1 w-100 m-auto">
-          <h2 className="font-weight-bold display-5 color-primary erbaum-bold text-uppercase pt-5 space-2">Chirofoam™ Mattress Reviews
+          <h2 className="font-weight-bold display-5 color-primary erbaum-bold text-uppercase pt-5 space-2"><ScrollAnimation animateIn="fadeInUp">Chirofoam™ Mattress Reviews</ScrollAnimation>
           </h2>
           <p className="filson-pro-reg color-primary space-2 pt-5" style={{
               fontSize: '24px'
-            }}>97% Customer Satisfaction Rate
+            }}><ScrollAnimation animateIn="fadeInUp">97% Customer Satisfaction Rate</ScrollAnimation>
           </p>
         </Jumbotron>
       </Row>
@@ -414,7 +415,7 @@ const Reviews = (props) => {
       </Row>
     </Container>
   </section>
-
+  <ScrollAnimation animateIn="fadeInUp">
   <section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
     <Container className="pb-0 pb-sm-5">
       <Row className="mx-0">
@@ -439,6 +440,7 @@ const Reviews = (props) => {
       </Row>
     </Container>
   </section>
+</ScrollAnimation>
   <Modal size="lg" isOpen={modal} toggle={closeModal} centered={true} contentClassName="rounded-0 border-0" external={externalCloseBtn}>
     <form encType="multipart/form-data" onSubmit={e => submitReview(e)}>
       <div className="modal-header border-bottom-0 position-relative">
