@@ -1233,7 +1233,7 @@ body .table-rows .row-list:first-child ul li{
 	-moz-user-select: none;
 	height:500px;
 }
-.twentytwenty-container img {
+.twentytwenty-container img:first-child {
 	position: absolute;
 	top: 0;
 	display: block;

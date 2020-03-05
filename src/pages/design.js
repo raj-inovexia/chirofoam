@@ -21,16 +21,14 @@ const Design = (props) => {
     const sourceWidth = clipSource.offsetWidth
     const initRightClip = Math.floor(sourceWidth/2)
     setRightClip(initRightClip+(ui.x))
-    console.log(ui, (initRightClip+(ui.x)), (initRightClip-(ui.x)))
+    console.log(ui)
   }
   useEffect(() => {
     const clipTarget = document.getElementById("clip-target")
     const clipSource = document.getElementById("clip-source")
-    const sourceWidth = clipSource.offsetWidth
-    setRightClip(Math.floor(sourceWidth/2))
-    console.log(sourceWidth, Math.floor(sourceWidth/2))
+    setRightClip(Math.floor(clipSource.offsetWidth/2))
     const sizeReset = () => {
-      console.log(sourceWidth, clipSource.offsetWidth)
+      setRightClip(Math.floor(clipSource.offsetWidth/2))
     }
     window.addEventListener('resize', sizeReset)
   }, [])
