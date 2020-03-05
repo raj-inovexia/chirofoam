@@ -15,11 +15,13 @@ import clip2 from "../assets/img/clip.jpg"
 
 const Design = (props) => {
   const [rightClip, setRightClip] = useState(0)
+  const [dragX, setDragX] = useState(0)
   const bottomClip = 1000
   const handleDrag = (e, ui) => {
     const clipSource = document.getElementById("clip-source")
     const sourceWidth = clipSource.offsetWidth
     const initRightClip = Math.floor(sourceWidth/2)
+    setDragX(ui.x)
     setRightClip(initRightClip+(ui.x))
     console.log(ui)
   }
@@ -28,7 +30,8 @@ const Design = (props) => {
     const clipSource = document.getElementById("clip-source")
     setRightClip(Math.floor(clipSource.offsetWidth/2))
     const sizeReset = () => {
-      setRightClip(Math.floor(clipSource.offsetWidth/2))
+      console.log(dragX, (Math.floor(clipSource.offsetWidth/2)+dragX))
+      setRightClip(Math.floor(clipSource.offsetWidth/2)+dragX)
     }
     window.addEventListener('resize', sizeReset)
   }, [])
