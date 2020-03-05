@@ -13,7 +13,6 @@
       s.async = true;
       s.defer = true;
       s.src = urls[i];
-      var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
     }
   };
