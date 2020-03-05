@@ -237,7 +237,6 @@ const ArticlePage = ({data}) => {
       })
     })(`//icbtc.com/development/shopify-api/${reqLikeData}`)
   }, [])
-  console.log(ip, articleId, blogId)
   return (<> <SEO title = {
     article.title
   }
@@ -282,7 +281,7 @@ const ArticlePage = ({data}) => {
               }}>
               <button id="share" style={{
                   color: 'rgba(0,0,0,0.4)'
-                }} className="ml-0 ml-sm-0 ml-lg-4 ml-xl-4">
+                }} className="bg-transparent border-0 outline-none ml-0 ml-sm-0 ml-lg-4 ml-xl-4">
                 <i className="fa fa-share-alt"></i>
                 <span className="pl-2">&nbsp;</span>
               </button>
@@ -296,13 +295,13 @@ const ArticlePage = ({data}) => {
                 </PopoverBody>
               </UncontrolledPopover>
 
-              <button className="px-2 ml-4" onClick={e => writeComment(e)} style={{
+              <button className="bg-transparent border-0 outline-none px-2 ml-4" onClick={e => writeComment(e)} style={{
                   color: 'rgba(0,0,0,0.4)'
                 }}>
                 <i className="fa fa-envelope"></i>
                 <span className="pl-2">{totalComments}</span>
               </button>
-              <button className="mb-0 ml-4" style={{
+              <button className="bg-transparent border-0 outline-none mb-0 ml-4" style={{
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={postLike}>
                 <i className="fa fa-heart"></i>
