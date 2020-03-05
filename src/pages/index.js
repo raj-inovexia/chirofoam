@@ -28,7 +28,7 @@ export default (props) => {
 		<main id="homepage">
 		<Banner />
 		<section className="py-4 py-sm-4 py-lg-4 py-xl-4 active-style">
-	  <ScrollAnimation animateIn="fadeInDown">
+	  <ScrollAnimation animateIn="fadeInUp">
 			<div className="container-large py-0 py-sm-5 py-lg-5 py-xl-5 px-3 px-sm-3">
 				<Row className="pt-0 pt-sm-4 pt-lg-4 pt-xl-4 d-flex m-0">
 					<Col sm="12" className="pt-0 pt-sm-12 pt-lg-12 pt-xl-2 col-md-6 col-lg-6 col-xl-6">
@@ -58,6 +58,7 @@ export default (props) => {
 	  </ScrollAnimation>
 		</section>
 		<section className="py-4 pt-sm-1 pb-sm-1 key-feature">
+	  <ScrollAnimation animateIn="fadeInUp">
 			<Container className="py-0 pt-sm-0 pb-sm-1">
 				<Row className="pb-sm-3 pb-lg-4 pb-xl-3 pb-0 m-0">
 					<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold animated fadeInUp slow" style={{width:'100%'}}>5 KEY FEATURES IN EVERY CHIROFOAM MATTRESS</h3>
@@ -67,8 +68,10 @@ export default (props) => {
 					</div>
 				</Row>
 			</Container>
+</ScrollAnimation>
 		</section>
 		<section className="my-4 py-5 max-support position-relative">
+			<ScrollAnimation animateIn="fadeInUp">
 			<div className="container-large p-0">
 				<Row className="mx-0">
 					<Col className="col-12 col-md-5 col-lg-5 col-xl-5 pt-0 pt-lg-5 pt-xl-5 pb-3 pb-sm-0 pb-md-3 pb-lg-5 pb-xl-5">
@@ -134,9 +137,11 @@ export default (props) => {
 					</Col>
 				</Row>
 			</div>
+</ScrollAnimation>
 		</section>
 
 		<section className="py-4 pt-sm-4 pt-lg-4 pt-xl-4 pb-sm-4 pb-lg-4 pb-xl-4 mb-0 mb-sm-3 mb-lg-3 mb-xl-3 mattresses">
+			<ScrollAnimation animateIn="fadeInUp">
 			<div className="pt-0 pt-sm-5 container-large">
 				<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold display-5 w-100">THE COMFORT AND SUPPORT YOU NEED FOR A BETTER SLEEP</h3>
 				<p className="col-12 col-sm-7 text-center pb-4 pb-sm-5 px-0 px-sm-2 pt-1 mb-5 color-primary proxima-b space-1 m-auto sub-text sub-sm-text sub-md-text sub-xl-text">We have two models to choose from. Whatever your needs are, Chirofoam has your back!</p>
@@ -192,12 +197,16 @@ export default (props) => {
 					</Col>
 				</Row>
 			</div>
+</ScrollAnimation>
 		</section>
 		
 		<div className="homepage-slider-2">
+			<ScrollAnimation animateIn="fadeInUp">
 			<HomePageSlider2 />
+				</ScrollAnimation>
 		</div>
 		<section className="py-5 pt-sm-5 px-0 our-customer">
+			<ScrollAnimation animateIn="fadeInUp">
 			<div className="container-large py-0 py-sm-0 py-md-0 py-lg-5 py-xl-5">
 				<Row className="pt-3 pb-3 pb-sm-0 no-gutters">
 					<Col sm="6" className="px-0">
@@ -221,6 +230,7 @@ export default (props) => {
 					</Col>
 				</Row>
 				</div>
+</ScrollAnimation>
 		</section>
 		<Footer />
 		</main>
