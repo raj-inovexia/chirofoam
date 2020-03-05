@@ -5,12 +5,13 @@ import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col, Form} from 'reactstrap';
 import "../assets/css/bootstrap.min.css"
 import logo from "../assets/img/logo2.png"
-
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export default (props) => {
   return (
 	<>
 		<Header />
+		<ScrollAnimation animateIn="fadeInUp">
 		<section className="mb-0 py-3 py-sm-3 py-md-3 py-lg-5 py-xl-5 position-relative">
 			<Container>
         		<Row className="mx-0 text-center">
@@ -19,6 +20,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+		</ScrollAnimation>
 		<section className="py-3 py-sm-3 py-md-4 py-lg-5 py-xl-5">
 				<Container>
 						<Row className="mx-0">
@@ -154,6 +156,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+		<ScrollAnimation animateIn="fadeInUp">
 		<section className="rating-and-review py-3">
 			<Container className="pb-5 pb-lg-5 pb-xl-5">
 				<Row>
@@ -172,7 +175,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
-
+</ScrollAnimation>
 		<Footer />
 	</>
   );
