@@ -183,7 +183,7 @@ const ArticlePage = ({data}) => {
       "value_type": "string",
       "fields": "namespace,key,value"
     }
-    const reqLikeData = jsonToQueryString(getData)
+    const reqLikeData = jsonToQueryString(getLikeData)
     const fetchData = (async (URL) => {
       return await fetch(URL, {
         method: 'GET',
