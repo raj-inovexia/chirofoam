@@ -107,8 +107,9 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	<ScrollAnimation animateIn="fadeInUp">	
 		<section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
-		<ScrollAnimation animateIn="fadeInUp">	
+		
 			<Container className="pb-0 pb-sm-5">
 				<Row className="mx-0">
 					
@@ -127,8 +128,9 @@ export default (props) => {
 					<p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>Chirofoam™ Memory Foam Mattresses are proudly developed and manufactured in Toronto, ON, Canada.</p> 
 				</Row>
 			</Container>
-</ScrollAnimation>
+
 		</section>
+</ScrollAnimation>
 		<Footer />
 	</>
   );
