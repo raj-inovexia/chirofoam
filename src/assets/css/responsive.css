@@ -491,7 +491,6 @@ body .container-large{
   ##Device = Laptops, Desktops
   ##Screen = B/w 1025px to 1280px
 */
-
 @media (min-width: 1025px) and (max-width: 1280px) {
 	.white-dots img {
 	margin-left: 0 !important;

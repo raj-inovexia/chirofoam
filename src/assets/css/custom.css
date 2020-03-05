@@ -1354,6 +1354,9 @@ body .table-rows .row-list:first-child ul li{
   border-bottom: 1px dotted black;
   cursor:pointer;
 }
+.key-tooltip img{
+	display:block;
+}
 .key-tooltip::before{
 	content:"\f10c";
 	font-family: "fontAwesome";
