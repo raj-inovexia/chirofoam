@@ -167,7 +167,7 @@ const ArticlePage = ({data}) => {
       query: {
         metafield: {
           namespace: "postlike",
-          key: Ip,
+          key: ip,
           value: "liked",
           value_type: "string"
         }
