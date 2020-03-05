@@ -14,7 +14,9 @@ import clip1 from "../assets/img/bed1.jpg"
 import clip2 from "../assets/img/clip.jpg"
 
 const Design = (props) => {
-  console.log(typeof Draggable)
+  const handleDrag = (e, ui) => {
+    console.log(ui, ui.deltaX, ui.deltaY)
+  }
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
     <Container>
@@ -224,15 +226,12 @@ const Design = (props) => {
           <div className="twentytwenty-before-label"></div>
           <div className="twentytwenty-after-label"></div>
         </div>
-        <Draggable axis="x">
-          <div className="twentytwenty-handle">(x axis)</div>
+        <Draggable onDrag={handleDrag} axis="x" defaultPosition={{x: '50%'}}>
+          <div className="twentytwenty-handle">
+            <span className="twentytwenty-left-arrow"></span>
+            <span className="twentytwenty-right-arrow"></span>
+          </div>
         </Draggable>
-        <div className="twentytwenty-handle" style={{
-            left: '636px'
-          }}>
-          <span className="twentytwenty-left-arrow"></span>
-          <span className="twentytwenty-right-arrow"></span>
-        </div>
       </div>
     </div>
   </section>
