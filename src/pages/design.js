@@ -15,20 +15,19 @@ import clip2 from "../assets/img/clip.jpg"
 
 const Design = (props) => {
   const [rightClip, setRightClip] = useState(0)
-  const [bottomClip, setBottomClip] = useState(1000)
+  const bottomClip = 1000
   const handleDrag = (e, ui) => {
-    setRightClip(rightClip-ui.x)
-    console.log(ui.x, ui.y, (rightClip-ui.x))
+    //setRightClip(rightClip - (ui.x))
+    console.log(ui.x, (rightClip-(ui.x)))
   }
   useEffect(() => {
     const clipTarget = document.getElementById("clip-target")
     const clipSource = document.getElementById("clip-source")
     const sourceWidth = clipSource.offsetWidth
-    const sourceHeight = clipSource.offsetHeight
-    setRightClip(Math.floor(sourceWidth/2))
-    setBottomClip(sourceHeight)
-    console.log(clipTarget, sourceWidth, sourceHeight)
+      setRightClip(Math.floor(sourceWidth/2))
+      console.log(sourceWidth, Math.floor(sourceWidth/2))
   }, [])
+  console.log(rightClip)
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
     <Container>
