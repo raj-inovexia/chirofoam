@@ -19,12 +19,12 @@ export default (props) => {
 		
 		<section className="mb-0 py-3 position-relative">
 			<Container>
-		<ScrollAnimation animateIn="fadeInUp">
+		
 				<Row className="mx-0 text-center">
-					<h2 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 space-2 pt-sm-1 pt-lg-5 pt-xl-5 color-primary w-100">OUR GUARANTEES</h2>
-				<p className="filson-pro-reg color-primary pt-2 space-4 proxima-r m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-sm-2 w-100" style={{fontSize:'26px'}}>We have your back!</p>
+					<ScrollAnimation animateIn="fadeInUp"><h2 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 space-2 pt-sm-1 pt-lg-5 pt-xl-5 color-primary w-100">OUR GUARANTEES</h2></ScrollAnimation>
+				<ScrollAnimation animateIn="fadeInUp"><p className="filson-pro-reg color-primary pt-2 space-4 proxima-r m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-sm-2 w-100" style={{fontSize:'26px'}}>We have your back!</p></ScrollAnimation>
 				</Row>
-		</ScrollAnimation>
+		
 				<Row className="py-3 mb-0 mb-sm-5 charity-inner text-center mx-0">
 					<Col sm="6" className="mb-3 mb-sm-5 mt-3 mt-sm-5 text-center px-0 px-sm-2 px-md-2 px-lg-4 px-xl-4">
 						<div className="text-center">
