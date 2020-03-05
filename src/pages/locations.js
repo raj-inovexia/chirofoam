@@ -7,24 +7,24 @@ import "../assets/css/bootstrap.min.css"
 import amazon from "../assets/img/amazon.jpg"
 import best from "../assets/img/best.png"
 import nm from "../assets/img/nm.png"
-
-
-
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export default (props) => {
   return (
 	<>
 		<Header />
+	  <ScrollAnimation animateIn="fadeInUp">
 		<section className="blue-bg">
 			<Jumbotron className="mb-0 text-center text-white bg-transparent space-1">
 				<h1 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-3 pt-lg-5 pt-xl-5 space-2 px-sm-5">Chirofoam Mattresses are now available at the following locations:</h1>
 			</Jumbotron>
 		</section>
+	  </ScrollAnimation>
 		<section className="mb-0 pt-5 pb-3 position-relative" id="locations-inner">
 			<Container className="our-focus pt-5">
 				<Row className="mb-2 mb-sm-5 pb-0 pb-sm-5">
 					<Col sm="4" className="text-center px-0 px-sm-4 mb-5 mb-sm-4 mb-lg-0 mb-xl-0">
-						<h4 className="text-uppercase color-primary erbaum-bold pb-4 location-title">Markham</h4>
+						<h4 className="text-uppercase color-primary erbaum-bold pb-4 location-title"><ScrollAnimation animateIn="fadeInUp">Markham</ScrollAnimation></h4>
 						<p className="filson-pro-reg color-secondary">
 							7701 Woodbine Avenue<br/>
 							Unit#5<br/>
@@ -44,7 +44,7 @@ export default (props) => {
 						</div>
 					</Col>
 					<Col sm="4" className="text-center px-0 px-sm-4 mb-5 mb-sm-4 mb-lg-0 mb-xl-0">
-						<h4 className="text-uppercase color-primary erbaum-bold pb-4 location-title">Mississauga</h4>
+						<h4 className="text-uppercase color-primary erbaum-bold pb-4 location-title"><ScrollAnimation animateIn="fadeInUp">Mississauga</ScrollAnimation></h4>
 						<p className="filson-pro-reg color-secondary">
 							1550 Meyerside Drive<br/>
 							Unit#3<br/>
@@ -64,7 +64,7 @@ export default (props) => {
 						</div>
 					</Col>
 					<Col sm="4" className="text-center px-0 px-sm-4 mb-5 mb-sm-4 mb-lg-0 mb-xl-0">
-						<h4 className="text-uppercase color-primary erbaum-bold pb-4 location-title">Milton/Georgetown</h4>
+						<h4 className="text-uppercase color-primary erbaum-bold pb-4 location-title"><ScrollAnimation animateIn="fadeInUp">Milton/Georgetown</ScrollAnimation></h4>
 						<p className="filson-pro-reg color-secondary">
 							15 Brownridge Road<br/>
 							Unit#3<br/>
@@ -86,6 +86,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	  <ScrollAnimation animateIn="fadeInUp">
 		<section>
 			<Container>
 				<p className="text-center w-100 filson-pro-reg color-secondary" style={{fontSize:'16px'}}>Also available at:</p>
@@ -102,6 +103,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	  </ScrollAnimation>
 		<section>
 			<Container>
 				<Row className="py-3 py-sm-5 mb-0 mb-sm-5">
@@ -122,6 +124,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	   <ScrollAnimation animateIn="fadeInUp">
 		<section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
 			<Container className="pb-0 pb-sm-5">
 				<Row>
@@ -140,7 +143,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
-
+</ScrollAnimation>
 		<Footer />
 	</>
   );
