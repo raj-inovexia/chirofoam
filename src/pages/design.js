@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Draggable from 'react-draggable'
 import {Link} from "gatsby"
 import Header from "../components/header"
@@ -17,6 +17,11 @@ const Design = (props) => {
   const handleDrag = (e, ui) => {
     console.log(ui, ui.deltaX, ui.deltaY)
   }
+  useEffect(() => {
+    const clipTarget = document.getElementById("clip-target")
+    const clipSource = document.getElementById("clip-source")
+    console.log(clipTarget, clipSource, clipSource.style.width)
+  }, [])
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
     <Container>
@@ -218,10 +223,10 @@ const Design = (props) => {
   <section className="py-5">
     <div className="twentytwenty-wrapper twentytwenty-horizontal">
       <div className="twentytwenty twentytwenty-container">
-        <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip1} className="twentytwenty-before" style={{
+        <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip1} className="twentytwenty-before" id="clip-target" style={{
             clip: 'rect(0px,636px,534px,0px)'
           }}/>
-        <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip2} className="twentytwenty-after"/>
+        <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip2} className="twentytwenty-after" id="clip-source"/>
         <div className="twentytwenty-overlay">
           <div className="twentytwenty-before-label"></div>
           <div className="twentytwenty-after-label"></div>
