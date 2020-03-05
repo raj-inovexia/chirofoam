@@ -28,6 +28,7 @@ export default (props) => {
 			</ScrollAnimation>
 		</section>
     	<section className="mb-0 py-3 position-relative features">
+				
       		<Container className="pt-5 five-key-features-outer">
 		        <Row className="mb-2 mb-sm-5 pb-0 pb-sm-5 mx-0 no-gutters">
 					<div className="col-12 col-sm-6 col-lg-5 col-xl-5 pt-2 mt-0 right-card d-flex mb-2 mb-sm-5 mb-md-0 mb-lg-0 mb-xl-0">
@@ -46,7 +47,7 @@ export default (props) => {
 						<img src={support} alt="Support" className="rounded-circle" />
 					</div>
 					<div className="col-12 col-sm-6 col-lg-7 col-xl-7 left-card">
-						<h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">PROPER BACK SUPPORT AND ALIGNMENT</h5>
+						<ScrollAnimation animateIn="fadeInUp"><h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">PROPER BACK SUPPORT AND ALIGNMENT</h5></ScrollAnimation>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">The majority of people go by their daily life with improper posture while sitting, standing, or lifting heavy objects. This improper posture puts unnecessary strain on your back which leads to back pain and potentially more serious health problems in the future.</p>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">The pro lumbar support layer in your Chirofoam™ mattress works together with the bio foam core to support your body and align your back to its natural curves while you rest at night. The memory foam mattress provides support and proper body alignment which contributes to pressure relief and helps your body regenerate and re-energize while you sleep.</p>
 					</div>
@@ -57,7 +58,7 @@ export default (props) => {
 						<img src={latex} alt="Latex" className="rounded-circle" />
 					</div>
 					<div className="col-12 col-sm-6 col-lg-7 col-xl-7 left-card">
-						<h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">BALANCED SLEEP TEMPERATURE</h5>
+						<ScrollAnimation animateIn="fadeInUp"><h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">BALANCED SLEEP TEMPERATURE</h5></ScrollAnimation>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">Sleeping at night when the body is too hot or too cold causes many people to wake up during the night and break their sleep cycle. It may be hard to fall back asleep when your body is uncomfortable which takes away precious hours of sleep during the night making you feel groggy and tired in the morning.</p>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">The gel infused memory foam top layer is built to whisk heat away from your body and stay cool while you sleep. The firm support Chirofoam™ layer is breathable which helps to circulate air in order to keep your body at a balanced sleep temperature at night.</p>
 					</div>
@@ -68,7 +69,7 @@ export default (props) => {
 						<img src={chirofoam_mattres_angle_5key} alt="chirofoam-mattress-angle-5key" className="rounded-circle" />
 					</div>
 					<div className="col-12 col-sm-6 col-lg-7 col-xl-7 left-card">
-						<h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">ELIMINATES MOTION TRANSFER</h5>
+						<ScrollAnimation animateIn="fadeInUp"><h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">ELIMINATES MOTION TRANSFER</h5></ScrollAnimation>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">Partner movement while you sleep can be felt across a mattress with traditional coils. This is caused by tossing and turning during the night and can affect the sleep pattern of the person sleeping as well as the partner they are sleeping with.</p>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">The Chirofoam™ memory foam mattress does not have any moving components such as a coil mattress and therefore completely eliminates all motion felt from a partner tossing and turning at night. The mattresses conforming and aligning qualities also greatly reduce any tossing and turning that may occur from being uncomfortable in the first place.</p>
 					</div>
@@ -79,7 +80,7 @@ export default (props) => {
 						<img src={chirofoam_mattress_5key} alt="chirofoam-mattress-5key" className="rounded-circle" />
 					</div>
 					<div className="col-12 col-sm-6 col-lg-7 col-xl-7 left-card">
-						<h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">RESISTS SAGGING</h5>
+						<ScrollAnimation animateIn="fadeInUp"><h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">RESISTS SAGGING</h5></ScrollAnimation>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">One of the most common problems people have which causes them to replace their mattress is sagging. These dips in the mattress are caused by years of use and often lead to great discomfort and irritable sleep.</p>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">The Chirofoam™ mattress is made from the highest quality components which are designed to keep their shape and provide many years of comfort and support. The pro lumbar support layer provides an additional 20% more support in the centre third of the mattress which is where the majority of the wear and tear occurs. With the highest quality materials and additional reinforcement in the centre third, the Chirofoam™ mattress is designed to resist sagging and remain comfortable with many years of peaceful sleep.</p>
 					</div>
@@ -107,8 +108,10 @@ export default (props) => {
 			</Container>
 		</section>
 		<section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
+			
 			<Container className="pb-0 pb-sm-5">
 				<Row className="mx-0">
+					<ScrollAnimation animateIn="fadeInUp">
 					<p className="text-center w-100 star">
 						<i className="fa fa-star star-small"></i>
 						<i className="fa fa-star star-medium ml-2"></i>
@@ -116,6 +119,7 @@ export default (props) => {
 						<i className="fa fa-star star-medium mr-2"></i>
 						<i className="fa fa-star star-small"></i>
 					</p>
+	</ScrollAnimation>
 					<p className="filson-pro-reg color-secondary pt-3 w-75 m-auto text-center space-1" style={{fontSize:'20px'}}>“A great quality mattress I enjoy waking up on every day…” <br/>  -Mark F. from Toronto, Ontario</p>
 					<p className="cta mt-0 pt-sm-4 pt-lg-4 pt-xl-4 w-100 text-center mt-4 mt-sm-0">
 						<Link to="/reviews/" className="btn-cta color-primary erbaum-bold space-1">SEE REVIEWS</Link>
