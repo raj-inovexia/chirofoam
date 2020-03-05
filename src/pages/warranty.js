@@ -4,6 +4,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col} from 'reactstrap';
 import "../assets/css/bootstrap.min.css"
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export default (props) => {
   return (
@@ -11,18 +12,18 @@ export default (props) => {
 		<Header />
 		<section className="blue-bg warranty-banner height-350">
 			<Jumbotron className="mb-0 text-center text-white bg-transparent space-1 Jumbotron">
-				<h1 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 space-2">CHIROFOAM™ MEMORY FOAM MATTRESS</h1>
-				<p className="space-4 proxima-r text-white m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-2 pt-sm-4" style={{width:'90%',fontSize:'26px'}}>15 Year Total Warranty Protection</p>
+				<h1 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 space-2"><ScrollAnimation animateIn="fadeInUp">CHIROFOAM™ MEMORY FOAM MATTRESS</ScrollAnimation></h1>
+				<p className="space-4 proxima-r text-white m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-2 pt-sm-4" style={{width:'90%',fontSize:'26px'}}><ScrollAnimation animateIn="fadeInUp">15 Year Total Warranty Protection</ScrollAnimation></p>
 			</Jumbotron>
 		</section>
 		<section className="py-5 position-relative">
 			<Container className="our-focus">
 				<Row className="py-2 py-lg-3 py-xl-3">
 					<div className="col-12">
-						<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold w-100 pb-2 pb-lg-5 pb-xl-5 mb-0 mb-lg-2 mb-xl-2">WARRANTY</h3>
+						<h3 className="text-center lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text color-primary erbaum-bold w-100 pb-2 pb-lg-5 pb-xl-5 mb-0 mb-lg-2 mb-xl-2"><ScrollAnimation animateIn="fadeInUp">WARRANTY</ScrollAnimation></h3>
 						<p className="filson-pro-reg color-secondary">Thank you for choosing Chirofoam™. Our company strives to provide the highest product quality and durability, providing you the most comfortable and healthy night’s sleep. This promise is backed by our Chirofoam™ 15 Years Warranty Guarantee, one of the most stringent and longest product quality warranties in the industry. You can feel confident that your Chirofoam™ sleep set will provide you with the long lasting comfort and support you expect.<br/>
 							We strongly believe in the quality, design and craftsmanship of our products. Our mattresses are warranted against manufacturing defects in worksmanship and material (excluding covers and fabrics).</p>
-						<h5 className="erbaum-bold color-primary py-2 py-sm-2 py-lg-5 py-xl-5 my-0">CHIROFOAM™ LIMITED 15 YEAR WARRANTY</h5>
+						<h5 className="erbaum-bold color-primary py-2 py-sm-2 py-lg-5 py-xl-5 my-0"><ScrollAnimation animateIn="fadeInUp">CHIROFOAM™ LIMITED 15 YEAR WARRANTY</ScrollAnimation></h5>
 						<p className="filson-pro-reg text-1 color-secondary">If you observe a defect, contact us directly through our Chirofoam™ website. We can be contacted through email warranty@chirofoam.com with your warranty issue.</p>
 						<p className="filson-pro-reg text-1 color-secondary">You must, within the duration of the warranty, provide the original law tags (with registration number and regulatory tag information), proof of purchase including date of purchase and be the original purchasing consumer.</p>
 						<p className="filson-pro-reg text-1 color-secondary"> If defective in workmanship or material, your Chirofoam™ mattress and will be repaired or replaced (at our option) with charges, as shown on the Warranty Schedule and exclusive of transportation and inspection costs.</p>
@@ -83,6 +84,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+<ScrollAnimation animateIn="fadeInUp">
 		<section className="rating-and-review py-3 py-sm-5">
 			<Container className="pb-0 pb-sm-5">
 				<Row>
@@ -101,6 +103,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+</ScrollAnimation>
 		<Footer />
 	</>
   );
