@@ -29,7 +29,7 @@ const Design = (props) => {
     const clipTarget = document.getElementById("clip-target")
     const clipSource = document.getElementById("clip-source")
     const targetDragX = clipTarget.getAttribute('drag-x')
-    console.log(clipTarget.getAttribute('drag-x'), (Math.floor(clipSource.offsetWidth/2)+dragX))
+    console.log(targetDragX, (Math.floor(clipSource.offsetWidth/2)+dragX))
     setRightClip(Math.floor(clipSource.offsetWidth/2)+dragX)
   }
   useEffect(() => {
