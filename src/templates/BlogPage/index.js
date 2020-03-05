@@ -25,6 +25,7 @@ import {
   PinterestIcon,
   TwitterIcon
 } from "react-share"
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const BlogPage = ({data}) => {
   const URL = typeof window !== 'undefined'
@@ -130,11 +131,11 @@ const BlogPage = ({data}) => {
   return (<> <SEO title="Chirofoam™ Memory Foam Mattresses" description="Sleep Education and Chirofoam™ News" /> <Header/>
   <section className="blue-bg charity">
     <Jumbotron className="mb-0 text-center text-white bg-transparent space-1 w-100 m-auto">
-      <h2 className="font-weight-bold erbaum-bold text-uppercase pt-md-5 space-2 pt-sm-1">Chirofoam™ Memory Foam Mattresses</h2>
+      <h2 className="font-weight-bold erbaum-bold text-uppercase pt-md-5 space-2 pt-sm-1"><ScrollAnimation animateIn="fadeInUp">Chirofoam™ Memory Foam Mattresses</ScrollAnimation></h2>
       <p className="space-4 proxima-r text-white m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-2 pt-sm-4" style={{
           width: '90%',
           fontSize: '26px'
-        }}>Sleep Education and Chirofoam™ News</p>
+        }}><ScrollAnimation animateIn="fadeInUp">Sleep Education and Chirofoam™ News</ScrollAnimation></p>
     </Jumbotron>
   </section>
   <section className="mb-0 py-5 position-relative">
@@ -266,6 +267,7 @@ const BlogPage = ({data}) => {
       </Row>
     </div>
   </section>
+<ScrollAnimation animateIn="fadeInUp">
   <section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
     <div className="container-fluid pb-0 pb-sm-5">
       <Row>
@@ -290,6 +292,7 @@ const BlogPage = ({data}) => {
       </Row>
     </div>
   </section>
+</ScrollAnimation>
   <Footer/>
 </>)
 }
