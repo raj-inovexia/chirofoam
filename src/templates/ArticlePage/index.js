@@ -265,9 +265,9 @@ const ArticlePage = ({data}) => {
               }}/>
           </div>
           <h2 className="mb-3 color-primary text-uppercase erbaum-bold pt-4 space-1">{article.title}</h2>
-          <Row>
-            <Col sm="6">
-              <p style={{
+          <div className="media">
+            <div className="media-left my-auto">
+              <p className="mb-0" style={{
                   fontSize: '12px'
                 }}>By
                 <span>{article.author.firstName}</span>
@@ -276,16 +276,16 @@ const ArticlePage = ({data}) => {
                 Posted
                 <span>{article.publishedAt}</span>
               </p>
-            </Col>
-            <Col sm="6" className="text-left text-sm-right text-lg-right text-xl-right" style={{
+            </div>
+            <div className="media-body my-auto text-left text-sm-right text-lg-right text-xl-right" style={{
                 display: 'ruby'
               }}>
-              <span id="share" style={{
+              <button id="share" style={{
                   color: 'rgba(0,0,0,0.4)'
                 }} className="ml-0 ml-sm-0 ml-lg-4 ml-xl-4">
                 <i className="fa fa-share-alt"></i>
                 <span className="pl-2">&nbsp;</span>
-              </span>
+              </button>
 
               <UncontrolledPopover placement="left" trigger="legacy" target="share">
                 <PopoverBody>
@@ -296,20 +296,20 @@ const ArticlePage = ({data}) => {
                 </PopoverBody>
               </UncontrolledPopover>
 
-              <span className="px-2 ml-4" onClick={e => writeComment(e)} style={{
+              <button className="px-2 ml-4" onClick={e => writeComment(e)} style={{
                   color: 'rgba(0,0,0,0.4)'
                 }}>
                 <i className="fa fa-envelope"></i>
                 <span className="pl-2">{totalComments}</span>
-              </span>
-              <span className="mb-0 ml-4" style={{
+              </button>
+              <button className="mb-0 ml-4" style={{
                   color: 'rgba(0,0,0,0.4)'
                 }} onClick={postLike}>
                 <i className="fa fa-heart"></i>
                 <span className="pl-2" id="post-like">0</span>
-              </span>
-            </Col>
-          </Row>
+              </button>
+            </div>
+          </div>
           <Row className="mt-3">
             <Col sm="12">
               <div className="filson-pro-reg single-article-content" style={{
