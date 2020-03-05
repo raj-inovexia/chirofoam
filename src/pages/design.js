@@ -14,7 +14,7 @@ import clip1 from "../assets/img/bed1.jpg"
 import clip2 from "../assets/img/clip.jpg"
 
 const Design = (props) => {
-  console.log(Draggable)
+  console.log(typeof Draggable)
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
     <Container>
@@ -224,6 +224,9 @@ const Design = (props) => {
           <div className="twentytwenty-before-label"></div>
           <div className="twentytwenty-after-label"></div>
         </div>
+        <Draggable axis="x">
+          <div className="twentytwenty-handle">(x axis)</div>
+        </Draggable>
         <div className="twentytwenty-handle" style={{
             left: '636px'
           }}>
