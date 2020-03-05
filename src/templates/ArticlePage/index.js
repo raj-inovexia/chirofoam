@@ -41,6 +41,11 @@ const ArticlePage = ({data}) => {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
+  const getIp = (async () => {
+    return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
+      setIp(data.ip)
+    })
+  })()
   const getData = {
     "api": "/admin/api/2020-01/comments.json",
     "blog_id": blogId,
@@ -157,12 +162,7 @@ const ArticlePage = ({data}) => {
     }
   }
   useEffect(() => {
-    (async () => {
-      return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
-        setIp(data.ip)
-      })
-    })()
-    (async (URL) => {
+    const fetchComments = (async (URL) => {
       const res = await fetch(URL, {
         method: 'GET',
         headers: {
@@ -178,6 +178,7 @@ const ArticlePage = ({data}) => {
       })
     })(`//icbtc.com/development/shopify-api/${reqData}`)
   }, [])
+  console.log(ip, articleId, blogId)
   return (<> <SEO title = {
     article.title
   }
@@ -246,7 +247,7 @@ const ArticlePage = ({data}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }}>
                 <i className="fa fa-heart"></i>
-                <span className="pl-2">2</span>
+                <span className="pl-2" id="post-like">0</span>
               </span>
             </Col>
           </Row>

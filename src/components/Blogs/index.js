@@ -146,7 +146,7 @@ const Blogs = ({id}) => {
     })(`//icbtc.com/development/shopify-api/`)
   }
   useEffect(() => {
-    (async () => {
+    const getIp = (async () => {
       return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
         setIp(data.ip)
         setPageLoaded(true)
