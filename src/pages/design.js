@@ -26,8 +26,10 @@ const Design = (props) => {
     console.log(ui)
   }
   const sizeReset = () => {
+    const clipTarget = document.getElementById("clip-target")
     const clipSource = document.getElementById("clip-source")
-    console.log(dragX, (Math.floor(clipSource.offsetWidth/2)+dragX))
+    const targetDragX = clipTarget.getAttribute('drag-x')
+    console.log(clipTarget.getAttribute('drag-x'), (Math.floor(clipSource.offsetWidth/2)+dragX))
     setRightClip(Math.floor(clipSource.offsetWidth/2)+dragX)
   }
   useEffect(() => {
@@ -237,7 +239,7 @@ const Design = (props) => {
   <section className="py-5">
     <div className="twentytwenty-wrapper twentytwenty-horizontal">
       <div className="twentytwenty twentytwenty-container">
-        <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip1} className="twentytwenty-before" id="clip-target" style={{
+        <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip1} className="twentytwenty-before" id="clip-target" drag-x={dragX} style={{
             clip: `rect(0px,${rightClip}px,${bottomClip}px,0px)`
           }}/>
         <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip2} className="twentytwenty-after" id="clip-source"/>
