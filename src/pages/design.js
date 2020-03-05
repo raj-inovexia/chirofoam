@@ -12,6 +12,7 @@ import conni1 from "../assets/img/conni1.jpg"
 import poster from "../assets/img/poster.jpg"
 import clip1 from "../assets/img/bed1.jpg"
 import clip2 from "../assets/img/clip.jpg"
+import ScrollAnimation from 'react-animate-on-scroll'
 
 const Design = (props) => {
   const [rightClip, setRightClip] = useState(0)
@@ -37,6 +38,8 @@ const Design = (props) => {
     window.addEventListener('resize', sizeReset)
   }, [])
   return (<> <SEO title="Design" /> <Header/>
+          
+  <ScrollAnimation animateIn="fadeInUp">
   <section className="mb-0 py-3 position-relative">
     <Container>
       <Row className="mx-0 text-center">
@@ -49,13 +52,14 @@ const Design = (props) => {
       </Row>
     </Container>
   </section>
+  </ScrollAnimation>
   <section className="py-4 pt-sm-5 pb-sm-4 our-customer design-for-customer">
     <Row className="pt-3 pb-3 pb-sm-0 no-gutters">
       <Col className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pt-0 pt-sm-2 pt-md-3 pt-lg-5 pt-xl-5 pb-0 pb-md-3 pb-lg-5 px-3">
         <div className="pl-0 pl-sm-1 pl-md-3 pl-lg-5 pl-xl-5 pt-2 pb-2 pt-sm-5 pb-sm-4" style={{
             maxWidth: '500px'
           }}>
-          <h3 className="color-primary erbaum-bold lead-text">COOL GEL INFUSED MEMORY FOAM</h3>
+          <h3 className="color-primary erbaum-bold lead-text"><ScrollAnimation animateIn="fadeInUp">COOL GEL INFUSED MEMORY FOAM</ScrollAnimation></h3>
           <p className="text-left filson-pro-reg space-1 pt-0 pt-sm-1 pt-md-3 pt-lg-5 pt-xl-5 mb-0 text-1 color-secondary">
             <span className="color-primary">Helps keep your body cool and relaxed during sleep</span>
             while the temperature sensitive foam adjusts to your body’s natural shape and curves. Designed for back pain relief, this foam will help to relax your joints and muscles while relieving pressure and creating the ultimate comfort while your body rests.</p>
