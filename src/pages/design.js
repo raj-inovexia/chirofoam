@@ -226,7 +226,7 @@ const Design = (props) => {
           <div className="twentytwenty-before-label"></div>
           <div className="twentytwenty-after-label"></div>
         </div>
-        <Draggable onDrag={handleDrag} axis="x" defaultPosition={{x: '50%'}}>
+        <Draggable onDrag={handleDrag} axis="x">
           <div className="twentytwenty-handle">
             <span className="twentytwenty-left-arrow"></span>
             <span className="twentytwenty-right-arrow"></span>
