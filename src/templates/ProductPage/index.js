@@ -14,6 +14,11 @@ import icon4 from "~/assets/img/ic4.png"
 import us from "~/assets/img/us.png"
 import eco from "~/assets/img/eco.png"
 import confidence from "~/assets/img/confidence.png"
+import circle1 from "~/assets/img/circle1.png"
+import circle2 from "~/assets/img/circle2.png"
+import circle3 from "~/assets/img/circle3.png"
+import circle4 from "~/assets/img/circle4.png"
+import circle5 from "~/assets/img/circle5.png"
 
 
 const ProductPage = ({ data }) => {
@@ -208,18 +213,75 @@ const ProductPage = ({ data }) => {
         </Row>
       </Container>
     </section>
-    <section className="mt-4 py-5 max-support-single bg-image">
-      <Container>
-        <Row className="">
-          <Col sm="4">
-            <h2 className="display-3 erbaum-bold text-white">MAX SUPPORT MAX RESULTS</h2>
-            <p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 mb-sm-2 ml-3">
+    <section className="pt-5 pt-lg-0 max-support position-relative single-product-support">
+      <div className="container-large p-0">
+        <Row className="mx-0">
+          <Col className="col-12 col-md-5 col-lg-5 col-xl-5 pt-0 pt-lg-5 pt-xl-5 pb-3 pb-sm-0 pb-md-3 pb-lg-5 pb-xl-5">
+            <h2 className="erbaum-bold text-white ml-3 animated fadeInUp slow">MAX SUPPORT MAX RESULTS</h2>
+            <div className="text-white proxima-r feat pt-0 pt-sm-1 ml-3 text-1 mb-2">
+              <ul className="pl-3">
+                <li>COOL GEL INFUSED MEMORY FOAM</li>
+                <li>EXTRA FIRM SUPPORT CHIROFOAM</li>
+                <li>CHIROFOAM LUMBAR SUPPORT</li>
+                <li>BODY SUPPORT BIO FOAM CORE</li>
+              </ul>
+            </div>
+            <p className="cta mt-0 pt-sm-3 pt-lg-3 pt-xl-3 mb-sm-2 ml-3 d-ruby-base">
               <Link to="/product/the-chirofoam™-xf-mattress-extra-firm/" className="btn-cta text-white erbaum-bold space-1">READ MORE</Link>
             </p>
           </Col>
+          <Col className="col-12 col-md-7 col-lg-7 col-xl-7 key-tools">
+            <div className="key-tooltip key-tooltip-1">
+               <div className="tooltiptext tool-tip-1">
+                <div className="tooltip-image d-fex d-sm-flex">
+                  <p className="filson-pro-reg text-1 pt-3">Bio Foam Support Core</p>
+                  <img src={circle1} alt="Bio Foam Support Core" width="150px" height="150px" />
+                </div>
+                
+               </div>
+            </div>
+            <div className="key-tooltip key-tooltip-2">
+               <div className="tooltiptext tool-tip-2">
+                <div className="tooltip-image d-flex d-sm-flex">
+                  <p className="filson-pro-reg text-1 pt-3">Chirofoam Lumbar Support</p>
+                  <img src={circle4} alt="Chirofoam Lumbar Support" width="150px" height="150px" />
+                </div>
+                
+               </div>
+            </div>
+            <div className="key-tooltip key-tooltip-3">
+               <div className="tooltiptext tool-tip-3">
+                <div className="tooltip-image d-flex d-sm-flex">
+                  <p className="filson-pro-reg text-1 pt-3">Firm Support Chirofoam™</p>
+                  <img src={circle5} alt="Firm Support Chirofoam™" width="150px" height="150px" />
+                </div>
+                
+               </div>
+            </div>
+            <div className="key-tooltip key-tooltip-4">
+               <div className="tooltiptext tool-tip-4">
+                <div className="tooltip-image d-flex d-sm-flex">
+                  <p className="filson-pro-reg text-1 pt-3">Cool Gel Infused Memory Foam</p>
+                  <img src={circle2} alt="Cool Gel Infused Memory Foam" width="150px" height="150px" />
+                </div>
+                
+               </div>
+            </div>
+            <div className="key-tooltip key-tooltip-5">
+               <div className="tooltiptext tool-tip-5">
+                <div className="tooltip-image d-flex d-sm-flex">
+                  <p className="filson-pro-reg text-1 pt-3">Soft Cotton Cover with Ultra Durable Denim Border</p>
+                  <img src={circle3} alt="Soft Cotton Cover with Ultra Durable Denim Border" width="150px" height="150px" />
+                </div>
+                
+               </div>
+            </div>
+          </Col>
         </Row>
-      </Container>
+      </div>
     </section>
+
+
      <Modal
       size="lg"
       isOpen={modal} 

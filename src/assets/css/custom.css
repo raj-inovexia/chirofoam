@@ -1625,3 +1625,6 @@ body .key-tooltip-5{
 	top: 345px;
 	left: -200px;
 }
+.d-ruby-base {
+	display: ruby-base;
+}
