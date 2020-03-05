@@ -114,7 +114,7 @@ const Design = (props) => {
     <Container>
       <Row className="mx-0">
         <div className="chirofoam-video mx-auto">
-          <video className="" src="https://chirofoam.com/wp-content/uploads/2016/08/Chiro%20Video%202%20HD%20recut%20final_2.mp4" poster={poster} width="100%" controls="controls" autoplay="autoplay" preload="auto" loop="loop" muted="muted" type="video/mp4"/>
+          <video className="" src="//chirofoam.com/wp-content/uploads/2016/08/Chiro%20Video%202%20HD%20recut%20final_2.mp4" poster={poster} width="100%" controls="controls" autoPlay={true} preload="auto" loop="loop" muted="muted" type="video/mp4"/>
         </div>
       </Row>
     </Container>
@@ -214,7 +214,7 @@ const Design = (props) => {
     </Container>
   </section>
   <section className="py-5">
-    <div class="twentytwenty-wrapper twentytwenty-horizontal">
+    <div className="twentytwenty-wrapper twentytwenty-horizontal">
       <div className="twentytwenty twentytwenty-container">
         <img title="Chirofoam™ Memory Foam Mattress, Toronto, ON" alt="chirofoamtm-memory-foam-mattress-toronto-on" src={clip1} className="twentytwenty-before" style={{
             clip: 'rect(0px,636px,534px,0px)'
