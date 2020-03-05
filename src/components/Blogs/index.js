@@ -76,6 +76,7 @@ const Blogs = ({id}) => {
     }
   }
   const [pageLoaded, setPageLoaded] = useState(false)
+  const [ip, setIp] = useState("")
   const jsonToQueryString = (json) => {
     return '?' + Object.keys(json).map(function(key) {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
@@ -111,7 +112,6 @@ const Blogs = ({id}) => {
       })(`//icbtc.com/development/shopify-api/${reqData}`)
     }
   }
-  const [ip, setIp] = useState("")
   const postLike = (event, index, articleId, blogId, Ip) => {
     const data = {
       api: `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
