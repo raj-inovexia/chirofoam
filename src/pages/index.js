@@ -201,9 +201,9 @@ export default (props) => {
 		</section>
 		
 		<div className="homepage-slider-2">
-			<ScrollAnimation animateIn="fadeInUp">
+			
 			<HomePageSlider2 />
-				</ScrollAnimation>
+				
 		</div>
 		<section className="py-5 pt-sm-5 px-0 our-customer">
 			<ScrollAnimation animateIn="fadeInUp">
