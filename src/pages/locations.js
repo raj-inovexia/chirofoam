@@ -13,13 +13,15 @@ export default (props) => {
   return (
 	<>
 		<Header />
-	  <ScrollAnimation animateIn="fadeInUp">
+	  
 		<section className="blue-bg">
+	  <ScrollAnimation animateIn="fadeInUp">
 			<Jumbotron className="mb-0 text-center text-white bg-transparent space-1">
 				<h1 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-3 pt-lg-5 pt-xl-5 space-2 px-sm-5">Chirofoam Mattresses are now available at the following locations:</h1>
 			</Jumbotron>
+	   </ScrollAnimation>
 		</section>
-	  </ScrollAnimation>
+	 
 		<section className="mb-0 pt-5 pb-3 position-relative" id="locations-inner">
 			<Container className="our-focus pt-5">
 				<Row className="mb-2 mb-sm-5 pb-0 pb-sm-5">
