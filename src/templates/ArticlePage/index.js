@@ -161,6 +161,40 @@ const ArticlePage = ({data}) => {
       setSubmitting(false)
     }
   }
+  const postLike = () => {
+    const data = {
+      api: `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
+      query: {
+        metafield: {
+          namespace: "postlike",
+          key: Ip,
+          value: "liked",
+          value_type: "string"
+        }
+      }
+    }
+    console.log(data)
+    // const sendLike = (async (URL) => {
+    //   console.log(URL, data)
+    //   return await fetch(URL, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       "X-Shopify-Access-Token": token
+    //     },
+    //     body: JSON.stringify(data)
+    //   }).then((response) => {
+    //     if (response.status === 200) {
+    //       response.json().then((responseJson) => {
+    //         fetchLikeCount(index, articleId, blogId)
+    //         console.log(responseJson, index, articleId, blogId)
+    //       })
+    //     }
+    //   }).catch((error) => {
+    //     console.error(error)
+    //   })
+    // })(`//icbtc.com/development/shopify-api/`)
+  }
   useEffect(() => {
     const fetchComments = (async (URL) => {
       const res = await fetch(URL, {
@@ -270,7 +304,7 @@ const ArticlePage = ({data}) => {
               </span>
               <span className="mb-0 ml-4" style={{
                   color: 'rgba(0,0,0,0.4)'
-                }}>
+                }} onClick={postLike}>
                 <i className="fa fa-heart"></i>
                 <span className="pl-2" id="post-like">0</span>
               </span>
