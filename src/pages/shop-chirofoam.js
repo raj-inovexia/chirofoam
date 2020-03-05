@@ -100,7 +100,7 @@ export default (props) => {
 				</Row>
 			</div>
 		</section>
-		
+		<ScrollAnimation animateIn="fadeInUp">
 		<section className="py-4 pt-sm-4 pb-sm-4 approved bg-image">
                <Container className="">
                   <Row className="pt-3 no-gutters m-0 position-relative">
@@ -159,11 +159,12 @@ export default (props) => {
                   </Row>
                 </Container>
             </section>
+		</ScrollAnimation>
 		<section className="py-sm-5 py-4">
 			<Container>
 				<Row>
 					<Col sm="6" className="position-relative" style={{zIndex:'9'}}>
-						<h4 className="lead-text-font color-primary erbaum-bold display-5">THE ONLY MATTRESS WITH PRO LUMBAR SUPPORT BY ChirofoamTM</h4>
+						<h4 className="lead-text-font color-primary erbaum-bold display-5"><ScrollAnimation animateIn="fadeInUp">THE ONLY MATTRESS WITH PRO LUMBAR SUPPORT BY ChirofoamTM</ScrollAnimation></h4>
 						<p className="mt-4 color-primary proxima-r" style={{fontSize:'0.9rem'}}>
 							<b className="proxima-eb">Our specilized layer of chirofoam<sup style={{fontSize:'7px'}}>TM</sup> lumbar support</b> provides an additional 20% of conforming support in the centre third of mattress for improved lumbar support and increased life span of the mattress. The majority of your body's weight rests in the centre third of the mattress where you need the most support to keep your spine in optimal alignment while relieving back pain. The pro Lumbar Support layer is also designed to resist sagging and keeps your mattress comfortable and more supportive even far boyond our 15 years warranty period.
 						</p>
