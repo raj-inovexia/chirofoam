@@ -4,7 +4,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col} from 'reactstrap';
 import "../assets/css/bootstrap.min.css"
-
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export default (props) => {
   return (
@@ -12,20 +12,20 @@ export default (props) => {
 		<Header />
 		<section className="blue-bg charity">
 			<Jumbotron className="mb-0 text-center text-white bg-transparent space-1">
-				<h1 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 space-2">CHIROFOAM™ MEMORY FOAM MATTRESS</h1>
-				<p className="space-4 proxima-r text-white m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-2 pt-sm-4" style={{width:'90%',fontSize:'26px'}}>100 Night In Home Sleep Trial – Full Money Back Returns</p>
+				<h1 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 space-2"><ScrollAnimation animateIn="fadeInUp">CHIROFOAM™ MEMORY FOAM MATTRESS</ScrollAnimation></h1>
+				<p className="space-4 proxima-r text-white m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-2 pt-sm-4" style={{width:'90%',fontSize:'26px'}}><ScrollAnimation animateIn="fadeInUp">100 Night In Home Sleep Trial – Full Money Back Returns</ScrollAnimation></p>
 			</Jumbotron>
 		</section>
 		<section className="mb-0 privacy-policy py-3 py-sm-5 mt-lg-3 mt-xl-3">
 			<Container>
 				<Row className="mb-2 mb-sm-5 pb-0 pb-sm-5">
 					<div className="col-12">
-						<h3 className="lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text erbaum-bold font-weight-bold color-primary space-2 text-center">IN HOME SLEEP TRIAL</h3>
+						<h3 className="lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text erbaum-bold font-weight-bold color-primary space-2 text-center"><ScrollAnimation animateIn="fadeInUp">IN HOME SLEEP TRIAL</ScrollAnimation></h3>
 						<p className="filson-pro-reg color-secondary pt-5 text-1">Try the Chirofoam™ mattress in the comfort of your home for 100 nights and see what a difference it could make in the quality of your sleep.  From back pain relief, increased muscle recovery, and overall sleep comfort, we are sure Chirofoam™ is the best mattress you will ever buy.  If for whatever reason you do not feel like the Chirofoam™ mattress is right for you, you may return it and we will give you 100% of your money back.</p>
-						<h3 className="lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text erbaum-bold font-weight-bold color-primary space-2 text-center pt-5">HOW DOES THE SLEEP TRIAL WORK?</h3>
+						<h3 className="lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text erbaum-bold font-weight-bold color-primary space-2 text-center pt-5"><ScrollAnimation animateIn="fadeInUp">HOW DOES THE SLEEP TRIAL WORK?</ScrollAnimation></h3>
 						<p className="filson-pro-reg color-secondary pt-5 text-1">You have up to 100 nights to try the Chirofoam™ Memory Foam Mattress in your home to decide if it is the best mattress you have ever slept on.  The sleep trial starts from the day you receive your mattress and ends on the 101st day.  If for some reason you are not completely satisfied with the mattress, you may return the mattress to receive 100% of your money back.</p>
 						<p className="filson-pro-reg color-secondary pt-5 text-1">Please note that you cannot return your mattress within the first 21 nights, in order to let your body get adjusted to the mattress. The National Sleep Association suggests that people usually take about 21 days to get adjusted to their new mattress.  Since you have been sleeping on your old mattress for many years, your body will take some time to get adjusted and start to feel better on the Chirofoam™ mattress.</p>
-						<h3 className=" lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text erbaum-bold font-weight-bold color-primary space-2 text-center pt-5">RETURN PROCEDURES</h3>
+						<h3 className=" lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text erbaum-bold font-weight-bold color-primary space-2 text-center pt-5"><ScrollAnimation animateIn="fadeInUp">RETURN PROCEDURES</ScrollAnimation></h3>
 						<p className="filson-pro-reg color-secondary pt-5 text-1">In order to return your mattress, you must contact us by email to request a return authorization.  We will provide you with an RA#</p>
 						<p className="filson-pro-reg color-secondary text-1">We will work with you to make this process as quick and simple as possible.</p>
 						<p className="filson-pro-reg color-secondary text-1">
@@ -42,7 +42,7 @@ export default (props) => {
 						<p className="filson-pro-reg color-secondary text-1">Please state the reason for your return when contacting us as we use this information to improve our products and your feedback is greatly appreciated.</p>
 						<p className="filson-pro-reg color-secondary text-1">Carefully package the mattress using the original bag, or any other heavy duty mattress bag, and/or mattress box for extra protection.</p>
 						<p className="filson-pro-reg color-secondary text-1">Once we receive your mattress and confirm the return, we will process your refund in full on the original method of payment used for purchase within 2-5 business days.  Please note that it may take a little longer for the funds to process and display back on to your original method of payment.</p>
-						<h3 className="lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text erbaum-bold font-weight-bold color-primary space-2 text-center pt-5">AFTER THE 100 NIGHT SLEEP TRIAL</h3>
+						<h3 className="lead-text lead-sm-text lead-md-text lead-lg-text lead-xl-text erbaum-bold font-weight-bold color-primary space-2 text-center pt-5"><ScrollAnimation animateIn="fadeInUp">AFTER THE 100 NIGHT SLEEP TRIAL</ScrollAnimation></h3>
 						<p className="filson-pro-reg color-secondary pt-5 text-1">The Chirofoam™ Memory Foam Mattress is protected by our 15 year total warranty protection guarantee.  This covers the mattress from any defects in workmanship and quality, for a period of 15 years from the purchase date.  Please see our warranty details for more information.</p>
 					</div>
 				</Row>
@@ -68,6 +68,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	<ScrollAnimation animateIn="fadeInUp">
 		<section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
 			<Container className="pb-0 pb-sm-5">
 				<Row>
@@ -86,7 +87,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
-
+</ScrollAnimation>
 
 		<Footer />
 	</>
