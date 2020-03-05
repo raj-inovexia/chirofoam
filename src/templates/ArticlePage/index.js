@@ -147,11 +147,10 @@ const ArticlePage = ({data}) => {
                 and will be published soon.</div>)
               resetRecaptcha()
               setSubmitting(false)
-              console.log(responseJson)
             })
           } else {
             response.json().then((responseJson) => {
-              console.log(responseJson);
+              console.log(responseJson)
             })
           }
         }).catch((error) => {
@@ -180,9 +179,7 @@ const ArticlePage = ({data}) => {
         }
       }
     }
-    console.log(data, reqLikeData)
     const sendLike = async (URL) => {
-      console.log(URL, data)
       return await fetch(URL, {
         method: 'POST',
         headers: {
@@ -193,7 +190,6 @@ const ArticlePage = ({data}) => {
       }).then((response) => {
         if (response.status === 200) {
           response.json().then((responseJson) => {
-            console.log(responseJson)
             fetchData(`//icbtc.com/development/shopify-api/${reqLikeData}`)
           })
         }
@@ -213,7 +209,6 @@ const ArticlePage = ({data}) => {
     }).then((response) => {
       if (response.status === 200) {
         response.json().then((responseJson) => {
-          console.log(responseJson)
           document.getElementById("post-like").innerHTML = responseJson.response.metafields.length
         })
       }
