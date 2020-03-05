@@ -177,6 +177,31 @@ const ArticlePage = ({data}) => {
         }
       })
     })(`//icbtc.com/development/shopify-api/${reqData}`)
+    const getLikeData = {
+      "api": `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
+      "namespace": "postlike",
+      "value_type": "string",
+      "fields": "namespace,key,value"
+    }
+    const reqLikeData = jsonToQueryString(getData)
+    const fetchData = (async (URL) => {
+      return await fetch(URL, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          "X-Shopify-Access-Token": token
+        }
+      }).then((response) => {
+        if (response.status === 200) {
+          response.json().then((responseJson) => {
+            console.log(responseJson)
+            document.getElementById("post-like").innerHTML = responseJson.response.metafields.length
+          })
+        }
+      }).catch((error) => {
+        console.error(error)
+      })
+    })(`//icbtc.com/development/shopify-api/${reqLikeData}`)
   }, [])
   console.log(ip, articleId, blogId)
   return (<> <SEO title = {
@@ -228,7 +253,7 @@ const ArticlePage = ({data}) => {
                 <span className="pl-2">&nbsp;</span>
               </span>
 
-              <UncontrolledPopover placement="left" trigger="legacy" placement="bottom" target="share">
+              <UncontrolledPopover placement="left" trigger="legacy" target="share">
                 <PopoverBody>
                   <FacebookShareButton url={URL} className="p-1"><FacebookIcon size={25} round={true}/></FacebookShareButton>
                   <TwitterShareButton url={URL} className="p-1"><TwitterIcon size={25} round={true}/></TwitterShareButton>
