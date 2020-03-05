@@ -27,8 +27,12 @@ const Design = (props) => {
     const clipTarget = document.getElementById("clip-target")
     const clipSource = document.getElementById("clip-source")
     const sourceWidth = clipSource.offsetWidth
-      setRightClip(Math.floor(sourceWidth/2))
-      console.log(sourceWidth, Math.floor(sourceWidth/2))
+    setRightClip(Math.floor(sourceWidth/2))
+    console.log(sourceWidth, Math.floor(sourceWidth/2))
+    const sizeReset = () => {
+      console.log(sourceWidth, clipSource.offsetWidth)
+    }
+    window.addEventListener('resize', sizeReset)
   }, [])
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
