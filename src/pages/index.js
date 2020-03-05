@@ -18,8 +18,7 @@ import circle5 from "../assets/img/circle5.png"
 import { Link } from "gatsby"
 import HomePageSlider2 from "../components/HomePageSlider2"
 import SlickSlider from "../components/FiveKeys"
-
-
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export default (props) => {
 	
@@ -29,6 +28,7 @@ export default (props) => {
 		<main id="homepage">
 		<Banner />
 		<section className="py-4 py-sm-4 py-lg-4 py-xl-4 active-style">
+	  <ScrollAnimation animateIn="fadeInDown">
 			<div className="container-large py-0 py-sm-5 py-lg-5 py-xl-5 px-3 px-sm-3">
 				<Row className="pt-0 pt-sm-4 pt-lg-4 pt-xl-4 d-flex m-0">
 					<Col sm="12" className="pt-0 pt-sm-12 pt-lg-12 pt-xl-2 col-md-6 col-lg-6 col-xl-6">
@@ -55,6 +55,7 @@ export default (props) => {
 					</Col>
 				</Row>
 			</div>
+	  </ScrollAnimation>
 		</section>
 		<section className="py-4 pt-sm-1 pb-sm-1 key-feature">
 			<Container className="py-0 pt-sm-0 pb-sm-1">
