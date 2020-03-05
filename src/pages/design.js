@@ -17,7 +17,8 @@ const Design = (props) => {
   const [rightClip, setRightClip] = useState(0)
   const [bottomClip, setBottomClip] = useState(0)
   const handleDrag = (e, ui) => {
-    console.log(ui, ui.deltaX, ui.deltaY)
+
+    console.log(ui.x, ui.y, (rightClip-ui.x))
   }
   useEffect(() => {
     const clipTarget = document.getElementById("clip-target")
