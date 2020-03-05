@@ -10,20 +10,22 @@ import support from "../assets/img/support.jpg"
 import latex from "../assets/img/latex-5keyfeatures.jpg"
 import chirofoam_mattres_angle_5key from "../assets/img/chirofoam-mattress-angle-5key.jpg"
 import chirofoam_mattress_5key from "../assets/img/chirofoam-mattress-5key.jpg"
-
+import ScrollAnimation from 'react-animate-on-scroll';
 
 export default (props) => {
   return (
 	<>
 		<SEO title="5-key-features" />
 		<Header />
-		<section className="mb-0 py-3 position-relative">
+	  	<section className="mb-0 py-3 position-relative">
+	  		<ScrollAnimation animateIn="fadeInUp">
 			<Container>
         		<Row className="mx-0 text-center">
 					<h2 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 space-2 pt-sm-1 pt-lg-5 pt-xl-5 color-primary w-100">BETTER FEATURES FOR A BETTER SLEEP</h2>
 				  	<p className="filson-pro-reg color-primary pt-2 space-4 proxima-r m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-sm-2 w-100" style={{fontSize:'26px'}}>Designed by mattress experts with 5 key features that consumers voted most important for a comfortable sleep experience.(Most mattresses don’t succeed in all 5 areas.)</p>
 				</Row>
 			</Container>
+			</ScrollAnimation>
 		</section>
     	<section className="mb-0 py-3 position-relative features">
       		<Container className="pt-5 five-key-features-outer">
@@ -33,7 +35,7 @@ export default (props) => {
 						<img src={coolgel} alt="Cool-Gel-Memory-Foam-1" className="rounded-circle" />
 					</div>
 					<div className="col-12 col-sm-6 col-lg-7 col-xl-7 left-card">
-						<h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">PRESSURE RELIEF</h5>
+						<ScrollAnimation animateIn="fadeInUp"><h5 className="erbaum-bold color-primary pb-2 pb-lg-3 pb-xl-3">PRESSURE RELIEF</h5></ScrollAnimation>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">The Chirofoam™ memory foam mattress is designed to relieve pressure which is built up in your body from daily activities. This pressure build up is largely responsible for common back pain experienced by many people, and can be caused by improper sitting posture, heavy lifting, or other strenuous activities.</p>
 						<p className="filson-pro-reg color-secondary pt-2 text-1 space-1">The gel infused memory foam layer works together with the firm support Chirofoam™ layer to cushion your body and relieve pressure built up in your muscles and joints. By relieving pressure and relaxing your body during sleep, the Chirofoam™ mattress will help you feel rejuvenated and wake up with back pain relief to tackle the day ahead.</p>
 					</div>
