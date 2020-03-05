@@ -17,17 +17,19 @@ import medical from "../assets/img/medical.png"
 import health from "../assets/img/health.png"
 import mobility from "../assets/img/mobility.png"
 import church from "../assets/img/church.png"
-
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export default (props) => {
   return (
 	<>
 		<Header />
 		<section className="blue-bg charity">
+	  <ScrollAnimation animateIn="fadeInUp">
 			<Jumbotron className="mb-0 text-center text-white bg-transparent space-1">
 				<h2 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 space-2">Built by the pros</h2>
 				<p className="space-4 proxima-r text-white m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-2 pt-sm-4" style={{width:'90%',fontSize:'20px'}}>The Chirofoam™ mattress is designed to improve posture, and provide incredible pressure relief.  Your back will thank you.</p>
 			</Jumbotron>
+	  </ScrollAnimation>
 		</section>
 		<section className="mb-0 py-0 py-md-3 py-lg-5 py-xl-5 position-relative">
 			<Container>
@@ -36,21 +38,21 @@ export default (props) => {
 						<div className="charity-image text-center w-100 pb-2 pb-sm-0">
 							<img className="img-fluid" src={confirm} alt="Confirmity" />
 						</div>
-						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}>Conformity</h5>
+						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}><ScrollAnimation animateIn="fadeInUp">Conformity</ScrollAnimation></h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">The Chirofoam™ memory foam mattress conforms to your body’s natural curves. Mattresses that are too firm do not conform to your body and create additional pressure points. Chirofoam is designed to take your bodies shape and conform in a way that is supportive and aligns your spine into the optimal position while you rest.  The Chirofoam™ mattress conforms to your body to provide back pain relief and increased muscle recovery while you sleep.</p>
 					</Col>
 					<Col sm="6" className="mb-3 mb-sm-2 mb-md-2 mb-lg-4 mb-xl-5 px-0 px-sm-2 px-md-3 px-lg-3 px-xl-3">
 						<div className="charity-image text-center w-100 pb-2 pb-sm-0">
 							<img className="img-fluid" src={support} alt="Support" />
 						</div>
-						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}>SUPPORT</h5>
+						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}><ScrollAnimation animateIn="fadeInUp">SUPPORT</ScrollAnimation></h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">Our Chirofoam™ support layer is designed to support the centre third of your body where the majority of weight and pressure accumulate for most people. Mattresses that are too soft conform to your body but do not offer the right support to keep your back straight.   This in turns create pressure points in the opposite areas in which a mattress that is too firm would create. With the ideal balance of support and comfort in a Chirofoam™ memory foam mattress you are assured to get the optimal support and back pain relief all night long.</p>
 					</Col>
 					<Col sm="6" className="mb-3 mb-sm-2 mb-md-2 mb-lg-4 mb-xl-5 px-0 px-sm-2 px-md-3 px-lg-3 px-xl-3">
 						<div className="charity-image text-center w-100 pb-2 pb-sm-0">
 							<img className="img-fluid" src={alignment} alt="alignment" />
 						</div>
-						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}>alignment</h5>
+						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}><ScrollAnimation animateIn="fadeInUp">alignment</ScrollAnimation></h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">With the ideal combination of conformity and support, Chirofoam™ is designed to keep your spine aligned with its natural curves while you sleep. This is important to relieve pressure which can build up during the day from improper posture, improper lifting, or from sitting for long periods of time. Proper spine alignment while you sleep is a key element to relieving back pain, increased muscle recovery and feeling better in the morning overall.</p>
 						
 					</Col>
@@ -58,20 +60,21 @@ export default (props) => {
 						<div className="charity-image text-center w-100 pb-2 pb-sm-0">
 							<img className="img-fluid" src={presure} alt="Presure Relief" />
 						</div>
-						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}>pressure relief</h5>
+						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}><ScrollAnimation animateIn="fadeInUp">pressure relief</ScrollAnimation></h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">While placing your spine in proper alignment the Chirofoam™ memory foam mattress is simultaneously relieving pressure to repair your muscles and joints for the day ahead. Once again, pressure buildup from sitting for long periods of time without proper back support or posture, improper lifting, or walking with overall improper posture are keys factors which attribute to a built up of pressure on your back throughout the day. The Chirofoam™ mattress is specially designed to relieve this pressure every night so you feel better and healthier to tackle the day ahead.</p>
 					</Col>
 					<Col sm="6" className="mb-3 mb-sm-2 mb-md-2 mb-lg-4 mb-xl-5 px-0 px-sm-2 px-md-3 px-lg-3 px-xl-3">
 						<div className="charity-image text-center w-100 pb-2 pb-sm-0">
 							<img className="img-fluid" src={comfort} alt="Comfort" />
 						</div>
-						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}>Comfort</h5>
+						<h5 className="erbaum-bold space-3 color-primary pb-2 pb-sm-2 pb-lg-4 pb-xl-4 mb-0 text-uppercase" style={{fontSize:'1.10rem'}}><ScrollAnimation animateIn="fadeInUp">Comfort</ScrollAnimation></h5>
 						<p className="filson-pro-reg color-secondary pt-2 text-1">With all the conformity, support, alignment, and pressure relief a Chirofoam™ mattress offers, it is also extremely comfortable and easy for your body to adjust into. You will look forward to an incredibly comfortable nights sleep for many years to come in your new Chirofoam™ memory foam mattress. The majority of Chirofoam™ owners state that the Chirofoam™ mattress is the most comfortable mattress they have ever owned. Try one today with our 100 night risk free trial and see what a difference it can make for you.</p>
 					</Col>
 				</Row>
 			</Container>
 		</section>
-		<section>
+	<ScrollAnimation animateIn="fadeInUp">	
+	  <section>
 			<Container>
 				<Row className="text-center">
 					<h4 className="text-center lead-text-font color-primary erbaum-bold w-100 pb-2 pb-sm-5 text-uppercase">Chiropractor Recommended </h4>
@@ -121,6 +124,8 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	  </ScrollAnimation>
+	  <ScrollAnimation animateIn="fadeInUp">	
 		<section>
 			<Container className="py-3 py-sm-5 py-lg-5 py-xl-5">
 				<Row>
@@ -145,6 +150,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	  </ScrollAnimation>
 		<section>
 			<Container>
 				<Row className="py-3 py-sm-5 mb-0 mb-sm-5">
@@ -165,6 +171,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	  <ScrollAnimation animateIn="fadeInUp">	
 		<section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
 			<Container className="pb-0 pb-sm-5">
 				<Row>
@@ -183,7 +190,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
-
+</ScrollAnimation>
 		<Footer />
 	</>
   );
