@@ -4,7 +4,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import { Container, Row, Col } from 'reactstrap';
 import "../assets/css/bootstrap.min.css"
-
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export default (props) => {
   return (
@@ -14,7 +14,7 @@ export default (props) => {
 			<Container className="our-focus">
 				<Row className="mb-2 mb-sm-5 pb-0 pb-sm-5 mx-0 no-gutters">
 					<Col sm="12">
-						<h1 className="font-weight-bold display-5 erbaum-bold mt-0 mt-sm-2 mt-lg-4 mt-xl-4 py-2 py-sm-2 py-lg-5 py-xl-5 space-2 color-primary">Privacy Policy</h1>
+						<h1 className="font-weight-bold display-5 erbaum-bold mt-0 mt-sm-2 mt-lg-4 mt-xl-4 py-2 py-sm-2 py-lg-5 py-xl-5 space-2 color-primary"><ScrollAnimation animateIn="fadeInUp">Privacy Policy</ScrollAnimation></h1>
 						<p className="filson-pro-reg text-1 color-secondary">Chirofoam<sup>TM</sup>Mattress Company (www.chirofoam.com) Privacy Policy</p>
 						<p className="filson-pro-reg text-1 color-secondary">This privacy policy has been compiled to better serve those who are concerned with how their ‘Personally identifiable information’ (PII) is being used online. PII, as used in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</p>
 						<p className="filson-pro-reg text-1 color-secondary">What personal information do we collect from the people that visit our blog, website or app?</p>
@@ -119,6 +119,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+	<ScrollAnimation animateIn="fadeInUp">
 		<section className="rating-and-review py-3 py-sm-5">
 			<Container className="pb-0 pb-sm-5">
 				<Row>
@@ -137,6 +138,7 @@ export default (props) => {
 				</Row>
 			</Container>
 		</section>
+</ScrollAnimation>
 		<Footer />
 	</>
   );
