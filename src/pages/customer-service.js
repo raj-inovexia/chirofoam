@@ -6,6 +6,7 @@ import {Container, Jumbotron, Row, Col} from 'reactstrap'
 import SEO from '~/components/seo'
 import "../assets/css/bootstrap.min.css"
 import "~/assets/css/bootstrap.min.css"
+import ScrollAnimation from 'react-animate-on-scroll'
 
 export default(props) => {
   const [submitting, setSubmitting] = useState(false)
@@ -46,7 +47,9 @@ export default(props) => {
     sendFormData("https://contactform.hulkapps.com/ajaxcall/customcontact")
   }
 
-  return (<> <SEO title="CUSTOMER SERVICE" /> <Header /> <section>
+  return (<> <SEO title="CUSTOMER SERVICE" /> <Header /> 
+		<ScrollAnimation animateIn="fadeInUp">
+		<section>
     <div className="container-large">
       <Row>
         <Jumbotron className="mb-0 text-center text-white bg-transparent space-1 w-100 m-auto">
@@ -55,11 +58,12 @@ export default(props) => {
       </Row>
     </div>
   </section>
+	</ScrollAnimation>
   <section className="mb-0 py-5 position-relative">
     <Container>
       <Row>
         <Col sm="6" className="mb-3 mb-sm-5">
-          <h5 className="erbaum-bold color-primary pb-2 pb-sm-5 mb-0 text-uppercase">GET IN TOUCH</h5>
+          <h5 className="erbaum-bold color-primary pb-2 pb-sm-5 mb-0 text-uppercase"><ScrollAnimation animateIn="fadeInUp">GET IN TOUCH</ScrollAnimation></h5>
           <p className="filson-pro-reg color-secondary pt-2 text-1">If you have any questions, concerns, of would like to contact us, simply fill out the contact form and a member of our team will get back to you as soon as possible. You can also email us directly: info@chirofoam.com</p>
           <p className="filson-pro-reg color-secondary pt-2 text-1">Prefer to talk to us by phone?
             <br/>
@@ -149,6 +153,7 @@ export default(props) => {
       </Row>
     </Container>
   </section>
+<ScrollAnimation animateIn="fadeInUp">
   <section className="rating-and-review py-3">
     <Container className="pb-5 pb-lg-5 pb-xl-5">
       <Row>
@@ -173,7 +178,7 @@ export default(props) => {
       </Row>
     </Container>
   </section>
-
+</ScrollAnimation>
   <Footer/>
 </>)
 }
