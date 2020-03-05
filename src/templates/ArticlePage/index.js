@@ -32,8 +32,8 @@ const ArticlePage = ({data}) => {
     ? window.location.href
     : ''
   const article = data.shopifyArticle
-  const [articleId, setArticleId] = useState(parseInt(atob(article.shopifyId).split("/").pop()))
-  const [blogId, setBlogId] = useState(parseInt(atob(article.blog.shopifyId).split("/").pop()))
+  const articleId = parseInt(atob(article.shopifyId).split("/").pop())
+  const blogId = parseInt(atob(article.blog.shopifyId).split("/").pop())
   const [ip, setIp] = useState("")
   const token = "8688ae404288aacf2fd070b0bf36952a"
   const jsonToQueryString = (json) => {
@@ -41,11 +41,6 @@ const ArticlePage = ({data}) => {
       return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
     }).join('&')
   }
-  const getIp = (async () => {
-    return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
-      setIp(data.ip)
-    })
-  })()
   const getData = {
     "api": "/admin/api/2020-01/comments.json",
     "blog_id": blogId,
@@ -162,7 +157,12 @@ const ArticlePage = ({data}) => {
     }
   }
   useEffect(() => {
-    const fetchComments = (async (URL) => {
+    (async () => {
+      return await fetch(`//api.ipify.org/?format=json`, {method: 'GET'}).then(results => results.json()).then((data) => {
+        setIp(data.ip)
+      })
+    })()
+    (async (URL) => {
       const res = await fetch(URL, {
         method: 'GET',
         headers: {
