@@ -62,6 +62,13 @@ const ArticlePage = ({data}) => {
     return `${month} ${day}, ${year}`
   }
   const reqData = jsonToQueryString(getData)
+  const getLikeData = {
+    "api": `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
+    "namespace": "postlike",
+    "value_type": "string",
+    "fields": "namespace,key,value"
+  }
+  const reqLikeData = jsonToQueryString(getLikeData)
   const [totalComments, setTotalComments] = useState(0)
   const [comments, setComments] = useState([])
   const [submitting, setSubmitting] = useState(false)
@@ -173,27 +180,46 @@ const ArticlePage = ({data}) => {
         }
       }
     }
-    console.log(data)
-    // const sendLike = (async (URL) => {
-    //   console.log(URL, data)
-    //   return await fetch(URL, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       "X-Shopify-Access-Token": token
-    //     },
-    //     body: JSON.stringify(data)
-    //   }).then((response) => {
-    //     if (response.status === 200) {
-    //       response.json().then((responseJson) => {
-    //         fetchLikeCount(index, articleId, blogId)
-    //         console.log(responseJson, index, articleId, blogId)
-    //       })
-    //     }
-    //   }).catch((error) => {
-    //     console.error(error)
-    //   })
-    // })(`//icbtc.com/development/shopify-api/`)
+    console.log(data, reqLikeData)
+    const sendLike = async (URL) => {
+      console.log(URL, data)
+      return await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "X-Shopify-Access-Token": token
+        },
+        body: JSON.stringify(data)
+      }).then((response) => {
+        if (response.status === 200) {
+          response.json().then((responseJson) => {
+            console.log(responseJson)
+            fetchData(`//icbtc.com/development/shopify-api/${reqLikeData}`)
+          })
+        }
+      }).catch((error) => {
+        console.error(error)
+      })
+    }
+    sendLike(`//icbtc.com/development/shopify-api/`)
+  }
+  const fetchData = async (URL) => {
+    return await fetch(URL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        "X-Shopify-Access-Token": token
+      }
+    }).then((response) => {
+      if (response.status === 200) {
+        response.json().then((responseJson) => {
+          console.log(responseJson)
+          document.getElementById("post-like").innerHTML = responseJson.response.metafields.length
+        })
+      }
+    }).catch((error) => {
+      console.error(error)
+    })
   }
   useEffect(() => {
     const fetchComments = (async (URL) => {
@@ -211,31 +237,7 @@ const ArticlePage = ({data}) => {
         }
       })
     })(`//icbtc.com/development/shopify-api/${reqData}`)
-    const getLikeData = {
-      "api": `/admin/api/2020-01/blogs/${blogId}/articles/${articleId}/metafields.json`,
-      "namespace": "postlike",
-      "value_type": "string",
-      "fields": "namespace,key,value"
-    }
-    const reqLikeData = jsonToQueryString(getLikeData)
-    const fetchData = (async (URL) => {
-      return await fetch(URL, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          "X-Shopify-Access-Token": token
-        }
-      }).then((response) => {
-        if (response.status === 200) {
-          response.json().then((responseJson) => {
-            console.log(responseJson)
-            document.getElementById("post-like").innerHTML = responseJson.response.metafields.length
-          })
-        }
-      }).catch((error) => {
-        console.error(error)
-      })
-    })(`//icbtc.com/development/shopify-api/${reqLikeData}`)
+    fetchData(`//icbtc.com/development/shopify-api/${reqLikeData}`)
   }, [])
   return (<> <SEO title = {
     article.title
