@@ -15,9 +15,9 @@ import clip2 from "../assets/img/clip.jpg"
 
 const Design = (props) => {
   const [rightClip, setRightClip] = useState(0)
-  const [bottomClip, setBottomClip] = useState(0)
+  const [bottomClip, setBottomClip] = useState(1000)
   const handleDrag = (e, ui) => {
-
+    setRightClip(rightClip-ui.x)
     console.log(ui.x, ui.y, (rightClip-ui.x))
   }
   useEffect(() => {
