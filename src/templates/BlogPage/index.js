@@ -186,7 +186,7 @@ const BlogPage = ({data}) => {
                         color: 'rgba(0,0,0,0.4)'
                       }} className="d-block mb-3 pr-2 pr-sm-2 pr-lg-0 pr-xl-0" id={"popover-" + index}>
                       <i className="fa fa-share-alt"></i>
-                      <span className="d-block">2</span>
+                      <span className="d-block">&nbsp;</span>
                     </div>
                     <UncontrolledPopover trigger="legacy" placement="bottom" target={"popover-" + index}>
                       <PopoverBody>

@@ -32,8 +32,8 @@ const ArticlePage = ({data}) => {
     ? window.location.href
     : ''
   const article = data.shopifyArticle
-  const [articleId, setArticleId] = useState(parseInt(atob(article.shopifyId).split("/").pop()))
-  const [blogId, setBlogId] = useState(parseInt(atob(article.blog.shopifyId).split("/").pop()))
+  const articleId = parseInt(atob(article.shopifyId).split("/").pop())
+  const blogId = parseInt(atob(article.blog.shopifyId).split("/").pop())
   const [ip, setIp] = useState("")
   const token = "8688ae404288aacf2fd070b0bf36952a"
   const jsonToQueryString = (json) => {
@@ -178,6 +178,7 @@ const ArticlePage = ({data}) => {
       })
     })(`//icbtc.com/development/shopify-api/${reqData}`)
   }, [])
+  console.log(ip, articleId, blogId)
   return (<> <SEO title = {
     article.title
   }
@@ -224,14 +225,14 @@ const ArticlePage = ({data}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }} className="ml-0 ml-sm-0 ml-lg-4 ml-xl-4">
                 <i className="fa fa-share-alt"></i>
-                <span className="pl-2">2</span>
+                <span className="pl-2">&nbsp;</span>
               </span>
 
-              <UncontrolledPopover trigger="legacy" placement="bottom" target="share">
+              <UncontrolledPopover placement="left" trigger="legacy" placement="bottom" target="share">
                 <PopoverBody>
                   <FacebookShareButton url={URL} className="p-1"><FacebookIcon size={25} round={true}/></FacebookShareButton>
                   <TwitterShareButton url={URL} className="p-1"><TwitterIcon size={25} round={true}/></TwitterShareButton>
-                  <PinterestShareButton media={article.image.src} url={URL} className="p-1"><PinterestIcon size={25} round={true}/></PinterestShareButton><br/>
+                  <PinterestShareButton media={article.image.src} url={URL} className="p-1"><PinterestIcon size={25} round={true}/></PinterestShareButton>
                   <LinkedinShareButton url={URL} className="p-1"><LinkedinIcon size={25} round={true}/></LinkedinShareButton>
                 </PopoverBody>
               </UncontrolledPopover>
@@ -246,7 +247,7 @@ const ArticlePage = ({data}) => {
                   color: 'rgba(0,0,0,0.4)'
                 }}>
                 <i className="fa fa-heart"></i>
-                <span className="pl-2">2</span>
+                <span className="pl-2" id="post-like">0</span>
               </span>
             </Col>
           </Row>
