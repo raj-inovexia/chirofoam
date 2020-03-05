@@ -17,8 +17,11 @@ const Design = (props) => {
   const [rightClip, setRightClip] = useState(0)
   const bottomClip = 1000
   const handleDrag = (e, ui) => {
-    setRightClip(rightClip+(ui.x))
-    console.log(ui.x, (rightClip+(ui.x)), (rightClip-(ui.x)))
+    const clipSource = document.getElementById("clip-source")
+    const sourceWidth = clipSource.offsetWidth
+    const initRightClip = Math.floor(sourceWidth/2)
+    setRightClip(initRightClip+(ui.x))
+    console.log(ui, (initRightClip+(ui.x)), (initRightClip-(ui.x)))
   }
   useEffect(() => {
     const clipTarget = document.getElementById("clip-target")
@@ -27,7 +30,6 @@ const Design = (props) => {
       setRightClip(Math.floor(sourceWidth/2))
       console.log(sourceWidth, Math.floor(sourceWidth/2))
   }, [])
-  console.log(rightClip)
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
     <Container>
