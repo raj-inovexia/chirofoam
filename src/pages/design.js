@@ -25,16 +25,17 @@ const Design = (props) => {
     setRightClip(initRightClip+(ui.x))
     console.log(ui)
   }
+  const sizeReset = () => {
+    const clipSource = document.getElementById("clip-source")
+    console.log(dragX, (Math.floor(clipSource.offsetWidth/2)+dragX))
+    setRightClip(Math.floor(clipSource.offsetWidth/2)+dragX)
+  }
   useEffect(() => {
-    const clipTarget = document.getElementById("clip-target")
     const clipSource = document.getElementById("clip-source")
     setRightClip(Math.floor(clipSource.offsetWidth/2))
-    const sizeReset = () => {
-      console.log(dragX, (Math.floor(clipSource.offsetWidth/2)+dragX))
-      setRightClip(Math.floor(clipSource.offsetWidth/2)+dragX)
-    }
     window.addEventListener('resize', sizeReset)
   }, [])
+  console.log(dragX)
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
     <Container>

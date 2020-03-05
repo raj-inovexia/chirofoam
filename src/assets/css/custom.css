@@ -1250,8 +1250,8 @@ body .table-rows .row-list:first-child ul li{
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	margin-left: -22px;
-	margin-top: -22px;
+	margin-left: -20px;
+	margin-top: -20px;
 	border: 3px solid white;
 	-webkit-border-radius: 1000px;
 	-moz-border-radius: 1000px;
