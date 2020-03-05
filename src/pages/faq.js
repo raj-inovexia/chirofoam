@@ -4,6 +4,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import {Container,Jumbotron, Row, Col, Card, CardBody, UncontrolledCollapse} from 'reactstrap';
 import "../assets/css/bootstrap.min.css"
+import ScrollAnimation from 'react-animate-on-scroll'
 
 const FaqPage = (props) => {
 
@@ -11,15 +12,16 @@ const FaqPage = (props) => {
 	<>
 		<Header />
 		<section className="blue-bg faq height-400">
+		
 			<Jumbotron className="mb-0 text-center text-white bg-transparent space-1">
-				<h1 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 pt-sm-0 pt-md-3 pt-lg-5 pt-xl-5 space-2">Chirofoam™ Memory Foam Mattresses </h1>
-				<p className="space-4 proxima-r text-white m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-2 pt-sm-4" style={{width:'90%',fontSize:'26px'}}>If you require any more information about the Chirofoam™ mattress, feel free to call or email us.</p>
+				<h1 className="font-weight-bold display-5 erbaum-bold text-uppercase pt-5 pt-sm-0 pt-md-3 pt-lg-5 pt-xl-5 space-2"><ScrollAnimation animateIn="fadeInUp">Chirofoam™ Memory Foam Mattresses </ScrollAnimation></h1>
+				<p className="space-4 proxima-r text-white m-auto text-center px-0 px-sm-5 px-lg-5 px-xl-5 pt-2 pt-sm-4" style={{width:'90%',fontSize:'26px'}}><ScrollAnimation animateIn="fadeInUp">If you require any more information about the Chirofoam™ mattress, feel free to call or email us.</ScrollAnimation></p>
 			</Jumbotron>
 		</section>
 		<section className="mb-0 py-5 mt-lg-3 mt-xl-3 position-relative">
 			<Container>
 				<Row className="mx-0">
-					<h4 className="text-center lead-text-font color-primary erbaum-bold text-uppercase w-100 pb-3 pb-sm-3 pb-lg-5 pb-xl-5">Frequently Asked Questions </h4>
+					<h4 className="text-center lead-text-font color-primary erbaum-bold text-uppercase w-100 pb-3 pb-sm-3 pb-lg-5 pb-xl-5"><ScrollAnimation animateIn="fadeInUp">Frequently Asked Questions </ScrollAnimation></h4>
 					<div className="q-list w-100 pt-0 pt-sm-0 pt-lg-2 pt-xl-2">
 						<ul className="list-unstyled pl-0 qs-ans">
 							<li>
@@ -848,6 +850,7 @@ Cali King – 81 inches x 14.5 inches x 14.5 inches</p>
 				</Row>
 			</Container>
 		</section>
+		<ScrollAnimation animateIn="fadeInUp">
 		<section className="rating-and-review py-3 py-sm-5 mb-4 mb-sm-0">
 			<Container className="pb-0 pb-sm-5">
 				<Row>
@@ -866,7 +869,7 @@ Cali King – 81 inches x 14.5 inches x 14.5 inches</p>
 				</Row>
 			</Container>
 		</section>
-		
+		</ScrollAnimation>
 		<Footer />
 	</>
   );
