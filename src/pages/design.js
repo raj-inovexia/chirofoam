@@ -23,7 +23,6 @@ const Design = (props) => {
     const initRightClip = Math.floor(sourceWidth/2)
     setDragX(ui.x)
     setRightClip(initRightClip+(ui.x))
-    console.log(ui)
   }
   const sizeReset = () => {
     const clipTarget = document.getElementById("clip-target")
@@ -37,7 +36,6 @@ const Design = (props) => {
     setRightClip(Math.floor(clipSource.offsetWidth/2))
     window.addEventListener('resize', sizeReset)
   }, [])
-  console.log(dragX)
   return (<> <SEO title="Design" /> <Header/>
   <section className="mb-0 py-3 position-relative">
     <Container>
