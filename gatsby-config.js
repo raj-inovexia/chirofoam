@@ -8,7 +8,6 @@ module.exports = {
   siteMetadata: {
     title: `Chirofoam™ Memory Foam Mattress`,
     description: `The Chirofoam™ Memory Foam Mattress is designed to get you a more effective and efficient sleep, and helps to relieve back pain. Made in Toronto, ON.`,
-    image: `src/assets/img/logo-lg.png`,
     author: `@Team-Innovexia`,
   },
   plugins: [
@@ -43,7 +42,7 @@ module.exports = {
         // The domain name of your Shopify shop. This is required.
         // Example: 'gatsby-source-shopify-test-shop' if your Shopify address is
         // 'gatsby-source-shopify-test-shop.myshopify.com'.
-        shopName:'chirofoam-dev.myshopify.com',
+        shopName:'chirofoam.myshopify.com',
 
         // An API access token to your Shopify shop. This is required.
         // You can generate an access token in the "Manage private apps" section
@@ -51,7 +50,7 @@ module.exports = {
         // to select "Allow this app to access your storefront data using the
         // Storefront API".
         // See: https://help.shopify.com/api/custom-storefronts/storefront-api/getting-started#authentication
-        accessToken:'c48261d5691fcaf3fd0c8232ebd54a3a',
+        accessToken:'4d52a01cc9f9459adc48214472d0156a',
 
         // Set the API version you want to use. For a list of available API versions,
       // see: https://help.shopify.com/en/api/storefront-api/reference/queryroot
