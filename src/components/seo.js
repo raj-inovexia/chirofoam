@@ -11,7 +11,7 @@ function SEO({ description, image, lang, meta, keywords, title }) {
         const metaDescription =
           description || data.site.siteMetadata.description
         const ogImage =
-            image || data.site.siteMetadata.image
+            image || ""
         return (
           <Helmet
             htmlAttributes={{
