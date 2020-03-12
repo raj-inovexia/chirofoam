@@ -23,7 +23,7 @@
     "gatsby-plugin-shopify-buy": "0.0.2",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-rest-api": "^0.2.3",
-    "gatsby-source-shopify": "^3.0.43",
+    "gatsby-source-shopify": "^3.0.48",
     "gatsby-transformer-sharp": "^2.3.14",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.15",
